@@ -1,0 +1,178 @@
+<div class="container">
+    <div class="grid align-items-center justify-content-center mt-4">
+        <div class="md:col-6 sm:col-12">
+            <p-steps [model]="items" [readonly]="true"  [style]="{'font-size':'12px'}" [activeIndex]="step"></p-steps>
+        </div>
+    </div>
+    
+    <div *ngIf="step==0">
+        <div class="flex align-items-center justify-content-center" [style]="{'margin-top':'20px'}">
+            <div class="grid">
+                <div class="col-12">
+                        <p class="text-heading bold-medium">Join with us in Filos community</p>
+                </div>
+            </div>
+        </div>
+        <p-card  class="flex align-items-center justify-content-center"  [style]="{'width':'400px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}">       
+            <form (ngSubmit)="onVerify()">
+            <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                <div class="col align-content-center">
+                  <div class="grid justify-content-center">
+                        <div class="col-12 ">
+                                <div class="field mt-1">
+                                    <span class="p-float-label">
+                                           <input type="text" id="inputEmail" pInputText [(ngModel)]="inputEmail" name="email" class="w-full border-radius-20px" > 
+                                           <label for="inputEmail">Email</label>
+                                       </span> 
+                                   </div>
+                                   <div class="field">
+                                       <button pButton pRipple type="submit" class="p-button-rounded color-bg-yellow w-full text-small color-black bold" styleClass="p-button-sm text-center" label="Register"></button>
+                                   </div>                  
+                        </div>                
+                    </div>                 
+                </div>
+             </div>
+            </form>
+        </p-card>
+        <div class="flex align-items-center justify-content-center mt-3">
+            <div class="grid justify-content-center">
+            <div class="col align-content-center">
+            <div class="field">
+                <span class="text-small bold-medium">
+                    Already have an account?  <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}" routerLink="/landing">
+                        Sign in
+                    </a>
+                </span>
+            </div> 
+            </div>
+            </div>
+            </div>
+    </div>
+    
+    <div *ngIf="step==1">
+        <div class="flex align-items-center justify-content-center" [style]="{'margin-top':'20px'}">
+            <div class="grid">
+                <div class="col-12">
+                        <p class="text-heading bold-medium">Join with us in Filos community</p>
+                </div>
+            </div>
+        </div>
+        <p-card class="flex align-items-center justify-content-center"  [style]="{'width':'400px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}" >       
+         <form (ngSubmit)="onSubmit()">
+            <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                <div class="col align-content-center">
+                  <div class="grid justify-content-center">
+                        <div class="col-12">  
+                                <div class="field mt-1">
+                                    <span class="p-float-label">
+                                           <input type="text" id="inputCodeVerify" pInputText [(ngModel)]="inputCodeVerify" name="codeVerify" class="w-full border-radius-20px" > 
+                                           <label for="inputCodeVerify">Code Verify</label>
+                                       </span> 
+                                   </div>
+                                   <div class="field">
+                                       <button pButton pRipple type="submit" class="p-button-rounded color-bg-yellow w-full text-small color-black bold" styleClass="p-button-sm text-center" label="Next"></button>
+                                   </div>
+                        </div>                
+                    </div>                 
+                </div>
+             </div>
+         </form>
+        </p-card>
+    </div>
+    
+    <div *ngIf="step==2">
+        <div class="flex align-items-center justify-content-center" [style]="{'margin-top':'20px'}">
+            <div class="grid">
+                <div class="col-12">
+                        <p class="text-heading bold-medium">Join with us in Filos community</p>
+                </div>
+            </div>
+        </div>
+        <p-card class="flex align-items-center justify-content-center"  [style]="{'width':'900px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}" >       
+         <form (ngSubmit)="onSubmitProfile()">
+            <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                <div class="col align-content-center">
+                  <div class="grid justify-content-center">
+                        <div class="md:col-6 sm:col-12">  
+                                <div class="field mt-1">
+                                    <span class="p-float-label">
+                                           <input type="text" id="inputFullname" pInputText [(ngModel)]="inputFullname" name="fullname" class="w-full border-radius-20px" > 
+                                           <label for="inputFullname">Fullname</label>
+                                       </span> 
+                                   </div>
+                        </div>      
+                        <div class="md:col-6 sm:col-12">  
+                            <div class="field mt-1">
+                                <span class="p-float-label">
+                                       <input type="text" id="inputCompanyName" pInputText [(ngModel)]="inputCompanyName" name="company" class="w-full border-radius-20px" > 
+                                       <label for="inputCompanyName">Company Name</label>
+                                   </span> 
+                            </div>
+                    </div>            
+                    </div>          
+                    <div class="grid justify-content-center">
+                        <div class="md:col-6 sm:col-12">  
+                                <div class="field mt-1">
+                                    <span class="p-float-label">
+                                           <input type="text" id="inputPosition" pInputText [(ngModel)]="inputPosition" name="position" class="w-full border-radius-20px" > 
+                                           <label for="inputPosition">Position</label>
+                                       </span> 
+                                   </div>
+                        </div>      
+                        <div class="md:col-6 sm:col-12">  
+                            <div class="field mt-1">
+                                <span class="p-float-label " >
+                                    <p-dropdown [options]="industry" placeholder="Industry" optionValue="code" optionLabel="name" name="industry" styleClass="w-full" ></p-dropdown>         
+                                    <label for="dropdown">Industry</label>
+                                </span>
+                            </div>
+                    </div>  
+                              
+                    </div>  
+                    <div class="grid justify-content-center" >     
+                        <div class="col-5">  
+                            <div class="field mt-1">
+                                    <button pButton pRipple type="submit" class="p-button-rounded color-bg-yellow w-full text-small color-black bold"  styleClass="p-button-sm text-center" label="Next"></button>
+                        
+                            </div>
+                    </div>  
+                              
+                    </div>         
+                </div>
+             </div>
+         </form>
+        </p-card>
+    </div>
+    
+    <div *ngIf="step==3">
+        <div class="flex align-items-center justify-content-center" [style]="{'margin-top':'20px'}">
+            <div class="grid">
+                <div class="col-12">
+                        <p class="text-heading bold-medium">Upload your photo profile</p>
+                </div>
+            </div>
+        </div>
+        <p-card class="flex align-items-center justify-content-center"  [style]="{'width':'400px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}" >       
+         <form (ngSubmit)="onSubmitProfilePic()">
+            <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                <div class="col align-content-center">
+                  <div class="grid justify-content-center">
+                        <div class="col-12 ">
+                              <div class="grid justify-content-center">
+                                <div class="field">
+                                    <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="upload-profile-pic">                       
+                             </div>
+                              </div>
+                                   <div class="field">
+                                       <button pButton pRipple type="submit" class="p-button-rounded color-bg-yellow w-full text-small color-black bold" styleClass="p-button-sm text-center" label="Done"></button>
+                                   </div>                  
+                        </div>                
+                    </div>                 
+                </div>
+             </div>
+         </form>
+        </p-card>
+    </div>
+    
+    
+</div>

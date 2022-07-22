@@ -1,0 +1,203 @@
+<div class="container mt-3">
+  <div class="grid">
+
+    <!-- Halaman Sebelah Kiri -->
+    <div class="md:col-3 left-page">
+      <div class="card">
+        <div class="container">
+          <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+            <div class="col align-content-center">
+              <div class="grid">
+                <div class="md:col-12">
+                  <div class="grid justify-content-center mt-1">
+                    <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                      class="upload-profile-pic">
+                  </div>
+                </div>
+                <div class="md:col-12">
+                  <div class="grid justify-content-center mt-1">
+                    <span class="bold-medium color-black text-heading-2">Muhammad Tulus</span>
+                    <span class="text-extrasmall bold-medium">Human Resource Development</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="grid" [style]="{ 'margin-top':'12px'}">
+                  <div class="md:col-12">
+                    <span class="bold-medium color-black text-extrasmall">Email</span>
+                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">Email@email.com</p>
+                  </div>
+                </div>
+                <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                  <div class="md:col-12">
+                    <span class="bold-medium color-black text-extrasmall">Phone Number</span>
+                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">082193812917</p>
+                  </div>
+                </div>
+                <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                  <div class="md:col-12">
+                    <a href="">Edit Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Halaman Tengah -->
+    <div class="md:col-6 middle-page">
+      <div class="container">
+        <p-tabView>
+          <p-tabPanel header="My Activities">
+            <div class="card">
+              <div class="container">
+                <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                  <div class="col align-content-center">
+                    <form action="">
+                      <div class="grid">
+                        <div class="md:col-2">
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                            class="profile-pic">
+                        </div>
+                        <div class="md:col-2">
+                          <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
+                        </div>
+                      </div>
+                      <div class="grid flex flex-wrap">
+                        <div class="md:col-12">
+                          <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
+                        </div>
+                        <div class="md:col-12">
+                          <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                        </div>
+                      </div>
+                      <div class="grid justify-content-end">
+                        <div class="md:col-4">
+                          <button pButton pRipple type="submit"
+                            class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                            styleClass="p-button-sm text-center" label="Post"></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mt-3">
+                <div class="container">
+                  <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                    <div class="col align-content-center">
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </p-tabPanel>
+          <p-tabPanel header="All">
+            <div class="card">
+                <div class="container">
+                  <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                    <div class="col align-content-center">
+                      <form action="">
+                        <div class="grid">
+                          <div class="md:col-2">
+                            <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                              class="profile-pic">
+                          </div>
+                          <div class="md:col-2">
+                            <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
+                          </div>
+                        </div>
+                        <div class="grid flex flex-wrap">
+                          <div class="md:col-12">
+                            <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
+                          </div>
+                          <div class="md:col-12">
+                            <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                          </div>
+                        </div>
+                        <div class="grid justify-content-end">
+                          <div class="md:col-4">
+                            <button pButton pRipple type="submit"
+                              class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                              styleClass="p-button-sm text-center" label="Post"></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p-tabView>
+                <p-tabPanel header="Header 1">
+                    <div class="card mt-3">
+                        <div class="container">
+                          <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                            <div class="col align-content-center">
+                             
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </p-tabPanel>
+                <p-tabPanel header="Header 2">
+                    Content 2
+                </p-tabPanel>
+                <p-tabPanel header="Header 3">
+                    Content 3
+                </p-tabPanel>
+            </p-tabView>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+    </div>
+
+    <!-- Halaman Sebelah Kanan -->
+    <div class="md:col-3 right-page">
+      <div class="grid justify-content-center">
+
+        <div class="col mt-1">
+
+          <span class="bold-medium">Iklan</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="container">
+          <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+            <div class="col align-content-center">
+              <div class="grid" [style]="{ 'margin-top':'-35px'}">
+                <div class="md:col-12">
+                  <div class="field">
+                    <h1>
+                      Sign in
+                    </h1>
+                    <p class="text-small" [style]="{'margin-top':'-10px'}">
+                      Stay update on your professional world
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="grid justify-content-center">
+                <div class="md:col-12">
+
+                  <div class="field">
+                    <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}"
+                      routerLink="/landing">
+                      Forgot Password?
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <p-card class="flex align-items-center justify-content-center"
+      [style]="{'width':'280px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}">
+    
+    </p-card> -->
+    </div>
+  </div>
+</div>

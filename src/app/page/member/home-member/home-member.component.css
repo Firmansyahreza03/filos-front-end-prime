@@ -1,0 +1,23 @@
+.upload-profile-pic{
+    height: 150px;
+    border-radius: 50%;
+}
+.profile-pic{
+    height: 50px;
+    border-radius: 50%;
+}
+
+.border-radius-20px{
+    border-radius: 20px;
+}
+.color-black{
+    color: black;
+}
+
+.color-bg-yellow:hover{
+    background: #DAA300;
+    color: black;
+}
+.color-bg-yellow{
+    background: #DAA300;
+}

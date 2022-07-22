@@ -1,0 +1,22 @@
+.color-bg-yellow{
+    background: #DAA300;
+}
+
+.color-black{
+    color: black;
+}
+
+.color-bg-yellow:hover{
+    background: #DAA300;
+    color: black;
+}
+
+.btnClick {
+    cursor: pointers;
+}
+a:link{
+    text-decoration: none;
+}
+.border-radius-20px{
+    border-radius: 20px;
+}
