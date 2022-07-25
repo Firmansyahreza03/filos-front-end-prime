@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { HomeMemberComponent } from "./home-member.component";
+import { HomeMemberComponent } from "./member/home-member.component";
 import { HomeMemberRouting } from "./home-member.routing";
 import {CardModule} from 'primeng/card';
 import {TabViewModule} from 'primeng/tabview';

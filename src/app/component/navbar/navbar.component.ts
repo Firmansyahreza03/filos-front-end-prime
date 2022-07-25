@@ -3,10 +3,10 @@ import { Router } from "@angular/router";
 import {MenuItem} from 'primeng/api';
 @Component({
     selector: 'app-navbar',
-    templateUrl: './navbar-member.component.html'
+    templateUrl: './navbar.component.html'
 
 })
-export class NavbarMemberComponent implements OnInit{
+export class NavbarComponent implements OnInit{
     items : MenuItem[]=[];
     constructor( public router: Router) { }
     ngOnInit() {
