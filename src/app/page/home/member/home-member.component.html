@@ -2,40 +2,42 @@
   <div class="grid">
 
     <!-- Halaman Sebelah Kiri -->
-    <div class="md:col-3 left-page">
+    <div class="md:col-3 left-page col-12">
       <div class="card">
         <div class="container">
           <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
             <div class="col align-content-center">
               <div class="grid">
-                <div class="md:col-12">
+                <div class="col-12">
                   <div class="grid justify-content-center mt-1">
                     <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
                       class="upload-profile-pic">
                   </div>
                 </div>
-                <div class="md:col-12">
+                <div class="col-12">
                   <div class="grid justify-content-center mt-1">
-                    <span class="bold-medium color-black text-heading-2">Muhammad Tulus</span>
-                    <span class="text-extrasmall bold-medium">Human Resource Development</span>
+                    <div class="md:col-10 sm:col-12">
+                      <span class="bold-medium color-black text-heading-2">Muhammad Tulus</span>
+                      <p class="text-extrasmall bold-medium">Human Resource Development</p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div>
                 <div class="grid" [style]="{ 'margin-top':'12px'}">
-                  <div class="md:col-12">
+                  <div class="col-12">
                     <span class="bold-medium color-black text-extrasmall">Email</span>
                     <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">Email@email.com</p>
                   </div>
                 </div>
-                <div class="grid" [style]="{ 'margin-top':'-20px'}">
-                  <div class="md:col-12">
+                <div class="grid">
+                  <div class="col-12">
                     <span class="bold-medium color-black text-extrasmall">Phone Number</span>
                     <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">082193812917</p>
                   </div>
                 </div>
-                <div class="grid" [style]="{ 'margin-top':'-20px'}">
-                  <div class="md:col-12">
+                <div class="grid justify-content-center" [style]="{ 'margin-top':'8px'}">
+                  <div class="md:col-6 sm:col-12">
                     <a href="">Edit Profile</a>
                   </div>
                 </div>
@@ -47,7 +49,7 @@
     </div>
 
     <!-- Halaman Tengah -->
-    <div class="md:col-6 middle-page">
+    <div class="md:col-6 middle-page col-12">
       <div class="container">
         <p-tabView>
           <p-tabPanel header="My Activities">
@@ -55,26 +57,37 @@
               <div class="container">
                 <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
                   <div class="col align-content-center">
+
+                    <!-- form thread -->
                     <form action="">
                       <div class="grid">
-                        <div class="md:col-2">
+                        <div class="col-2">
                           <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
                             class="profile-pic">
                         </div>
-                        <div class="md:col-2">
+                        <div class="col-2">
                           <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
-                        <div class="md:col-12">
+                        <div class="col-12">
                           <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
                         </div>
-                        <div class="md:col-12">
+                        <div class="col-12">
                           <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
                         </div>
                       </div>
-                      <div class="grid justify-content-end">
-                        <div class="md:col-4">
+                      <p-divider></p-divider>
+                      <div class="grid -mt-3 -mb-3">
+                        <div class="col-1">
+                          <button pButton pRipple type="button" icon="pi pi-image"
+                            class="p-button-rounded p-button-help p-button-text"></button>
+                        </div>
+                        <div class="col-1">
+                          <button pButton pRipple type="button" icon="pi pi-bars"
+                            class="p-button-rounded p-button-help p-button-text"></button>
+                        </div>
+                        <div class="col-2 col-offset-8">
                           <button pButton pRipple type="submit"
                             class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
                             styleClass="p-button-sm text-center" label="Post"></button>
@@ -85,79 +98,168 @@
                 </div>
               </div>
             </div>
-            <div class="card mt-3">
-                <div class="container">
-                  <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
-                    <div class="md:col-2">
-                      <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
-                        class="profile-pic">
-                    </div>
-                    <div class="md:col-10">
-                      <div class="grid">
-                        <span class="bold black text-small">Muhammad Tulus</span>
-                      </div>
-                      <div class="grid">
-                        <span class="text-extrasmall">Muhammad Tulus</span>
 
+            <!-- thread -->
+            <div class="card mt-3">
+              <div class="container">
+                <!-- Header -->
+                <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
+                  <div class="col-2">
+                    <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                  </div>
+                  <div class="col-10">
+                    <div class="grid">
+                      <div class="col-12">
+                        <span class="bold black text-heading-3">Muhammad Tulus</span>
+                      </div>
+                    </div>
+                    <div class="grid -mt-4">
+                      <div class="col-12">
+                        <span class="text-extrasmall">1 hour ago</span>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- Content -->
+                <div class="grid mt-3">
+                  <div class="col-12">
+                    <span class="bold black text-heading-3">Hati-hati bagi yang melamar kerja dibandung, terutama
+                      startup online shop</span>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus saepe
+                      consequuntur explicabo, laboriosam fugit aspernatur quibusdam fuga, nesciunt neque, aliquam
+                      voluptates voluptate quas cum non asperiores sed veritatis laudantium ratione.</p>
+                  </div>
+                </div>
+                <p-divider></p-divider>
+
+                <!-- Action -->
+                <div class="grid -mt-5 -mb-5">
+                  <div class="col-2">
+                    <button pButton pRipple type="button" icon="pi pi-heart"
+                      class="p-button-rounded p-button-help p-button-text" label="18"></button>
+                  </div>
+                  <div class="col-2">
+                    <button pButton pRipple type="button" icon="pi pi-comment"
+                      class="p-button-rounded p-button-warning p-button-text" label="5"></button>
+                  </div>
+                  <div class="col-2 col-offset-6">
+                    <button pButton pRipple type="button" icon="pi pi-bookmark"
+                      class="p-button-rounded p-button-secondary p-button-text"></button>
+                  </div>
+                </div>
               </div>
+            </div>
           </p-tabPanel>
           <p-tabPanel header="All">
             <div class="card">
-                <div class="container">
-                  <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
-                    <div class="col align-content-center">
-                      <form action="">
-                        <div class="grid">
-                          <div class="md:col-2">
-                            <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
-                              class="profile-pic">
-                          </div>
-                          <div class="md:col-2">
-                            <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
-                          </div>
+              <div class="container">
+                <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+                  <div class="col align-content-center">
+                    <!-- form thread -->
+                    <form action="">
+                      <div class="grid">
+                        <div class="col-2">
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                            class="profile-pic">
                         </div>
-                        <div class="grid flex flex-wrap">
-                          <div class="md:col-12">
-                            <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
-                          </div>
-                          <div class="md:col-12">
-                            <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
-                          </div>
+                        <div class="col-2">
+                          <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
                         </div>
-                        <div class="grid justify-content-end">
-                          <div class="md:col-4">
-                            <button pButton pRipple type="submit"
-                              class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                              styleClass="p-button-sm text-center" label="Post"></button>
-                          </div>
+                      </div>
+                      <div class="grid flex flex-wrap">
+                        <div class="col-12">
+                          <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
                         </div>
-                      </form>
-                    </div>
+                        <div class="col-12">
+                          <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                        </div>
+                      </div>
+                      <p-divider></p-divider>
+                      <div class="grid -mt-3 -mb-3">
+                        <div class="col-1">
+                          <button pButton pRipple type="button" icon="pi pi-image"
+                            class="p-button-rounded p-button-help p-button-text"></button>
+                        </div>
+                        <div class="col-1">
+                          <button pButton pRipple type="button" icon="pi pi-bars"
+                            class="p-button-rounded p-button-help p-button-text"></button>
+                        </div>
+                        <div class="col-2 col-offset-8">
+                          <button pButton pRipple type="submit"
+                            class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                            styleClass="p-button-sm text-center" label="Post"></button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-              <p-tabView>
-                <p-tabPanel header="Thread">
-                    <div class="card mt-3">
-                        <div class="container">
-                          <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
-                            <div class="col align-content-center">
-                             
-                            </div>
+            </div>
+            <p-tabView>
+              <p-tabPanel header="Thread">
+                <!-- thread -->
+                <div class="card mt-3">
+                  <div class="container">
+                    <!-- Header -->
+                    <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
+                      <div class="col-2">
+                        <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                      </div>
+                      <div class="col-10">
+                        <div class="grid">
+                          <div class="col-12">
+                            <span class="bold black text-heading-3">Muhammad Tulus</span>
+                          </div>
+                        </div>
+                        <div class="grid -mt-4">
+                          <div class="col-12">
+                            <span class="text-extrasmall">1 hour ago</span>
                           </div>
                         </div>
                       </div>
-                </p-tabPanel>
-                <p-tabPanel header="Like">
-                    oke
-                </p-tabPanel>
-                <p-tabPanel header="Bookmark">
-                    Content 3
-                </p-tabPanel>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="grid mt-3">
+                      <div class="col-12">
+                        <span class="bold black text-heading-3">Hati-hati bagi yang melamar kerja dibandung, terutama
+                          startup online shop</span>
+                      </div>
+                      <div class="col-12">
+                        <p class="text-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus saepe
+                          consequuntur explicabo, laboriosam fugit aspernatur quibusdam fuga, nesciunt neque, aliquam
+                          voluptates voluptate quas cum non asperiores sed veritatis laudantium ratione.</p>
+                      </div>
+                    </div>
+                    <p-divider></p-divider>
+
+                    <!-- Action -->
+                    <div class="grid -mt-5 -mb-5">
+                      <div class="col-2">
+                        <button pButton pRipple type="button" icon="pi pi-heart"
+                          class="p-button-rounded p-button-help p-button-text" label="18"></button>
+                      </div>
+                      <div class="col-2">
+                        <button pButton pRipple type="button" icon="pi pi-comment"
+                          class="p-button-rounded p-button-warning p-button-text" label="5"></button>
+                      </div>
+                      <div class="col-2 col-offset-6">
+                        <button pButton pRipple type="button" icon="pi pi-bookmark"
+                          class="p-button-rounded p-button-secondary p-button-text"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="Like">
+                oke
+              </p-tabPanel>
+              <p-tabPanel header="Bookmark">
+                Content 3
+              </p-tabPanel>
             </p-tabView>
           </p-tabPanel>
         </p-tabView>
@@ -165,37 +267,75 @@
     </div>
 
     <!-- Halaman Sebelah Kanan -->
-    <div class="md:col-3 right-page">
+    <div class="md:col-3 col-12 right-page">
       <div class="grid justify-content-center">
-
-        <div class="col mt-1">
-
-          <span class="bold-medium">Iklan</span>
+        <div class="col-12 mt-1">
+          <span class="bold text-heading-3">Training for you</span>
         </div>
       </div>
-      <div class="card">
+      <div class="card-transparent">
         <div class="container">
-          <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+          <!-- event 1 -->
+          <div class="grid justify-content-center">
             <div class="col align-content-center">
-              <div class="grid" [style]="{ 'margin-top':'-35px'}">
-                <div class="md:col-12">
-                  <div class="field">
-                    <h1>
-                      Sign in
-                    </h1>
-                    <p class="text-small" [style]="{'margin-top':'-10px'}">
-                      Stay update on your professional world
-                    </p>
+              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                <div class="col-4">
+                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
+                </div>
+                <div class="col-7 ml-1">
+                  <div class="grid">
+                    <div class="col-12">
+                      <span class="text-small bold">Title Training</span>
+                    </div>
+                  </div>
+                  <div class="grid -mt-3">
+                    <div class="col-12">
+                      <span class="text-extrasmall bold-medium">Provider Training</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="grid justify-content-center">
-                <div class="md:col-12">
-                  <div class="field">
-                    <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}"
-                      routerLink="/landing">
-                      Forgot Password?
-                    </a>
+            </div>
+          </div>
+          <!-- event 1 -->
+          <div class="grid justify-content-center">
+            <div class="col align-content-center">
+              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                <div class="col-4">
+                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
+                </div>
+                <div class="col-7 ml-1">
+                  <div class="grid">
+                    <div class="col-12">
+                      <span class="text-small bold">Title Training</span>
+                    </div>
+                  </div>
+                  <div class="grid -mt-3">
+                    <div class="col-12">
+                      <span class="text-extrasmall bold-medium">Provider Training</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- event 1 -->
+          <div class="grid justify-content-center">
+            <div class="col align-content-center">
+              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                <div class="col-4">
+                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
+                </div>
+                <div class="col-7 ml-1">
+                  <div class="grid">
+                    <div class="col-12">
+                      <span class="text-small bold">Title Training</span>
+                    </div>
+                  </div>
+                  <div class="grid -mt-3">
+                    <div class="col-12">
+                      <span class="text-extrasmall bold-medium">Provider Training</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -203,6 +343,13 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
+
+
+<!-- percobaan yang premium thread -->
+<!-- <p>{{kalimat}}</p>
+<h1>-----</h1>
+<p>{{textAfterMultiply}}</p> -->

@@ -32,6 +32,11 @@ const routes: Routes = [
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
+        path: 'thread-detail',
+        component: NavbarComponent,
+        loadChildren: () => import('./page/thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
+    },
+    {
       path: '**',
       component: NotFoundComponent,
     },
