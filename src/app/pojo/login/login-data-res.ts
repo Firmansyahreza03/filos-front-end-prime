@@ -1,5 +1,5 @@
-export class LoginDataRes {
-    roleCode! : string
-    username! : string
-    token! : string
+export interface LoginDataRes {
+    roleCode : string
+    email : string
+    token : string
 }

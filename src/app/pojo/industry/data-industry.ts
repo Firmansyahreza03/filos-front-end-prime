@@ -1,8 +1,8 @@
-export interface DataFile {
+export interface DataIndustry {
     id : number
     version : number
     isActive : boolean
 	
 	name : string
-	extensions : string
+	code : string
 }

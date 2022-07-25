@@ -27,21 +27,21 @@ export class LoginService {
         return null
     }
 
-    getLoggedUsername(): string | null {
-        const token = this.getData()?.data.username;
-        if (token) return token;
+    getLoggedEmail(): string | null {
+        const data = this.getData()?.data.email;
+        if (data) return data;
         return null;
     }
 
     getLoggedRole(): string | null {
-        const token = this.getData()?.data.roleCode;
-        if (token) return token;
+        const data = this.getData()?.data.roleCode;
+        if (data) return data;
         return null;
     }
 
     getToken(): string | null {
-        const token = this.getData()?.data.token;
-        if (token) return token;
+        const data = this.getData()?.data.token;
+        if (data) return data;
         return null;
     }
     

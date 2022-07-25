@@ -1,7 +1,6 @@
-export interface UpdateFileRes {
+export interface UpdateIndustryRes {
     id : number
     version : number
 
 	name : string
-	extensions : string
 }
