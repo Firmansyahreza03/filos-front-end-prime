@@ -1,5 +1,5 @@
 export interface DataArticle {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	

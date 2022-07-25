@@ -1,5 +1,5 @@
 export interface UpdateRoleRes {
-    id : number
+    id : string
     version : number
 
 	name : string

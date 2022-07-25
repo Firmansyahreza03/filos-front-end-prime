@@ -1,5 +1,5 @@
 export interface UpdateBookmarkRes {
-    id : number
+    id : string
     version : number
 
     idThreadHdr: string

@@ -1,5 +1,5 @@
 export interface UpdateArticleRes {
-    id : number
+    id : string
     version : number
 
 	title:string

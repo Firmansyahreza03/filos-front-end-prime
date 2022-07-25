@@ -1,5 +1,5 @@
 export interface UpdateFileRes {
-    id : number
+    id : string
     version : number
 
 	name : string
