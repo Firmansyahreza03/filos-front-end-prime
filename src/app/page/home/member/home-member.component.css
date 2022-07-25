@@ -21,3 +21,11 @@
 .color-bg-yellow{
     background: #DAA300;
 }
+
+.event-pic{
+    height: 80px;
+    border-radius: 10px;
+}
+.card-thread{
+    margin-top: -30px;
+}
