@@ -55,23 +55,15 @@ a:link{
 }
 
 body{
-    /* background-color: #F8F7FF; */
-    /* background-color: lavender; */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 .size-30{
     font-size: 30px;
-}
-
-.left-page{
-/* background-color: aquamarine; */
-}
-
-.middle-page{
-    /* background-color: chocolate; */
-}
-
-.right-page{
-    /* background-color: darkblue; */
 }
 
 .container{
