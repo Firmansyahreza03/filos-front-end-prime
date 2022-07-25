@@ -1,4 +1,4 @@
-export class LoginReq {
-    username! : string
-    password! : string
+export interface LoginReq {
+    email : string
+    password : string
 }

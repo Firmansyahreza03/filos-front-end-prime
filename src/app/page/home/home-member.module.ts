@@ -9,6 +9,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ButtonModule} from 'primeng/button';
+import {DividerModule} from 'primeng/divider';
 @NgModule({
     imports: [
         HomeMemberRouting,
@@ -19,7 +20,8 @@ import {ButtonModule} from 'primeng/button';
         DropdownModule,
         InputTextModule,
         InputTextareaModule,
-        ButtonModule
+        ButtonModule,
+        DividerModule
     ],
     declarations: [
         HomeMemberComponent

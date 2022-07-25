@@ -1,7 +1,7 @@
-export class UpdateFileRes {
-    id! : number
-    version! : number
+export interface UpdateFileRes {
+    id : number
+    version : number
 
-	name !: string
-	extensions !: string
+	name : string
+	extensions : string
 }

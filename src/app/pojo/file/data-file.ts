@@ -1,8 +1,8 @@
-export class DataFile {
-    id! : number
-    version! : number
-    isActive! : boolean
+export interface DataFile {
+    id : number
+    version : number
+    isActive : boolean
 	
-	name !: string
-	extensions !: string
+	name : string
+	extensions : string
 }
