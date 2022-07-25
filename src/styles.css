@@ -4,6 +4,15 @@
   --yellow: #F8D777;
 }
 
+body{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 .text-small {
   font-size: 14px;
 }
@@ -48,6 +57,19 @@
 
 .btnClick {
   cursor: pointers;
+}
+
+.size-30{
+    font-size: 30px;
+}
+
+.container{
+    width: 100%;
+    max-width: 1320px;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .border-radius-20px {

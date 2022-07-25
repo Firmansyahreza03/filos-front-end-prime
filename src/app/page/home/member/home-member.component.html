@@ -87,9 +87,19 @@
             </div>
             <div class="card mt-3">
                 <div class="container">
-                  <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
-                    <div class="col align-content-center">
-                     
+                  <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
+                    <div class="md:col-2">
+                      <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                        class="profile-pic">
+                    </div>
+                    <div class="md:col-10">
+                      <div class="grid">
+                        <span class="bold black text-small">Muhammad Tulus</span>
+                      </div>
+                      <div class="grid">
+                        <span class="text-extrasmall">Muhammad Tulus</span>
+
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -131,7 +141,7 @@
                 </div>
               </div>
               <p-tabView>
-                <p-tabPanel header="Header 1">
+                <p-tabPanel header="Thread">
                     <div class="card mt-3">
                         <div class="container">
                           <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
@@ -142,10 +152,10 @@
                         </div>
                       </div>
                 </p-tabPanel>
-                <p-tabPanel header="Header 2">
-                    Content 2
+                <p-tabPanel header="Like">
+                    oke
                 </p-tabPanel>
-                <p-tabPanel header="Header 3">
+                <p-tabPanel header="Bookmark">
                     Content 3
                 </p-tabPanel>
             </p-tabView>
@@ -181,7 +191,6 @@
               </div>
               <div class="grid justify-content-center">
                 <div class="md:col-12">
-
                   <div class="field">
                     <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}"
                       routerLink="/landing">
@@ -194,10 +203,6 @@
           </div>
         </div>
       </div>
-      <!-- <p-card class="flex align-items-center justify-content-center"
-      [style]="{'width':'280px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}">
-    
-    </p-card> -->
     </div>
   </div>
 </div>
