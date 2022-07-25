@@ -1,35 +1,45 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { NavbarMemberComponent } from "./component/navbar-member/navbar-member.component";
-import { NavbarMemberModule } from "./component/navbar-member/navbar-member.module";
+import { NavbarComponent } from "./component/navbar/navbar.component";
+import { SharedModule } from "./component/shared.module";
+import { NotFoundComponent } from "./page/not-found/not-found.component";
 
 
 const routes: Routes = [
     {
+      path: '',
+      redirectTo: '/landing',
+      pathMatch: 'full',
+    },
+    {
         path: 'landing',
-        component: NavbarMemberComponent,
+        component: NavbarComponent,
         loadChildren: () => import('./page/landing/landing.module').then(m => m.LandingModule)
     },
     {
         path: 'login',
-        component: NavbarMemberComponent,
-        loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule)
+        component: NavbarComponent,
+        loadChildren: () => import('./page/auth/login/login.module').then(m => m.LoginModule)
     },
     {
         path: 'register',
-        component: NavbarMemberComponent,
-        loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule)
+        component: NavbarComponent,
+        loadChildren: () => import('./page/auth/register/register.module').then(m => m.RegisterModule)
     },
     {
         path: 'home-member',
-        component: NavbarMemberComponent,
-        loadChildren: () => import('./page/member/home-member/home-member.module').then(m => m.HomeMemberModule)
-    }
+        component: NavbarComponent,
+        loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
+    },
+    {
+      path: '**',
+      component: NotFoundComponent,
+    },
 ]
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes),
-        NavbarMemberModule
+        RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled', anchorScrolling:'enabled'}),
+        SharedModule
     ],
     exports: [
         RouterModule
