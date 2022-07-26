@@ -1,3 +1,3 @@
 export interface GeneratedCode {
-	code : number
+	code : string
 }
