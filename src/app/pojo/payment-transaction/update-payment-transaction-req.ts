@@ -1,5 +1,5 @@
 export interface UpdatePaymentTransactionRes {
-    id : number
+    id : string
     version : number
 
 	isAcc:boolean

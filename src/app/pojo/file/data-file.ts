@@ -1,5 +1,5 @@
 export interface DataFile {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	

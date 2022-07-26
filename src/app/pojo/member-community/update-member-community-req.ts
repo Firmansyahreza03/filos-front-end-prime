@@ -1,5 +1,5 @@
 export interface UpdateMemberCommunityRes {
-    id : number
+    id : string
     version : number
 
 	idUser : string

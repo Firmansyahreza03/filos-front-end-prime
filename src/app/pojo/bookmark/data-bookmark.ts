@@ -1,5 +1,5 @@
 export interface DataBookmark {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	

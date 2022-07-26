@@ -53,8 +53,11 @@ import { FindAllPaymentTransactionRes } from "./payment-transaction/find-all-pay
 import { InsertPaymentTransactionRes } from "./payment-transaction/insert-payment-transaction-req";
 import { UpdatePaymentTransactionRes } from "./payment-transaction/update-payment-transaction-req";
 
+import { FindPollingAnswerRes } from "./polling-answer/find-polling-answer-res";
+import { FindAllPollingAnswerRes } from "./polling-answer/find-all-polling-answer-res";
+import { InsertPollingAnswerRes } from "./polling-answer/insert-polling-answer-req";
+
 export {
-    
     LoginReq, LoginRes, GeneratedCode,
     FindFileRes, FindAllFileRes, InsertFileRes, UpdateFileRes,
     FindRoleRes, FindAllRoleRes, InsertRoleRes, UpdateRoleRes,
@@ -66,4 +69,5 @@ export {
     FindIndustryRes, FindAllIndustryRes, InsertIndustryRes, UpdateIndustryRes,
     FindMemberCommunityRes, FindAllMemberCommunityRes, InsertMemberCommunityRes, UpdateMemberCommunityRes,
     FindPaymentTransactionRes, FindAllPaymentTransactionRes, InsertPaymentTransactionRes, UpdatePaymentTransactionRes,
+    FindPollingAnswerRes, FindAllPollingAnswerRes, InsertPollingAnswerRes,
 }

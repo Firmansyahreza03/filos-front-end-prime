@@ -1,5 +1,5 @@
 export interface DataPaymentTransaction {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	

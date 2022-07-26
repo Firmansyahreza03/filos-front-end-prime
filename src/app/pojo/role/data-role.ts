@@ -1,5 +1,5 @@
 export interface DataRole {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	

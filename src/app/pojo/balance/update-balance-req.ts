@@ -1,5 +1,5 @@
 export interface UpdateBalanceRes {
-    id : number
+    id : string
     version : number
 
 	balance : number

@@ -1,5 +1,5 @@
 export interface DataIndustry {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	

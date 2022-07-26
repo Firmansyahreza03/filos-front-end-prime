@@ -1,5 +1,5 @@
 export interface DataMemberCommunity {
-    id : number
+    id : string
     version : number
     isActive : boolean
 	
