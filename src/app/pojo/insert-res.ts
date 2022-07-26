@@ -1,6 +1,6 @@
 import { InsertResData } from "./insert-res-data";
 
-export class InsertRes {
-    data! : InsertResData
-    message! : string
+export interface InsertRes {
+    data ?: InsertResData
+    message ?: string
 }

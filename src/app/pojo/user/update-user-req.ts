@@ -1,4 +1,4 @@
-export interface InsertProfileRes {
+export interface UpdateUserReq {
     id : string
     version : number
 	isActive : boolean

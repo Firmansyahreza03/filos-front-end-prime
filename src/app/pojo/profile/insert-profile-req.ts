@@ -1,4 +1,4 @@
-export interface InsertProfileRes {
+export interface InsertProfileReq {
   isActive: boolean
 
   userEmail: string
@@ -7,11 +7,8 @@ export interface InsertProfileRes {
   companyName: string
   positionName: string
   industryId: string
-  subscriptionStatus: string
   verificationCode: string
 
-  roleId: string
-  balanceId: string
   userId: string
 
   fileName: string

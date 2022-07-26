@@ -1,4 +1,4 @@
-export interface InsertPollingOptionRes {
+export interface InsertPollingOptionReq {
 	isActive : boolean
 
     pollingHdrId:string
