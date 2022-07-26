@@ -1,5 +1,5 @@
 export interface InsertThreadHdrReq {
-	isActive : boolean
+	isActive? : boolean
 
 	threadName ?:string
 	threadCode ?:string

@@ -1,40 +1,42 @@
-.color-bg-yellow{
-    background: #DAA300;
+.color-bg-yellow {
+  background: #DAA300;
 }
 
-.color-black{
-    color: black;
+.color-black {
+  color: black;
 }
 
-.color-bg-yellow:hover{
-    background: #DAA300;
-    color: black;
+.color-bg-yellow:hover {
+  background: #DAA300;
+  color: black;
 }
 
 .btnClick {
-    cursor: pointers;
+  cursor: pointers;
 }
-a:link{
-    text-decoration: none;
+
+a:link {
+  text-decoration: none;
 }
-.border-radius-20px{
-    border-radius: 20px !important;
+
+.border-radius-20px {
+  border-radius: 20px !important;
 }
 
 @media screen and (max-width:376px) {
-    .text-heading{
-        font-size: 16px !important;
-    }
-    
-}
-.upload-profile-pic{
-    height: 180px;
-    border-radius: 50%;
+  .text-heading {
+    font-size: 16px !important;
+  }
 }
 
-.card-register{
-    width:400px;
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top:15px;
- }
+.upload-profile-pic {
+  height: 180px;
+  border-radius: 50%;
+}
+
+.card-register {
+  width: 400px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 15px;
+}
