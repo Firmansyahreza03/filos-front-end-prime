@@ -1,59 +1,64 @@
 <div class="container">
-        <div class="card card-login">
-        <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
-            <div class="col align-content-center">
-                <div class="grid " [style]="{ 'margin-top':'-35px','margin-bottom':'10px'}">
-                    <div class="md:col-12">
-                        <div class="field">
-                        <h1 >
-                            Sign in
-                        </h1>
-                        <p class="text-small">
-                            Stay update on your professional world
-                        </p>
-                    </div>
-                    </div> 
-                </div>
-                <div class="grid justify-content-center">
-                    <div class="md:col-12">
-                        <div class="field mt-1">
-                         <span class="p-float-label">
-                                <input type="text" id="inputEmail" pInputText [(ngModel)]="inputEmail" name="email" class="w-full border-radius-20px" > 
-                                <label for="inputEmail">Email</label>
-                            </span> 
-                        </div>
-                        <div class="field mt-4">
-                            <span class="p-float-label">
-                                <input type="password" id="inputPassword" pInputText [(ngModel)]="inputPassword" name="password" class="w-full border-radius-20px"> 
-                                <label for="inputPassword">Password</label>
-                            </span> 
-                        </div> 
-                        <div class="field">
-                            <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}" routerLink="/landing">
-                                Forgot Password?
-                            </a>
-                        </div> 
-                        <div class="field">
-                            <button pButton pRipple type="submit" class="p-button-rounded color-bg-yellow w-full text-small color-black bold" styleClass="p-button-sm text-center" label="Sign in"></button>
-                        </div>
-                    </div>                
-                </div>                 
+  <div class="card card-login">
+    <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
+      <div class="col align-content-center">
+        <div class="grid " [style]="{ 'margin-top':'-35px','margin-bottom':'10px'}">
+          <div class="md:col-12">
+            <div class="field">
+              <h1>
+                Sign in
+              </h1>
+              <p class="text-small">
+                Stay update on your professional world
+              </p>
             </div>
-         </div>
+          </div>
         </div>
-<div class="flex align-items-center justify-content-center mt-3">
-<div class="grid justify-content-center">
-<div class="col align-content-center">
-    <div class="field">
-        <span class="text-small bold-medium">
-            Don't have an account?  <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}" routerLink="/landing">
-                Register now
+        <div class="grid justify-content-center">
+          <form (ngSubmit)="loginClick()">
+            <div class="md:col-12">
+              <div class="field mt-1">
+                <span class="p-float-label">
+                  <input type="text" id="inputEmail" pInputText [(ngModel)]="login.email" name="email"
+                    class="w-full border-radius-20px">
+                  <label for="inputEmail">Email</label>
+                </span>
+              </div>
+              <div class="field mt-4">
+                <span class="p-float-label">
+                  <input type="password" id="inputPassword" pInputText [(ngModel)]="login.password" name="password"
+                    class="w-full border-radius-20px">
+                  <label for="inputPassword">Password</label>
+                </span>
+              </div>
+              <div class="field">
+                <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}" routerLink="/landing">
+                  Forgot Password?
+                </a>
+              </div>
+              <div class="field">
+                <button pButton pRipple type="submit"
+                  class="p-button-rounded color-bg-yellow w-full text-small color-black bold"
+                  styleClass="p-button-sm text-center" label="Sign in"></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex align-items-center justify-content-center mt-3">
+    <div class="grid justify-content-center">
+      <div class="col align-content-center">
+        <div class="field">
+          <span class="text-small bold-medium">
+            Don't have an account? <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}"
+              routerLink="/landing">
+              Register now
             </a>
-        </span>
-    </div> 
-</div>
-</div>
-</div>
-
-
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

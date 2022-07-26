@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem, MessageService } from 'primeng/api';
 import { Subscription } from "rxjs";
@@ -15,14 +15,18 @@ import { FileService } from "src/app/service/file.service";
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
     registerSubscription?: Subscription;
+    industriesSubscription?: Subscription;
+
     items: MenuItem[] = [];
-    regisStep: string = 'step0';
     step: number = 0;
+    
     password!: string
     confirmPassword!: string
+    
     registrationCode!: string
+    
     register: InsertProfileReq = {
         companyName: undefined,
         fileExt: undefined,
@@ -43,49 +47,56 @@ export class RegisterComponent implements OnInit {
     }
 
     constructor(
-        private registerService: RegisterService,
         private router: Router,
+        private registerService: RegisterService,
         private industryService: IndustryService,
         private fileService: FileService
     ) { }
 
-    ngOnInit(): void {
-        this.register.isActive = true;
-        this.industryService.getAllIndustry().subscribe((result) => {
+    findAllIndustries():void{
+        this.industriesSubscription = this.industryService.getAllIndustry().subscribe((result) => {
             this.listIndustry = result;
         })
     }
-    onVerify(): void {
 
+    ngOnInit(): void {
+        this.register.isActive = true;
+        this.findAllIndustries();
+    }
+
+    onVerify(): void {
         this.registerSubscription = this.registerService.generateCode(this.register.userEmail!).subscribe((res) => {
-            console.log(res);
-            this.registrationCode=res.code;
+            this.registrationCode = res.code;
             this.step = 1;
         })
-        console.log(this.register.userEmail);
-
     }
+
     onSubmit(): void {
         if (this.registrationCode == this.register.verificationCode) {
             this.step = 2;
-        }else{
-            this.step=1;
+        } else {
+            this.step = 1;
         }
     }
+
     onSubmitProfile(): void {
-        this.step = 3;
         if (this.password == this.confirmPassword) {
             this.register.userPassword = this.password
+            this.step = 3;
         } else {
             this.step = 2;
         }
-        console.log(this.register);
-    }
-    onSubmitProfilePic(): void {
-        this.step = 4;
-        this.registerSubscription = this.registerService.register(this.register).subscribe((res) => {
-            console.log(res)
-        })
     }
 
+    onSubmitProfilePic(): void {
+        this.registerSubscription = this.registerService.register(this.register).subscribe((res) => {
+            this.router.navigateByUrl("/login");
+            this.step = 4;
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.registerSubscription?.unsubscribe();
+        this.industriesSubscription?.unsubscribe();
+    }
 }

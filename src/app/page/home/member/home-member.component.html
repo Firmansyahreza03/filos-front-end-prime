@@ -59,22 +59,22 @@
                   <div class="col align-content-center">
 
                     <!-- form thread -->
-                    <form action="">
+                    <form (ngSubmit)="onSubmit()">
                       <div class="grid">
                         <div class="col-2">
                           <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
                             class="profile-pic">
                         </div>
                         <div class="col-2">
-                          <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
+                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryid" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
                         <div class="col-12">
-                          <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
+                          <input type="text" required="true" pInputText class="w-full border-radius-20px"  [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
                         </div>
                         <div class="col-12">
-                          <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                          <textarea pInputTextarea required="true" class="w-full border-radius-20px" [(ngModel)]="createThreadHdr.threadCode" placeholder="Content" name="threadCode"></textarea>
                         </div>
                       </div>
                       <p-divider></p-divider>
@@ -159,22 +159,22 @@
                 <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
                   <div class="col align-content-center">
                     <!-- form thread -->
-                    <form action="">
+                    <form (ngSubmit)="onSubmit()">
                       <div class="grid">
                         <div class="col-2">
                           <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
                             class="profile-pic">
                         </div>
                         <div class="col-2">
-                          <p-dropdown [options]="threadCategory" optionLabel="name" name=""></p-dropdown>
+                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryid" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
                         <div class="col-12">
-                          <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
+                          <input type="text" required="true" pInputText class="w-full border-radius-20px"  [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
                         </div>
                         <div class="col-12">
-                          <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                          <textarea pInputTextarea required="true" class="w-full border-radius-20px" [(ngModel)]="createThreadHdr.threadCode" placeholder="Content" name="threadCode"></textarea>
                         </div>
                       </div>
                       <p-divider></p-divider>
@@ -201,6 +201,7 @@
             <p-tabView>
               <p-tabPanel header="Thread">
                 <!-- thread -->
+                <div class="thread" *ngFor="let threadHdr of listThreadHdr.data!">
                 <div class="card mt-3">
                   <div class="container">
                     <!-- Header -->
@@ -221,18 +222,14 @@
                         </div>
                       </div>
                     </div>
-
+                  </div>
                     <!-- Content -->
                     <div class="grid mt-3">
                       <div class="col-12">
-                        <span class="bold black text-heading-3">Hati-hati bagi yang melamar kerja dibandung, terutama
-                          startup online shop</span>
+                        <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus saepe
-                          consequuntur explicabo, laboriosam fugit aspernatur quibusdam fuga, nesciunt neque, aliquam
-                          voluptates voluptate quas cum non asperiores sed veritatis laudantium ratione.</p>
-                      </div>
+                        <p class="text-small">{{threadHdr.threadCode}} </div>
                     </div>
                     <p-divider></p-divider>
 
