@@ -95,7 +95,7 @@ body{
   border-radius: 20px;
   background-color: white;
   box-sizing: border-box;
-  border: solid #848382 1px;
+  /* border: solid #848382 1px; */
 }
 
 .card-transparent {
@@ -118,4 +118,8 @@ body{
 .p-tabview .p-tabview-panels {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.color-purple{
+  color: #413588;
 }
