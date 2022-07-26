@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor,
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable, tap } from "rxjs";
-import { ToastrService } from 'ngx-toastr';
 import { MessageService } from 'primeng/api';
 import { LoginService } from "../service/login.service";
 
@@ -10,7 +9,7 @@ import { LoginService } from "../service/login.service";
 @Injectable()
 export class CustomInterceptor implements HttpInterceptor {
 
-  constructor(private http: HttpClient, private loginService: LoginService, private router: Router, private toastr: ToastrService,
+  constructor(private http: HttpClient, private loginService: LoginService, private router: Router,
     private messageService: MessageService, ) {}
 
   intercept(req: HttpRequest < any > , next: HttpHandler): Observable < HttpEvent < any >> {
