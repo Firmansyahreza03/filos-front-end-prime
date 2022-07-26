@@ -1,3 +1,3 @@
-export class ErorRes {
-    message! : any
+export interface ErorRes {
+    message ?: any
 }

@@ -1,3 +1,3 @@
-export class InsertResData {
-    id! : number
+export interface InsertResData {
+    id ?: number
 }

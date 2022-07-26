@@ -1,4 +1,4 @@
-export interface InsertProfileRes {
+export interface InsertUserReq {
   isActive: boolean
 
 	userEmail:string
