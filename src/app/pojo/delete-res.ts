@@ -1,3 +1,3 @@
-export class DeleteRes {
-    message! : string
+export interface DeleteRes {
+    message ?: string
 }

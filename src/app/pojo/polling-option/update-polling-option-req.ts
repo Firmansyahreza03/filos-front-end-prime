@@ -1,4 +1,4 @@
-export interface UpdatePollingOptionRes {
+export interface UpdatePollingOptionReq {
     id : string
     version : number
 	isActive : boolean

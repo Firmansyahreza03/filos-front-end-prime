@@ -1,3 +1,3 @@
-export class UpdateResData {
-    version! : number
+export interface UpdateResData {
+    version ?: number
 }

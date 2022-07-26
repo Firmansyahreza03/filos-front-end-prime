@@ -1,4 +1,4 @@
-export interface InsertPollingHeaderRes {
+export interface UpdatePollingHeaderReq {
 	isActive : boolean
 
 	pollingName:string

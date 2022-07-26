@@ -1,4 +1,4 @@
-export interface InsertPollingHeaderRes {
+export interface InsertPollingHeaderReq {
 	isActive : boolean
 
 	options:string[]
