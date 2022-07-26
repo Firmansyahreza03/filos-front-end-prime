@@ -7,11 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { ToastrModule } from 'ngx-toastr';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CustomInterceptor } from './interceptor/CustomInterceptor';
@@ -26,7 +21,6 @@ import { CustomInterceptor } from './interceptor/CustomInterceptor';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     ToastModule
   ],
   providers: [
