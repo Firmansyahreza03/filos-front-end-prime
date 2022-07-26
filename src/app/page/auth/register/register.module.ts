@@ -9,6 +9,7 @@ import { RegisterRouting } from "./register.routing";
 import {StepsModule} from 'primeng/steps';
 import {ToastModule} from 'primeng/toast';
 import {DropdownModule} from 'primeng/dropdown';
+import {PasswordModule} from 'primeng/password';
 @NgModule({
     imports: [
    RegisterRouting,
@@ -19,7 +20,8 @@ import {DropdownModule} from 'primeng/dropdown';
    InputTextModule,
    StepsModule,
    ToastModule,
-   DropdownModule
+   DropdownModule,
+   PasswordModule
     ],
     declarations: [
       RegisterComponent

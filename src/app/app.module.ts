@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -12,9 +14,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRouting,
-    BrowserAnimationsModule
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    // AccordionModule
   ],
-  providers: [],
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true
+  //   }
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
