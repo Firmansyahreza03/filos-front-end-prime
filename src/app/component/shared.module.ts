@@ -13,14 +13,18 @@ import { FooterComponent } from "./footer/footer.component";
 import { AdminNavComponent } from "./navbar/admin-nav.component";
 import { MainLayoutComponent } from "./layout/main-layout.component";
 import { AdminLayoutComponent } from "./layout/admin-layout.component";
+import { AdminSidebarComponent } from "./navbar/admin-sidebar.component";
+import { AppMenuitemComponent } from "./navbar/app-menuitem.component";
 
 @NgModule({
     declarations : [
-        NavbarComponent,
         FooterComponent,
+        NavbarComponent,
         AdminNavComponent,
         MainLayoutComponent,
-        AdminLayoutComponent
+        AdminLayoutComponent,
+        AdminSidebarComponent,
+        AppMenuitemComponent
     ],
     imports : [
         RouterModule,
@@ -34,11 +38,13 @@ import { AdminLayoutComponent } from "./layout/admin-layout.component";
     ],  
     exports : [
         RouterModule,
-        NavbarComponent,
         FooterComponent,
+        NavbarComponent,
         AdminNavComponent,
         MainLayoutComponent,
-        AdminLayoutComponent
+        AdminLayoutComponent,
+        AdminSidebarComponent,
+        AppMenuitemComponent
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
