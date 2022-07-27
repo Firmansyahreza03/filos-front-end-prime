@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NavbarComponent } from "./component/navbar/navbar.component";
 import { SharedModule } from "./component/shared.module";
+import { AdminComponent } from "./page/admin/admin.component";
 import { NotFoundComponent } from "./page/not-found/not-found.component";
 
 
@@ -10,6 +11,11 @@ const routes: Routes = [
       path: '',
       redirectTo: '/landing',
       pathMatch: 'full',
+    },
+    {
+        path: 'admin',
+        component: AdminComponent,
+        loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)
     },
     {
         path: 'landing',
