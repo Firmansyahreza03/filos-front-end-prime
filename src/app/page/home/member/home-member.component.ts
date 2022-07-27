@@ -70,6 +70,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
     this.threadHdrListByUserLoggedSubscription= this.threadHdrService.getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail()!).subscribe((result)=>{
       this.listThreadHdrByUserLogged=result
+      console.log(result)
     })
 
   }
