@@ -13,6 +13,10 @@ getAllThreadHdr():Observable<FindAllThreadHdrRes>{
     return this.http.get<FindAllThreadHdrRes>('http://localhost:3333/threads')
 }
 
+getAllThreadHdrByUserLogged(data: string):Observable<FindAllThreadHdrRes>{
+    return this.http.get<FindAllThreadHdrRes>('http://localhost:3333/threads/users/'+data)
+}
+
 insertThreadHdr(data:InsertThreadHdrReq):Observable<InsertRes>{
     return this.http.post<InsertRes>('http://localhost:3333/threads',data)
 }

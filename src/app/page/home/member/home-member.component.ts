@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription, toArray } from "rxjs";
 import { FindAllThreadCategoryRes, FindAllThreadHdrRes, InsertThreadHdrReq } from "src/app/pojo/pojo-import";
+import { LoginService } from "src/app/service/login.service";
+import { ProfileService } from "src/app/service/profile.service";
 import { ThreadCategoryService } from "src/app/service/thread-category.service";
 import { ThreadHdrService } from "src/app/service/thread-hdr.service";
 
@@ -16,13 +18,22 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   // count:number = this.kalimat.length;
   // textAfterMultiply:string= this.kalimat.slice(0,this.count*0.5)
   threadSubscription?:Subscription
+  threadHdrListSubscription?:Subscription
+  threadHdrListByUserLoggedSubscription?:Subscription
+  profileThreadSubscription?:Subscription
   panelTab: string = 'myActivities'
 
   listThreadCategory: FindAllThreadCategoryRes = {
     data: [],
     count: 0
   }
+
   listThreadHdr: FindAllThreadHdrRes={
+    data: [],
+    count: 0
+  }
+
+  listThreadHdrByUserLogged: FindAllThreadHdrRes={
     data: [],
     count: 0
   }
@@ -32,7 +43,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   constructor(
     private threadCategoryService: ThreadCategoryService,
     private threadHdrService: ThreadHdrService,
+    private profileService: ProfileService,
     private router: Router,
+    private loginService: LoginService
   ) {}
 
   findTreadCategory(): void {
@@ -42,18 +55,22 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.createThreadHdr.categoryid="f44efe4d-0b2f-43e2-8f67-2e08c90b8dcc";
+    this.createThreadHdr.categoryId="3376c892-7f9e-4ea0-aa53-454a171f380e";
     this.createThreadHdr.isActive=true;
     this.createThreadHdr.isPremium=false;
-    this.createThreadHdr.industryId="1dc5650d-ed3b-4562-a878-8d8e83253e25"; //harus didelete
-    // this.createThreadHdr.threadCode="Code-111"; //Content masih pakai dari thread code
+    this.createThreadHdr.email=this.loginService.getLoggedEmail()!;
 
     this.threadCategoryService.getAllThreadCategory().subscribe((result) => {
       this.listThreadCategory = result;
     })
     
-    this.threadHdrService.getAllThreadHdr().subscribe((result)=>{
+    this.threadHdrListSubscription= this.threadHdrService.getAllThreadHdr().subscribe((result)=>{
       this.listThreadHdr=result;
+    })
+
+    this.threadHdrListByUserLoggedSubscription= this.threadHdrService.getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail()!).subscribe((result)=>{
+      this.listThreadHdrByUserLogged=result
+      console.log(result)
     })
 
   }
@@ -66,6 +83,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
    this.threadSubscription?.unsubscribe();
+   this.threadHdrListSubscription?.unsubscribe();
   }
 
 }

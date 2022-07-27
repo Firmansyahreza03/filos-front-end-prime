@@ -52,6 +52,8 @@
     <div class="md:col-6 middle-page col-12">
       <div class="container">
         <p-tabView>
+
+          <!-- My Activities -->
           <p-tabPanel header="My Activities">
             <div class="card">
               <div class="container">
@@ -66,7 +68,7 @@
                             class="profile-pic">
                         </div>
                         <div class="col-2">
-                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryid" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
+                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryId"  optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
@@ -74,7 +76,7 @@
                           <input type="text" required="true" pInputText class="w-full border-radius-20px"  [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
                         </div>
                         <div class="col-12">
-                          <textarea pInputTextarea required="true" class="w-full border-radius-20px" [(ngModel)]="createThreadHdr.threadCode" placeholder="Content" name="threadCode"></textarea>
+                          <textarea pInputTextarea required="true" class="w-full border-radius-20px" [(ngModel)]="createThreadHdr.threadContent" placeholder="Content" name="threadCode"></textarea>
                         </div>
                       </div>
                       <p-divider></p-divider>
@@ -100,59 +102,58 @@
             </div>
 
             <!-- thread -->
-            <div class="card mt-3">
-              <div class="container">
-                <!-- Header -->
-                <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
-                  <div class="col-2">
-                    <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
-                  </div>
-                  <div class="col-10">
-                    <div class="grid">
-                      <div class="col-12">
-                        <span class="bold black text-heading-3">Muhammad Tulus</span>
-                      </div>
+            <div class="thread" *ngFor="let threadHdr of listThreadHdrByUserLogged.data">
+              <div class="card mt-3">
+                <div class="container">
+                  <!-- Header -->
+                  <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
+                    <div class="col-2">
+                      <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
                     </div>
-                    <div class="grid -mt-4">
-                      <div class="col-12">
-                        <span class="text-extrasmall">1 hour ago</span>
+                    <div class="col-10">
+                      <div class="grid">
+                        <div class="col-12">
+                          <span class="bold black text-heading-3">{{threadHdr.creatorName}}</span>
+                        </div>
+                      </div>
+                      <div class="grid -mt-4">
+                        <div class="col-12">
+                          <span class="text-extrasmall">{{threadHdr.createdAt| date: 'medium'}}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                  <!-- Content -->
+                  <div class="grid mt-3 mr-2 ml-2">
+                    <div class="col-12">
+                      <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">{{threadHdr.threadContent}} </div>
+                  </div>
+                  <p-divider></p-divider>
 
-                <!-- Content -->
-                <div class="grid mt-3">
-                  <div class="col-12">
-                    <span class="bold black text-heading-3">Hati-hati bagi yang melamar kerja dibandung, terutama
-                      startup online shop</span>
-                  </div>
-                  <div class="col-12">
-                    <p class="text-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus saepe
-                      consequuntur explicabo, laboriosam fugit aspernatur quibusdam fuga, nesciunt neque, aliquam
-                      voluptates voluptate quas cum non asperiores sed veritatis laudantium ratione.</p>
-                  </div>
-                </div>
-                <p-divider></p-divider>
-
-                <!-- Action -->
-                <div class="grid -mt-5 -mb-5">
-                  <div class="col-2">
-                    <button pButton pRipple type="button" icon="pi pi-heart"
-                      class="p-button-rounded p-button-help p-button-text" label="18"></button>
-                  </div>
-                  <div class="col-2">
-                    <button pButton pRipple type="button" icon="pi pi-comment"
-                      class="p-button-rounded p-button-warning p-button-text" label="5"></button>
-                  </div>
-                  <div class="col-2 col-offset-6">
-                    <button pButton pRipple type="button" icon="pi pi-bookmark"
-                      class="p-button-rounded p-button-secondary p-button-text"></button>
+                  <!-- Action -->
+                  <div class="grid -mt-5 -mb-5">
+                    <div class="col-2">
+                      <button pButton pRipple type="button" icon="pi pi-heart"
+                        class="p-button-rounded p-button-help p-button-text" label="18"></button>
+                    </div>
+                    <div class="col-2">
+                      <button pButton pRipple type="button" icon="pi pi-comment"
+                        class="p-button-rounded p-button-warning p-button-text" label="5"></button>
+                    </div>
+                    <div class="col-2 col-offset-6">
+                      <button pButton pRipple type="button" icon="pi pi-bookmark"
+                        class="p-button-rounded p-button-secondary p-button-text"></button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
           </p-tabPanel>
+
+          <!-- All -->
           <p-tabPanel header="All">
             <div class="card">
               <div class="container">
@@ -166,7 +167,7 @@
                             class="profile-pic">
                         </div>
                         <div class="col-2">
-                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryid" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
+                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryId" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
@@ -174,7 +175,7 @@
                           <input type="text" required="true" pInputText class="w-full border-radius-20px"  [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
                         </div>
                         <div class="col-12">
-                          <textarea pInputTextarea required="true" class="w-full border-radius-20px" [(ngModel)]="createThreadHdr.threadCode" placeholder="Content" name="threadCode"></textarea>
+                          <textarea pInputTextarea required="true" class="w-full border-radius-20px" [(ngModel)]="createThreadHdr.threadContent" placeholder="Content" name="threadCode"></textarea>
                         </div>
                       </div>
                       <p-divider></p-divider>
@@ -212,24 +213,24 @@
                       <div class="col-10">
                         <div class="grid">
                           <div class="col-12">
-                            <span class="bold black text-heading-3">Muhammad Tulus</span>
+                            <span class="bold black text-heading-3">{{threadHdr.creatorName}}</span>
                           </div>
                         </div>
                         <div class="grid -mt-4">
                           <div class="col-12">
-                            <span class="text-extrasmall">1 hour ago</span>
+                            <span class="text-extrasmall">{{threadHdr.createdAt| date: 'medium'}}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                     <!-- Content -->
-                    <div class="grid mt-3">
+                    <div class="grid mt-3 mr-2 ml-2">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">{{threadHdr.threadCode}} </div>
+                        <p class="text-small">{{threadHdr.threadContent}} </div>
                     </div>
                     <p-divider></p-divider>
 
