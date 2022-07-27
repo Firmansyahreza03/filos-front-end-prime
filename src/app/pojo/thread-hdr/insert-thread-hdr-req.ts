@@ -2,9 +2,11 @@ export interface InsertThreadHdrReq {
 	isActive? : boolean
 
 	threadName ?:string
-	threadCode ?:string
+	threadContent ?:string
 	isPremium ?:boolean
-	pollingHdrsId ?:string
-	categoryid ?:string
-	industryId ?:string
+	pollingHdrId ?:string
+	categoryId ?:string
+	fileName?:string
+	fileTxt?:string
+	email?:string
 }

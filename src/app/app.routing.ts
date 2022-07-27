@@ -37,6 +37,11 @@ const routes: Routes = [
         loadChildren: () => import('./page/thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
     },
     {
+        path: 'event',
+        component: NavbarComponent,
+        loadChildren: () => import('./page/event/event.module').then(m => m.EventModule)
+    },
+    {
       path: '**',
       component: NotFoundComponent,
     },

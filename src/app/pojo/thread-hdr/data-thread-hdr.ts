@@ -5,6 +5,7 @@ export interface DataThreadHdr {
 	
 	threadName ?:string
 	threadCode ?:string
+	threadContent ?:string
 	isPremium ?:boolean
 	pollingHdrsId ?:string
 	pollingName ?:string
@@ -12,4 +13,10 @@ export interface DataThreadHdr {
 	categoryName ?:string
 	industryId ?:string
 	industryName ?:string
+	fileId?:string
+	fileName?:string
+	fileTxt?:string
+	creatorName?:string
+	createdAt?:Date
+	photoProfileCreator?:string
 }

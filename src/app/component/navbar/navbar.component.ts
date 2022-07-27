@@ -19,9 +19,14 @@ export class NavbarComponent implements OnInit{
                     {label: 'Register', routerLink:'/register'},
                     {label: 'Home', routerLink:'/home-member'},
                     {label: 'Thread-Detail', routerLink:'/thread-detail'},
+                    {label: 'Event', routerLink:'/event'},
                 ]
             }
         ];
+    }
+    logout(): void {
+        localStorage.clear()
+        this.router.navigateByUrl('/login')
     }
 
 }
