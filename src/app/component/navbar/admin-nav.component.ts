@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'admin-menu',
+    selector: 'admin-nav',
     template: `
         <div class="layout-menu-container">
             <ul class="layout-menu" role="menu" (keydown)="onKeydown($event)">

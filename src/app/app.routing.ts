@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { NavbarComponent } from "./component/navbar/navbar.component";
-import { SharedModule } from "./component/shared.module";
-import { AdminComponent } from "./page/admin/admin.component";
-import { NotFoundComponent } from "./page/not-found/not-found.component";
 
+import { MainLayoutComponent } from "./component/layout/main-layout.component";
+import { AdminLayoutComponent } from "./component/layout/admin-layout.component";
+
+import { SharedModule } from "./component/shared.module";
+import { NotFoundComponent } from "./page/not-found/not-found.component";
 
 const routes: Routes = [
     {
@@ -13,39 +14,39 @@ const routes: Routes = [
       pathMatch: 'full',
     },
     {
-        path: 'admin',
-        component: AdminComponent,
-        loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)
-    },
-    {
         path: 'landing',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         loadChildren: () => import('./page/landing/landing.module').then(m => m.LandingModule)
     },
     {
         path: 'login',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         loadChildren: () => import('./page/auth/login/login.module').then(m => m.LoginModule)
     },
     {
         path: 'register',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         loadChildren: () => import('./page/auth/register/register.module').then(m => m.RegisterModule)
     },
     {
         path: 'home-member',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
         path: 'thread-detail',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         loadChildren: () => import('./page/thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
     },
     {
         path: 'event',
-        component: NavbarComponent,
+        component: MainLayoutComponent,
         loadChildren: () => import('./page/event/event.module').then(m => m.EventModule)
+    },
+    {
+        path: 'admin',
+        component: AdminLayoutComponent,
+        loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)
     },
     {
       path: '**',

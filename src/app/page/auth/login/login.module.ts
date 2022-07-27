@@ -8,22 +8,21 @@ import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
 
 @NgModule({
-    imports: [
-   LoginRouting,
-   CardModule,
-   ButtonModule,
-   CommonModule,
-   FormsModule,
-   InputTextModule,
-    ],
-    declarations: [
-      LoginComponent
-
-    ],
-    exports: [
-      LoginComponent
-    ]
+  imports: [
+    LoginRouting,
+    CardModule,
+    ButtonModule,
+    CommonModule,
+    FormsModule,
+    InputTextModule,
+  ],
+  declarations: [
+    LoginComponent
+  ],
+  exports: [
+    LoginComponent
+  ]
 })
-export class LoginModule{
+export class LoginModule {
 
 }

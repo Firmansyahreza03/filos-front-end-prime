@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { LandingRouting} from "./landing.routing";
 import {CardModule} from 'primeng/card';
@@ -25,6 +25,9 @@ import { DividerModule } from 'primeng/divider';
     ],
     exports: [
        LandingComponent
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
     ]
 })
 export class LandingModule{

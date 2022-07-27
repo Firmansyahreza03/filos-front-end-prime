@@ -1,9 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+
 import { AdminRouting } from './admin.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from 'src/app/component/shared.module';
@@ -13,19 +12,20 @@ import { SharedModule } from 'src/app/component/shared.module';
         DashboardComponent,
     ],
     exports: [
+        RouterModule,
+        
         DashboardComponent
     ],
     imports: [
         AdminRouting,
-        BrowserModule,
+        
+        RouterModule,
+        CommonModule,
         FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
 
         SharedModule
     ],
     providers: [
-        {provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

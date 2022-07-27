@@ -9,12 +9,16 @@ import {AvatarModule} from 'primeng/avatar';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { AdminNavComponent } from "./navbar/admin-nav.component";
+import { MainLayoutComponent } from "./layout/main-layout.component";
+import { AdminLayoutComponent } from "./layout/admin-layout.component";
 
 @NgModule({
     declarations : [
         NavbarComponent,
         FooterComponent,
-        AdminNavComponent
+        AdminNavComponent,
+        MainLayoutComponent,
+        AdminLayoutComponent
     ],
     imports : [
         RouterModule,
@@ -29,7 +33,9 @@ import { AdminNavComponent } from "./navbar/admin-nav.component";
         RouterModule,
         NavbarComponent,
         FooterComponent,
-        AdminNavComponent
+        AdminNavComponent,
+        MainLayoutComponent,
+        AdminLayoutComponent
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
