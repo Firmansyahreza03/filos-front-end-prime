@@ -16,8 +16,8 @@ import { CustomInterceptor } from './interceptor/CustomInterceptor';
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRouting,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -1,45 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MenuItem } from 'primeng/api';
+import { AdminLayoutComponent } from '../layout/admin-layout.component';
 
 @Component({
     selector: 'admin-nav',
-    template: `
-        <div class="layout-menu-container">
-            <ul class="layout-menu" role="menu" (keydown)="onKeydown($event)">
-                <li app-menu class="layout-menuitem-category" *ngFor="let item of model; let i = index;" role="none">
-                    <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">{{item.label}}</div>
-                    <ul role="menu">
-                        <li app-menuitem *ngFor="let child of item.items" role="none"></li>
-                    </ul>
-                </li>
-                <a href="">
-                    <img src="assets/layout/images/logo-filos-1.png" alt="Prime Blocks" class="w-full mt-3"/>
-                </a>
-            </ul>
-        </div>
-    `
+    templateUrl: './admin-nav.component.html'
 })
-export class AdminNavComponent implements OnInit {
+export class AdminNavComponent {
 
-    model: any[] =[];
+    items: MenuItem[] = [];
 
-    constructor() { }
-
-    ngOnInit() {
-        this.model = [
-            {
-                label: 'Home',
-                items:[
-                    {label: 'Dashboard',icon: 'pi pi-fw pi-home', routerLink: ['/']}
-                ]
-            },
-        ];
-    }
-
-    onKeydown(event: KeyboardEvent) {
-        const nodeElement = (<HTMLDivElement> event.target);
-        if (event.code === 'Esc') {
-            nodeElement.click();
-            event.preventDefault();
-        }
-    }
+    constructor(public appMain: AdminLayoutComponent) { }
 }

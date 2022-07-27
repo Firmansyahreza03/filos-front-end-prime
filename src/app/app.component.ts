@@ -8,10 +8,12 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'filos community';
-  constructor(private primengConfig: PrimeNGConfig) {}
+  menuMode = 'static';
 
-  ngOnInit() : void {
-    this.primengConfig.ripple = true;
+  constructor(private primengConfig: PrimeNGConfig) { }
+
+  ngOnInit() {
+      this.primengConfig.ripple = true;
   }
 
   ngOnDestroy() : void {
