@@ -39,8 +39,8 @@ import { UpdateCommunityCategoryRes } from "./community-category/update-communit
 
 import { FindIndustryRes } from "./industry/find-industry-res";
 import { FindAllIndustryRes } from "./industry/find-all-industry-res";
-import { InsertIndustryRes } from "./industry/insert-industry-req";
-import { UpdateIndustryRes } from "./industry/update-industry-req";
+import { InsertIndustryReq } from "./industry/insert-industry-req";
+import { UpdateIndustryReq } from "./industry/update-industry-req";
 
 import { FindMemberCommunityRes } from "./member-community/find-member-community-res";
 import { FindAllMemberCommunityRes } from "./member-community/find-all-member-community-res";
@@ -111,7 +111,7 @@ export {
     FindBookmarkRes, FindAllBookmarkRes, InsertBookmarkRes, UpdateBookmarkRes,
     FindCommunityRes, FindAllCommunityRes, InsertCommunityRes, UpdateCommunityRes,
     FindCommunityCategoryRes, FindAllCommunityCategoryRes, InsertCommunityCategoryRes, UpdateCommunityCategoryRes,
-    FindIndustryRes, FindAllIndustryRes, InsertIndustryRes, UpdateIndustryRes,
+    FindIndustryRes, FindAllIndustryRes, InsertIndustryReq, UpdateIndustryReq,
     FindMemberCommunityRes, FindAllMemberCommunityRes, InsertMemberCommunityRes, UpdateMemberCommunityRes,
     FindPaymentTransactionRes, FindAllPaymentTransactionRes, InsertPaymentTransactionRes, UpdatePaymentTransactionRes,
     FindPollingAnswerRes, FindAllPollingAnswerRes, InsertPollingAnswerRes,

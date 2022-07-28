@@ -21,7 +21,7 @@ import { StyleClass } from 'primeng/styleclass';
             transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
     ],
-    styleUrls: ['../../../sakai.scss']
+    styleUrls: ['../../../assets/sass/sakai.scss']
 })
 export class AdminLayoutComponent {
 
