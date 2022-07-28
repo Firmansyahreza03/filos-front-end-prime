@@ -21,4 +21,6 @@ export interface DataThreadHdr {
 	photoProfileCreator?:string
 	counterLike?: string;
 	counterComment?: string;
+	isLike?: boolean;
+	isBookmark?:boolean;
 }

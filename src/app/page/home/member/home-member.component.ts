@@ -112,12 +112,17 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedSubs?.unsubscribe();
   }
 
-  likeThread(id: string): void {
+  likeThread(id: string, index: number): void {
     this.threadLikedSubs = this.likeThreadService
       .likeThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe(() => {
-        this.getAllThread();
-        this.getAllThreadByUserLogged();
+      .subscribe((res) => {                
+        if (res.isLiked == true) {
+          let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) + 1;
+          this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
+        } else {
+          let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) - 1;
+          this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
+        }
       });
   }
 }
