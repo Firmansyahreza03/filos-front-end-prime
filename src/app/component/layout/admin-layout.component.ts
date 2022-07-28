@@ -3,7 +3,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/service/app.config.service';
 import { AppConfig } from 'src/app/api/appconfig';
-import { AppComponent } from 'src/app/app.component';
+import { AppComponent } from '../../app.component';
+import { StyleClass } from 'primeng/styleclass';
 
 @Component({
     selector: 'admin-layout',
@@ -19,8 +20,8 @@ import { AppComponent } from 'src/app/app.component';
             transition('visible => hidden', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)')),
             transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
-    ]
-
+    ],
+    styleUrls: ['../../../sakai.scss']
 })
 export class AdminLayoutComponent {
 

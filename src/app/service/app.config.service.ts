@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AppConfig } from '../api/appconfig';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ConfigService {
 
     config: AppConfig = {

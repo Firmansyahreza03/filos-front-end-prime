@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
  
 @Component({
     templateUrl: './dashboard.component.html',
+    styleUrls: ['../../../../sakai.scss']
 })
 export class DashboardComponent implements OnInit {
 

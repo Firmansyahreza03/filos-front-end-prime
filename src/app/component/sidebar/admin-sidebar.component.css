@@ -1,0 +1,8 @@
+:host ::ng-deep .p-menu {
+    padding: 0;
+    background: #ffffff;
+    color: #495057;
+    border: none;
+    border-radius: none;
+    width: 100%;
+}

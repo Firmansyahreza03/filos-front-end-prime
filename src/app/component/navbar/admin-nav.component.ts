@@ -5,7 +5,8 @@ import { AdminLayoutComponent } from '../layout/admin-layout.component';
 
 @Component({
     selector: 'admin-nav',
-    templateUrl: './admin-nav.component.html'
+    templateUrl: './admin-nav.component.html',
+    styleUrls: ['../../../sakai.scss']
 })
 export class AdminNavComponent {
 
