@@ -1,18 +1,30 @@
 import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
-import {MenubarModule} from 'primeng/menubar';
-import {ButtonModule} from 'primeng/button';
-import {AvatarModule} from 'primeng/avatar';
+import { AvatarModule } from 'primeng/avatar';
+import { ButtonModule } from 'primeng/button';
+import { MenubarModule } from 'primeng/menubar';
+import { RippleModule } from 'primeng/ripple';
+
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
+import { AdminNavComponent } from "./navbar/admin-nav.component";
+import { MainLayoutComponent } from "./layout/main-layout.component";
+import { AdminLayoutComponent } from "./layout/admin-layout.component";
+import { AdminSidebarComponent } from "./navbar/admin-sidebar.component";
+import { AppMenuitemComponent } from "./navbar/app-menuitem.component";
 
 @NgModule({
     declarations : [
+        FooterComponent,
         NavbarComponent,
-        FooterComponent
+        AdminNavComponent,
+        MainLayoutComponent,
+        AdminLayoutComponent,
+        AdminSidebarComponent,
+        AppMenuitemComponent
     ],
     imports : [
         RouterModule,
@@ -21,12 +33,21 @@ import { FooterComponent } from "./footer/footer.component";
 
         MenubarModule,
         ButtonModule,
-        AvatarModule
+        AvatarModule,
+        RippleModule,
     ],  
     exports : [
         RouterModule,
+        FooterComponent,
         NavbarComponent,
-        FooterComponent
+        AdminNavComponent,
+        MainLayoutComponent,
+        AdminLayoutComponent,
+        AdminSidebarComponent,
+        AppMenuitemComponent
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
     ]
 })
 export class SharedModule{}

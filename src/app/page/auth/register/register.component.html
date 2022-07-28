@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="card card-register"> -->
     <p-card class="flex align-items-center justify-content-center"
       [style]="{'width':'400px','padding-right': '10px','padding-left': '10px', 'margin-top':'10px'}">
       <form (ngSubmit)="onVerify()">
@@ -38,7 +37,6 @@
           </div>
         </div>
       </form>
-      <!-- </div> -->
     </p-card>
     <div class="flex align-items-center justify-content-center mt-3">
       <div class="grid justify-content-center">
@@ -173,17 +171,15 @@
                   <button pButton pRipple type="submit"
                     class="p-button-rounded color-bg-yellow w-full text-small color-black bold"
                     styleClass="p-button-sm text-center" label="Next"></button>
-
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </form>
     </p-card>
   </div>
-
+  
   <div *ngIf="step==3">
     <div class="flex align-items-center justify-content-center" [style]="{'margin-top':'20px'}">
       <div class="grid">
