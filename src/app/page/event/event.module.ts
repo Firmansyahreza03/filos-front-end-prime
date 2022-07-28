@@ -10,6 +10,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ButtonModule} from 'primeng/button';
 import {DividerModule} from 'primeng/divider';
+import {CarouselModule} from 'primeng/carousel';
 @NgModule({
     imports: [
         EventRouting,
@@ -21,7 +22,8 @@ import {DividerModule} from 'primeng/divider';
         InputTextModule,
         InputTextareaModule,
         ButtonModule,
-        DividerModule
+        DividerModule,
+        CarouselModule
     ],
     declarations: [
         EventListComponent

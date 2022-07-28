@@ -1,34 +1,62 @@
 <div class="container">
-    <div class="grid">
-        <div class="col-12">
-
-        <p-tabView>
-
-            <!-- All Event -->
-            <p-tabPanel header="All Event">
-                <div class="grid">
-                    <div class="col-3">
-                        <!-- Card Event -->
-                        <div class="card">
-                            <div class="container">
-                              <div class="grid justify-content-center" [style]="{'margin-bottom':'-20px'}">
-                                <div class="col-12">
-                                    <!-- <img src="../../" alt=""> -->
-                                  
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-            </p-tabPanel>
-            <p-tabPanel header="My Schedule">
-            </p-tabPanel>
-  
-            <!-- All -->
-
-          </p-tabView>
-    
-        </div>
+  <div class="grid mt-2 flex justify-content-end flex-wrap">
+    <div class="md:col-1 col-3">
+      <button pButton pRipple type="submit" class="p-button-rounded p-button-sm  w-full text-small bold"
+        styleClass="p-button-sm text-center" icon="pi pi-plus" label="Add"></button>
     </div>
+    <div class="md:col-2 col-6">
+      <span class="p-input-icon-left" >
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" placeholder="Search" class="w-full"/>
+      </span>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-12">
+      <p-tabView>
+        <!-- All Event -->
+        <p-tabPanel header="All Event">
+          <div class="grid">
+            <div class="md:col-3 col-12">
+              <!-- Card Event -->
+              <a class="event-card" routerLink="/thread-detail">
+              <div class="card">
+                <div class="container">
+                  <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
+                    <div class="col-12 flex justify-content-center">
+                      <img src="../../../../assets/image/tips-memulai-bisnis-startup.jpg" alt="" class="event-pic">
+                    </div>
+                    <div class="col-12">
+                      <span class="bold-medium black text-small"> <i class="pi pi-users color-purple" style="font-size: 1rem"></i> Provider Name</span>
+                    </div>
+                    <div class="col-12">
+                      <span class="bold black text-heading-3">Event Name</span>
+                    </div>
+                    <div class="col-12">
+                      <span class="bold black text-heading-3"> <i class="pi 
+                        pi-money-bill color-purple" style="font-size: 12px"></i> Rp. 400.000</span>
+                    </div>
+                    <div class="col-12">
+                      <span class="black text-small"> <i class="pi pi-calendar color-purple" style="font-size: 12px"></i> Start Date</span> <span class="black text-small"> - End Date</span>
+                    </div>
+                    <div class="col-12">
+                      <span class="black text-small"> <i class="pi pi-circle-fill color-purple" style="font-size: 12px"></i> Location</span> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            </div>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="My Schedule">
+        </p-tabPanel>
+
+        <!-- All -->
+
+      </p-tabView>
+
+    </div>
+  </div>
 </div>
