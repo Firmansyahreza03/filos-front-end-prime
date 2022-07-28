@@ -19,4 +19,6 @@ export interface DataThreadHdr {
 	creatorName?:string
 	createdAt?:Date
 	photoProfileCreator?:string
+	counterLike?: string;
+	counterComment?: string;
 }
