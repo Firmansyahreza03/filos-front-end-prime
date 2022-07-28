@@ -19,7 +19,8 @@ export class NavbarComponent implements OnInit{
                     {label: 'Register', routerLink:'/register'},
                     {label: 'Home', routerLink:'/home-member'},
                     {label: 'Thread-Detail', routerLink:'/thread-detail'},
-                    {label: 'Event', routerLink:'/event'},
+                    {label: 'Event', routerLink:'/events'},
+                    {label: 'Event-Detail', routerLink:'/events/event-detail'},
                 ]
             }
         ];
