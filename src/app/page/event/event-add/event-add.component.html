@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="grid mt-4 justify-content-center">
+    <div class="md:col-6 col-12 text-center">
+      <p class="text-xl font-medium">Create your event or training with Filos here</p>
+    </div>
+    <div class="md:col-10 col-12 text-center">
+      <div class="card">
+        <div class="container">
+          <div class="form">
+            <div class="grid justify-content-center flex flex-wrap row-gap-2">
+              <div class="md:col-2">
+                <span class="p-float-label">
+                  <p-dropdown inputId="category" [autoDisplayFirst]="false" styleClass="w-full"
+                    [options]="listCommunityCategories.data" optionLabel="name" optionValue="id" name="nameCategory">
+                  </p-dropdown>
+                  <label for="category">Category</label>
+                </span>
+              </div>
+            </div>
+            <p-divider></p-divider>
+            <div class="grid flex flex-wrap row-gap-2">
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <input type="text" id="inputTitle" pInputText name="title" class="w-full border-radius-20px">
+                  <label for="inputTitle">Title <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <input type="text" id="inputProvider" pInputText name="provider" class="w-full ">
+                  <label for="inputProvider">Provider <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <input type="text" id="inputLocation" pInputText name="location" class="w-full ">
+                  <label for="inputLocation">Location <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-6 col-12">
+                <div class="grid">
+                  <div class="md:col-6 col-12">
+                    <span class="p-float-label">
+                      <p-calendar inputId="inputExpired" name="expired" placeholder="Start Date" styleClass="w-full">
+                      </p-calendar>
+                      <label for="calendar">Start Date <span class="text-red-500">*</span></label>
+                    </span>
+                  </div>
+                  <div class="md:col-6 col-12">
+                    <span class="p-float-label">
+                      <p-calendar inputId="inputExpired" name="expired" placeholder="Start Date" styleClass="w-full">
+                      </p-calendar>
+                      <label for="calendar">End Date <span class="text-red-500">*</span></label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <p-dropdown inputId="industry" styleClass="w-full" [options]="listIndustry.data!" optionLabel="name"
+                    optionValue="id" name="nameIndustry" [autoDisplayFirst]="false"></p-dropdown>
+                  <label for="industry">Industry</label>
+                </span>
+              </div>
+              <div class="md:col-3 col-12">
+                <span class="p-float-label">
+                    <input type="text" id="inputPrice" pInputText name="price" class="w-full ">
+                    <label for="inputPrice">Price <span class="text-red-500">*</span></label>
+                  </span>
+              </div>
+              <div class="col-12">
+                <span class="p-float-label">
+                  <textarea id="float-input" class="w-full" pInputTextarea></textarea>
+                  <label for="float-input">Description <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="col-12 text-left">
+                <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)" [auto]="true" chooseLabel="Upload Foto" [customUpload]="true">                           
+                </p-fileUpload>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,11 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ButtonModule} from 'primeng/button';
 import {DividerModule} from 'primeng/divider';
 import {CarouselModule} from 'primeng/carousel';
+import { EventDetailComponent } from "./event-detail/event-detail.component";
+import { EventAddComponent } from "./event-add/event-add.component";
+import {CalendarModule} from 'primeng/calendar';
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
     imports: [
         EventRouting,
@@ -23,13 +28,20 @@ import {CarouselModule} from 'primeng/carousel';
         InputTextareaModule,
         ButtonModule,
         DividerModule,
-        CarouselModule
+        CarouselModule,
+        CalendarModule,
+        FileUploadModule,
+        HttpClientModule
     ],
     declarations: [
-        EventListComponent
+        EventListComponent,
+        EventDetailComponent,
+        EventAddComponent
     ],
     exports: [
-        EventListComponent
+        EventListComponent,
+        EventDetailComponent,
+        EventAddComponent
     ]
 })
 export class EventModule{

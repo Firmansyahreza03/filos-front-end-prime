@@ -37,6 +37,8 @@ export class NavbarComponent implements OnInit {
           label: 'Event',
           routerLink: '/event'
         },
+        
+       {label: 'Event-Detail', routerLink:'/events/event-detail'},
       ]
     },
     {
@@ -48,5 +50,4 @@ export class NavbarComponent implements OnInit {
     localStorage.clear()
     this.router.navigateByUrl('/login')
   }
-
 }

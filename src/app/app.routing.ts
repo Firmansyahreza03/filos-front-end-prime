@@ -39,7 +39,7 @@ const routes: Routes = [
         loadChildren: () => import('./page/thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
     },
     {
-        path: 'event',
+        path: 'events',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/event/event.module').then(m => m.EventModule)
     },
