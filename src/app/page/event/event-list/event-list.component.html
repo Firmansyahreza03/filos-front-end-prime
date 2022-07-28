@@ -17,30 +17,39 @@
         <!-- All Event -->
         <p-tabPanel header="All Event">
           <div class="grid">
-            <div class="md:col-3 col-12">
+            <div class="md:col-3 col-12"  *ngFor="let event of listEvent.data">
+
               <!-- Card Event -->
               <a class="event-card" routerLink="/thread-detail">
               <div class="card">
                 <div class="container">
                   <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
                     <div class="col-12 flex justify-content-center">
-                      <img src="../../../../assets/image/tips-memulai-bisnis-startup.jpg" alt="" class="event-pic">
+                      <img src="http://localhost:3333/files/{{event.idFile}}" alt="" class="event-pic">
                     </div>
                     <div class="col-12">
-                      <span class="bold-medium black text-small"> <i class="pi pi-users color-purple" style="font-size: 1rem"></i> Provider Name</span>
+                      <span class="bold-medium black text-small"> <i class="pi pi-users color-purple" style="font-size: 1rem"></i> {{event.provider}}</span>
                     </div>
                     <div class="col-12">
-                      <span class="bold black text-heading-3">Event Name</span>
+                      <span class="bold black text-heading-3">{{event.title}}</span>
                     </div>
                     <div class="col-12">
                       <span class="bold black text-heading-3"> <i class="pi 
-                        pi-money-bill color-purple" style="font-size: 12px"></i> Rp. 400.000</span>
+                        pi-money-bill color-purple" style="font-size: 12px"></i> {{event.price}}</span>
                     </div>
                     <div class="col-12">
-                      <span class="black text-small"> <i class="pi pi-calendar color-purple" style="font-size: 12px"></i> Start Date</span> <span class="black text-small"> - End Date</span>
+                      <div class="grid">
+                            <div class="col-12 pb-0">
+                              <i class="pi pi-calendar color-purple" style="font-size: 12px"></i> 
+                              <span class="black text-small"> {{event.startAt}} s/d</span> 
+                            </div>
+                            <div class="col-12 ml-3 pt-0">
+                              <span class="black text-small"> {{event.endAt}}</span>
+                            </div>
+                      </div>
                     </div>
                     <div class="col-12">
-                      <span class="black text-small"> <i class="pi pi-circle-fill color-purple" style="font-size: 12px"></i> Location</span> 
+                      <span class="black text-small"> <i class="pi pi-circle-fill color-purple" style="font-size: 12px"></i> {{event.location}}</span> 
                     </div>
                   </div>
                 </div>
