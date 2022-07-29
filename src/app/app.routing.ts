@@ -39,15 +39,20 @@ const routes: Routes = [
         loadChildren: () => import('./page/thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
     },
     {
-        path: 'events',
+        path: 'communities',
         component: MainLayoutComponent,
-        loadChildren: () => import('./page/event/event.module').then(m => m.EventModule)
+        loadChildren: () => import('./page/community/community.module').then(m => m.CommunityModule)
+    },
+    {
+        path: 'payment',
+        loadChildren: () => import('./page/payment/payment.module').then(m => m.PaymentModule)
     },
     {
         path: 'admin',
         component: AdminLayoutComponent,
         loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)
     },
+   
     {
       path: '**',
       component: NotFoundComponent,

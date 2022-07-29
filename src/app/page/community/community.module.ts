@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
-import { EventListComponent } from "./event-list/event-list.component";
-import { EventRouting } from "./event.routing";
+import { CommunityListComponent } from "./community-list/community-list.component";
+import { CommunityRouting } from "./community.routing";
 import {CardModule} from 'primeng/card';
 import {TabViewModule} from 'primeng/tabview';
 import { FormsModule } from "@angular/forms";
@@ -11,14 +11,14 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ButtonModule} from 'primeng/button';
 import {DividerModule} from 'primeng/divider';
 import {CarouselModule} from 'primeng/carousel';
-import { EventDetailComponent } from "./event-detail/event-detail.component";
+import {CommunityDetailComponent} from "./community-detail/community-detail.component";
 import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
-import { EventAddComponent } from "./event-add/event-add.component";
+import { CommunityAddComponent } from "./community-add/community-add.component";
 @NgModule({
     imports: [
-        EventRouting,
+        CommunityRouting,
         CardModule,
         TabViewModule,
         FormsModule,
@@ -34,16 +34,16 @@ import { EventAddComponent } from "./event-add/event-add.component";
         HttpClientModule
     ],
     declarations: [
-        EventListComponent,
-        EventDetailComponent,
-        EventAddComponent
+        CommunityListComponent,
+        CommunityDetailComponent,
+        CommunityAddComponent
     ],
     exports: [
-        EventListComponent,
-        EventDetailComponent,
-        EventAddComponent
+        CommunityListComponent,
+        CommunityDetailComponent,
+        CommunityAddComponent
     ]
 })
-export class EventModule{
+export class CommunityModule{
     
 }

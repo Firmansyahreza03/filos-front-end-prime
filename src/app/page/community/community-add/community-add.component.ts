@@ -8,11 +8,15 @@ import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
 
 @Component({
-    selector:'app-event-add',
-    templateUrl:'./event-add.component.html',
-    styleUrls:['event-add.component.css']
+    selector:'app-community-add',
+    templateUrl:'./community-add.component.html',
+    styleUrls:['community-add.component.css']
 })
-export class EventAddComponent implements OnInit, OnDestroy{
+export class CommunityAddComponent implements OnInit, OnDestroy{
+    communityCategorySubscription?:Subscription
+    communitySubscription?:Subscription
+    industrySubscription?:Subscription
+    
     constructor(
         private router: Router, 
         private communityCategoriesService: CommunityCategoriesService, 
@@ -20,11 +24,7 @@ export class EventAddComponent implements OnInit, OnDestroy{
         private industryService:IndustryService,
         private fileService: FileService
         ){}
-    
-    communityCategorySubscription?:Subscription
-    communitySubscription?:Subscription
-    industrySubscription?:Subscription
-
+        
     listCommunityCategories: FindAllCommunityCategoryRes={
         data: [],
         count: 0
@@ -57,7 +57,7 @@ export class EventAddComponent implements OnInit, OnDestroy{
 
     onSubmit():void{
         this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
-            this.router.navigateByUrl("/events")
+            this.router.navigateByUrl("/communities/events")
         })
 
     }

@@ -1,9 +1,4 @@
-.event-pic{
-    max-width: 100%;
-    height:auto;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
-}
+
 
 .color-black{
     color: black;
@@ -30,3 +25,21 @@
     height: 60px;
     border-radius: 50%;
 }
+
+.image-content{
+    height: 100%;
+    width: 100%;
+  }
+.image-box{
+    /* height:400px; */
+    width:410px;
+    object-fit: cover;
+    object-position: center;
+}
+.event-pic{
+    max-width: 100%;
+    height:auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
