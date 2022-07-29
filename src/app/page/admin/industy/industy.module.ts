@@ -2,8 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { IndustyAddComponent } from "./industy-add/industy-add.component";
-import { IndustyEditComponent } from "./industy-edit/industy-edit.component";
 import { IndustyListComponent } from "./industy-list/industy-list.component";
 import { IndustyRouting } from "./industy.routing";
 
