@@ -1,4 +1,4 @@
-export interface InsertCommunityRes {
+export interface InsertCommunityReq {
 	isActive?: boolean
 	
 	title?:string
@@ -7,7 +7,6 @@ export interface InsertCommunityRes {
 	startAt?:string
 	endAt?:string
 	desc?:string
-	code?:string //hapus (nanti generate)
 	price?:number
 	idCategory?:string
 	idIndustry?:string

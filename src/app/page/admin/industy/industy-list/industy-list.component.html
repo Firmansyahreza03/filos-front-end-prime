@@ -4,19 +4,25 @@
       <div class="text-center">
         <p class="title fs-1">Data <strong>industry</strong></p>
         <p-divider align="center">
-          <button pButton pRipple type="button" label="Tambah data" icon="pi pi-plus-circle"
-            class="p-button-success p-button-rounded" title="Tambah Data" routerLink="/admin/industry/add">
+          <button pButton pRipple type="button" label="Add data" icon="pi pi-plus-circle"
+            class="p-button-success p-button-rounded" title="Add Data" (click)="toAdd()">
           </button>
         </p-divider>
       </div>
     </div>
     <div class="card-body">
-      <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage" [loading]="loading"
-        [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [globalFilterFields]="['name','code']"
-        [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10]" styleClass="p-datatable-gridlines" >
+
+      <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
+        [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
+        [globalFilterFields]="['name','code']" [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]"
+        styleClass="p-datatable-gridlines" [rowHover]="true">
 
         <ng-template pTemplate="caption">
           <div class="flex">
+            <span class="p-input-icon-left mr-auto">
+              <button pButton pRipple label="Download table" icon="pi pi-download" class="p-button-help"
+                (click)="dt.exportCSV()"></button>
+            </span>
             <span class="p-input-icon-left ml-auto">
               <i class="pi pi-search"></i>
               <input pInputText #search type="text" (input)="dt.filterGlobal(search.value, 'contains')"
@@ -27,9 +33,11 @@
         <ng-template pTemplate="header">
           <tr>
             <th>No.</th>
-            <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon>
+            <th>
+              Code
             </th>
-            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+            <th>
+              Name
             </th>
             <th class="text-center">active</th>
             <th class="text-center">action</th>
@@ -47,12 +55,11 @@
             <td>
               <div class="text-center">
                 <button pButton pRipple type="button" icon="fa fa-wrench"
-                  class="p-button-rounded p-button-secondary mr-1" title="Ubah Data"
-                  routerLink="/admin/industry/edit/{{data.id}}">
+                  class="p-button-rounded p-button-secondary mr-1" title="edit Data" (click)="toEdit(data.id)">
                 </button>
 
                 <button pButton pRipple type="button" icon="fa fa-trash-o" class="p-button-rounded p-button-danger"
-                  title="Hapus Data" (click)="deleteConfirm(data.id)">
+                  title="delete Data" (click)="deleteConfirm(data.id)">
                 </button>
               </div>
             </td>

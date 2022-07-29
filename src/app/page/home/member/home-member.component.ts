@@ -7,7 +7,7 @@ import {
   InsertThreadHdrReq,
 } from 'src/app/pojo/pojo-import';
 import { LoginService } from 'src/app/service/login.service';
-import { ProfileService } from 'src/app/service/profile.service';
+import { UserService } from 'src/app/service/user.service';
 import { ThreadCategoryService } from 'src/app/service/thread-category.service';
 import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
 import { ThreadLikedService } from 'src/app/service/thread-liked.service';
@@ -49,7 +49,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   constructor(
     private threadCategoryService: ThreadCategoryService,
     private threadHdrService: ThreadHdrService,
-    private profileService: ProfileService,
+    private userService: UserService,
     private router: Router,
     private loginService: LoginService,
     private likeThreadService: ThreadLikedService

@@ -1,4 +1,4 @@
-export interface UpdateBookmarkRes {
+export interface UpdateBookmarkReq {
     id : string
     version : number
 

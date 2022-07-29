@@ -1,4 +1,4 @@
-export interface InsertCommunityCategoryRes {
+export interface InsertCommunityCategoryReq {
 	isActive : boolean
 	
 	name :string

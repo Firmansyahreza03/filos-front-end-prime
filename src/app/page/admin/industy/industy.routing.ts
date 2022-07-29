@@ -1,5 +1,6 @@
 import { Component, NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
+import { IndustyAddComponent } from "./industy-add/industy-add.component";
 import { IndustyListComponent } from "./industy-list/industy-list.component";
 
 const routes : Routes =[
@@ -7,10 +8,10 @@ const routes : Routes =[
         path : '',
         component : IndustyListComponent
     },
-    // {
-    //     path : 'add',
-    //     component : IndustyAddComponent
-    // },
+    {
+        path : 'add',
+        component : IndustyAddComponent
+    },
     // {
     //     path : 'edit/:id',
     //     component : IndustyEditComponent

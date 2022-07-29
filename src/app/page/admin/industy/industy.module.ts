@@ -14,10 +14,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { IndustyAddComponent } from "./industy-add/industy-add.component";
 
 @NgModule({
     declarations:[
         IndustyListComponent,
+        IndustyAddComponent
     ],
     imports:[
         IndustyRouting,
@@ -37,6 +39,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ],
     exports :[
         IndustyListComponent,
+        IndustyAddComponent
     ]
 })
 export class IndustyModule{}

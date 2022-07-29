@@ -19,8 +19,6 @@ export class IndustryService {
     getAllIndustry( startPage?: number, maxPage?: number, query?: string): Observable<FindAllIndustryRes> {
         let urlAPI = `http://localhost:3333/industries?`;
         if(startPage != undefined && maxPage){
-            console.log(startPage)
-            console.log(maxPage)
             urlAPI = urlAPI+`&startPage=${startPage}`+`&maxPage=${maxPage}`
         }
         if(query ){
@@ -32,11 +30,11 @@ export class IndustryService {
     insert(data:InsertIndustryReq): Observable<InsertRes> {
         return this.http.post<InsertRes>("http://localhost:3333/industries", data)
     }
-    delete(id : number) : Observable<DeleteRes>{
-        return this.http.delete<DeleteRes>(`http://localhost:3333/industries/${id}`)
-    }
     update(data : UpdateIndustryReq) : Observable<UpdateRes>{
         return this.http.put<UpdateRes>('http://localhost:3333/industries', data)
+    }
+    delete(id : string) : Observable<DeleteRes>{
+        return this.http.delete<DeleteRes>(`http://localhost:3333/industries/${id}`)
     }
 
 }
