@@ -4,12 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { AppRouting } from './app.routing';
-
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CustomInterceptor } from './interceptor/CustomInterceptor';
+
+import { AppComponent } from './app.component';
+import { AppRouting } from './app.routing';
 
 @NgModule({
   declarations: [

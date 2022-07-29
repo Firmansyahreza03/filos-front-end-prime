@@ -1,12 +1,12 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { MenuItem } from 'primeng/api';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import {MenuItem} from 'primeng/api';
 import { AdminLayoutComponent } from '../layout/admin-layout.component';
 
 @Component({
     selector: 'admin-nav',
     templateUrl: './admin-nav.component.html',
-    styleUrls: ['../../../sakai.scss']
+    styleUrls: ['../../../assets/sass/sakai.scss']
 })
 export class AdminNavComponent {
 

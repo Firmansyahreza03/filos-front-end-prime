@@ -1,4 +1,4 @@
-export interface UpdateIndustryRes {
+export interface UpdateIndustryReq {
     id : string
     version : number
 

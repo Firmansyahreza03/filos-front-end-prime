@@ -84,11 +84,11 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
-import { AdminNavComponent } from "./navbar/admin-nav.component";
-import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
 import { MainLayoutComponent } from "./layout/main-layout.component";
 import { AdminLayoutComponent } from "./layout/admin-layout.component";
 import { style } from "@angular/animations";
+import { AdminNavComponent } from "./navbar/admin-nav.component";
+import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
 
 @NgModule({
     declarations : [
