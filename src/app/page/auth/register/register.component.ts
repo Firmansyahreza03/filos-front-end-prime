@@ -4,7 +4,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { Subscription } from "rxjs";
 import { IndustryService } from "src/app/service/industry.service";
 import { RegisterService } from "src/app/service/register.service";
-import { FindIndustryRes, FindAllIndustryRes, InsertIndustryRes, UpdateIndustryRes } from "src/app/pojo/pojo-import";
+import { FindAllIndustryRes} from "src/app/pojo/pojo-import";
 import { DataIndustry } from "src/app/pojo/industry/data-industry";
 import { InsertProfileReq } from "src/app/pojo/profile/insert-profile-req";
 import { FileService } from "src/app/service/file.service";
