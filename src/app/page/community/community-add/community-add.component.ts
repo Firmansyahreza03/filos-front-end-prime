@@ -64,7 +64,7 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
     ngOnDestroy(): void {
        this.communitySubscription?.unsubscribe();
        this.communityCategorySubscription?.unsubscribe();
-       this.industrySubscription?.unsubscribe();
+       this.industrySubscription?.unsubscribe()
     }
 
     
