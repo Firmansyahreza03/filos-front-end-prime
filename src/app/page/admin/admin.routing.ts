@@ -17,7 +17,6 @@ const routes : Routes=[
     },
     {
         path: 'industry', 
-        component: IndustyModule,
         loadChildren: () => import('./industy/industy.module').then(m => m.IndustyModule)
     },
 ]
@@ -30,7 +29,6 @@ const routes : Routes=[
         RouterModule
     ]
 })
-
 export class AdminRouting{
 
 }

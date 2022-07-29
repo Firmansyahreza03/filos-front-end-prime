@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityRes } from "src/app/pojo/pojo-import";
-import { CommunityCategoriesService } from "src/app/service/community-category.service";
+import { CommunityCategoriesService } from "src/app/service/community-categories.service";
 import { CommunityService } from "src/app/service/community.service";
 import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
@@ -37,8 +37,6 @@ export class EventAddComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
-        this.createCommunity.code="3261331"; //ini digenerate dibackend
-        this.createCommunity.isActive=true;
         this.communityCategorySubscription=this.communityCategoriesService.getAllCommunityCategory().subscribe((result)=>{
             this.listCommunityCategories=result;
         })
@@ -55,16 +53,8 @@ export class EventAddComponent implements OnInit, OnDestroy{
         });
     }
 
-    onSubmit():void{
-        this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
-            this.router.navigateByUrl("/events")
-        })
-
-    }
     ngOnDestroy(): void {
-       this.communitySubscription?.unsubscribe();
-       this.communityCategorySubscription?.unsubscribe();
-       this.industrySubscription?.unsubscribe();
+        throw new Error("Method not implemented.");
     }
 
     

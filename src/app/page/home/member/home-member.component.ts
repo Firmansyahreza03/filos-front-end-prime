@@ -85,10 +85,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       });
   }
 
-  cek(): void {
-    console.log('CEK');
-  }
-
   getAllThreadByUserLogged(): void {
     this.threadHdrListByUserLoggedSubscription = this.threadHdrService
       .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail()!)
@@ -119,58 +115,13 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   likeThread(id: string, index: number): void {
     this.threadLikedSubs = this.likeThreadService
       .likeThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {
-        if (res.isLiked == true) {
-          let counter = parseInt(this.listThreadHdr.data[index].counterLike!) + 1;
-          this.listThreadHdr.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdrByUserLogged.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[i].id == this.listThreadHdr.data[index].id
-            ) {
-              this.listThreadHdrByUserLogged.data[i].counterLike = counter.toString();
-            }
-          }
-        } else {
-          let counter = parseInt(this.listThreadHdr.data[index].counterLike!) - 1;
-          this.listThreadHdr.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdrByUserLogged.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[i].id == this.listThreadHdr.data[index].id
-            ) {
-              this.listThreadHdrByUserLogged.data[i].counterLike = counter.toString();
-            }
-          }
-        }
-      });
-  }
-
-  likeThreadLoggedUser(id: string, index: number): void {
-    this.threadLikedSubs = this.likeThreadService
-      .likeThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {
+      .subscribe((res) => {                
         if (res.isLiked == true) {
           let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) + 1;
           this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdr.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[index].id == this.listThreadHdr.data[i].id
-            ) {
-              this.listThreadHdr.data[i].counterLike = counter.toString();
-            }
-          }
         } else {
-          let counter =
-            parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) -
-            1;
-          this.listThreadHdrByUserLogged.data[index].counterLike =
-            counter.toString();
-            for (let i = 0; i < this.listThreadHdr.data.length; i++) {
-              if (
-                this.listThreadHdrByUserLogged.data[index].id == this.listThreadHdr.data[i].id
-              ) {
-                this.listThreadHdr.data[i].counterLike = counter.toString();
-              }
-            }
+          let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) - 1;
+          this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
         }
       });
   }
