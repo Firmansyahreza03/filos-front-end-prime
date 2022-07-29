@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="grid mt-4 justify-content-center">
+    <div class="md:col-6 col-12 text-center">
+      <p class="text-xl font-medium">Create your event or training with Filos here</p>
+    </div>
+    <div class="md:col-10 col-12 text-center">
+      <div class="card">
+        <div class="container">
+        <form (ngSubmit)="onSubmit()">
+            <div class="grid justify-content-center flex flex-wrap row-gap-2">
+              <div class="md:col-2">
+                <span class="p-float-label">
+                  <p-dropdown [required]="true" inputId="category" [autoDisplayFirst]="false" styleClass="w-full"
+                    [options]="listCommunityCategories.data" optionLabel="name" optionValue="id" name="idCategory" [(ngModel)]="createCommunity.idCategory">
+                  </p-dropdown>
+                  <label for="category">Category</label>
+                </span>
+              </div>
+            </div>
+            <p-divider></p-divider>
+            <div class="grid flex flex-wrap row-gap-2">
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <input type="text" id="inputTitle"  [required]="true" pInputText name="title" class="w-full border-radius-20px" [(ngModel)]="createCommunity.title">
+                  <label for="inputTitle">Title <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <input type="text" id="inputProvider"  [required]="true" pInputText name="provider" class="w-full border-radius-20px" [(ngModel)]="createCommunity.provider">
+                  <label for="inputProvider">Provider <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <input type="text" id="inputLocation"  [required]="true" pInputText name="location" class="w-full border-radius-20px" [(ngModel)]="createCommunity.location">
+                  <label for="inputLocation">Location <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-6 col-12">
+                <div class="grid">
+                  <div class="md:col-6 col-12">
+                    <span class="p-float-label">
+                        <p-calendar inputId="inputStartDate"  [required]="true" [showTime]="true" [showSeconds]="true" name="startAt" styleClass="w-full" [(ngModel)]="createCommunity.startAt"></p-calendar>
+                      <label for="inputStartDate">Start Date <span class="text-red-500">*</span></label>
+                    </span>
+                  </div>
+                  <div class="md:col-6 col-12">
+                    <span class="p-float-label">
+                      <p-calendar inputId="inputExpired"  [required]="true" name="endAt" [showTime]="true" [showSeconds]="true" placeholder="Start Date" styleClass="w-full" [(ngModel)]="createCommunity.endAt">
+                      </p-calendar>
+                      <label for="calendar">End Date <span class="text-red-500">*</span></label>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="md:col-6 col-12">
+                <span class="p-float-label">
+                  <p-dropdown inputId="industry"  [required]="true" styleClass="w-full" [options]="listIndustry.data!" optionLabel="name"
+                    optionValue="id" name="idIndustry" [autoDisplayFirst]="false" [(ngModel)]="createCommunity.idIndustry"></p-dropdown>
+                  <label for="industry">Industry <span class="text-red-500">*</span></label>
+                </span>
+              </div>
+              <div class="md:col-3 col-12">
+                  <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        Rp
+                    </span>
+                    <span class="p-float-label">
+                        <input type="text" id="inputPrice" pInputText  [required]="true"[(ngModel)]="createCommunity.price" name="price" > 
+                        <label for="inputPrice">Price</label>
+                    </span>
+                </div>
+              </div>
+              <div class="col-12">
+                <span class="p-float-label">
+                  <textarea id="float-input" class="w-full border-radius-20px" pInputTextarea [(ngModel)]="createCommunity.desc" name="desc"></textarea>
+                  <label for="float-input">Description </label>
+                </span>
+              </div>
+              <div class="col-12">
+                <div class="grid flex justify-content-between flex-wrap">
+                    <div class="md:col-4 col-12 text-left">
+                        <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)" [auto]="true" chooseLabel="Upload Foto" [customUpload]="true" >                           
+                        </p-fileUpload>
+                    </div>
+                    <div class="md:col-4 col-12">
+                        <button pButton pRipple type="submit"
+                        class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                        styleClass="p-button-sm text-center" label="Post"></button>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<pre>
+    <!-- {{createCommunity.nameFile}}
+    {{createCommunity.extFile}} -->
+</pre>

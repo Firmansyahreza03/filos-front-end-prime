@@ -1,13 +1,12 @@
-import { SharedModule } from 'primeng/api';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { style } from '@angular/animations';
 
 import { AdminRouting } from './admin.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { IndustyModule } from './industy/industy.module';
+import { SharedModule } from 'src/app/component/shared.module';
+import { style } from '@angular/animations';
 
 @NgModule({
     declarations: [
@@ -16,7 +15,7 @@ import { IndustyModule } from './industy/industy.module';
     exports: [
         RouterModule,
         
-        DashboardComponent,
+        DashboardComponent
     ],
     imports: [
         AdminRouting,

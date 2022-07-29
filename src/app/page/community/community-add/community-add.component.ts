@@ -2,17 +2,21 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityRes } from "src/app/pojo/pojo-import";
-import { CommunityCategoriesService } from "src/app/service/community-categories.service";
+import { CommunityCategoriesService } from "src/app/service/community-category.service";
 import { CommunityService } from "src/app/service/community.service";
 import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
 
 @Component({
-    selector:'app-event-add',
-    templateUrl:'./event-add.component.html',
-    styleUrls:['event-add.component.css']
+    selector:'app-community-add',
+    templateUrl:'./community-add.component.html',
+    styleUrls:['community-add.component.css']
 })
-export class EventAddComponent implements OnInit, OnDestroy{
+export class CommunityAddComponent implements OnInit, OnDestroy{
+    communityCategorySubscription?:Subscription
+    communitySubscription?:Subscription
+    industrySubscription?:Subscription
+    
     constructor(
         private router: Router, 
         private communityCategoriesService: CommunityCategoriesService, 
@@ -20,11 +24,7 @@ export class EventAddComponent implements OnInit, OnDestroy{
         private industryService:IndustryService,
         private fileService: FileService
         ){}
-    
-    communityCategorySubscription?:Subscription
-    communitySubscription?:Subscription
-    industrySubscription?:Subscription
-
+        
     listCommunityCategories: FindAllCommunityCategoryRes={
         data: [],
         count: 0
@@ -55,8 +55,16 @@ export class EventAddComponent implements OnInit, OnDestroy{
         });
     }
 
+    onSubmit():void{
+        this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
+            this.router.navigateByUrl("/communities/events")
+        })
+
+    }
     ngOnDestroy(): void {
-        throw new Error("Method not implemented.");
+       this.communitySubscription?.unsubscribe();
+       this.communityCategorySubscription?.unsubscribe();
+       this.industrySubscription?.unsubscribe()
     }
 
     

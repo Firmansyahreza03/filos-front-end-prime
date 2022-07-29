@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { MenuItem, MessageService } from 'primeng/api';
+import { MenuItem} from 'primeng/api';
 import { Subscription } from "rxjs";
 import { IndustryService } from "src/app/service/industry.service";
 import { RegisterService } from "src/app/service/register.service";
 import { FindAllIndustryRes} from "src/app/pojo/pojo-import";
-import { DataIndustry } from "src/app/pojo/industry/data-industry";
 import { InsertProfileReq } from "src/app/pojo/profile/insert-profile-req";
 import { FileService } from "src/app/service/file.service";
 
@@ -43,7 +42,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     listIndustry: FindAllIndustryRes = {
         count: undefined,
-        data:[]
+        data: undefined
     }
 
     constructor(

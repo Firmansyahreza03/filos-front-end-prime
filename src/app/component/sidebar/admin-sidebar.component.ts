@@ -20,7 +20,7 @@ export class AdminSidebarComponent {
         items: [{
           label: 'Dashboard',
           icon: 'pi pi-home',
-          routerLink: '/admin/home'
+          routerLink: '/admin'
         }]
       },
       {
@@ -52,7 +52,7 @@ export class AdminSidebarComponent {
           {
             label: 'Industry',
             icon: 'pi pi-flag',
-            routerLink: '/admin/industry'
+            routerLink: '/admin'
           }
         ],
       },

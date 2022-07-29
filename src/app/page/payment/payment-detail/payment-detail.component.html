@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="grid mt-1 p-5">
+        <!-- Halaman Kiri -->
+        <div class="md:col-5 col-12">
+            <div class="grid">
+                <div class="col-12">
+                    <span class="back font-medium" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+                </div>
+                <div class="col-12">
+                    <div class="grid mt-1 mb-1 justify-content-center">
+                        <div class="col-11 warning">
+                            <p class="text-base font-medium">Please complete your payment now, otherwise your schedule will be released</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <span class="back font-medium"><i class="pi pi-circle-fill color-yellow" style="font-size: 20px"></i> Choose Payment Method</span>
+                    <div class="grid mt-3">
+                        <div class="col-11 col-offset-1">
+                            <div class="field-radiobutton">
+                                <p-radioButton name="va" value="Chicago"  inputId="va1"></p-radioButton>
+                                <label for="va1">Bank A Virtual Account </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="md:col-1 col-12">
+            <p-divider layout="vertical" ></p-divider>
+        </div>
+        <!-- Halaman Kanan -->
+        <div class="md:col-6 col-12">
+            <div class="grid">
+                <div class="col-12">
+                    <span class="back font-medium">Order Detail</span>
+                </div>
+                <div class="col-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

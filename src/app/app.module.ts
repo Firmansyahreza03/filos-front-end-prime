@@ -17,7 +17,6 @@ import { AppRouting } from './app.routing';
   ],
   imports: [
     AppRouting,
-    
     BrowserModule,
     FormsModule,
     HttpClientModule,

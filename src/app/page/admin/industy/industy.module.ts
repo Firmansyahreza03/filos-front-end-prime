@@ -39,4 +39,5 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
         IndustyListComponent,
     ]
 })
+
 export class IndustyModule{}
