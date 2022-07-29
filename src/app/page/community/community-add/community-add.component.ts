@@ -13,10 +13,6 @@ import { IndustryService } from "src/app/service/industry.service";
     styleUrls:['community-add.component.css']
 })
 export class CommunityAddComponent implements OnInit, OnDestroy{
-    communityCategorySubscription?:Subscription
-    communitySubscription?:Subscription
-    industrySubscription?:Subscription
-    
     constructor(
         private router: Router, 
         private communityCategoriesService: CommunityCategoriesService, 
@@ -24,7 +20,11 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
         private industryService:IndustryService,
         private fileService: FileService
         ){}
-        
+    
+    communityCategorySubscription?:Subscription
+    communitySubscription?:Subscription
+    industrySubscription?:Subscription
+
     listCommunityCategories: FindAllCommunityCategoryRes={
         data: [],
         count: 0
@@ -37,6 +37,7 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
+        this.createCommunity.code="3261331"; //ini digenerate dibackend
         this.createCommunity.isActive=true;
         this.communityCategorySubscription=this.communityCategoriesService.getAllCommunityCategory().subscribe((result)=>{
             this.listCommunityCategories=result;
