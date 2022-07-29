@@ -1,7 +1,5 @@
 import { Component, NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
-// import { IndustyAddComponent } from "./industy-add/industy-add.component";
-// import { IndustyEditComponent } from "./industy-edit/industy-edit.component";
 import { IndustyListComponent } from "./industy-list/industy-list.component";
 
 const routes : Routes =[

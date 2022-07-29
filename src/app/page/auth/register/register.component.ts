@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     listIndustry: FindAllIndustryRes = {
         count: undefined,
-        data: undefined
+        data:[]
     }
 
     constructor(
