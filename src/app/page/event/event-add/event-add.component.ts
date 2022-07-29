@@ -29,6 +29,7 @@ export class EventAddComponent implements OnInit, OnDestroy{
         data: [],
         count: 0
     }
+    
     listIndustry:FindAllIndustryRes={
         data: [],
         count: 0
@@ -37,7 +38,6 @@ export class EventAddComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
-        this.createCommunity.code="3261331"; //ini digenerate dibackend
         this.createCommunity.isActive=true;
         this.communityCategorySubscription=this.communityCategoriesService.getAllCommunityCategory().subscribe((result)=>{
             this.listCommunityCategories=result;

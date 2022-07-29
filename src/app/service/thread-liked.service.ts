@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { dataCountThread } from '../pojo/thread-liked/data-count-thread';
 import { likeData } from '../pojo/thread-liked/like-data';
 
 @Injectable({
