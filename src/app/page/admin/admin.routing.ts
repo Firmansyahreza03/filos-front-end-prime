@@ -7,12 +7,16 @@ import { IndustyModule } from "./industy/industy.module";
 
 const routes : Routes=[
     {
-        path: '', 
+      path: '',
+      redirectTo: 'admin/home',
+      pathMatch: 'full',
+    },
+    {
+        path: 'home', 
         component: DashboardComponent
     },
     {
         path: 'industry', 
-        component: IndustyModule,
         loadChildren: () => import('./industy/industy.module').then(m => m.IndustyModule)
     },
 ]
@@ -25,7 +29,6 @@ const routes : Routes=[
         RouterModule
     ]
 })
-
 export class AdminRouting{
 
 }

@@ -172,13 +172,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         if (res.isLiked == true) {
           let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) + 1;
           this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdr.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[index].id == this.listThreadHdr.data[i].id
-            ) {
-              this.listThreadHdr.data[i].counterLike = counter.toString();
-            }
-          }
         } else {
           let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) - 1;
           this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();

@@ -15,9 +15,20 @@ export class IndustryService {
     findById(id : number) : Observable<FindIndustryRes>{
         return this.http.get<FindIndustryRes>(`http://localhost:3333/industries/${id}`)
     }
-    getAllIndustry(): Observable<FindAllIndustryRes> {
-        return this.http.get<FindAllIndustryRes>('http://localhost:3333/industries')
+
+    getAllIndustry( startPage?: number, maxPage?: number, query?: string): Observable<FindAllIndustryRes> {
+        let urlAPI = `http://localhost:3333/industries?`;
+        if(startPage != undefined && maxPage){
+            console.log(startPage)
+            console.log(maxPage)
+            urlAPI = urlAPI+`&startPage=${startPage}`+`&maxPage=${maxPage}`
+        }
+        if(query ){
+            urlAPI = urlAPI+`&query=${query}`
+        }
+        return this.http.get<FindAllIndustryRes>(urlAPI);
     }
+
     insert(data:InsertIndustryReq): Observable<InsertRes> {
         return this.http.post<InsertRes>("http://localhost:3333/industries", data)
     }

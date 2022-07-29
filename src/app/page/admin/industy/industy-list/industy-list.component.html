@@ -1,57 +1,68 @@
 <div class="container mt-3">
-    <p-card class="card shadow-sm">
-        <div class="card-header">
-            <div class="text-center">
-                <p class="title fs-1">Data <strong>Industi</strong></p>
-                <p-divider align="center">
-                    <button pButton pRipple type="button" label="Tambah data" icon="pi pi-plus-circle"
-                    class="p-button-success p-button-rounded" title="Tambah Data" routerLink = "/company/add">
-                    </button>
-                </p-divider>
-            </div>
-        </div>
-        <div class="card-body">
-            <p-table [value]="listData.data!" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-            responsiveLayout="scroll" [rowsPerPageOptions]="[5,10,20]">
-                <ng-template pTemplate="header">
-                  <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Code</th>
-                    <th class="text-center">active</th>
-                    <th class="text-center">Aksi</th>
-                  </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
-                    <tr>
-                        <td>{{rowIndex + 1}}</td>
-                        <td>{{data.name}}</td>
-                        <td>{{data.code}}</td>
-                        <td class="text-center">
-                            <i *ngIf="data.isActive" class="pi pi-check-square"></i>
-                            <i *ngIf="!data.isActive" class="pi pi-stop"></i>
-                        </td>
-                        <td>
-                            <div class="text-center">
-                                <button pButton pRipple type="button" icon="fa fa-wrench" class="p-button-rounded p-button-secondary mr-1"
-                                title="Ubah Data" routerLink = "/admin/industry/edit/{{data.id}}">
-                                </button>
-                                
-                                <button pButton pRipple type="button" icon="fa fa-trash-o" class="p-button-rounded p-button-danger"
-                                title="Hapus Data" (click)="deleteConfirm(data.id)" >
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </div>
-    </p-card>
+  <div class="card">
+    <div class="card-header">
+      <div class="text-center">
+        <p class="title fs-1">Data <strong>industry</strong></p>
+        <p-divider align="center">
+          <button pButton pRipple type="button" label="Tambah data" icon="pi pi-plus-circle"
+            class="p-button-success p-button-rounded" title="Tambah Data" routerLink="/admin/industry/add">
+          </button>
+        </p-divider>
+      </div>
+    </div>
+    <div class="card-body">
+      <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage" [loading]="loading"
+        [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true" [globalFilterFields]="['name','code']"
+        [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10]" styleClass="p-datatable-gridlines" >
+
+        <ng-template pTemplate="caption">
+          <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText #search type="text" (input)="dt.filterGlobal(search.value, 'contains')"
+                placeholder="Search keyword" />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>No.</th>
+            <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon>
+            </th>
+            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th class="text-center">active</th>
+            <th class="text-center">action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+          <tr>
+            <td>{{rowIndex + 1}}</td>
+            <td>{{data.code}}</td>
+            <td>{{data.name}}</td>
+            <td class="text-center">
+              <i *ngIf="data.isActive" class="pi pi-check-square"></i>
+              <i *ngIf="!data.isActive" class="pi pi-stop"></i>
+            </td>
+            <td>
+              <div class="text-center">
+                <button pButton pRipple type="button" icon="fa fa-wrench"
+                  class="p-button-rounded p-button-secondary mr-1" title="Ubah Data"
+                  routerLink="/admin/industry/edit/{{data.id}}">
+                </button>
+
+                <button pButton pRipple type="button" icon="fa fa-trash-o" class="p-button-rounded p-button-danger"
+                  title="Hapus Data" (click)="deleteConfirm(data.id)">
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
 </div>
 
-<p-confirmDialog
-  [style]="{ width: '50vw' }"
-  [baseZIndex]="10000"
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000"
   rejectButtonStyleClass="p-button-rounded p-button-secondary"
-  acceptButtonStyleClass="p-button-rounded p-button-danger"
-></p-confirmDialog>
+  acceptButtonStyleClass="p-button-rounded p-button-danger"></p-confirmDialog>

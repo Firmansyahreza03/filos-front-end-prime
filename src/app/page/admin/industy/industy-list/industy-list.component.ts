@@ -1,8 +1,9 @@
+import { DataIndustry } from 'src/app/pojo/industry/data-industry';
 import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
 
-import {ConfirmationService, MessageService} from 'primeng/api';
+import {ConfirmationService, LazyLoadEvent, MessageService} from 'primeng/api';
 import { DeleteRes } from "src/app/pojo/delete-res";
 import { FindAllIndustryRes } from "src/app/pojo/pojo-import";
 import { IndustryService } from "src/app/service/industry.service";
@@ -14,25 +15,44 @@ import { IndustryService } from "src/app/service/industry.service";
 })
 export class IndustyListComponent {
   subscription ? : Subscription;
+  loading: boolean = true;
   
-  listData!: FindAllIndustryRes;
+  listData: DataIndustry[] = [];
   delRes!: DeleteRes;
+
+  startPage: number = 0
+  maxPage: number = 5
+  totalData: number = 0
+  query?: string
   slcId!: number;
+
+  cols: any[] = [
+    {field: 'code', header: 'Code'},
+    {field: 'name', header: 'Name'},
+  ];
 
   constructor(
     private industryService: IndustryService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {}
-
-  ngOnInit(): void {
-    this.viewData();
+  
+  loadData(event: LazyLoadEvent) {
+    console.log(event)
+    this.viewData(event.first, event.rows, event.globalFilter)
   }
 
-  viewData(): void {
-    this.subscription = this.industryService.getAllIndustry()
+  viewData(startPage: number = this.startPage, maxPage: number = this.maxPage, query?: string): void {
+    this.loading = true;
+    this.startPage = startPage
+    this.maxPage = maxPage
+    this.query = query
+
+    this.subscription = this.industryService.getAllIndustry(startPage, maxPage, query)
       .subscribe((result) => {
-        this.listData = result;
+        this.loading = false;
+        this.listData = result.data;
+        this.totalData = result.count??this.listData.length;
       });
   }
 

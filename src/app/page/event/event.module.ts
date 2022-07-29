@@ -12,10 +12,10 @@ import {ButtonModule} from 'primeng/button';
 import {DividerModule} from 'primeng/divider';
 import {CarouselModule} from 'primeng/carousel';
 import { EventDetailComponent } from "./event-detail/event-detail.component";
+import { EventAddComponent } from "./event-add/event-add.component";
 import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
-import { EventAddComponent } from "./event-add/event-add.component";
 @NgModule({
     imports: [
         EventRouting,
