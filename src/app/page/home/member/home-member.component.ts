@@ -10,9 +10,11 @@ import {
 import { BookmarkService } from 'src/app/service/bookmark.service';
 import { CommunityService } from 'src/app/service/community.service';
 import { LoginService } from 'src/app/service/login.service';
+import { UserService } from 'src/app/service/user.service';
 import { ThreadCategoryService } from 'src/app/service/thread-category.service';
 import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
 import { ThreadLikedService } from 'src/app/service/thread-liked.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-member',
@@ -59,6 +61,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   constructor(
     private threadCategoryService: ThreadCategoryService,
     private threadHdrService: ThreadHdrService,
+    private userService: UserService,
+    private router: Router,
     private loginService: LoginService,
     private likeThreadService: ThreadLikedService,
     private bookmarkService: BookmarkService,

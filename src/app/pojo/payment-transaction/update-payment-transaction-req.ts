@@ -1,4 +1,4 @@
-export interface UpdatePaymentTransactionRes {
+export interface UpdatePaymentTransactionReq {
     id : string
     version : number
 

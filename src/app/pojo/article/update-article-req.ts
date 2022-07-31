@@ -1,4 +1,4 @@
-export interface UpdateArticleRes {
+export interface UpdateArticleReq {
     id : string
     version : number
 

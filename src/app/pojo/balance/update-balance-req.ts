@@ -1,4 +1,4 @@
-export interface UpdateBalanceRes {
+export interface UpdateBalanceReq {
     id : string
     version : number
 

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityRes } from "src/app/pojo/pojo-import";
-import { CommunityCategoriesService } from "src/app/service/community-category.service";
+import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityReq } from "src/app/pojo/pojo-import";
+import { CommunityCategoriesService } from "src/app/service/community-categories.service";
 import { CommunityService } from "src/app/service/community.service";
 import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
@@ -34,7 +34,7 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
         data: [],
         count: 0
     }
-    createCommunity:InsertCommunityRes={
+    createCommunity:InsertCommunityReq={
     }
 
     ngOnInit(): void {
