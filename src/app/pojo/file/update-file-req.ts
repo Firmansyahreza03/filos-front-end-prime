@@ -1,4 +1,4 @@
-export interface UpdateFileRes {
+export interface UpdateFileReq {
     id : string
     version : number
 

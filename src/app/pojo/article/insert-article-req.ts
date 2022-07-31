@@ -1,4 +1,4 @@
-export interface InsertArticleRes {
+export interface InsertArticleReq {
 	isActive : boolean
 
 	title:string

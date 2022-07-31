@@ -1,4 +1,4 @@
-export interface UpdateRoleRes {
+export interface UpdateRoleReq {
     id : string
     version : number
 

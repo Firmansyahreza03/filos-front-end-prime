@@ -1,4 +1,4 @@
-export interface InsertPaymentTransactionRes {
+export interface InsertPaymentTransactionReq {
 	isActive : boolean
 
 	isAcc:boolean

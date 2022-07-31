@@ -1,4 +1,4 @@
-export interface InsertCommunityRes {
+export interface InsertCommunityReq {
 	isActive?: boolean
 	
 	title?:string

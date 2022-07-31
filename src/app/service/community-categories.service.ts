@@ -12,4 +12,5 @@ export class CommunityCategoriesService{
     getAllCommunityCategory():Observable<FindAllCommunityCategoryRes>{
         return this.http.get<FindAllCommunityCategoryRes>('http://localhost:3333/community-categories')
     }
+    
 }
