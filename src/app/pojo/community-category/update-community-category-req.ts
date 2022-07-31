@@ -1,4 +1,4 @@
-export interface UpdateCommunityCategoryRes {
+export interface UpdateCommunityCategoryReq {
     id : string
     version : number
 	

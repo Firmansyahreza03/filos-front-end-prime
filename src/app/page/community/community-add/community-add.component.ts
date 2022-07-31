@@ -1,18 +1,18 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityRes } from "src/app/pojo/pojo-import";
-import { CommunityCategoriesService } from "src/app/service/community-category.service";
+import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityReq } from "src/app/pojo/pojo-import";
+import { CommunityCategoriesService } from "src/app/service/community-categories.service";
 import { CommunityService } from "src/app/service/community.service";
 import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
 
 @Component({
-    selector:'app-event-add',
-    templateUrl:'./event-add.component.html',
-    styleUrls:['event-add.component.css']
+    selector:'app-community-add',
+    templateUrl:'./community-add.component.html',
+    styleUrls:['community-add.component.css']
 })
-export class EventAddComponent implements OnInit, OnDestroy{
+export class CommunityAddComponent implements OnInit, OnDestroy{
     constructor(
         private router: Router, 
         private communityCategoriesService: CommunityCategoriesService, 
@@ -29,11 +29,12 @@ export class EventAddComponent implements OnInit, OnDestroy{
         data: [],
         count: 0
     }
+    
     listIndustry:FindAllIndustryRes={
         data: [],
         count: 0
     }
-    createCommunity:InsertCommunityRes={
+    createCommunity:InsertCommunityReq={
     }
 
     ngOnInit(): void {
@@ -57,14 +58,14 @@ export class EventAddComponent implements OnInit, OnDestroy{
 
     onSubmit():void{
         this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
-            this.router.navigateByUrl("/events")
+            this.router.navigateByUrl("/communities/events")
         })
 
     }
     ngOnDestroy(): void {
        this.communitySubscription?.unsubscribe();
        this.communityCategorySubscription?.unsubscribe();
-       this.industrySubscription?.unsubscribe();
+       this.industrySubscription?.unsubscribe()
     }
 
     

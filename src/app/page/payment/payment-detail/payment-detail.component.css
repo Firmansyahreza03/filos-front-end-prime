@@ -1,0 +1,34 @@
+.warning{
+    background-color: #DE666A;
+    color: aliceblue;
+    border-radius: 10px;
+}
+.image-content{
+    height: 100%;
+    width: 100%;
+    
+}
+
+.image-box{
+    width:fit-content;
+    height:100px;
+    object-fit: cover;
+    object-position: center;
+
+}
+.image-box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+}
+.color-black{
+    color: black;
+}
+
+.color-bg-yellow:hover{
+    background: #DAA300;
+    color: black;
+}
+.color-bg-yellow{
+    background: #DAA300;
+}

@@ -1,6 +1,5 @@
-export interface InsertBookmarkRes {
+export interface InsertBookmarkReq {
 	isActive : boolean
 	
     idThreadHdr: string
-    idUser: string
 }

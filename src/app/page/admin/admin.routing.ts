@@ -7,12 +7,7 @@ import { IndustyModule } from "./industy/industy.module";
 
 const routes : Routes=[
     {
-      path: '',
-      redirectTo: 'admin/home',
-      pathMatch: 'full',
-    },
-    {
-        path: 'home', 
+        path: '', 
         component: DashboardComponent
     },
     {

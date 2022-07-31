@@ -1,0 +1,19 @@
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header card-container">
+        <div class="float-start">
+            <button pButton pRipple type="button" label="kembali" icon="fa fa-chevron-left"
+            class="p-button-secondary" title="kembali" (click)="back()">
+            </button>
+        </div>
+        <div class="text-center">
+            <p class="title fs-1">Add <strong>Data</strong></p>
+        </div>
+    </div>
+    <p-divider></p-divider>
+  </div>
+</div>
+
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-rounded p-button-secondary"
+  acceptButtonStyleClass="p-button-rounded p-button-danger"></p-confirmDialog>
