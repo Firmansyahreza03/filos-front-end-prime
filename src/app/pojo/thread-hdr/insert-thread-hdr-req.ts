@@ -7,6 +7,6 @@ export interface InsertThreadHdrReq {
 	pollingHdrId ?:string
 	categoryId ?:string
 	fileName?:string
-	fileTxt?:string
+	fileExt?:string
 	email?:string
 }

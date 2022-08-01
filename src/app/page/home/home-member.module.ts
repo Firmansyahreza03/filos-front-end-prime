@@ -10,6 +10,9 @@ import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ButtonModule} from 'primeng/button';
 import {DividerModule} from 'primeng/divider';
+import { ThreadDetailComponent } from "./thread-detail/thread-detail.component";
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
     imports: [
         HomeMemberRouting,
@@ -21,13 +24,17 @@ import {DividerModule} from 'primeng/divider';
         InputTextModule,
         InputTextareaModule,
         ButtonModule,
-        DividerModule
+        DividerModule,
+        FileUploadModule,
+        HttpClientModule
     ],
     declarations: [
-        HomeMemberComponent
+        HomeMemberComponent,
+        ThreadDetailComponent
     ],
     exports: [
-        HomeMemberComponent
+        HomeMemberComponent,
+        ThreadDetailComponent
     ]
 })
 export class HomeMemberModule {

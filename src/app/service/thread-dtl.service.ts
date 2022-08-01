@@ -6,6 +6,9 @@ import { DeleteRes } from "../pojo/delete-res";
 import { InsertRes } from "../pojo/insert-res";
 import { UpdateRes } from "../pojo/update-res";
 
+@Injectable({
+    providedIn:'root'
+})
 export class ThreadDtlService{
     constructor(private http: HttpClient){}
 

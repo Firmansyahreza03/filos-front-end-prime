@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription, toArray } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
 import {
@@ -9,6 +10,7 @@ import {
 } from 'src/app/pojo/pojo-import';
 import { BookmarkService } from 'src/app/service/bookmark.service';
 import { CommunityService } from 'src/app/service/community.service';
+import { FileService } from 'src/app/service/file.service';
 import { LoginService } from 'src/app/service/login.service';
 import { ThreadCategoryService } from 'src/app/service/thread-category.service';
 import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
@@ -34,6 +36,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   trainingSubs? : Subscription;
   threadLikedByUserLoggedSubs?: Subscription;
   panelTab: string = 'myActivities';
+  idDetail!:string
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -55,7 +58,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private loginService: LoginService,
     private likeThreadService: ThreadLikedService,
     private bookmarkService: BookmarkService,
-    private communityService: CommunityService
+    private communityService: CommunityService,
+    private fileService:FileService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +92,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.eventSubs?.unsubscribe();
     this.trainingSubs?.unsubscribe();
     this.threadLikedByUserLoggedSubs?.unsubscribe();
+
   }
 
   findTreadCategory(): void {
@@ -132,6 +138,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+    // console.log(this.createThreadHdr);
+    
     this.threadSubscription = this.threadHdrService
       .insertThreadHdr(this.createThreadHdr)
       .subscribe(() => {
@@ -204,4 +212,18 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .bookmarkThread(id, this.loginService.getLoggedEmail()!)
       .subscribe(() => {});
   }
+
+  onClick(id:string):void{
+    this.idDetail = id;
+    this.router.navigateByUrl(`/home-member/detail/${id}`)
+}
+
+onChangeFile(event: any): void {
+  const file = event.files[0];
+  this.fileService.uploadAsBase64(file).then((res) => {
+      this.createThreadHdr.fileName=res[0];
+      this.createThreadHdr.fileExt=res[1];
+  });
+}
+
 }
