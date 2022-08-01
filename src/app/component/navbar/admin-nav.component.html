@@ -8,8 +8,6 @@
   </a>
 
   <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active':appMain.topMenuActive}">
-
-    
     <p-avatar [image]="proPic" size="large" shape="circle" (click)="menu.toggle($event)"></p-avatar>
     <p-menu #menu [popup]="true" [model]="items"></p-menu>
   </div>

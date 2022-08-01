@@ -3,11 +3,10 @@ import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
 
-import {ConfirmationService, LazyLoadEvent, MessageService} from 'primeng/api';
-import { DeleteRes } from "src/app/pojo/delete-res";
-import { FindAllIndustryRes } from "src/app/pojo/pojo-import";
-import { IndustryService } from "src/app/service/industry.service";
+import {ConfirmationService, MessageService} from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DeleteRes, InsertIndustryReq } from "src/app/pojo/pojo-import";
+import { IndustryService } from "src/app/service/import.service";
 
 @Component({
   selector: 'app-industy-add',
@@ -17,18 +16,31 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class IndustyAddComponent {
   subscription ? : Subscription;
   mainUrl!: string;
-  idParam!:number;
+  idParam!: number;
+  req: InsertIndustryReq = {
+    isActive: true,
+    name: "",
+    code: ""
+  }
   constructor(
-    private router: Router, 
+    private industryService: IndustryService,
+    private router: Router,
     private activatedRoute: ActivatedRoute
-    ) {}
+  ) {}
 
-    ngOnInit(): void {
-      const thisUrl: string[] = this.router.url.split("/");
-      this.mainUrl = thisUrl[1] + "/" + thisUrl[2];
-    }
-  
+  ins() {
+    this.subscription = this.industryService.insert(this.req)
+    .subscribe(result => {
+        this.router.navigateByUrl(this.mainUrl);
+      })
+  }
+
+  ngOnInit(): void {
+    const thisUrl: string[] = this.router.url.split("/");
+    this.mainUrl = thisUrl[1] + "/" + thisUrl[2];
+  }
+
   back() {
-    this.router.navigateByUrl("/"+this.mainUrl);
+    this.router.navigateByUrl("/" + this.mainUrl);
   }
 }
