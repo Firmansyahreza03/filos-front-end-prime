@@ -7,11 +7,11 @@ import { UpdateIndustryReq } from "../../../../pojo/pojo-import";
 import { IndustryService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-industy-edit',
-  templateUrl: './industy-edit.component.html',
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
   providers: [ConfirmationService, MessageService]
 })
-export class IndustyEditComponent {
+export class UserEditComponent {
   subscription ?: Subscription;
   mainUrl!: string;
   idParam!: string;
