@@ -29,6 +29,9 @@
     max-height: calc(1.5rem);
     overflow: hidden;
 }
+.btnClick{
+    cursor: pointer;
+}
 
 @media (max-width: 992px) {
     .image-box{
@@ -36,9 +39,8 @@
         width:300px;
         object-fit: cover;
     }
-    .card{
+    .card-community{
         height: 490px;
-        cursor: pointer;
     }
   }
 
@@ -49,9 +51,8 @@
         object-fit: cover;
         object-position: center;
     }
-    .card{
+    .card-community{
         height: 490px;
-        cursor: pointer;
     }
     
 }
