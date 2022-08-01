@@ -1,10 +1,10 @@
-import { IndustyEditComponent } from './industy-edit/industy-edit.component';
+import { IndustyEditComponent } from './industry-edit/industy-edit.component';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { IndustyListComponent } from "./industy-list/industy-list.component";
-import { IndustyRouting } from "./industy.routing";
+import { IndustyListComponent } from "./industry-list/industy-list.component";
+import { IndustyRouting } from "./industry.routing";
 
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
@@ -15,7 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { IndustyAddComponent } from "./industy-add/industy-add.component";
+import { IndustyAddComponent } from "./industry-add/industy-add.component";
 
 @NgModule({
     declarations:[

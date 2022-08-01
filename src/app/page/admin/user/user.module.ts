@@ -15,13 +15,13 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { UserListComponent } from "./user-list/user-list.component";
 import { UserAddComponent } from "./user-add/user-add.component";
-import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
     declarations:[
         UserListComponent,
         UserAddComponent,
-        UserEditComponent
+        UserDetailComponent
     ],
     imports:[
         UserRouting,
@@ -42,7 +42,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     exports :[
         UserListComponent,
         UserAddComponent,
-        UserEditComponent
+        UserDetailComponent
     ]
 })
 export class UserModule{}

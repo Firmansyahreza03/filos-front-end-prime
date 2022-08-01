@@ -1,9 +1,9 @@
 
 import { Component, NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
-import { IndustyEditComponent } from './industy-edit/industy-edit.component';
-import { IndustyAddComponent } from "./industy-add/industy-add.component";
-import { IndustyListComponent } from "./industy-list/industy-list.component";
+import { IndustyEditComponent } from './industry-edit/industy-edit.component';
+import { IndustyAddComponent } from "./industry-add/industy-add.component";
+import { IndustyListComponent } from "./industry-list/industy-list.component";
 
 const routes : Routes =[
     {

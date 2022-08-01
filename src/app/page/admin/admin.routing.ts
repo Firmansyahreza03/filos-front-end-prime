@@ -11,7 +11,7 @@ const routes : Routes=[
     },
     {
         path: 'industry', 
-        loadChildren: () => import('./industy/industy.module').then(m => m.IndustyModule)
+        loadChildren: () => import('./industy/industry.module').then(m => m.IndustyModule)
     },
     {
         path: 'user', 
