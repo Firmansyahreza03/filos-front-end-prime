@@ -31,7 +31,6 @@ export class AdminNavComponent {
     if (logUser != null) {
       this.subscribtion = this.userService.findByEmail(logUser)
         .subscribe(result => {
-          console.log(result)
           if (result.data.fileId != null) {
             this.proPic = 'http://localhost:3333/files/' + result.data.fileId;
           } else {
@@ -43,7 +42,7 @@ export class AdminNavComponent {
   initMenu() {
     this.items = [{
       label: 'LOG OUT',
-      icon: 'pi pi-times',
+      icon: 'pi pi-power-off',
       command: () => {
         this.logOut();
       }

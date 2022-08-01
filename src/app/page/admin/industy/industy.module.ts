@@ -1,3 +1,4 @@
+import { IndustyEditComponent } from './industy-edit/industy-edit.component';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
@@ -19,7 +20,8 @@ import { IndustyAddComponent } from "./industy-add/industy-add.component";
 @NgModule({
     declarations:[
         IndustyListComponent,
-        IndustyAddComponent
+        IndustyAddComponent,
+        IndustyEditComponent
     ],
     imports:[
         IndustyRouting,
@@ -39,7 +41,8 @@ import { IndustyAddComponent } from "./industy-add/industy-add.component";
     ],
     exports :[
         IndustyListComponent,
-        IndustyAddComponent
+        IndustyAddComponent,
+        IndustyEditComponent
     ]
 })
 export class IndustyModule{}

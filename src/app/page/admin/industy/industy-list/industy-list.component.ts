@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
-import { DeleteRes } from "src/app/pojo/delete-res";
 import { DataIndustry } from 'src/app/pojo/industry/data-industry';
-import { FindAllIndustryRes } from "src/app/pojo/pojo-import";
-import { IndustryService } from "src/app/service/industry.service";
+import { DeleteRes } from "src/app/pojo/pojo-import";
+import { IndustryService } from "src/app/service/import.service";
 
 @Component({
   selector: 'app-industy-list',
@@ -46,7 +45,6 @@ export class IndustyListComponent {
   ) {}
 
   loadData(event: LazyLoadEvent) {
-    console.log(event)
     this.viewData(event.first, event.rows, event.globalFilter)
   }
 
