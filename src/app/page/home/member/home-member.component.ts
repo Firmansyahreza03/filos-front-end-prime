@@ -32,6 +32,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   bookmarkSubs?: Subscription;
   eventSubs?: Subscription;
   trainingSubs? : Subscription;
+  threadLikedByUserLoggedSubs?: Subscription;
   panelTab: string = 'myActivities';
 
   listThreadCategory: FindAllThreadCategoryRes = {};
@@ -45,6 +46,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   listTraining: FindAllCommunityRes = {};
 
   createThreadHdr: InsertThreadHdrReq = {};
+
+  listThreadHdrLike: FindAllThreadHdrRes = {};
 
   constructor(
     private threadCategoryService: ThreadCategoryService,
@@ -71,6 +74,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.getAllThreadByUserLogged();
     this.getAllEvent();
     this.getAllTraining();
+    this.getAllThreadThatAreLikedByUserLogged();
   }
 
   ngOnDestroy(): void {
@@ -82,6 +86,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedSubs?.unsubscribe();
     this.eventSubs?.unsubscribe();
     this.trainingSubs?.unsubscribe();
+    this.threadLikedByUserLoggedSubs?.unsubscribe();
   }
 
   findTreadCategory(): void {
@@ -118,6 +123,14 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       });
   }
 
+  getAllThreadThatAreLikedByUserLogged(): void{
+    this.threadLikedByUserLoggedSubs = this.threadHdrService
+    .getThreadThatAreLikedByUser(this.loginService.getLoggedEmail()!)
+    .subscribe((res) =>{
+      this.listThreadHdrLike = res;
+    })
+  }
+
   onSubmit(): void {
     this.threadSubscription = this.threadHdrService
       .insertThreadHdr(this.createThreadHdr)
@@ -152,6 +165,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
             }
           }
         }
+        this.getAllThreadThatAreLikedByUserLogged();
       });
   }
 
@@ -181,6 +195,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
             }
           }
         }
+        this.getAllThreadThatAreLikedByUserLogged();
       });
   }
 
