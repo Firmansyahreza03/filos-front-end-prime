@@ -10,6 +10,9 @@ export interface DataProfile {
 	industryName:string
 	userId:string
 	userEmail:string
-	fileId:string
+	fileId?:string
+	roleCode:string
+	roleName:string
+	balance:string
 	isSubscriber:boolean
 }

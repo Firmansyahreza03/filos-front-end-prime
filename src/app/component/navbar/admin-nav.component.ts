@@ -31,8 +31,8 @@ export class AdminNavComponent {
     if (logUser != null) {
       this.subscribtion = this.userService.findByEmail(logUser)
         .subscribe(result => {
-          if (result.data.fileId != null) {
-            this.proPic = 'http://localhost:3333/files/' + result.data.fileId;
+          if (result.data?.fileId != null) {
+            this.proPic = 'http://localhost:3333/files/' + result.data?.fileId;
           } else {
             this.proPic = DefaultPic.proFile;
           }

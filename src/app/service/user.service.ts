@@ -16,7 +16,7 @@ export class UserService{
         return this.http.get<FindProfileRes>('http://localhost:3333/users/email/'+ data)
     }
 
-    findById(id : number) : Observable<FindProfileRes>{
+    findById(id : string) : Observable<FindProfileRes>{
         return this.http.get<FindProfileRes>(`http://localhost:3333/users/${id}`)
     }
 

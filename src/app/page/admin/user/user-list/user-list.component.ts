@@ -94,12 +94,8 @@ export class UserListComponent {
     this.mainUrl = thisUrl[1] + "/" + thisUrl[2] + "/";
   }
 
-  toAdd():void{
-    this.router.navigateByUrl(this.mainUrl+"add");
-  }
-
-  toEdit(id:string):void{
-    this.router.navigateByUrl(this.mainUrl+"edit/"+id);
+  toDtl(id:string):void{
+    this.router.navigateByUrl(this.mainUrl+"dtl/"+id);
   }
 
   ngOnDestroy(): void {

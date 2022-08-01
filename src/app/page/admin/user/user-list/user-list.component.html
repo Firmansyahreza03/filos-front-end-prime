@@ -3,11 +3,7 @@
     <div class="card-header">
       <div class="text-center">
         <p class="title fs-1">Data <strong>user</strong></p>
-        <p-divider align="center">
-          <button pButton pRipple type="button" label="Add data" icon="pi pi-plus-circle"
-            class="p-button-success p-button-rounded" title="Add Data" (click)="toAdd()">
-          </button>
-        </p-divider>
+        <p-divider align="center"> </p-divider>
       </div>
     </div>
     <div class="card-body">
@@ -60,12 +56,8 @@
             </td>
             <td>
               <div class="text-center">
-                <button pButton pRipple type="button" icon="fa fa-wrench"
-                  class="p-button-rounded p-button-secondary mr-1" title="edit Data" (click)="toEdit(data.id)">
-                </button>
-
-                <button pButton pRipple type="button" icon="fa fa-trash-o" class="p-button-rounded p-button-danger"
-                  title="delete Data" (click)="deleteConfirm(data.id)">
+                <button pButton pRipple type="button" icon="fa fa-info"
+                  class="p-button-rounded p-button-primary mr-1" title="detail user" (click)="toDtl(data.id)">
                 </button>
               </div>
             </td>
