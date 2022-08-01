@@ -2,6 +2,13 @@ import { LoginReq } from "./login/login-req";
 import { LoginRes } from "./login/login-res";
 import { GeneratedCode } from "./code/generate-code";
 
+import { DeleteRes } from "./delete-res";
+import { ErorRes } from "./eror-res";
+import { InsertRes } from "./insert-res";
+import { UpdateRes } from "./update-res";
+import { InsertResData } from "./insert-res-data";
+import { UpdateResData } from "./update-res-data";
+
 import { FindFileRes } from "./file/find-file-res";
 import { FindAllFileRes } from "./file/find-all-file-res";
 import { InsertFileReq } from "./file/insert-file-req";
@@ -103,25 +110,26 @@ import { UpdateUserReq } from "./user/update-user-req";
 import { RegisUserReq } from "./user/regis-user-req";
 
 export {
-    LoginReq, LoginRes, GeneratedCode,
-    FindFileRes, FindAllFileRes, InsertFileReq, UpdateFileReq,
-    FindRoleRes, FindAllRoleRes, InsertRoleReq, UpdateRoleReq,
-    FindArticleRes, FindAllArticleRes, InsertArticleReq, UpdateArticleReq,
-    FindBalanceRes, FindAllBalanceRes, InsertBalanceReq, UpdateBalanceReq,
-    FindBookmarkRes, FindAllBookmarkRes, InsertBookmarkReq, UpdateBookmarkReq,
-    FindCommunityRes, FindAllCommunityRes, InsertCommunityReq, UpdateCommunityReq,
-    FindCommunityCategoryRes, FindAllCommunityCategoryRes, InsertCommunityCategoryReq, UpdateCommunityCategoryReq,
-    FindIndustryRes, FindAllIndustryRes, InsertIndustryReq, UpdateIndustryReq,
-    FindMemberCommunityRes, FindAllMemberCommunityRes, InsertMemberCommunityReq, UpdateMemberCommunityReq,
-    FindPaymentTransactionRes, FindAllPaymentTransactionRes, InsertPaymentTransactionReq, UpdatePaymentTransactionReq,
-    FindPollingAnswerRes, FindAllPollingAnswerRes, InsertPollingAnswerReq,
-    FindPollingOptionRes, FindAllPollingOptionRes, InsertPollingOptionReq, UpdatePollingOptionReq,
-    FindPollingHeaderRes, FindAllPollingHeaderRes, InsertPollingHeaderReq, UpdatePollingHeaderReq,
-    FindProfileRes, FindAllProfileRes, InsertProfileReq, UpdateProfileReq,
-    FindSubsStatusRes, FindAllSubsStatusRes, InsertSubsStatusReq, UpdateSubsStatusReq,
-    FindThreadCategoryRes, FindAllThreadCategoryRes, InsertThreadCategoryReq, UpdateThreadCategoryReq,
-    FindThreadDtlRes, FindAllThreadDtlRes, InsertThreadDtlReq, UpdateThreadDtlReq,
-    FindThreadHdrRes, FindAllThreadHdrRes, InsertThreadHdrReq, UpdateThreadHdrReq,
-    FindThreadLikedRes, FindAllThreadLikedRes, InsertThreadLikedReq, UpdateThreadLikedReq,
-    FindUserRes, FindAllUserRes, InsertUserReq, UpdateUserReq, RegisUserReq
+  DeleteRes, ErorRes, InsertRes, UpdateRes, InsertResData, UpdateResData,
+  LoginReq, LoginRes, GeneratedCode,
+  FindFileRes, FindAllFileRes, InsertFileReq, UpdateFileReq,
+  FindRoleRes, FindAllRoleRes, InsertRoleReq, UpdateRoleReq,
+  FindArticleRes, FindAllArticleRes, InsertArticleReq, UpdateArticleReq,
+  FindBalanceRes, FindAllBalanceRes, InsertBalanceReq, UpdateBalanceReq,
+  FindBookmarkRes, FindAllBookmarkRes, InsertBookmarkReq, UpdateBookmarkReq,
+  FindCommunityRes, FindAllCommunityRes, InsertCommunityReq, UpdateCommunityReq,
+  FindCommunityCategoryRes, FindAllCommunityCategoryRes, InsertCommunityCategoryReq, UpdateCommunityCategoryReq,
+  FindIndustryRes, FindAllIndustryRes, InsertIndustryReq, UpdateIndustryReq,
+  FindMemberCommunityRes, FindAllMemberCommunityRes, InsertMemberCommunityReq, UpdateMemberCommunityReq,
+  FindPaymentTransactionRes, FindAllPaymentTransactionRes, InsertPaymentTransactionReq, UpdatePaymentTransactionReq,
+  FindPollingAnswerRes, FindAllPollingAnswerRes, InsertPollingAnswerReq,
+  FindPollingOptionRes, FindAllPollingOptionRes, InsertPollingOptionReq, UpdatePollingOptionReq,
+  FindPollingHeaderRes, FindAllPollingHeaderRes, InsertPollingHeaderReq, UpdatePollingHeaderReq,
+  FindProfileRes, FindAllProfileRes, InsertProfileReq, UpdateProfileReq,
+  FindSubsStatusRes, FindAllSubsStatusRes, InsertSubsStatusReq, UpdateSubsStatusReq,
+  FindThreadCategoryRes, FindAllThreadCategoryRes, InsertThreadCategoryReq, UpdateThreadCategoryReq,
+  FindThreadDtlRes, FindAllThreadDtlRes, InsertThreadDtlReq, UpdateThreadDtlReq,
+  FindThreadHdrRes, FindAllThreadHdrRes, InsertThreadHdrReq, UpdateThreadHdrReq,
+  FindThreadLikedRes, FindAllThreadLikedRes, InsertThreadLikedReq, UpdateThreadLikedReq,
+  FindUserRes, FindAllUserRes, InsertUserReq, UpdateUserReq, RegisUserReq
 }

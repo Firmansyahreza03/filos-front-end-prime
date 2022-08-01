@@ -13,7 +13,7 @@ export class UserService{
     constructor(private http: HttpClient){}
 
     findByEmail(data: string):Observable<FindProfileRes>{
-        return this.http.get<FindProfileRes>('http://localhost:3333/users/email'+ data)
+        return this.http.get<FindProfileRes>('http://localhost:3333/users/email/'+ data)
     }
 
     findById(id : number) : Observable<FindProfileRes>{
