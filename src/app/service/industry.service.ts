@@ -26,6 +26,7 @@ export class IndustryService {
         }
         return this.http.get<FindAllIndustryRes>(urlAPI);
     }
+
     insert(data:InsertIndustryReq): Observable<InsertRes> {
         return this.http.post<InsertRes>("http://localhost:3333/industries", data)
     }

@@ -1,20 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription, toArray } from 'rxjs';
-import { CommunityCategory } from 'src/app/constant/community-category';
 import {
-  FindAllCommunityRes,
   FindAllThreadCategoryRes,
   FindAllThreadHdrRes,
   InsertThreadHdrReq,
 } from 'src/app/pojo/pojo-import';
-import { BookmarkService } from 'src/app/service/bookmark.service';
-import { CommunityService } from 'src/app/service/community.service';
 import { LoginService } from 'src/app/service/login.service';
 import { UserService } from 'src/app/service/user.service';
 import { ThreadCategoryService } from 'src/app/service/thread-category.service';
 import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
 import { ThreadLikedService } from 'src/app/service/thread-liked.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-member',
@@ -31,29 +27,21 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   profileThreadSubscription?: Subscription;
   threadCategorySubs?: Subscription;
   threadLikedSubs?: Subscription;
-  bookmarkSubs?: Subscription;
-  eventSubs?: Subscription;
-  trainingSubs? : Subscription;
   panelTab: string = 'myActivities';
 
   listThreadCategory: FindAllThreadCategoryRes = {
     data: [],
+    count: 0,
   };
 
   listThreadHdr: FindAllThreadHdrRes = {
     data: [],
+    count: 0,
   };
 
   listThreadHdrByUserLogged: FindAllThreadHdrRes = {
-    data: []
-  };
-
-  listEvent: FindAllCommunityRes = {
-    data: []
-  };
-  
-  listTraining: FindAllCommunityRes = {
-    data: []
+    data: [],
+    count: 0,
   };
 
   createThreadHdr: InsertThreadHdrReq = {};
@@ -64,10 +52,14 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: Router,
     private loginService: LoginService,
-    private likeThreadService: ThreadLikedService,
-    private bookmarkService: BookmarkService,
-    private communityService: CommunityService
+    private likeThreadService: ThreadLikedService
   ) {}
+
+  findTreadCategory(): void {
+    this.threadCategoryService.getAllThreadCategory().subscribe((result) => {
+      this.listThreadCategory = result;
+    });
+  }
 
   ngOnInit(): void {
     this.createThreadHdr.categoryId = 'f43dba1d-8a2a-45e4-a0da-f3eb7d688c9d';
@@ -83,37 +75,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
     this.getAllThread();
     this.getAllThreadByUserLogged();
-    this.getAllEvent();
-    this.getAllTraining();
-  }
-
-  ngOnDestroy(): void {
-    this.threadSubscription?.unsubscribe();
-    this.threadHdrListSubscription?.unsubscribe();
-    this.threadCategorySubs?.unsubscribe();
-    this.threadHdrListByUserLoggedSubscription?.unsubscribe();
-    this.profileThreadSubscription?.unsubscribe();
-    this.threadLikedSubs?.unsubscribe();
-    this.eventSubs?.unsubscribe();
-    this.trainingSubs?.unsubscribe();
-  }
-
-  findTreadCategory(): void {
-    this.threadCategoryService.getAllThreadCategory().subscribe((result) => {
-      this.listThreadCategory = result;
-    });
-  }
-
-  getAllEvent(): void {
-    this.eventSubs = this.communityService.getByIndustryAndCategory(this.loginService.getLoggedEmail()!, CommunityCategory.event, 0, 3).subscribe((res)=>{
-      this.listEvent = res;
-    })
-  }
-
-  getAllTraining(): void {
-    this.trainingSubs = this.communityService.getByIndustryAndCategory(this.loginService.getLoggedEmail()!, CommunityCategory.training, 0, 3).subscribe((res)=>{
-      this.listTraining = res;
-    })
   }
 
   getAllThread(): void {
@@ -135,72 +96,33 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.threadSubscription = this.threadHdrService
       .insertThreadHdr(this.createThreadHdr)
-      .subscribe(() => {
+      .subscribe((_) => {
         this.getAllThread();
         this.getAllThreadByUserLogged();
       });
   }
 
+  ngOnDestroy(): void {
+    this.threadSubscription?.unsubscribe();
+    this.threadHdrListSubscription?.unsubscribe();
+    this.threadCategorySubs?.unsubscribe();
+    this.threadHdrListByUserLoggedSubscription?.unsubscribe();
+    this.profileThreadSubscription?.unsubscribe();
+    this.threadCategorySubs?.unsubscribe();
+    this.threadLikedSubs?.unsubscribe();
+  }
+
   likeThread(id: string, index: number): void {
     this.threadLikedSubs = this.likeThreadService
       .likeThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {
-        if (res.isLiked == true) {
-          let counter = parseInt(this.listThreadHdr.data[index].counterLike!) + 1;
-          this.listThreadHdr.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdrByUserLogged.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[i].id = this.listThreadHdr.data[index].id
-            ) {
-              this.listThreadHdrByUserLogged.data[i].counterLike = counter.toString();
-            }
-          }
-        } else {
-          let counter = parseInt(this.listThreadHdr.data[index].counterLike!) - 1;
-          this.listThreadHdr.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdrByUserLogged.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[i].id == this.listThreadHdr.data[index].id
-            ) {
-              this.listThreadHdrByUserLogged.data[i].counterLike = counter.toString();
-            }
-          }
-        }
-      });
-  }
-
-  likeThreadLoggedUser(id: string, index: number): void {
-    this.threadLikedSubs = this.likeThreadService
-      .likeThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {
+      .subscribe((res) => {                
         if (res.isLiked == true) {
           let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) + 1;
           this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdr.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[index].id == this.listThreadHdr.data[i].id
-            ) {
-              this.listThreadHdr.data[i].counterLike = counter.toString();
-            }
-          }
         } else {
           let counter = parseInt(this.listThreadHdrByUserLogged.data[index].counterLike!) - 1;
           this.listThreadHdrByUserLogged.data[index].counterLike = counter.toString();
-          for (let i = 0; i < this.listThreadHdr.data.length; i++) {
-            if (
-              this.listThreadHdrByUserLogged.data[index].id ==
-              this.listThreadHdr.data[i].id
-            ) {
-              this.listThreadHdr.data[i].counterLike = counter.toString();
-            }
-          }
         }
       });
-  }
-
-  bookmarkThread(id: string): void {
-    this.bookmarkSubs = this.bookmarkService
-      .bookmarkThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe(() => {});
   }
 }

@@ -1,12 +1,12 @@
 export interface InsertThreadHdrReq {
-  isActive?: boolean;
+	isActive? : boolean
 
-  threadName?: string;
-  threadContent?: string;
-  isPremium?: boolean;
-  pollingHdrId?: string;
-  categoryId?: string;
-  fileName?: string;
-  fileTxt?: string;
-  email?: string;
+	threadName ?:string
+	threadContent ?:string
+	isPremium ?:boolean
+	pollingHdrId ?:string
+	categoryId ?:string
+	fileName?:string
+	fileTxt?:string
+	email?:string
 }
