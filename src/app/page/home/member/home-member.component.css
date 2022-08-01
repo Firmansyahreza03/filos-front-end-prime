@@ -29,3 +29,11 @@
 .card-thread{
     margin-top: -30px;
 }
+
+.btnClick{
+    cursor: pointer;
+}
+
+.btnClick:hover{
+    opacity: 0.5;
+}
