@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityReq } from "src/app/pojo/pojo-import";
-import { CommunityCategoriesService } from "src/app/service/community-categories.service";
+import { CommunityCategoriesService } from "src/app/service/community-category.service";
 import { CommunityService } from "src/app/service/community.service";
 import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
@@ -38,7 +38,6 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
-        this.createCommunity.code="3261331"; //ini digenerate dibackend
         this.createCommunity.isActive=true;
         this.communityCategorySubscription=this.communityCategoriesService.getAllCommunityCategory().subscribe((result)=>{
             this.listCommunityCategories=result;
