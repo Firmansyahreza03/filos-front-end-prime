@@ -21,13 +21,9 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
   trainingSubs?: Subscription;
   communityData: FindCommunityRes = {};
 
-  listEvent: FindAllCommunityRes = {
-    data: [],
-  };
+  listEvent: FindAllCommunityRes = {};
 
-  listTraining: FindAllCommunityRes = {
-    data: [],
-  };
+  listTraining: FindAllCommunityRes = {};
 
   constructor(
     private router: Router,
@@ -42,7 +38,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
         const resultTmp: any = result;
         this.idParam = resultTmp.id;
         this.communityDtlSubscription = this.communityService
-          .getCommunityById(this.idParam)
+          .getCommunityById(Number(this.idParam))
           .subscribe((result) => {
             this.communityData = result;
           });
