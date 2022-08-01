@@ -20,8 +20,7 @@
             <div class="md:col-3 col-12" *ngFor="let event of listCommunity.data">
 
               <!-- Card Event -->
-              <!-- <a class="event-card" (click)="onClick(event.id)"> -->
-                <div class="card btnClick" (click)="onClick(event.id)">
+                <div class="card card-community btnClick" (click)="onClick(event.id)">
                   <div class="container">
                     <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
                       <div class="col-12 flex justify-content-center">
@@ -64,8 +63,6 @@
                     </div>
                   </div>
                 </div>
-              <!-- </a> -->
-
             </div>
           </div>
         </p-tabPanel>
@@ -76,7 +73,7 @@
             <div class="md:col-3 col-12" *ngFor="let training of listCommunity.data">
 
               <!-- Card Training -->
-                <div class="card btnClick" (click)="onClick(training.id)">
+                <div class="card card-community btnClick" (click)="onClick(training.id)">
                   <div class="container">
                     <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
                       <div class="col-12 flex justify-content-center">
@@ -122,10 +119,58 @@
             </div>
           </div>
         </p-tabPanel>
-        <p-tabPanel header="My Schedule">
-        </p-tabPanel>
 
-        <!-- All -->
+
+        <!--My Schedule -->
+        <p-tabPanel header="My Schedule">
+          <div class="grid flex flex-wrap row-gap-6">
+            <div class="col-12">
+
+              <!-- Card Schedule -->
+              <div class="card">
+
+                <!-- schedule -->
+              <div *ngFor="let training of listCommunity.data" >
+              <div class="container">
+                <div class="grid">
+                  <div class="col-3">
+                    <div class="image-content">
+                      <div class="image-box">
+                        <img src="http://localhost:3333/files/{{training.idFile}}" alt="" srcset="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-9">
+                    <div class="grid">
+                        <div class="col-12">
+                          <span class="bold black text-base title">{{training.title}}</span>
+                        </div>
+                        <div class="col-12">
+                          <span class="bold-medium black text-sm"> <i class="pi pi-users color-purple"
+                            style="font-size: 1rem"></i> {{training.provider}}</span>
+                        </div>
+                        <div class="col-12">
+                          <div class="grid">
+                            <div class="col-12 pb-0">
+                              <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
+                              <span class="black text-sm"> {{training.startAt}} s/d {{training.endAt}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <span class="black text-sm"> <i class="pi pi-circle-fill color-purple"
+                            style="font-size: 12px"></i> {{training.location}}</span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <p-divider></p-divider>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        </p-tabPanel>
 
       </p-tabView>
 

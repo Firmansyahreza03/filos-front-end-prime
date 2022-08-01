@@ -1,6 +1,6 @@
 <div class="container">
-    <!-- payment detail page -->
-    <div class="grid mt-1 p-5">
+    <!-- payment detail page /step 1 -->
+    <div class="grid mt-1 p-5" *ngIf="step==1">
         <!-- Halaman Kiri -->
         <div class="md:col-5 col-12">
             <div class="grid">
@@ -116,7 +116,7 @@
                         <div class="col-6">
                             <button pButton pRipple type="submit"
                   class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                  styleClass="p-button-sm text-center" label="Pay now >" routerLink="/payment"></button>
+                  styleClass="p-button-sm text-center" label="Pay now >" (click)="order()"></button>
                         </div>
                     </div>
                 </div>
@@ -124,8 +124,8 @@
         </div>
     </div>
 
-    <!-- waiting for payment page  -->
-    <div class="grid justify-content-center">
+    <!-- waiting for payment page /step 2 -->
+    <div class="grid justify-content-center" *ngIf="step==2">
         <div class="md:col-6 col-12">
             <div class="grid">
                 <div class="col-12 text-center">
@@ -135,10 +135,94 @@
                     <span class="back font-medium">Waiting for payment</span>
                 </div>
                 <div class="col-12 pt-2 warning">
-                    <p class="text-base font-medium">We have received your order. Please complete your payment to gain access to the event</p>
+                    <p class="text-sm font-medium">We have received your order. Please complete your payment to gain access to the event</p>
+                </div>
+
+                <!-- Card -->
+                <div class="col-12 mt-4 card">
+                    <div class="container">
+                    <div class="grid mt-2">
+                        <div class="col-12">
+                            <p class="text-sm">Make a payment to the virtual account number according to the total bill in the summary as below: </p>
+                        </div>
+                        <div class="col-12">
+                            <div class="grid mb-1">
+                                <div class="col-5">
+                                    <p class="text-sm font-medium">Virtual Account Number:</p>
+                                    <p class="font-bold text-green-700">10511091003273</p>
+                                </div>
+                                <div class="col-7">
+                                    <p class="text-sm font-medium">Total:</p>
+                                    <p class="font-bold text-green-700">Rp.400.000</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p-divider></p-divider>
+                                <p class="text-xs font-medium">Have you completed the payment?</p>
+                        </div>
+
+                        <!-- Action -->
+                        <div class="col-12 mt-3 pb-0">
+                            <div class="grid justify-content-center">
+                                <div class="col-6">
+                                    <button pButton pRipple type="submit"
+                          class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                          styleClass="p-button-sm text-center" label="Payment confirmation" (click)="payment()"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- confirmation payment page /step 3 -->
+    <div class="grid justify-content-center"  *ngIf="step==3">
+        <div class="md:col-6 col-12">
+            <div class="grid">
+                <div class="col-12 text-center">
+                    <img src="../../../assets/image/logo-filos-1.png" height="40" class="mr-2">
+                </div>
+                <div class="col-12 text-center">
+                    <span class="back font-medium">Payment Confirmation</span>
+                </div>
+                <!-- Card -->
+                <div class="col-12 mt-4 card">
+                    <div class="container">
+                    <div class="grid mt-2 justify-content-center">
+                        <div class="col-12">
+                            <p class="text-sm">Upload your proof of payment for confirmation. </p>
+                        </div>
+                        <form (ngSubmit)="confirmation()">
+                        <!-- Upload Foto -->
+                        <div class="col-12">
+                            <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)">
+                            <ng-template pTemplate="content">
+                                <ul *ngIf="uploadedFiles.length">
+                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                                </ul>
+                            </ng-template>
+                            </p-fileUpload>
+                        </div>
+
+                        <!-- Action -->
+                        <div class="col-12 mt-3 pb-0">
+                            <div class="grid justify-content-center">
+                                <div class="col-6">
+                                    <button pButton pRipple type="submit"
+                          class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                          styleClass="p-button-sm text-center" label="Confirmation"></button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

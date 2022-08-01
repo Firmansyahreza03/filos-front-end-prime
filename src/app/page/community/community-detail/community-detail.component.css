@@ -25,7 +25,9 @@
     height: 60px;
     border-radius: 50%;
 }
-
+.btnClick{
+    cursor: pointer;
+}
 .image-content{
     height: 100%;
     width: 100%;
