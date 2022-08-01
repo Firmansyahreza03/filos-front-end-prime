@@ -5,19 +5,19 @@ import { InsertRes } from "../pojo/insert-res";
 import { FindAllThreadHdrRes, InsertThreadHdrReq } from "../pojo/pojo-import";
 
 @Injectable({
-    providedIn:'root'
+  providedIn: 'root'
 })
-export class ThreadHdrService{
-constructor(private http: HttpClient){}
-getAllThreadHdr():Observable<FindAllThreadHdrRes>{
-    return this.http.get<FindAllThreadHdrRes>('http://localhost:3333/threads')
-}
+export class ThreadHdrService {
+  constructor(private http: HttpClient) {}
+  getAllThreadHdr(): Observable < FindAllThreadHdrRes > {
+    return this.http.get < FindAllThreadHdrRes > ('http://localhost:3333/threads')
+  }
 
-getAllThreadHdrByUserLogged(data: string):Observable<FindAllThreadHdrRes>{
-    return this.http.get<FindAllThreadHdrRes>('http://localhost:3333/threads/users/'+data)
-}
+  getAllThreadHdrByUserLogged(data: string): Observable < FindAllThreadHdrRes > {
+    return this.http.get < FindAllThreadHdrRes > ('http://localhost:3333/threads/users/' + data)
+  }
 
-insertThreadHdr(data:InsertThreadHdrReq):Observable<InsertRes>{
-    return this.http.post<InsertRes>('http://localhost:3333/threads',data)
-}
+  insertThreadHdr(data: InsertThreadHdrReq): Observable < InsertRes > {
+    return this.http.post < InsertRes > ('http://localhost:3333/threads', data)
+  }
 }

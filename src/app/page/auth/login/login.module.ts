@@ -14,7 +14,7 @@ import { InputTextModule } from "primeng/inputtext";
     ButtonModule,
     CommonModule,
     FormsModule,
-    InputTextModule
+    InputTextModule,
   ],
   declarations: [
     LoginComponent

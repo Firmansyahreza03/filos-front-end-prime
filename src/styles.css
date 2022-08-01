@@ -124,12 +124,6 @@ body{
   color: #413588;
 }
 
-.back{
-  cursor: pointer;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 p.title{
   font-family: 'Poppins', sans-serif;
   line-height: 1;

@@ -1,6 +1,6 @@
 import { DataCommunity } from "./data-community";
 
 export interface FindAllCommunityRes{
-    data : DataCommunity[],
+    data? : DataCommunity[],
     count? : number
 }

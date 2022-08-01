@@ -3,11 +3,7 @@ import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
-<<<<<<< HEAD
-import {ConfirmationService, MessageService} from 'primeng/api';
-=======
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
->>>>>>> c69069cbd7f787a170192638d92d9780907dc9ba
 import { DeleteRes } from "src/app/pojo/delete-res";
 import { DataIndustry } from 'src/app/pojo/industry/data-industry';
 import { FindAllIndustryRes } from "src/app/pojo/pojo-import";
@@ -20,13 +16,6 @@ import { IndustryService } from "src/app/service/industry.service";
 })
 export class IndustyListComponent {
   subscription ? : Subscription;
-<<<<<<< HEAD
-  
-  listData!: FindAllIndustryRes;
-  delRes!: DeleteRes;
-  slcId!: number;
-
-=======
   loading: boolean = true;
 
   listData: DataIndustry[] = [];
@@ -49,7 +38,6 @@ export class IndustyListComponent {
     },
   ];
 
->>>>>>> c69069cbd7f787a170192638d92d9780907dc9ba
   constructor(
     private industryService: IndustryService,
     private messageService: MessageService,
@@ -57,14 +45,6 @@ export class IndustyListComponent {
     private router: Router
   ) {}
 
-<<<<<<< HEAD
-  ngOnInit(): void {
-    this.viewData();
-  }
-
-  viewData(): void {
-    this.subscription = this.industryService.getAllIndustry()
-=======
   loadData(event: LazyLoadEvent) {
     console.log(event)
     this.viewData(event.first, event.rows, event.globalFilter)
@@ -77,9 +57,10 @@ export class IndustyListComponent {
     this.query = query
 
     this.subscription = this.industryService.getAllIndustry(startPage, maxPage, query)
->>>>>>> c69069cbd7f787a170192638d92d9780907dc9ba
       .subscribe((result) => {
-        this.listData = result;
+        this.loading = false;
+        this.listData = result.data;
+        this.totalData = result.count??this.listData.length;
       });
   }
 

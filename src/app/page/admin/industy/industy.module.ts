@@ -42,5 +42,4 @@ import { IndustyAddComponent } from "./industy-add/industy-add.component";
         IndustyAddComponent
     ]
 })
-
 export class IndustyModule{}

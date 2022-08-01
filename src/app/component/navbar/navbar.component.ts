@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit {
           routerLink: '/thread-detail'
         },
         {
-          label: 'Communities',
+          label: 'Community',
           routerLink: '/communities'
         },
       ]
