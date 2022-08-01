@@ -1,0 +1,170 @@
+<div class="container">
+  <div class="grid mt-3">
+    <div class="col-12">
+      <span class="back" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+    </div>
+  </div>
+  <div class="grid">
+    <!-- Halaman Kiri -->
+    <div class="md:col-9 col-12">
+      <div class="grid">
+
+        <div class="col-12">
+          <!-- Card Event -->
+          <div class="card">
+            <div class="container">
+
+              <!-- header -->
+              <div class="grid flex flex-wrap justify-content-start row-gap-0">
+                <div class="md:col-6 col-12 flex justify-content-center">
+                  <div class="image-content">
+                    <div class="image-box">
+                      <img src="http://localhost:3333/files/{{communityData.data?.idFile}}" alt="" srcset=""
+                      class="event-pic">
+                    </div>
+                  </div>
+                </div>
+                <div class="md:col-6 col-12">
+                  <div class="grid">
+                    <div class="col-12">
+                      <p class="text-lg font-semibold">{{communityData.data?.title}}</p>
+                    </div>
+                  </div>
+                  <div class="grid mt-3">
+                    <div class="col-12">
+                      <div class="grid">
+                        <div class="col-1">
+                          <i class="pi pi-users color-purple" style="font-size: 1rem"></i>
+                        </div>
+                        <div class="col-11">
+                          <p class="text-800 font-medium text-base"> {{communityData.data?.provider}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="grid">
+                        <div class="col-1">
+                          <i class="pi 
+                            pi-money-bill color-purple" style="font-size: 12px"></i>
+                        </div>
+                        <div class="col-11">
+                          <p class="color-yellow font-semibold text-lg"> Rp. {{communityData.data?.price}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="grid">
+                        <div class="col-1">
+                          <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
+                        </div>
+                        <div class="col-11">
+                          <p class="text-800 font-medium text-base"> {{communityData.data?.startAt}}</p>
+                          <p class="mt-2 text-800 font-medium text-base"> {{communityData.data?.endAt}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="grid">
+                        <div class="col-1">
+                          <i class="pi pi-circle-fill color-purple" style="font-size: 12px"></i>
+                        </div>
+                        <div class="col-11">
+                          <p class="text-800 font-medium text-base">{{communityData.data?.location}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="grid mt-4 flex flex-wrap justify-content-start row-gap-0">
+                <div class="col-12">
+                  <p>{{communityData.data?.desc}}</p>
+                </div>
+              </div>
+
+              <!-- Action -->
+              <div class="grid mt-4 flex flex-wrap justify-content-end row-gap-0">
+                <div class="md:col-5 col-12">
+                  <button pButton pRipple type="submit"
+                  class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                  styleClass="p-button-sm text-center" label="Next to Payment >" routerLink="/payment"></button>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Halaman Sebelah Kanan -->
+    <div class="md:col-3 col-12 right-page">
+      <div class="grid justify-content-center">
+        <div class="col-12 mt-1">
+          <span class="bold text-heading-3">Event for you</span>
+        </div>
+      </div>
+      <div class="card-transparent">
+        <div class="container">
+          <div class="grid justify-content-center" *ngFor="let event of listEvent.data">
+            <div class="col align-content-center">
+              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                <div class="col-4">
+                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
+                </div>
+                <div class="col-7 ml-1">
+                  <div class="grid">
+                    <div class="col-12">
+                      <span class="text-small bold">{{event.title}}</span>
+                    </div>
+                  </div>
+                  <div class="grid -mt-3">
+                    <div class="col-12">
+                      <span class="text-extrasmall bold-medium">{{event.provider}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training -->
+      <div class="grid justify-content-center">
+        <div class="col-12 mt-1">
+          <span class="bold text-heading-3">Training for you</span>
+        </div>
+      </div>
+      <div class="card-transparent" >
+        <div class="container">
+          <div class="grid justify-content-center" *ngFor="let training of listTraining.data; let i=index">
+            <div class="col align-content-center">
+              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                <div class="col-4">
+                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
+                </div>
+                <div class="col-7 ml-1">
+                  <div class="grid">
+                    <div class="col-12">
+                      <span class="text-small bold">{{training.title}}</span>
+                    </div>
+                  </div>
+                  <div class="grid -mt-3">
+                    <div class="col-12">
+                      <span class="text-extrasmall bold-medium">{{training.provider}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
