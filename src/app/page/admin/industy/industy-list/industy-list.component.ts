@@ -45,7 +45,6 @@ export class IndustyListComponent {
   ) {}
 
   loadData(event: LazyLoadEvent) {
-    console.log(event)
     this.viewData(event.first, event.rows, event.globalFilter)
   }
 

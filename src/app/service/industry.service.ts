@@ -12,7 +12,7 @@ import { FindAllIndustryRes, FindIndustryRes, InsertIndustryReq, UpdateIndustryR
 export class IndustryService {
     constructor(private http: HttpClient) { }
 
-    findById(id : number) : Observable<FindIndustryRes>{
+    findById(id : string) : Observable<FindIndustryRes>{
         return this.http.get<FindIndustryRes>(`http://localhost:3333/industries/${id}`)
     }
 

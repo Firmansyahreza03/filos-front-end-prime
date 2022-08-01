@@ -43,4 +43,8 @@ export class IndustyAddComponent {
   back() {
     this.router.navigateByUrl("/" + this.mainUrl);
   }
+  
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 }
