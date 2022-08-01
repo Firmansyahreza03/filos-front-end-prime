@@ -68,7 +68,7 @@
                             class="profile-pic">
                         </div>
                         <div class="col-2">
-                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryId"  optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
+                          <p-dropdown [options]="listThreadCategory.data!"  [(ngModel)]="createThreadHdr.categoryId" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
@@ -138,7 +138,7 @@
                   <div class="grid -mt-5 -mb-5">
                     <div class="col-2">
                       <button pButton pRipple type="button" icon="pi pi-heart"
-                        class="p-button-rounded p-button-help p-button-text" label="{{threadHdr.counterLike}}" (click)="likeThread(threadHdr.id, i)"></button>
+                        class="p-button-rounded p-button-help p-button-text" label="{{threadHdr.counterLike}}" (click)="likeThreadLoggedUser(threadHdr.id, i)"></button>
                     </div>
                     <div class="col-2">
                       <button pButton pRipple type="button" icon="pi pi-comment"
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-2 col-offset-6">
                       <button pButton pRipple type="button" icon="pi pi-bookmark"
-                        class="p-button-rounded p-button-secondary p-button-text"></button>
+                        class="p-button-rounded p-button-secondary p-button-text" (click)="bookmarkThread(threadHdr.id)"></button>
                     </div>
                   </div>
                 </div>
@@ -167,7 +167,7 @@
                             class="profile-pic">
                         </div>
                         <div class="col-2">
-                          <p-dropdown [options]="listThreadCategory.data"  [(ngModel)]="createThreadHdr.categoryId" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
+                          <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId" optionLabel="categoryName" optionValue="id" name="categoryName"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
@@ -238,7 +238,7 @@
                     <div class="grid -mt-5 -mb-5">
                       <div class="col-2">
                         <button pButton pRipple type="button" icon="pi pi-heart"
-                          class="p-button-rounded p-button-help p-button-text" [label]="threadHdr.counterLike!" (click)="likeThread(threadHdr.id, i)"></button>
+                          class="p-button-rounded p-button-help p-button-text" label="{{threadHdr.counterLike!}}" (click)="likeThread(threadHdr.id, i)"></button>
                       </div>
                       <div class="col-2">
                         <button pButton pRipple type="button" icon="pi pi-comment"
@@ -246,14 +246,62 @@
                       </div>
                       <div class="col-2 col-offset-6">
                         <button pButton pRipple type="button" icon="pi pi-bookmark"
-                          class="p-button-rounded p-button-secondary p-button-text"></button>
+                          class="p-button-rounded p-button-secondary p-button-text" (click)="bookmarkThread(threadHdr.id)"></button>
                       </div>
                     </div>
                   </div>
                 </div>
               </p-tabPanel>
               <p-tabPanel header="Like">
-                oke
+                <div class="thread" *ngFor="let threadHdrLike of listThreadHdrLike.data!; let i=index">
+                  <div class="card mt-3">
+                    <div class="container">
+                      <!-- Header -->
+                      <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
+                        <div class="col-2">
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                        </div>
+                        <div class="col-10">
+                          <div class="grid">
+                            <div class="col-12">
+                              <span class="bold black text-heading-3">{{threadHdrLike.creatorName}}</span>
+                            </div>
+                          </div>
+                          <div class="grid -mt-4">
+                            <div class="col-12">
+                              <span class="text-extrasmall">{{threadHdrLike.createdAt| date: 'medium'}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <!-- Content -->
+                      <div class="grid mt-3 mr-2 ml-2">
+                        <div class="col-12">
+                          <span class="bold black text-heading-3">{{threadHdrLike.threadName}}</span>
+                        </div>
+                        <div class="col-12">
+                          <p class="text-small">{{threadHdrLike.threadContent}} </div>
+                      </div>
+                      <p-divider></p-divider>
+  
+                      <!-- Action -->
+                      <div class="grid -mt-5 -mb-5">
+                        <div class="col-2">
+                          <button pButton pRipple type="button" icon="pi pi-heart"
+                            class="p-button-rounded p-button-help p-button-text" label="{{threadHdrLike.counterLike!}}" (click)="likeThread(threadHdrLike.id, i)"></button>
+                        </div>
+                        <div class="col-2">
+                          <button pButton pRipple type="button" icon="pi pi-comment"
+                            class="p-button-rounded p-button-warning p-button-text" label="5"></button>
+                        </div>
+                        <div class="col-2 col-offset-6">
+                          <button pButton pRipple type="button" icon="pi pi-bookmark"
+                            class="p-button-rounded p-button-secondary p-button-text" (click)="bookmarkThread(threadHdrLike.id)"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </p-tabPanel>
               <p-tabPanel header="Bookmark">
                 Content 3
@@ -263,18 +311,49 @@
         </p-tabView>
       </div>
     </div>
-
+    
     <!-- Halaman Sebelah Kanan -->
     <div class="md:col-3 col-12 right-page">
+      <div class="grid justify-content-center">
+        <div class="col-12 mt-1">
+          <span class="bold text-heading-3">Event for you</span>
+        </div>
+      </div>
+      <div class="card-transparent">
+        <div class="container">
+          <div class="grid justify-content-center" *ngFor="let event of listEvent.data">
+            <div class="col align-content-center">
+              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+                <div class="col-4">
+                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
+                </div>
+                <div class="col-7 ml-1">
+                  <div class="grid">
+                    <div class="col-12">
+                      <span class="text-small bold">{{event.title}}</span>
+                    </div>
+                  </div>
+                  <div class="grid -mt-3">
+                    <div class="col-12">
+                      <span class="text-extrasmall bold-medium">{{event.provider}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training -->
       <div class="grid justify-content-center">
         <div class="col-12 mt-1">
           <span class="bold text-heading-3">Training for you</span>
         </div>
       </div>
-      <div class="card-transparent">
+      <div class="card-transparent" >
         <div class="container">
-          <!-- event 1 -->
-          <div class="grid justify-content-center">
+          <div class="grid justify-content-center" *ngFor="let training of listTraining.data; let i=index">
             <div class="col align-content-center">
               <div class="grid" [style]="{ 'margin-top':'-20px'}">
                 <div class="col-4">
@@ -283,56 +362,12 @@
                 <div class="col-7 ml-1">
                   <div class="grid">
                     <div class="col-12">
-                      <span class="text-small bold">Title Training</span>
+                      <span class="text-small bold">{{training.title}}</span>
                     </div>
                   </div>
                   <div class="grid -mt-3">
                     <div class="col-12">
-                      <span class="text-extrasmall bold-medium">Provider Training</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- event 1 -->
-          <div class="grid justify-content-center">
-            <div class="col align-content-center">
-              <div class="grid" [style]="{ 'margin-top':'-20px'}">
-                <div class="col-4">
-                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
-                </div>
-                <div class="col-7 ml-1">
-                  <div class="grid">
-                    <div class="col-12">
-                      <span class="text-small bold">Title Training</span>
-                    </div>
-                  </div>
-                  <div class="grid -mt-3">
-                    <div class="col-12">
-                      <span class="text-extrasmall bold-medium">Provider Training</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- event 1 -->
-          <div class="grid justify-content-center">
-            <div class="col align-content-center">
-              <div class="grid" [style]="{ 'margin-top':'-20px'}">
-                <div class="col-4">
-                  <img src="../../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="event-pic">
-                </div>
-                <div class="col-7 ml-1">
-                  <div class="grid">
-                    <div class="col-12">
-                      <span class="text-small bold">Title Training</span>
-                    </div>
-                  </div>
-                  <div class="grid -mt-3">
-                    <div class="col-12">
-                      <span class="text-extrasmall bold-medium">Provider Training</span>
+                      <span class="text-extrasmall bold-medium">{{training.provider}}</span>
                     </div>
                   </div>
                 </div>

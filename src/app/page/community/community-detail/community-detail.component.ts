@@ -38,7 +38,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
         const resultTmp: any = result;
         this.idParam = resultTmp.id;
         this.communityDtlSubscription = this.communityService
-          .getCommunityById(Number(this.idParam))
+          .getCommunityById(this.idParam)
           .subscribe((result) => {
             this.communityData = result;
           });

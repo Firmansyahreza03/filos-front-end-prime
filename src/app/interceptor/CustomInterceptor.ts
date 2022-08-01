@@ -51,7 +51,7 @@ export class CustomInterceptor implements HttpInterceptor {
               }
               localStorage.clear();
             } 
-            else if (result.status == 500 || result.status == 404) {
+            else if (result.status == 500 || result.status == 404 || result.status == 400) {
               this.messageService.add({
                 severity: 'error',
                 summary: 'Error',
