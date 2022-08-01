@@ -57,7 +57,7 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
 
     onSubmit():void{
         this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
-            this.router.navigateByUrl("/communities/events")
+            this.router.navigateByUrl("/communities")
         })
 
     }

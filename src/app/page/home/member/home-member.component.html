@@ -82,8 +82,10 @@
                       <p-divider></p-divider>
                       <div class="grid -mt-3 -mb-3">
                         <div class="col-1">
-                          <button pButton pRipple type="button" icon="pi pi-image"
-                            class="p-button-rounded p-button-help p-button-text"></button>
+                          <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)" chooseIcon="pi pi-image" [auto]="true" [customUpload]="true" >                           
+                          </p-fileUpload>
+                          <!-- <button pButton pRipple type="button" icon="pi pi-image"
+                            class="p-button-rounded p-button-help p-button-text"></button> -->
                         </div>
                         <div class="col-1">
                           <button pButton pRipple type="button" icon="pi pi-bars"
@@ -103,7 +105,7 @@
 
             <!-- thread -->
             <div class="thread" *ngFor="let threadHdr of listThreadHdrByUserLogged.data; let i=index">
-              <div class="card mt-3">
+              <div class="card click mt-3" (click)="onClick(threadHdr.id)">
                 <div class="container">
                   <!-- Header -->
                   <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
@@ -131,6 +133,11 @@
                     </div>
                     <div class="col-12">
                       <p class="text-small">{{threadHdr.threadContent}} </div>
+                        <div class="image-content" *ngIf="threadHdr.fileId!=null">
+                          <div class="image-box">
+                            <img [src]="'http://localhost:3333/files/'+threadHdr.fileId" alt="" alt="">
+                          </div>
+                        </div>
                   </div>
                   <p-divider></p-divider>
 
@@ -203,7 +210,7 @@
               <p-tabPanel header="Thread">
                 <!-- thread -->
                 <div class="thread" *ngFor="let threadHdr of listThreadHdr.data!; let i=index">
-                <div class="card mt-3">
+                <div class="card click mt-3" (click)="onClick(threadHdr.id)">
                   <div class="container">
                     <!-- Header -->
                     <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">

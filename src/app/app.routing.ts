@@ -34,11 +34,6 @@ const routes: Routes = [
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
-        path: 'thread-detail',
-        component: MainLayoutComponent,
-        loadChildren: () => import('./page/thread-detail/thread-detail.module').then(m => m.ThreadDetailModule)
-    },
-    {
         path: 'communities',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/community/community.module').then(m => m.CommunityModule)
