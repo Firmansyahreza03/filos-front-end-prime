@@ -47,7 +47,7 @@ export class AdminSidebarComponent {
         items: [{
             label: 'Users',
             icon: 'pi pi-user',
-            routerLink: '/admin'
+            routerLink: '/admin/user'
           },
           {
             label: 'Industry',

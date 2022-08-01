@@ -13,6 +13,11 @@ body{
   vertical-align: baseline;
 }
 
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
 .text-small {
   font-size: 14px;
 }

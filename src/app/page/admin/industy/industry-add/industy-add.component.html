@@ -2,8 +2,8 @@
   <div class="card">
     <div class="card-header card-container">
         <div class="float-start">
-            <button pButton pRipple type="button" label="kembali" icon="fa fa-chevron-left"
-            class="p-button-secondary" title="kembali" (click)="back()">
+            <button pButton pRipple type="button" label="back" icon="fa fa-chevron-left"
+            class="p-button-secondary" title="back" (click)="back()">
             </button>
         </div>
         <div class="text-center">
@@ -12,29 +12,24 @@
     </div>
     <p-divider></p-divider>
     <div class="card-body">
-        <form action="" (ngSubmit)="save()" ngnativevalidate #form="ngForm">
+        <form action="" (ngSubmit)="ins()" ngnativevalidate #form="ngForm">
             <div class="grid mb-3 mb:md-1">
-                <div class="col-12">
+                <div class="col-12 md:col-6">
                     <label for="name">name</label>
                     <span class="text-danger p-error"> * </span>
                     <input pInputText type="text" class="form-control w-full" name="name" id="name" 
                     [(ngModel)]="req.name" placeholder="Type here" required>
                 </div>
-            </div>
-            <div class="grid">
-              <div class="col">
-                <button pButton pRipple type="submit" name="submitBtn" id="submitBtn" [disabled]="!form.valid"
-                class="p-button-success" icon="pi pi-pencil" label="submit">
-                </button>
-              </div>
-              <div class="col">
-                <div class="form-check form-switch float-end">
-                  <label class="form-check-label" for="isActive">Active?</label>
-                  <br>
-                  <p-inputSwitch class="form-check-input" type="checkbox" name="isActive" id="isActive" [(ngModel)]="req.isActive"></p-inputSwitch>
+                <div class="col-12 md:col-6">
+                    <label for="code">code</label>
+                    <span class="text-danger p-error"> * </span>
+                    <input pInputText type="text" class="form-control w-full" name="code" id="code" 
+                    [(ngModel)]="req.code" placeholder="Type here" required>
                 </div>
-              </div>
             </div>
+            <button pButton pRipple type="submit" name="submitBtn" id="submitBtn" [disabled]="!form.valid"
+            class="p-button-success" icon="pi pi-plus-circle" label="submit">
+            </button>
         </form>
     </div>
   </div>

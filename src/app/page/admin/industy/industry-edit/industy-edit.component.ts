@@ -15,7 +15,8 @@ export class IndustyEditComponent {
   subscription ?: Subscription;
   mainUrl!: string;
   idParam!: string;
-  req!: UpdateIndustryReq;
+  req: UpdateIndustryReq = {
+  }
 
   constructor(
     private industryService: IndustryService,
@@ -37,6 +38,7 @@ export class IndustyEditComponent {
     this.activatedRoute.params.subscribe(result =>{
         const resultTemp : any = result;
         this.idParam = resultTemp.id;
+        console.log(this.idParam);
         this.subscription = this.industryService.findById(this.idParam)
         .subscribe(result =>{
           console.log(result);

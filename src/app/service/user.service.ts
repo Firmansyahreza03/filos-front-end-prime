@@ -16,7 +16,7 @@ export class UserService{
         return this.http.get<FindProfileRes>('http://localhost:3333/users/email/'+ data)
     }
 
-    findById(id : number) : Observable<FindProfileRes>{
+    findById(id : string) : Observable<FindProfileRes>{
         return this.http.get<FindProfileRes>(`http://localhost:3333/users/${id}`)
     }
 
@@ -39,7 +39,7 @@ export class UserService{
     update(data : UpdateProfileReq) : Observable<UpdateRes>{
         return this.http.put<UpdateRes>('http://localhost:3333/user', data)
     }
-    delete(id : number) : Observable<DeleteRes>{
+    delete(id : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`http://localhost:3333/user/${id}`)
     }
 }
