@@ -17,8 +17,8 @@
                 <div class="col-12">
                   <div class="grid justify-content-center mt-1">
                     <div class="md:col-10 sm:col-12">
-                      <span class="bold-medium color-black text-heading-2">{{profileData.data!.fullName}}</span>
-                      <p class="text-extrasmall bold-medium">{{profileData.data!.positionName}}</p>
+                      <span class="bold-medium color-black text-heading-2">{{profileData.data?.fullName}}</span>
+                      <p class="text-extrasmall bold-medium">{{profileData.data?.positionName}}</p>
                     </div>
                   </div>
                 </div>
@@ -27,13 +27,13 @@
                 <div class="grid" [style]="{ 'margin-top':'12px'}">
                   <div class="col-12">
                     <span class="bold-medium color-black text-extrasmall">Email</span>
-                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data!.userEmail}}</p>
+                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data?.userEmail}}</p>
                   </div>
                 </div>
                 <div class="grid">
                   <div class="col-12">
                     <span class="bold-medium color-black text-extrasmall">Balance</span>
-                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data!.balance}}<p>
+                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data?.balance}}<p>
                   </div>
                 </div>
                 <div class="grid justify-content-center" [style]="{ 'margin-top':'8px'}">
