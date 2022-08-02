@@ -34,12 +34,12 @@ export class UserService{
     }
 
     insert(data:InsertProfileReq): Observable<InsertRes> {
-        return this.http.post<InsertRes>("http://localhost:3333/user", data)
+        return this.http.post<InsertRes>("http://localhost:3333/users", data)
     }
     update(data : UpdateProfileReq) : Observable<UpdateRes>{
-        return this.http.put<UpdateRes>('http://localhost:3333/user', data)
+        return this.http.put<UpdateRes>('http://localhost:3333/users', data)
     }
     delete(id : string) : Observable<DeleteRes>{
-        return this.http.delete<DeleteRes>(`http://localhost:3333/user/${id}`)
+        return this.http.delete<DeleteRes>(`http://localhost:3333/users/${id}`)
     }
 }

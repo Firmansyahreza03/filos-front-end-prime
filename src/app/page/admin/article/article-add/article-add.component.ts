@@ -1,41 +1,57 @@
-import { DataIndustry } from 'src/app/pojo/industry/data-industry';
-import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
 
 import {ConfirmationService, MessageService} from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DeleteRes, InsertIndustryReq } from "src/app/pojo/pojo-import";
-import { IndustryService } from "src/app/service/import.service";
+import { FindAllIndustryRes, InsertArticleReq } from "src/app/pojo/pojo-import";
+import { ArticleService, IndustryService } from "src/app/service/import.service";
 
 @Component({
-  selector: 'app-user-add',
-  templateUrl: './user-add.component.html',
+  selector: 'app-article-add',
+  templateUrl: './article-add.component.html',
   providers: [ConfirmationService, MessageService]
 })
-export class UserAddComponent {
+export class ArticleAddComponent {
   subscription ? : Subscription;
   mainUrl!: string;
   idParam!: number;
-  req: InsertIndustryReq = {
-    isActive: true,
-    name: "",
-    code: ""
+
+  listIndustry: FindAllIndustryRes = {
+    count: undefined,
+    data: []
   }
+  
+  req: InsertArticleReq = {
+    isActive: true,
+    title: "",
+    content: "",
+    idUser: "",
+    idIndustry: ""
+  }
+
   constructor(
+    private service: ArticleService,
     private industryService: IndustryService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
+  findAllIndustries(): void {
+    this.subscription = this.industryService.getAllIndustry()
+      .subscribe((result) => {
+        this.listIndustry = result;
+      })
+  }
+
   ins() {
-    this.subscription = this.industryService.insert(this.req)
-    .subscribe(result => {
+    this.subscription = this.service.insert(this.req)
+      .subscribe(() => {
         this.router.navigateByUrl(this.mainUrl);
       })
   }
 
   ngOnInit(): void {
+    this.findAllIndustries();
     const thisUrl: string[] = this.router.url.split("/");
     this.mainUrl = thisUrl[1] + "/" + thisUrl[2];
   }
@@ -43,7 +59,7 @@ export class UserAddComponent {
   back() {
     this.router.navigateByUrl("/" + this.mainUrl);
   }
-  
+
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }

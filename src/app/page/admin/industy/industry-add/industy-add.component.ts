@@ -1,11 +1,9 @@
-import { DataIndustry } from 'src/app/pojo/industry/data-industry';
-import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
 
 import {ConfirmationService, MessageService} from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DeleteRes, InsertIndustryReq } from "src/app/pojo/pojo-import";
+import { InsertIndustryReq } from "src/app/pojo/pojo-import";
 import { IndustryService } from "src/app/service/import.service";
 
 @Component({
@@ -30,8 +28,12 @@ export class IndustyAddComponent {
 
   ins() {
     this.subscription = this.industryService.insert(this.req)
-    .subscribe(result => {
-        this.router.navigateByUrl(this.mainUrl);
+      .subscribe(result => {
+        this.router.navigateByUrl('/', {
+          skipLocationChange: true
+        }).then(() => {
+          this.router.navigate([this.mainUrl]);
+        });
       })
   }
 
@@ -43,7 +45,7 @@ export class IndustyAddComponent {
   back() {
     this.router.navigateByUrl("/" + this.mainUrl);
   }
-  
+
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
