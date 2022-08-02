@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-2">
                           <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId"
-                            optionLabel="categoryName" optionValue="id" name="categoryName" 
+                            optionLabel="categoryName" optionValue="id" name="categoryName"
                             (onChange)="checkPollling($event)"></p-dropdown>
                         </div>
                       </div>
@@ -86,52 +86,48 @@
                         </div>
                       </div>
                       <p-divider></p-divider>
-                      <div class="grid -mt-3 -mb-3">
-                        <div class="col-1">
-                          <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
-                            styleClass="bg-none" chooseIcon="pi pi-image" [auto]="true" [customUpload]="true">
-                          </p-fileUpload>
-                        </div>
-                        <div class="col-1">
-                          <p-button *ngIf="polling" (click)="showModalDialog()" icon="pi pi-bars"></p-button>
-                          <p-dialog  header="Polling" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
-                            [draggable]="false" [resizable]="false">
-                            <div class="grid mt-1 flex flex-wrap">
-                              <div class="col-12">
-                                <input pInputText type="text" required="true"  class="w-full border-radius-20px"
-                                  placeholder="Title Polling" name="" />
-                              </div>
-                              <div class="col-12">
-                                <div class="grid" *ngFor="let polling of pollingArray.controls; last as isLast; index as idx;let i = index ">
-                                  <div class="md:col-9 col-7">
-                                      <input pInputText type="text" required="true"  class="w-full border-radius-20px"
-                                        [placeholder]="'Option ' + (i+1)"/>
-                                  </div>
-                                  <div class="md:col-3 col-5">
-                                    <button pButton pRipple type="button" icon="pi pi-plus"
-                                      class="p-button-rounded" *ngIf="isLast && pollingArray.length < 4" (click)="addInputControl()"></button>
-                                    <button pButton pRipple type="button" icon="pi pi-trash"
-                                      class="p-button-rounded p-button-danger"  (click)="removeInputControl(idx)" *ngIf="pollingArray.length > 1"></button>
-                                  </div>
+                      <div class="grid -mt-3 -mb-3 flex justify-content-between">
+                        <div class="col-12" *ngIf="polling">
+                          <div class="grid mt-1 flex flex-wrap">
+
+                            <!-- form polling -->
+                            <div class="col-12">
+                              <input pInputText type="text" required="true" class="w-full border-radius-20px"
+                                placeholder="Title Polling" name="" />
+                            </div>
+                            <div class="col-12">
+                              <div class="grid"
+                                *ngFor="let polling of pollingArray.controls; last as isLast; index as idx;let i = index ">
+                                <div class="md:col-9 col-7">
+                                  <input pInputText type="text" required="true" class="w-full border-radius-20px"
+                                    [placeholder]="'Option ' + (i+1)" />
+                                </div>
+                                <div class="md:col-3 col-5">
+                                  <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+                                    *ngIf="isLast && pollingArray.length < 4" (click)="addInputControl()"></button>
+                                  <button pButton pRipple type="button" icon="pi pi-trash"
+                                    class="p-button-rounded p-button-danger" (click)="removeInputControl(idx)"
+                                    *ngIf="pollingArray.length > 1"></button>
                                 </div>
                               </div>
-                              <div class="col-12">
-                                <div class="field col-12 md:col-4">
-                                  <label for="time" class="text-sm">Expired</label>
-                                  <p-calendar [(ngModel)]="expiredPolling" [showTime]="true" [showSeconds]="true" inputId="time" name="expiredAt"></p-calendar>
-                              </div>
-                              </div>
-                            
                             </div>
-                            <ng-template pTemplate="footer">
-                              <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok"
-                                styleClass="p-button-text"></p-button>
-                            </ng-template>
-                          </p-dialog>
-
-
+                            <div class="col-12">
+                              <div class="field col-12 md:col-4">
+                                <label for="time" class="text-sm">Expired</label>
+                                <p-calendar [(ngModel)]="expiredPolling" [showTime]="true" [showSeconds]="true"
+                                  inputId="time" name="expiredAt"></p-calendar>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-2 col-offset-8">
+
+                        <!-- Action -->
+                        <div class="col-2">
+                          <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
+                            chooseIcon="pi pi-image" [auto]="true" [customUpload]="true">
+                          </p-fileUpload>
+                        </div>
+                        <div class="md:col-2 col-4">
                           <button pButton pRipple type="submit"
                             class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
                             styleClass="p-button-sm text-center" label="Post"></button>
@@ -152,7 +148,7 @@
                     <div class="col-2">
                       <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
                     </div>
-                    <div class="col-10">
+                    <div class="col-8">
                       <div class="grid">
                         <div class="col-12">
                           <span class="bold black text-heading-3">{{threadHdr.creatorName}}</span>
@@ -163,6 +159,10 @@
                           <span class="text-extrasmall">{{threadHdr.createdAt| date: 'medium'}}</span>
                         </div>
                       </div>
+                    </div>
+                    <div class="col-2 ">
+                      <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                          style="font-size: 10px"></i></p>
                     </div>
                   </div>
                 </div>
@@ -183,21 +183,24 @@
                 <p-divider></p-divider>
 
                 <!-- Action -->
-                <div class="grid -mt-5 -mb-5">
+                <div class="grid -mb-3 ml-1">
                   <div class="col-2">
-                    <button pButton pRipple type="button" icon="pi pi-heart"
-                      class="p-button-rounded p-button-help p-button-text" label="{{threadHdr.counterLike}}"
-                      (click)="likeThreadLoggedUser(threadHdr.id, i)"></button>
+                    <div (click)="likeThreadLoggedUser(threadHdr.id, i)">
+                      <i class="pi pi-heart"></i>
+                      <span> {{threadHdr.counterLike}}</span>
+                    </div>
                   </div>
                   <div class="col-2">
-                    <button pButton pRipple type="button" icon="pi pi-comment"
-                      class="p-button-rounded p-button-warning p-button-text" label="5"
-                      (click)="onClick(threadHdr.id)"></button>
+                    <div (click)="likeThreadLoggedUser(threadHdr.id, i)">
+                      <i class="pi pi-heart-fill text-red-600"></i>
+                      <span> {{threadHdr.counterLike}}</span>
+                    </div>
                   </div>
-                  <div class="col-2 col-offset-6">
-                    <button pButton pRipple type="button" icon="pi pi-bookmark"
-                      class="p-button-rounded p-button-secondary p-button-text"
-                      (click)="bookmarkThread(threadHdr.id)"></button>
+                  <div class="col-2">
+                    <div (click)="onClick(threadHdr.id)">
+                      <i class="pi pi-comments"></i>
+                      <span> 5</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -219,7 +222,7 @@
                         </div>
                         <div class="col-2">
                           <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId"
-                            optionLabel="categoryName" optionValue="id" name="categoryName" 
+                            optionLabel="categoryName" optionValue="id" name="categoryName"
                             (onChange)="checkPollling($event)"></p-dropdown>
                         </div>
                       </div>
@@ -236,50 +239,44 @@
                       </div>
                       <p-divider></p-divider>
                       <div class="grid -mt-3 -mb-3">
+                        <div class="col-12" *ngIf="polling">
+                          <div class="grid mt-1 flex flex-wrap">
+
+                            <!-- form polling -->
+                            <div class="col-12">
+                              <input pInputText type="text" required="true" class="w-full border-radius-20px"
+                                placeholder="Title Polling" name="" />
+                            </div>
+                            <div class="col-12">
+                              <div class="grid"
+                                *ngFor="let polling of pollingArray.controls; last as isLast; index as idx;let i = index ">
+                                <div class="md:col-9 col-7">
+                                  <input pInputText type="text" required="true" class="w-full border-radius-20px"
+                                    [placeholder]="'Option ' + (i+1)" />
+                                </div>
+                                <div class="md:col-3 col-5">
+                                  <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+                                    *ngIf="isLast && pollingArray.length < 4" (click)="addInputControl()"></button>
+                                  <button pButton pRipple type="button" icon="pi pi-trash"
+                                    class="p-button-rounded p-button-danger" (click)="removeInputControl(idx)"
+                                    *ngIf="pollingArray.length > 1"></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12">
+                              <div class="field col-12 md:col-4">
+                                <label for="time" class="text-sm">Expired</label>
+                                <p-calendar [(ngModel)]="expiredPolling" [showTime]="true" [showSeconds]="true"
+                                  inputId="time" name="expiredAt"></p-calendar>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
                         <div class="col-1">
                           <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
                             styleClass="bg-none" chooseIcon="pi pi-image" [auto]="true" [customUpload]="true">
                           </p-fileUpload>
-                        </div>
-                        <div class="col-1">
-                          <p-button *ngIf="polling" (click)="showModalDialog()" icon="pi pi-bars"></p-button>
-                          <p-dialog  header="Polling" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
-                            [draggable]="false" [resizable]="false">
-                            <div class="grid mt-1 flex flex-wrap">
-                              <div class="col-12">
-                                <input pInputText type="text" required="true"  class="w-full border-radius-20px"
-                                  placeholder="Title Polling" name="" />
-                              </div>
-                              <div class="col-12">
-                                <div class="grid" *ngFor="let polling of pollingArray.controls; last as isLast; index as idx;let i = index ">
-                                  <div class="md:col-9 col-7">
-                                      <input pInputText type="text" required="true"  class="w-full border-radius-20px"
-                                        [placeholder]="'Option ' + (i+1)"/>
-                                  </div>
-                                  <div class="md:col-3 col-5">
-                                    <button pButton pRipple type="button" icon="pi pi-plus"
-                                      class="p-button-rounded" *ngIf="isLast && pollingArray.length < 4" (click)="addInputControl()"></button>
-                                    <button pButton pRipple type="button" icon="pi pi-trash"
-                                      class="p-button-rounded p-button-danger"  (click)="removeInputControl(idx)" *ngIf="pollingArray.length > 1"></button>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-12">
-                                <div class="field col-12 md:col-4">
-
-                                  <!-- <label for="time" class="text-sm">test</label>
-                                  <p-calendar [(ngModel)]="expiredPolling" [showTime]="true" [touchUI]="true" [showSeconds]="true" inputId="time" name="expiredAt"></p-calendar> -->
-                              </div>
-                              </div>
-                            
-                            </div>
-                            <ng-template pTemplate="footer">
-                              <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok"
-                                styleClass="p-button-text"></p-button>
-                            </ng-template>
-                          </p-dialog>
-
-
                         </div>
                         <div class="col-2 col-offset-8">
                           <button pButton pRipple type="submit"
@@ -293,6 +290,8 @@
               </div>
             </div>
             <p-tabView>
+
+              <!-- Thread -->
               <p-tabPanel header="Thread">
                 <!-- thread -->
                 <div class="thread" *ngFor="let threadHdr of listThreadHdr.data!; let i=index">
@@ -319,7 +318,7 @@
                       </div>
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-3 mr-2 ml-2">
+                    <div class="grid -mb-3 ml-1">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
@@ -330,16 +329,24 @@
                     <p-divider></p-divider>
 
                     <!-- Action -->
-                    <div class="grid -mt-5 -mb-5">
+                    <div class="grid -mb-3 ml-1">
                       <div class="col-2">
-                        <button pButton pRipple type="button" icon="pi pi-heart"
-                          class="p-button-rounded p-button-help p-button-text" label="{{threadHdr.counterLike!}}"
-                          (click)="likeThread(threadHdr.id, i)"></button>
+                        <div  (click)="likeThread(threadHdr.id, i)">
+                          <i class="pi pi-heart"></i>
+                          <span> {{threadHdr.counterLike!}}</span>
+                        </div>
                       </div>
                       <div class="col-2">
-                        <button pButton pRipple type="button" icon="pi pi-comment"
-                          class="p-button-rounded p-button-warning p-button-text" label="5"
-                          (click)="onClick(threadHdr.id)"></button>
+                        <div (click)="likeThread(threadHdr.id, i)">
+                          <i class="pi pi-heart-fill text-red-600"></i>
+                          <span> {{threadHdr.counterLike!}}</span>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div (click)="onClick(threadHdr.id)">
+                          <i class="pi pi-comments"></i>
+                          <span> 5</span>
+                        </div>
                       </div>
                       <div class="col-2 col-offset-6">
                         <button pButton pRipple type="button" icon="pi pi-bookmark"
@@ -350,6 +357,8 @@
                   </div>
                 </div>
               </p-tabPanel>
+
+              <!-- Like -->
               <p-tabPanel header="Like">
                 <div class="thread" *ngFor="let threadHdrLike of listThreadHdrLike.data!; let i=index">
                   <div class="card mt-3">
@@ -386,16 +395,24 @@
                     <p-divider></p-divider>
 
                     <!-- Action -->
-                    <div class="grid -mt-5 -mb-5">
+                    <div class="grid -mb-3 ml-1">
                       <div class="col-2">
-                        <button pButton pRipple type="button" icon="pi pi-heart"
-                          class="p-button-rounded p-button-help p-button-text" label="{{threadHdrLike.counterLike!}}"
-                          (click)="likeThread(threadHdrLike.id, i)"></button>
+                        <div  (click)="likeThread(threadHdrLike.id, i)">
+                          <i class="pi pi-heart"></i>
+                          <span> {{threadHdrLike.counterLike!}}</span>
+                        </div>
                       </div>
                       <div class="col-2">
-                        <button pButton pRipple type="button" icon="pi pi-comment"
-                          class="p-button-rounded p-button-warning p-button-text" label="5"
-                          (click)="onClick(threadHdrLike.id)"></button>
+                        <div (click)="likeThread(threadHdrLike.id, i)">
+                          <i class="pi pi-heart-fill text-red-600"></i>
+                          <span> {{threadHdrLike.counterLike!}}</span>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div (click)="onClick(threadHdrLike.id)">
+                          <i class="pi pi-comments"></i>
+                          <span> 5</span>
+                        </div>
                       </div>
                       <div class="col-2 col-offset-6">
                         <button pButton pRipple type="button" icon="pi pi-bookmark"
