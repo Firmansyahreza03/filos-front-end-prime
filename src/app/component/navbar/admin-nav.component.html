@@ -1,14 +1,20 @@
 <div class="layout-topbar">
-  <a class="p-link layout-menu-button layout-topbar-button" href="#" (click)="appMain.toggleMenu($event)">
+  <button class="p-link layout-menu-button layout-topbar-button" (click)="appMain.toggleMenu($event)">
     <i class="pi pi-bars"></i>
-  </a>
+  </button>
 
-  <a class="p-link layout-topbar-menu-button layout-topbar-button" href="#" (click)="appMain.toggleTopMenu($event)">
-    <i class="pi pi-ellipsis-v"></i>
-  </a>
+  <button class="p-link layout-topbar-menu-button layout-topbar-button" (click)="appMain.toggleTopMenu($event)">
+    <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar>
+  </button>
 
-  <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active':appMain.topMenuActive}">
-    <p-avatar [image]="proPic" size="large" shape="circle" (click)="menu.toggle($event)"></p-avatar>
-    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+  <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-active':appMain.topMenuActive}">
+    <button class="p-link layout-topbar-button">
+      <i class="pi pi-cog"></i>
+      <span>Settings</span>
+    </button>
+    <button class="p-link layout-topbar-button" (click)="logOut()">
+      <i class="pi pi-sign-out"></i>
+      <span>Log Out</span>
+    </button>
   </div>
 </div>

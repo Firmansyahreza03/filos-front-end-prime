@@ -9,11 +9,11 @@ import { DeleteRes, InsertIndustryReq } from "src/app/pojo/pojo-import";
 import { IndustryService } from "src/app/service/import.service";
 
 @Component({
-  selector: 'app-user-add',
-  templateUrl: './user-add.component.html',
+  selector: 'app-industy-add',
+  templateUrl: './industy-add.component.html',
   providers: [ConfirmationService, MessageService]
 })
-export class UserAddComponent {
+export class IndustyAddComponent {
   subscription ? : Subscription;
   mainUrl!: string;
   idParam!: number;
