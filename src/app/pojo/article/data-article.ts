@@ -5,7 +5,6 @@ export interface DataArticle {
 	
 	title : string
 	content : string
-	idUser : string
 	idIndustry : string
 	nameIndustry : string
 }

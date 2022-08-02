@@ -25,7 +25,6 @@ export class ArticleAddComponent {
     isActive: true,
     title: "",
     content: "",
-    idUser: "",
     idIndustry: ""
   }
 

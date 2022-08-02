@@ -16,8 +16,8 @@
                 <div class="col-12">
                   <div class="grid justify-content-center mt-1">
                     <div class="md:col-10 sm:col-12">
-                      <span class="bold-medium color-black text-heading-2">{{profileData.data!.fullName}}</span>
-                      <p class="text-extrasmall bold-medium">{{profileData.data!.positionName}}</p>
+                      <span class="bold-medium color-black text-heading-2">{{profileData.data?.fullName}}</span>
+                      <p class="text-extrasmall bold-medium">{{profileData.data?.positionName}}</p>
                     </div>
                   </div>
                 </div>
@@ -350,8 +350,7 @@
                       </div>
                       <div class="col-2 col-offset-6">
                         <button pButton pRipple type="button" icon="pi pi-bookmark"
-                          class="p-button-rounded p-button-secondary p-button-text"
-                          (click)="bookmarkThread(threadHdr.id)"></button>
+                          class="p-button-rounded p-button-secondary p-button-text" (click)="bookmarkThread(threadHdr.id, i)"></button>
                       </div>
                     </div>
                   </div>
@@ -417,14 +416,62 @@
                       <div class="col-2 col-offset-6">
                         <button pButton pRipple type="button" icon="pi pi-bookmark"
                           class="p-button-rounded p-button-secondary p-button-text"
-                          (click)="bookmarkThread(threadHdrLike.id)"></button>
+                          (click)="bookmarkThread(threadHdrLike.id, i)"></button>
                       </div>
                     </div>
                   </div>
                 </div>
               </p-tabPanel>
               <p-tabPanel header="Bookmark">
-                Content 3
+                <div class="thread" *ngFor="let threadHdr of bookmarkdata$ | async; let i=index">
+                  <div class="card mt-3">
+                    <div class="container">
+                      <!-- Header -->
+                      <div class="grid card-login " [style]="{'margin-bottom':'-20px'}">
+                        <div class="col-2">
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                        </div>
+                        <div class="col-10">
+                          <div class="grid">
+                            <div class="col-12">
+                              <span class="bold black text-heading-3">{{threadHdr.creatorName}}</span>
+                            </div>
+                          </div>
+                          <div class="grid -mt-4">
+                            <div class="col-12">
+                              <span class="text-extrasmall">{{threadHdr.createdAt| date: 'medium'}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      <!-- Content -->
+                      <div class="grid mt-3 mr-2 ml-2">
+                        <div class="col-12">
+                          <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
+                        </div>
+                        <div class="col-12">
+                          <p class="text-small">{{threadHdr.threadContent}} </div>
+                      </div>
+                      <p-divider></p-divider>
+  
+                      <!-- Action -->
+                      <div class="grid -mt-5 -mb-5">
+                        <div class="col-2">
+                          <button pButton pRipple type="button" icon="pi pi-heart"
+                            class="p-button-rounded p-button-help p-button-text" label="{{threadHdr.counterLike!}}" (click)="likeThread(threadHdr.id, i)"></button>
+                        </div>
+                        <div class="col-2">
+                          <button pButton pRipple type="button" icon="pi pi-comment"
+                            class="p-button-rounded p-button-warning p-button-text" label="5" (click)="onClick(threadHdr.id)"></button>
+                        </div>
+                        <div class="col-2 col-offset-6">
+                          <button pButton pRipple type="button" icon="pi pi-bookmark"
+                            class="p-button-rounded p-button-secondary p-button-text" (click)="bookmarkThread(threadHdr.id, i)"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </p-tabPanel>
             </p-tabView>
           </p-tabPanel>
