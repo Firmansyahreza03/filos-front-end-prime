@@ -33,7 +33,7 @@ export class AdminSidebarComponent {
           {
             label: 'Article',
             icon: 'pi pi-inbox',
-            routerLink: '/admin'
+            routerLink: '/admin/article'
           },
           {
             label: 'Tread',

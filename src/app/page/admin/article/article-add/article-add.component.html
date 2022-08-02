@@ -15,16 +15,24 @@
         <form action="" (ngSubmit)="ins()" ngnativevalidate #form="ngForm">
             <div class="grid mb-3 mb:md-1">
                 <div class="col-12 md:col-6">
-                    <label for="name">name</label>
+                    <label for="title">title</label>
                     <span class="text-danger p-error"> * </span>
-                    <input pInputText type="text" class="form-control w-full" name="name" id="name" 
-                    [(ngModel)]="req.name" placeholder="Type here" required>
+                    <input pInputText type="text" class="form-control w-full" name="title" id="title" 
+                    [(ngModel)]="req.title" placeholder="Type here" required>
                 </div>
                 <div class="col-12 md:col-6">
-                    <label for="code">code</label>
+                    <label for="idIndustry">industry</label>
                     <span class="text-danger p-error"> * </span>
-                    <input pInputText type="text" class="form-control w-full" name="code" id="code" 
-                    [(ngModel)]="req.code" placeholder="Type here" required>
+                    <p-dropdown [required]="true" [options]="listIndustry.data!" [(ngModel)]="req.idIndustry" placeholder="Select industry"
+                    styleClass="w-full" optionLabel="name" optionValue="id" name="idIndustry" id="idIndustry"></p-dropdown>
+                </div>
+            </div>
+            <div class="grid mb-3 mb:md-1">
+                <div class="col-12">
+                    <label for="content">content</label>
+                    <span class="text-danger p-error"> * </span>
+                    <textarea pInputTextarea type="address" class="form-control w-full" name="content" id="content"
+                    [(ngModel)]="req.content" placeholder="Type here" rows="5" required></textarea>
                 </div>
             </div>
             <button pButton pRipple type="submit" name="submitBtn" id="submitBtn" [disabled]="!form.valid"

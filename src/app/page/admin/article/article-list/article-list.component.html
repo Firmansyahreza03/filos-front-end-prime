@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <div class="text-center">
-        <p class="title fs-1">Data <strong>industry</strong></p>
+        <p class="title fs-1">Data <strong>rticle</strong></p>
         <p-divider align="center">
           <button pButton pRipple type="button" label="Add data" icon="pi pi-plus-circle"
             class="p-button-success p-button-rounded" title="Add Data" (click)="toAdd()">
@@ -14,7 +14,7 @@
 
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
-        [globalFilterFields]="['name','code']" [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]"
+        [globalFilterFields]="['title','nameIndustry']" [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]"
         styleClass="p-datatable-gridlines" [rowHover]="true">
 
         <ng-template pTemplate="caption">
@@ -34,10 +34,10 @@
           <tr>
             <th>No.</th>
             <th>
-              Code
+              Title
             </th>
             <th>
-              Name
+              Industry
             </th>
             <th class="text-center">active</th>
             <th class="text-center">action</th>
@@ -46,8 +46,8 @@
         <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
           <tr>
             <td>{{rowIndex + 1}}</td>
-            <td>{{data.code}}</td>
-            <td>{{data.name}}</td>
+            <td>{{data.title}}</td>
+            <td>{{data.nameIndustry}}</td>
             <td class="text-center">
               <i *ngIf="data.isActive" class="pi pi-check-square"></i>
               <i *ngIf="!data.isActive" class="pi pi-stop"></i>

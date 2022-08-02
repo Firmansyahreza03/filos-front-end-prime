@@ -1,10 +1,8 @@
-import { IndustyEditComponent } from './industry-edit/industy-edit.component';
+
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { IndustyListComponent } from "./industry-list/industy-list.component";
-import { IndustyRouting } from "./industry.routing";
 
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
@@ -15,16 +13,17 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { IndustyAddComponent } from "./industry-add/industy-add.component";
-
+import { ArticleRouting } from "./article.routing";
+import { ArticleListComponent } from "./article-list/article-list.component";
+import { ArticleAddComponent } from './article-add/article-add.component';
+import { DropdownModule } from "primeng/dropdown";
 @NgModule({
     declarations:[
-        IndustyListComponent,
-        IndustyAddComponent,
-        IndustyEditComponent
+        ArticleListComponent,
+        ArticleAddComponent
     ],
     imports:[
-        IndustyRouting,
+        ArticleRouting,
         CommonModule,
         FormsModule,
         HttpClientModule,
@@ -37,12 +36,12 @@ import { IndustyAddComponent } from "./industry-add/industy-add.component";
         InputTextModule,
         InputSwitchModule,
         ConfirmDialogModule,
-        InputTextareaModule
+        InputTextareaModule,
+        DropdownModule
     ],
     exports :[
-        IndustyListComponent,
-        IndustyAddComponent,
-        IndustyEditComponent
+        ArticleListComponent,
+        ArticleAddComponent
     ]
 })
-export class IndustyModule{}
+export class ArticleModule{}

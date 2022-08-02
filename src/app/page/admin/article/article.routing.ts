@@ -1,23 +1,23 @@
 
 import { Component, NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
-import { IndustyEditComponent } from './industry-edit/industy-edit.component';
-import { IndustyAddComponent } from "./industry-add/industy-add.component";
-import { IndustyListComponent } from "./industry-list/industy-list.component";
+// import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleAddComponent } from "./article-add/article-add.component";
+import { ArticleListComponent } from "./article-list/article-list.component";
 
 const routes : Routes =[
     {
         path : '',
-        component : IndustyListComponent
+        component : ArticleListComponent
     },
     {
         path : 'add',
-        component : IndustyAddComponent
+        component : ArticleAddComponent
     },
-    {
-        path : 'edit/:id',
-        component : IndustyEditComponent
-    }
+    // {
+    //     path : 'edit/:id',
+    //     component : ArticleEditComponent
+    // }
 ]
 
 @NgModule({
@@ -28,4 +28,4 @@ const routes : Routes =[
         RouterModule
     ]
 })
-export class IndustyRouting{}
+export class ArticleRouting{}

@@ -1,23 +1,21 @@
-import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
-import { DataIndustry } from 'src/app/pojo/industry/data-industry';
-import { DeleteRes } from "src/app/pojo/pojo-import";
-import { IndustryService } from "src/app/service/import.service";
+import { DataArticle, DeleteRes } from "../../../../pojo/pojo-import";
+import { ArticleService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-industy-list',
-  templateUrl: './industy-list.component.html',
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
   providers: [ConfirmationService, MessageService]
 })
-export class IndustyListComponent {
+export class ArticleListComponent {
   subscription ? : Subscription;
   loading: boolean = true;
 
-  listData: DataIndustry[] = [];
+  listData: DataArticle[] = [];
   delRes!: DeleteRes;
 
   startPage: number = 0;
@@ -28,17 +26,17 @@ export class IndustyListComponent {
   mainUrl!: string;
 
   cols: any[] = [{
-      field: 'code',
-      header: 'code'
+      field: 'title',
+      header: 'title'
     },
     {
-      field: 'name',
-      header: 'name'
-    },
+      field: 'nameIndustry',
+      header: 'Industry'
+    }
   ];
 
   constructor(
-    private industryService: IndustryService,
+    private service: ArticleService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private router: Router
@@ -54,7 +52,7 @@ export class IndustyListComponent {
     this.maxPage = maxPage
     this.query = query
 
-    this.subscription = this.industryService.getAllIndustry(startPage, maxPage, query)
+    this.subscription = this.service.getAll(startPage, maxPage, query)
       .subscribe((result) => {
         this.loading = false;
         this.listData = result.data;
@@ -63,7 +61,7 @@ export class IndustyListComponent {
   }
 
   deleteData(): void {
-    this.subscription = this.industryService.delete(this.slcId)
+    this.subscription = this.service.delete(this.slcId)
       .subscribe((result) => {
         this.viewData();
       })

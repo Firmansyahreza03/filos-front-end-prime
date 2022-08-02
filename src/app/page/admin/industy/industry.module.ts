@@ -5,7 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { IndustyListComponent } from "./industry-list/industy-list.component";
 import { IndustyRouting } from "./industry.routing";
-
+import {DialogModule} from 'primeng/dialog';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { RippleModule } from 'primeng/ripple';
@@ -28,7 +28,7 @@ import { IndustyAddComponent } from "./industry-add/industy-add.component";
         CommonModule,
         FormsModule,
         HttpClientModule,
-        
+        DialogModule,
         CardModule,
         TableModule,
         ButtonModule,
