@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, toArray } from 'rxjs';
+import { Observable, Subscription, toArray } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
 import { DefaultPic } from 'src/app/constant/DefaultPic';
 import {
+  DataBookmark,
+  DataThreadHdr,
   FindAllCommunityRes,
   FindAllThreadCategoryRes,
   FindAllThreadHdrRes,
@@ -18,6 +20,9 @@ import { ThreadCategoryService } from 'src/app/service/thread-category.service';
 import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
 import { ThreadLikedService } from 'src/app/service/thread-liked.service';
 import { UserService } from 'src/app/service/user.service';
+import { Store } from '@ngrx/store'
+import { getAllBookmark } from './home-member.selector';
+import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 
 @Component({
   selector: 'app-home-member',
@@ -28,6 +33,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   // kalimat:string="Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloribus assumenda accusantium asperiores sint, ex pariatur esse repellat id adipisci nobis ea deserunt. Quidem nostrum aspernatur labore, ea laudantium obcaecati.Veritatis labore nisi unde, ad natus minima mollitia ea ipsum corrupti error fugiat harum, rem eius praesentium ut similique aut perspiciatis inventore odit assumenda sequi quo numquam! Mollitia, animi sint?Aspernatur minima, illo dolor asperiores deserunt suscipit nobis soluta, odio sit veniam adipisci vitae esse! Soluta quaerat, consequatur praesentium ab accusamus id magni aliquam assumenda qui. Fugiat quos deserunt impedit.Voluptas minus ea veritatis harum officia sint magni deleniti quae beatae ipsam, tenetur pariatur eos praesentium culpa laudantium temporibus dolorem ratione sapiente quas. Delectus voluptates recusandae repellat est corrupti atque.Vero facilis quisquam deserunt sed illo laudantium adipisci. Commodi perferendis provident, neque sed repellendus accusamus quae fuga explicabo, vitae aspernatur vero voluptate debitis totam deleniti, in est sint autem quas!Animi esse saepe molestias fuga velit! Enim vero distinctio praesentium odit quibusdam, magnam fugit iusto saepe nulla ut explicabo corporis! Quos eius dolores unde quam quidem consequuntur reprehenderit molestiae voluptatum.    Rem voluptas, eius in, aliquam delectus quis sunt iste explicabo inventore nam expedita dolor soluta quas laudantium magnam? Placeat veritatis eos aliquam assumenda fugit aspernatur quidem vero harum neque sunt.    Quam, voluptas sint, ducimus maiores id nesciunt, nam facilis quaerat explicabo modi architecto corporis aspernatur ut quo eos obcaecati consequatur consequuntur optio vitae adipisci tempore. Itaque sunt aperiam iste aut!    Possimus, perspiciatis adipisci sequi quas vitae eaque dolorum, magnam, ab cumque debitis sapiente necessitatibus cupiditate nobis ex reiciendis modi sint repellendus aliquid ipsum amet vero eligendi tempora praesentium quos! Voluptates.    Ab vitae laboriosam atque possimus non delectus optio perspiciatis adipisci quae quas nesciunt nam architecto consequatur quos recusandae minus doloremque voluptate voluptatem enim at, ipsam excepturi consectetur nihil. Laborum, accusamus!"
   // count:number = this.kalimat.length;
   // textAfterMultiply:string= this.kalimat.slice(0,this.count*0.5)
+  startPage: number = 0;
+  maxPage: number = 5;
   threadSubscription?: Subscription;
   threadHdrListSubscription?: Subscription;
   threadHdrListByUserLoggedSubscription?: Subscription;
@@ -39,6 +46,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   trainingSubs?: Subscription;
   threadLikedByUserLoggedSubs?: Subscription;
   profileSubs?: Subscription;
+  threadBookmarkSubs?: Subscription;
   panelTab: string = 'myActivities';
   idDetail!: string;
   proPic!: string;
@@ -57,7 +65,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   listThreadHdrLike: FindAllThreadHdrRes = {};
 
-  profileData: FindProfileRes = {}
+  profileData: FindProfileRes = {};
+
+  bookmarkdata$ : Observable<DataThreadHdr[]> = this.store.select(getAllBookmark);
 
   constructor(
     private threadCategoryService: ThreadCategoryService,
@@ -68,7 +78,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private communityService: CommunityService,
     private fileService: FileService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private store: Store,
   ) {}
 
   ngOnInit(): void {
@@ -88,6 +99,10 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.getAllEvent();
     this.getAllTraining();
     this.getAllThreadThatAreLikedByUserLogged();
+    
+    this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
+      this.store.dispatch(loadBookmarkAction({ payload: res.data!}));
+    })
   }
 
   ngOnDestroy(): void {
@@ -101,6 +116,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.trainingSubs?.unsubscribe();
     this.threadLikedByUserLoggedSubs?.unsubscribe();
     this.profileSubs?.unsubscribe();
+    this.threadBookmarkSubs?.unsubscribe();
   }
 
   getProfile(): void{
@@ -139,12 +155,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   getAllTraining(): void {
     this.trainingSubs = this.communityService
-      .getByIndustryAndCategory(
-        this.loginService.getLoggedEmail()!,
-        CommunityCategory.training,
-        0,
-        3
-      )
+      .getByIndustryAndCategory(this.loginService.getLoggedEmail()!,CommunityCategory.training,0,3)
       .subscribe((res) => {
         this.listTraining = res;
       });
@@ -169,6 +180,14 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   getAllThreadThatAreLikedByUserLogged(): void {
     this.threadLikedByUserLoggedSubs = this.threadHdrService
       .getThreadThatAreLikedByUser(this.loginService.getLoggedEmail()!)
+      .subscribe((res) => {
+        this.listThreadHdrLike = res;
+      });
+  }
+
+  getAllThreadThatAreBookmarkedByUserLogged(): void {
+    this.threadLikedByUserLoggedSubs = this.threadHdrService
+      .getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!)
       .subscribe((res) => {
         this.listThreadHdrLike = res;
       });
@@ -242,10 +261,17 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       });
   }
 
-  bookmarkThread(id: string): void {
+  bookmarkThread(id: string, index: number): void {
     this.bookmarkSubs = this.bookmarkService
       .bookmarkThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe(() => {});
+      .subscribe((res) => {
+        console.log(res);
+        if(res.isBookmark == true){
+          this.store.dispatch(bookmarkAction({payload: this.listThreadHdr.data![index]}))
+        } else {
+          this.store.dispatch(unbookmarkAction({ payload: id}))
+        }
+      });
   }
 
   onClick(id: string): void {
