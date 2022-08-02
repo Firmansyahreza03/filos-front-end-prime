@@ -23,7 +23,7 @@ export class CommunityService{
     delete(id : number) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`http://localhost:3333/communities/${id}`)
     }
-    getCommunityById(id: number): Observable<FindCommunityRes>{
+    getCommunityById(id: string): Observable<FindCommunityRes>{
         return this.http.get<FindCommunityRes>(`http://localhost:3333/communities/${id}`)
     }
     getByIndustryAndCategory(email: string, code: string, startPage: number, maxPage: number): Observable<FindAllCommunityRes>{

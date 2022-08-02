@@ -3,21 +3,19 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "primeng/api";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { IndustyModule } from "./industy/industy.module";
 
 const routes : Routes=[
     {
-      path: '',
-      redirectTo: 'admin/home',
-      pathMatch: 'full',
-    },
-    {
-        path: 'home', 
+        path: '', 
         component: DashboardComponent
     },
     {
         path: 'industry', 
-        loadChildren: () => import('./industy/industy.module').then(m => m.IndustyModule)
+        loadChildren: () => import('./industy/industry.module').then(m => m.IndustyModule)
+    },
+    {
+        path: 'user', 
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
     },
 ]
 @NgModule({

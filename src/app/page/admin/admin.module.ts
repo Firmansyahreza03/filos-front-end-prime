@@ -7,7 +7,7 @@ import { style } from '@angular/animations';
 
 import { AdminRouting } from './admin.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { IndustyModule } from './industy/industy.module';
+import { IndustyModule } from './industy/industry.module';
 
 @NgModule({
     declarations: [

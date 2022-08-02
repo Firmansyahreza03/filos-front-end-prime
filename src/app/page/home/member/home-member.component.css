@@ -29,3 +29,30 @@
 .card-thread{
     margin-top: -30px;
 }
+
+.btnClick{
+    cursor: pointer;
+}
+.click{
+    cursor: pointer;
+}
+
+.btnClick:hover{
+    opacity: 0.5;
+}
+
+.image-content{
+    height: 100%;
+    width: 100%;
+}
+
+.image-box{
+    max-height: 200px;
+    max-width:300px;
+    object-fit: cover;
+}
+.image-box img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}

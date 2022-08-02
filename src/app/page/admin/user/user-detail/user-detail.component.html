@@ -1,0 +1,103 @@
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header card-container">
+      <div class="float-start">
+        <button pButton pRipple type="button" label="kembali" icon="fa fa-chevron-left" class="p-button-secondary"
+          title="Back" (click)="back()">
+        </button>
+      </div>
+      <div class="text-center">
+        <p class="title fs-1">detail <strong>Data</strong></p>
+      </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="card-body">
+      <div class="grid justify-content-center">
+        <div class="lg:col-4 col-12 p-2">
+          <div class="card border-0 shadow">
+            <img [src]="proPic" class="img-fluid img-thumbnail bio" alt="bio" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
+            <div class="card-body">
+              <div class="text-center">
+                <h2 class="my-1">{{res.data?.fullName}}</h2>
+                <p class="mb-1">
+                  ~ {{res.data?.roleName}} ~
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-1 col-0 p-2">
+          <p-divider layout="vertical">
+          </p-divider>
+        </div>
+        <div class="lg:col-7 col-12 p-2 ">
+          <div class="card border-0 shadow">
+            <div class="card-body">
+              <h1 class="h1-panel1">Biodata</h1>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="sm:col-3">
+                  <h3>Full Name</h3>
+                </div>
+                <div class="sm:col-9">
+                  {{res.data?.fullName}}
+                </div>
+              </div>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="sm:col-3">
+                  <h3>Email</h3>
+                </div>
+                <div class="sm:col-9">
+                  {{res.data?.userEmail}}
+                </div>
+              </div>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="sm:col-3">
+                  <h3>industry</h3>
+                </div>
+                <div class="sm:col-9">
+                  {{res.data?.industryName}}
+                </div>
+              </div>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="sm:col-3">
+                  <h3>balance</h3>
+                </div>
+                <div class="sm:col-9">
+                  {{res.data?.balance}}
+                </div>
+              </div>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="sm:col-3">
+                  <h3>company</h3>
+                </div>
+                <div class="sm:col-9">
+                  {{res.data?.companyName}}
+                </div>
+              </div>
+              <p-divider></p-divider>
+              <div class="grid">
+                <div class="sm:col-3">
+                  <h3>position</h3>
+                </div>
+                <div class="sm:col-9">
+                  {{res.data?.positionName}}
+                </div>
+              </div>
+              <p-divider></p-divider>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-rounded p-button-secondary"
+  acceptButtonStyleClass="p-button-rounded p-button-danger"></p-confirmDialog>

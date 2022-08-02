@@ -21,6 +21,7 @@ export class CommunityListComponent implements OnInit{
         data: [],
         count: 0
     }
+    
 
     ngOnInit(): void {
         this.communitySubscription=this.communityService.getAllCommunity().subscribe((result)=>{

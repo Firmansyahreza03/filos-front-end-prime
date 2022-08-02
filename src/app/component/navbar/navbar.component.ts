@@ -30,10 +30,6 @@ export class NavbarComponent implements OnInit {
           routerLink: '/home-member'
         },
         {
-          label: 'Thread-Detail',
-          routerLink: '/thread-detail'
-        },
-        {
           label: 'Community',
           routerLink: '/communities'
         },
