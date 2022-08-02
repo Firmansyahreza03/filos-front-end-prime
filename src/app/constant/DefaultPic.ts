@@ -1,3 +1,3 @@
 export enum DefaultPic{
-	proFile = "../assets/image/users/test.jpg"
+	proFile = "../assets/image/prof-pic/default-profile-icon.jpg"
 }
