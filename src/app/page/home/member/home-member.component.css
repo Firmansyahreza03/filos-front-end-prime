@@ -56,3 +56,19 @@
     height: 100%;
     border-radius: 2px;
 }
+
+:host ::ng-deep .bg-none,.bg-none:hover, .bg-none:focus , .bg-none:active {
+    background: none !important;
+    border: none;
+    color: #413588;
+  }
+
+p {
+    margin: 0;
+}
+
+.confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

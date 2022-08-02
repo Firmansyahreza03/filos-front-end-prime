@@ -13,6 +13,8 @@ import {DividerModule} from 'primeng/divider';
 import { ThreadDetailComponent } from "./thread-detail/thread-detail.component";
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+import {DialogModule} from 'primeng/dialog';
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
     imports: [
         HomeMemberRouting,
@@ -26,7 +28,9 @@ import {HttpClientModule} from '@angular/common/http';
         ButtonModule,
         DividerModule,
         FileUploadModule,
-        HttpClientModule
+        HttpClientModule,
+        DialogModule,
+        CalendarModule
     ],
     declarations: [
         HomeMemberComponent,
