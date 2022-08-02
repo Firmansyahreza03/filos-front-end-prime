@@ -4,6 +4,5 @@ export interface UpdateArticleReq {
 
 	title:string
 	content:string
-	idUser:string
 	idIndustry:string
 }

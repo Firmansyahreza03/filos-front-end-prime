@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormArray, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription, toArray } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
@@ -11,6 +12,8 @@ import {
   FindAllThreadHdrRes,
   FindProfileRes,
   InsertThreadHdrReq,
+  ErorRes,
+  FindAllPollingOptionRes
 } from 'src/app/pojo/pojo-import';
 import { BookmarkService } from 'src/app/service/bookmark.service';
 import { CommunityService } from 'src/app/service/community.service';
@@ -50,8 +53,13 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   panelTab: string = 'myActivities';
   idDetail!: string;
   proPic!: string;
+  displayModal!: boolean;
+  polling!:boolean
+  pollingArray = new FormArray([new FormControl('', Validators.required)]);
+  expiredPolling!: Date;
 
-  listThreadCategory: FindAllThreadCategoryRes = {};
+  listThreadCategory: FindAllThreadCategoryRes = {
+  };
 
   listThreadHdr: FindAllThreadHdrRes = {};
 
@@ -285,5 +293,36 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       this.createThreadHdr.fileName = res[0];
       this.createThreadHdr.fileExt = res[1];
     });
+  }
+
+  checkPollling(event:any){
+    const label = event.originalEvent.srcElement.innerText;
+    console.log(label)
+
+    if(label == "Polling")
+      this.polling = true;
+    else this.polling = false;
+    console.log(this.polling)
+
+  }
+
+  showModalDialog() {
+      this.displayModal = true;
+  }
+ 
+  addInputControl() {
+    this.pollingArray.push(new FormControl('', Validators.required));
+  }
+  removeInputControl(idx: number) {
+    this.pollingArray.removeAt(idx);
+  }
+
+  exitPolling() {
+    this.polling = false;
+  }
+
+  clickPolling() {
+    this.polling = true;
+    this.pollingArray.reset();
   }
 }

@@ -56,3 +56,20 @@
     height: 100%;
     border-radius: 2px;
 }
+
+
+p {
+    margin: 0;
+}
+
+.confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-none:hover, .bg-none:focus,.bg-none:active{
+    border: none;    
+    background-color: none;
+}
+

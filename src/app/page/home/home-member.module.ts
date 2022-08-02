@@ -15,6 +15,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { threadReducer } from './member/home-member.reducer';
+import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   imports: [
     HomeMemberRouting,
@@ -29,7 +31,9 @@ import { threadReducer } from './member/home-member.reducer';
     DividerModule,
     FileUploadModule,
     HttpClientModule,
-    StoreModule.forFeature('thread',threadReducer),
+    StoreModule.forFeature('thread', threadReducer),
+    DialogModule,
+    CalendarModule,
   ],
   declarations: [HomeMemberComponent, ThreadDetailComponent],
   exports: [HomeMemberComponent, ThreadDetailComponent],

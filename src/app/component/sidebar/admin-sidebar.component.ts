@@ -24,16 +24,16 @@ export class AdminSidebarComponent {
         }]
       },
       {
-        label: 'Community',
+        label: 'Program',
         items: [{
-            label: 'Event',
+            label: 'Comunity',
             icon: 'pi pi-star',
             routerLink: '/admin'
           },
           {
             label: 'Article',
             icon: 'pi pi-inbox',
-            routerLink: '/admin'
+            routerLink: '/admin/article'
           },
           {
             label: 'Tread',

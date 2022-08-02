@@ -39,17 +39,7 @@ export class AdminNavComponent {
         })
     }
   }
-  initMenu() {
-    this.items = [{
-      label: 'LOG OUT',
-      icon: 'pi pi-power-off',
-      command: () => {
-        this.logOut();
-      }
-    }];
-  }
   ngOnInit(): void {
     this.findPic();
-    this.initMenu();
   }
 }

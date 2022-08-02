@@ -1,3 +1,4 @@
+import { ArticleService } from './article.service';
 import { CommunityCategoriesService } from 'src/app/service/community-category.service';
 import { UserService } from 'src/app/service/user.service';
 import { ThreadLikedService } from 'src/app/service/thread-liked.service';
@@ -28,4 +29,5 @@ export {
   ThreadHdrService,
   ThreadLikedService,
   UserService,
+  ArticleService
 }
