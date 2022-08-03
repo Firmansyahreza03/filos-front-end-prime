@@ -10,6 +10,7 @@ import { CustomInterceptor } from './interceptor/CustomInterceptor';
 
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppRouting } from './app.routing';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastModule
+    ToastModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass:CustomInterceptor, multi:true},

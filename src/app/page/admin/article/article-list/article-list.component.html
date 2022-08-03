@@ -2,15 +2,21 @@
   <div class="card">
     <div class="card-header">
       <div class="text-center">
-        <p class="title fs-1">Data <strong>user</strong></p>
-        <p-divider align="center"> </p-divider>
+        <p class="title fs-1">Data <strong>rticle</strong></p>
+        <p-divider align="center">
+          <button pButton pRipple type="button" label="Add data" icon="pi pi-plus-circle"
+            class="p-button-success p-button-rounded" title="Add Data" (click)="toAdd()">
+          </button>
+        </p-divider>
       </div>
     </div>
     <div class="card-body">
+
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
-        [globalFilterFields]="['fullName', 'userEmail', 'companyName', 'industryName']" [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]"
+        [globalFilterFields]="['title','nameIndustry']" [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]"
         styleClass="p-datatable-gridlines" [rowHover]="true">
+
         <ng-template pTemplate="caption">
           <div class="flex">
             <span class="mr-auto">
@@ -28,16 +34,10 @@
           <tr>
             <th>No.</th>
             <th>
-              full name
+              Title
             </th>
             <th>
-              email
-            </th>
-            <th>
-              company
-            </th>
-            <th>
-              industry
+              Industry
             </th>
             <th class="text-center">active</th>
             <th class="text-center">action</th>
@@ -46,18 +46,20 @@
         <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
           <tr>
             <td>{{rowIndex + 1}}</td>
-            <td>{{data.fullName}}</td>
-            <td>{{data.userEmail}}</td>
-            <td>{{data.companyName}}</td>
-            <td>{{data.industryName}}</td>
+            <td>{{data.title}}</td>
+            <td>{{data.nameIndustry}}</td>
             <td class="text-center">
               <i *ngIf="data.isActive" class="pi pi-check-square"></i>
               <i *ngIf="!data.isActive" class="pi pi-stop"></i>
             </td>
             <td>
               <div class="text-center">
-                <button pButton pRipple type="button" icon="fa fa-info"
-                  class="p-button-rounded p-button-primary mr-1" title="detail user" (click)="toDtl(data.id)">
+                <button pButton pRipple type="button" icon="fa fa-wrench"
+                  class="p-button-rounded p-button-secondary mr-1" title="edit Data" (click)="toEdit(data.id)">
+                </button>
+
+                <button pButton pRipple type="button" icon="fa fa-trash-o" class="p-button-rounded p-button-danger"
+                  title="delete Data" (click)="deleteConfirm(data.id)">
                 </button>
               </div>
             </td>

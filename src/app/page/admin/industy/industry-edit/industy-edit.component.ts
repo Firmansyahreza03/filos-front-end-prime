@@ -27,7 +27,11 @@ export class IndustyEditComponent {
   save() {
     this.subscription = this.industryService.update(this.req)
       .subscribe(result => {
-        this.router.navigateByUrl(this.mainUrl);
+        this.router.navigateByUrl('/', {
+          skipLocationChange: true
+        }).then(() => {
+          this.router.navigate([this.mainUrl]);
+        });
       })
   }
 

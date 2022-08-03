@@ -3,6 +3,5 @@ export interface InsertArticleReq {
 
 	title:string
 	content:string
-	idUser:string
 	idIndustry:string
 }

@@ -14,13 +14,11 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { UserListComponent } from "./user-list/user-list.component";
-import { UserAddComponent } from "./user-add/user-add.component";
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
     declarations:[
         UserListComponent,
-        UserAddComponent,
         UserDetailComponent
     ],
     imports:[
@@ -41,7 +39,6 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     ],
     exports :[
         UserListComponent,
-        UserAddComponent,
         UserDetailComponent
     ]
 })
