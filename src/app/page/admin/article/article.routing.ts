@@ -1,9 +1,10 @@
 
 import { Component, NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
+import { ArticleDtlComponent } from './article-dtl/article-dtl.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
-import { ArticleAddComponent } from "./article-add/article-add.component";
 import { ArticleListComponent } from "./article-list/article-list.component";
+import { ArticleAddComponent } from './article-add/article-add.component';
 
 const routes : Routes =[
     {
@@ -17,6 +18,10 @@ const routes : Routes =[
     {
         path : 'edit/:id',
         component : ArticleEditComponent
+    },
+    {
+        path : 'dtl/:id',
+        component : ArticleDtlComponent
     }
 ]
 

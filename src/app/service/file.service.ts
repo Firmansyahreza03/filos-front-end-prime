@@ -11,7 +11,7 @@ export class FileService {
 
     constructor(private http: HttpClient) {}
     
-    findById(id : number) : Observable<FindFileRes>{
+    findById(id : string) : Observable<FindFileRes>{
       return this.http.get<FindFileRes>(`http://localhost:3333/files/${id}`)
     }
 

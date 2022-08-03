@@ -1,32 +1,27 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from "@angular/core";
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
-import {ConfirmationService, MessageService} from 'primeng/api';
-import { FindAllIndustryRes, InsertArticleReq } from "../../../../pojo/pojo-import";
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { FindAllIndustryRes, FindArticleRes } from "../../../../pojo/pojo-import";
 import { ArticleService, IndustryService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'admin-article-add',
-  templateUrl: './article-add.component.html',
+  selector: 'admin-article-detail',
+  templateUrl: './article-dtl.component.html',
   providers: [ConfirmationService, MessageService]
 })
-export class ArticleAddComponent {
+export class ArticleDtlComponent {
   subscription ? : Subscription;
   mainUrl!: string;
-  idParam!: number;
+  idParam!: string;
 
   listIndustry: FindAllIndustryRes = {
     count: undefined,
     data: []
   }
-  
-  req: InsertArticleReq = {
-    isActive: true,
-    title: "",
-    content: "",
-    idIndustry: ""
-  }
+
+  dataRes !: FindArticleRes;
 
   constructor(
     private service: ArticleService,
@@ -42,17 +37,23 @@ export class ArticleAddComponent {
       })
   }
 
-  save() {
-    this.subscription = this.service.insert(this.req)
-      .subscribe(() => {
-        this.router.navigateByUrl(this.mainUrl);
-      })
+  initData(): void {
+    this.activatedRoute.params.subscribe(result => {
+      const resultTemp: any = result;
+      this.idParam = resultTemp.id;
+      console.log(this.idParam);
+      this.subscription = this.service.findById(this.idParam)
+        .subscribe(result => {
+          this.dataRes = result;
+        })
+    })
   }
 
   ngOnInit(): void {
     this.findAllIndustries();
     const thisUrl: string[] = this.router.url.split("/");
     this.mainUrl = thisUrl[1] + "/" + thisUrl[2];
+    this.initData();
   }
 
   back() {

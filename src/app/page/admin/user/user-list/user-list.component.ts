@@ -8,7 +8,7 @@ import { DataProfile, DeleteRes } from '../../../../pojo/pojo-import';
 import { UserService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'admin-user-list',
   templateUrl: './user-list.component.html',
   providers: [ConfirmationService]
 })
@@ -78,8 +78,8 @@ export class UserListComponent {
   deleteConfirm(id: string) {
     this.slcId = id;
     this.confirmationService.confirm({
-      message: 'Apakah kau yakin ingin mendelete data ini?',
-      header: 'Hapus data',
+      message: 'Are you sure want delete this data?',
+      header: 'Delete data',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteData();

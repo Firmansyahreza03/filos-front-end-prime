@@ -28,7 +28,7 @@ export class AdminSidebarComponent {
         items: [{
             label: 'Comunity',
             icon: 'pi pi-star',
-            routerLink: '/admin'
+            routerLink: '/admin/community'
           },
           {
             label: 'Article',
@@ -36,9 +36,9 @@ export class AdminSidebarComponent {
             routerLink: '/admin/article'
           },
           {
-            label: 'Tread',
+            label: 'Thread',
             icon: 'pi pi-comments',
-            routerLink: '/admin'
+            routerLink: '/admin/thread'
           }
         ]
       },

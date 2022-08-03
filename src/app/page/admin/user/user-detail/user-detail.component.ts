@@ -8,7 +8,7 @@ import { DataProfile, FindProfileRes } from "../../../../pojo/pojo-import";
 import { UserService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-user-detail',
+  selector: 'admin-user-detail',
   templateUrl: './user-detail.component.html',
   providers: [ConfirmationService, MessageService]
 })

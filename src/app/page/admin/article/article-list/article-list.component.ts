@@ -7,7 +7,7 @@ import { DataArticle, DeleteRes } from "../../../../pojo/pojo-import";
 import { ArticleService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-article-list',
+  selector: 'admin-article-list',
   templateUrl: './article-list.component.html',
   providers: [ConfirmationService, MessageService]
 })
@@ -32,6 +32,10 @@ export class ArticleListComponent {
     {
       field: 'nameIndustry',
       header: 'Industry'
+    },
+    {
+      field: 'content',
+      header: 'content'
     }
   ];
 
@@ -70,8 +74,8 @@ export class ArticleListComponent {
   deleteConfirm(id: string) {
     this.slcId = id;
     this.confirmationService.confirm({
-      message: 'Apakah kau yakin ingin mendelete data ini?',
-      header: 'Hapus data',
+      message: 'Are you sure want delete this data?',
+      header: 'Delete data',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.messageService.add({
@@ -102,6 +106,10 @@ export class ArticleListComponent {
 
   toEdit(id:string):void{
     this.router.navigateByUrl(this.mainUrl+"edit/"+id);
+  }
+  
+  toDtl(id:string):void{
+    this.router.navigateByUrl(this.mainUrl+"dtl/"+id);
   }
 
   ngOnDestroy(): void {
