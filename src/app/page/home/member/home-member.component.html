@@ -27,13 +27,13 @@
                   <div class="col-12">
                     <span class="bold-medium color-black text-extrasmall">Email</span>
                     <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">
-                      {{profileData.data!.userEmail}}</p>
+                      {{profileData.data?.userEmail}}</p>
                   </div>
                 </div>
                 <div class="grid">
                   <div class="col-12">
                     <span class="bold-medium color-black text-extrasmall">Balance</span>
-                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data!.balance}}
+                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data?.balance}}
                       <p>
                   </div>
                 </div>
@@ -100,7 +100,7 @@
                                 *ngFor="let polling of pollingArray.controls; last as isLast; index as idx;let i = index ">
                                 <div class="md:col-9 col-7">
                                   <input pInputText type="text" required="true" class="w-full border-radius-20px"
-                                    [placeholder]="'Option ' + (i+1)" />
+                                    [placeholder]="'Option ' + (i+1)"/>
                                 </div>
                                 <div class="md:col-3 col-5">
                                   <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
@@ -183,14 +183,14 @@
                 <p-divider></p-divider>
 
                 <!-- Action -->
-                <div class="grid -mb-3 ml-1">
-                  <div class="col-2">
+                <div class="grid -mb-3 ml-1 mr-1">
+                  <div class="col-2" *ngIf="!threadHdr.isLike">
                     <div (click)="likeThreadLoggedUser(threadHdr.id, i)">
                       <i class="pi pi-heart"></i>
                       <span> {{threadHdr.counterLike}}</span>
                     </div>
                   </div>
-                  <div class="col-2">
+                  <div class="col-2" *ngIf="threadHdr.isLike">
                     <div (click)="likeThreadLoggedUser(threadHdr.id, i)">
                       <i class="pi pi-heart-fill text-red-600"></i>
                       <span> {{threadHdr.counterLike}}</span>
@@ -330,13 +330,13 @@
 
                     <!-- Action -->
                     <div class="grid -mb-3 ml-1">
-                      <div class="col-2">
+                      <div class="col-2" *ngIf="!threadHdr.isLike">
                         <div  (click)="likeThread(threadHdr.id, i)">
                           <i class="pi pi-heart"></i>
                           <span> {{threadHdr.counterLike!}}</span>
                         </div>
                       </div>
-                      <div class="col-2">
+                      <div class="col-2" *ngIf="threadHdr.isLike">
                         <div (click)="likeThread(threadHdr.id, i)">
                           <i class="pi pi-heart-fill text-red-600"></i>
                           <span> {{threadHdr.counterLike!}}</span>
