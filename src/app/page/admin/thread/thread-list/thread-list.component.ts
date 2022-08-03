@@ -3,18 +3,18 @@ import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { LazyLoadEvent } from 'primeng/api';
-import { DataCommunity, DeleteRes } from "../../../../pojo/pojo-import";
-import { CommunityService } from "../../../../service/import.service";
+import { DataThreadHdr, DeleteRes } from "../../../../pojo/pojo-import";
+import { ThreadHdrService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'admin-community-list',
-  templateUrl: './community-list.component.html',
+  selector: 'admin-thread-list',
+  templateUrl: './thread-list.component.html',
 })
-export class CommunityListComponent {
+export class ThreadListComponent {
   subscription ? : Subscription;
   loading: boolean = true;
 
-  listData: DataCommunity[] = [];
+  listData: DataThreadHdr[] = [];
 
   delRes!: DeleteRes;
 
@@ -61,7 +61,7 @@ export class CommunityListComponent {
   ];
 
   constructor(
-    private service: CommunityService,
+    private service: ThreadHdrService,
     private router: Router
   ) {}
 
@@ -75,7 +75,7 @@ export class CommunityListComponent {
     this.maxPage = maxPage
     this.query = query
 
-    this.subscription = this.service.getAll(startPage, maxPage, query)
+    this.subscription = this.service.getAllThreadHdr(startPage, maxPage, query)
       .subscribe((result) => {
         this.loading = false;
         this.listData = result.data!;

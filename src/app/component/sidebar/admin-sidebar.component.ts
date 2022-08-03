@@ -57,11 +57,11 @@ export class AdminSidebarComponent {
         ],
       },
       {
-        label: 'Subscription',
+        label: 'payment',
         items: [{
-            label: 'Subscription',
-            icon: 'pi pi-user',
-            routerLink: '/admin'
+            label: 'payment',
+            icon: 'fa fa-usd',
+            routerLink: '/admin/payment'
           }
         ],
       },
