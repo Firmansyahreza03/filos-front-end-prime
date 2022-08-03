@@ -3,11 +3,11 @@ import { Subscription } from "rxjs";
 
 import {ConfirmationService, MessageService} from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FindAllIndustryRes, UpdateArticleReq } from "src/app/pojo/pojo-import";
-import { ArticleService, IndustryService } from "src/app/service/import.service";
+import { FindAllIndustryRes, UpdateArticleReq } from "../../../../pojo/pojo-import";
+import { ArticleService, IndustryService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-article-edit',
+  selector: 'admin-article-edit',
   templateUrl: './article-edit.component.html',
   providers: [ConfirmationService, MessageService]
 })

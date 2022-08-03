@@ -1,10 +1,10 @@
-
+3
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { ArticleRouting } from "./article.routing";
+import { ThreadRouting } from "./thread.routing";
 
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
@@ -16,21 +16,15 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from "primeng/dropdown";
-import {ScrollPanelModule} from 'primeng/scrollpanel';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ThreadListComponent } from "./thread-list/thread-list.component";
 
-import { ArticleDtlComponent } from './article-dtl/article-dtl.component';
-import { ArticleEditComponent } from './article-edit/article-edit.component';
-import { ArticleListComponent } from "./article-list/article-list.component";
-import { ArticleAddComponent } from './article-add/article-add.component';
 @NgModule({
     declarations:[
-        ArticleListComponent,
-        ArticleAddComponent,
-        ArticleEditComponent,
-        ArticleDtlComponent
+        ThreadListComponent
     ],
     imports:[
-        ArticleRouting,
+        ThreadRouting,
         CommonModule,
         FormsModule,
         HttpClientModule,
@@ -48,10 +42,7 @@ import { ArticleAddComponent } from './article-add/article-add.component';
         ScrollPanelModule
     ],
     exports :[
-        ArticleListComponent,
-        ArticleAddComponent,
-        ArticleEditComponent,
-        ArticleDtlComponent
+        ThreadListComponent
     ]
 })
-export class ArticleModule{}
+export class ThreadModule{}

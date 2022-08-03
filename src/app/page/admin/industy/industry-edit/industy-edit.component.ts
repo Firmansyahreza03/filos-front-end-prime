@@ -7,7 +7,7 @@ import { UpdateIndustryReq } from "../../../../pojo/pojo-import";
 import { IndustryService } from "../../../../service/import.service";
 
 @Component({
-  selector: 'app-industy-edit',
+  selector: 'admin-industy-edit',
   templateUrl: './industy-edit.component.html',
   providers: [ConfirmationService, MessageService]
 })
