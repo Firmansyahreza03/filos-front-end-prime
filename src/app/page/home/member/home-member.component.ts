@@ -55,7 +55,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   proPic!: string;
   displayModal!: boolean;
   polling!:boolean
-  pollingArray = new FormArray([new FormControl('', Validators.required)]);
+  pollingArray = new FormArray([new FormControl('')]);
   expiredPolling!: Date;
 
   listThreadCategory: FindAllThreadCategoryRes = {
@@ -76,6 +76,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   profileData: FindProfileRes = {};
 
   bookmarkdata$ : Observable<DataThreadHdr[]> = this.store.select(getAllBookmark);
+
+  dataPol?: string[];
 
   constructor(
     private threadCategoryService: ThreadCategoryService,
@@ -129,16 +131,12 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   getProfile(): void{
     this.profileSubs = this.userService.findByEmail(this.loginService.getLoggedEmail()!).subscribe((res)=>{
-      this.profileData = res;
-      console.log(res);
-      
+      this.profileData = res;      
       if(this.profileData.data && this.profileData.data.fileId != null){
         this.proPic = 'http://localhost:3333/files/'+this.profileData.data.fileId;
       } else{
         this.proPic = DefaultPic.proFile;
-      }
-      console.log(this.proPic);
-      
+      }      
     })
   }
 
@@ -180,7 +178,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   getAllThreadByUserLogged(): void {
     this.threadHdrListByUserLoggedSubscription = this.threadHdrService
       .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail()!)
-      .subscribe((result) => {
+      .subscribe((result) => {        
         this.listThreadHdrByUserLogged = result;
       });
   }
@@ -196,34 +194,42 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   getAllThreadThatAreBookmarkedByUserLogged(): void {
     this.threadLikedByUserLoggedSubs = this.threadHdrService
       .getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {
+      .subscribe((res) => {        
         this.listThreadHdrLike = res;
       });
   }
 
   onSubmit(): void {
-    this.threadSubscription = this.threadHdrService
-      .insertThreadHdr(this.createThreadHdr)
-      .subscribe(() => {
-        this.getAllThread();
-        this.getAllThreadByUserLogged();
-      });
+    console.log(this.pollingArray.value);
+    
+    // this.pollingArray.setValue(this.dataPol!);
+    // console.log(this.pollingArray);
+    
+    // this.threadSubscription = this.threadHdrService
+    //   .insertThreadHdr(this.createThreadHdr)
+    //   .subscribe(() => {
+    //     this.getAllThread();
+    //     this.getAllThreadByUserLogged();
+    //   });
   }
 
   likeThread(id: string, index: number): void {
     this.threadLikedSubs = this.likeThreadService
       .likeThread(id, this.loginService.getLoggedEmail()!)
       .subscribe((res) => {
-        if (res.isLiked == true) {
+        if (res.isLiked == true && this.listThreadHdr.data![index].isLike == false) {
+          this.listThreadHdr.data![index].isLike = true;
           let counter = parseInt(this.listThreadHdr.data![index].counterLike!) + 1;
           this.listThreadHdr.data![index].counterLike = counter.toString();
           const size = this.listThreadHdrByUserLogged.data!.length;
           for (let i = 0; i < size; i++) {
             if (this.listThreadHdrByUserLogged.data![i].id = this.listThreadHdr.data![index].id) {
+              this.listThreadHdrByUserLogged.data![i].isLike = true;
               this.listThreadHdrByUserLogged.data![i].counterLike = counter.toString();
             }
           }
         } else {
+          this.listThreadHdr.data![index].isLike = false;
           let counter = parseInt(this.listThreadHdr.data![index].counterLike!) - 1;
           this.listThreadHdr.data![index].counterLike = counter.toString();
           const size = this.listThreadHdrByUserLogged.data!.length;
@@ -231,11 +237,12 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
             if (
               this.listThreadHdrByUserLogged.data![i].id == this.listThreadHdr.data![index].id
             ) {
+              this.listThreadHdrByUserLogged.data![i].isLike = false;
               this.listThreadHdrByUserLogged.data![i].counterLike = counter.toString();
             }
           }
         }
-        this.getAllThreadThatAreLikedByUserLogged();
+        this.getAllThreadThatAreLikedByUserLogged();        
       });
   }
 
@@ -243,7 +250,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedSubs = this.likeThreadService
       .likeThread(id, this.loginService.getLoggedEmail()!)
       .subscribe((res) => {
-        if (res.isLiked == true) {
+        if (res.isLiked == true && this.listThreadHdrByUserLogged.data![index].isLike == false) {
+          this.listThreadHdrByUserLogged.data![index].isLike = true;
           let counter = parseInt(this.listThreadHdrByUserLogged.data![index].counterLike!) + 1;
           this.listThreadHdrByUserLogged.data![index].counterLike = counter.toString();
           for (let i = 0; i < this.listThreadHdr.data!.length; i++) {
@@ -251,9 +259,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
               this.listThreadHdrByUserLogged.data![index].id == this.listThreadHdr.data![i].id
             ) {
               this.listThreadHdr.data![i].counterLike = counter.toString();
+              this.listThreadHdr.data![i].isLike = true;
             }
           }
         } else {
+          this.listThreadHdrByUserLogged.data![index].isLike = false;
           let counter = parseInt(this.listThreadHdrByUserLogged.data![index].counterLike!) - 1;
           this.listThreadHdrByUserLogged.data![index].counterLike = counter.toString();
           const size = this.listThreadHdr.data!.length;
@@ -262,6 +272,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
               this.listThreadHdrByUserLogged.data![index].id == this.listThreadHdr.data![i].id
             ) {
               this.listThreadHdr.data![i].counterLike = counter.toString();
+              this.listThreadHdr.data![i].isLike = false;
             }
           }
         }
@@ -273,7 +284,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.bookmarkSubs = this.bookmarkService
       .bookmarkThread(id, this.loginService.getLoggedEmail()!)
       .subscribe((res) => {
-        console.log(res);
         if(res.isBookmark == true){
           this.store.dispatch(bookmarkAction({payload: this.listThreadHdr.data![index]}))
         } else {
