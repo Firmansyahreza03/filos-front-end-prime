@@ -3,7 +3,7 @@ import { HomeMemberComponent } from './member/home-member.component';
 import { HomeMemberRouting } from './home-member.routing';
 import { CardModule } from 'primeng/card';
 import { TabViewModule } from 'primeng/tabview';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';

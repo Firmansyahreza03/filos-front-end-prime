@@ -53,9 +53,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   panelTab: string = 'myActivities';
   idDetail!: string;
   proPic!: string;
-  displayModal!: boolean;
   polling!:boolean
-  pollingArray = new FormArray([new FormControl('')]);
+  pollingArray: string[] = [];
   expiredPolling!: Date;
 
   listThreadCategory: FindAllThreadCategoryRes = {
@@ -94,7 +93,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createThreadHdr.isActive = true;
-    this.createThreadHdr.isPremium = false;
     this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
 
     this.threadCategorySubs = this.threadCategoryService
@@ -111,7 +109,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.getAllThreadThatAreLikedByUserLogged();
     
     this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
-      this.store.dispatch(loadBookmarkAction({ payload: res.data!}));
+      this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
     })
   }
 
@@ -200,7 +198,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    console.log(this.pollingArray.value);
+    console.log(this.pollingArray);
     
     // this.pollingArray.setValue(this.dataPol!);
     // console.log(this.pollingArray);
@@ -283,12 +281,15 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   bookmarkThread(id: string, index: number): void {
     this.bookmarkSubs = this.bookmarkService
       .bookmarkThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {
+      .subscribe((res) => {        
         if(res.isBookmark == true){
-          this.store.dispatch(bookmarkAction({payload: this.listThreadHdr.data![index]}))
+          this.store.dispatch(bookmarkAction({payload: {...this.listThreadHdr.data![index]}}))
+          this.listThreadHdr.data![index].isBookmark = true;
+          
         } else {
           this.store.dispatch(unbookmarkAction({ payload: id}))
-        }
+          this.listThreadHdr.data![index].isBookmark = false;
+        }        
       });
   }
 
@@ -313,26 +314,20 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       this.polling = true;
     else this.polling = false;
     console.log(this.polling)
-
   }
 
-  showModalDialog() {
-      this.displayModal = true;
-  }
- 
-  addInputControl() {
-    this.pollingArray.push(new FormControl('', Validators.required));
-  }
-  removeInputControl(idx: number) {
-    this.pollingArray.removeAt(idx);
+  addInputControl(optionLabel: string) {
+    this.pollingArray.push(optionLabel);
   }
 
-  exitPolling() {
-    this.polling = false;
+  removeInputControl(index: number) {
+     this.pollingArray.splice(index,1);
   }
 
-  clickPolling() {
-    this.polling = true;
-    this.pollingArray.reset();
+  changeValue(index: number, event: any) {
+    const label = event.target.value;    
+    this.pollingArray[index] = label;
+    console.log(this.pollingArray[index]);
+    console.log(index);
   }
 }

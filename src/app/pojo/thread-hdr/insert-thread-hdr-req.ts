@@ -3,7 +3,6 @@ export interface InsertThreadHdrReq {
 
 	threadName ?:string
 	threadContent ?:string
-	isPremium ?:boolean
 	pollingHdrId ?:string
 	categoryId ?:string
 	fileName?:string
