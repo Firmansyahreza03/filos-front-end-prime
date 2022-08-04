@@ -13,7 +13,8 @@ import {
   FindProfileRes,
   InsertThreadHdrReq,
   ErorRes,
-  FindAllPollingOptionRes
+  FindAllPollingOptionRes,
+  InsertPollingHeaderReq
 } from 'src/app/pojo/pojo-import';
 import { BookmarkService } from 'src/app/service/bookmark.service';
 import { CommunityService } from 'src/app/service/community.service';
@@ -198,17 +199,18 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+
     console.log(this.pollingArray);
+    if(this.pollingArray.length != 0){
+      this.createThreadHdr.options = this.pollingArray;
+    }
     
-    // this.pollingArray.setValue(this.dataPol!);
-    // console.log(this.pollingArray);
-    
-    // this.threadSubscription = this.threadHdrService
-    //   .insertThreadHdr(this.createThreadHdr)
-    //   .subscribe(() => {
-    //     this.getAllThread();
-    //     this.getAllThreadByUserLogged();
-    //   });
+    this.threadSubscription = this.threadHdrService
+      .insertThreadHdr(this.createThreadHdr)
+      .subscribe(() => {
+        this.getAllThread();
+        this.getAllThreadByUserLogged();
+      });
   }
 
   likeThread(id: string, index: number): void {

@@ -94,7 +94,7 @@
                             <!-- form polling -->
                             <div class="col-12">
                               <input pInputText type="text" required="true" class="w-full border-radius-20px"
-                                placeholder="Title Polling" />
+                                placeholder="Title Polling" name="pollingName" [(ngModel)]="createThreadHdr.pollingName" />
                             </div>
                             <div class="col-12">
                               <div class="grid">
@@ -123,7 +123,7 @@
                               <div class="field col-12 md:col-4">
                                 <label for="time" class="text-sm">Expired</label>
                                 <p-calendar [(ngModel)]="expiredPolling" [showTime]="true" [showSeconds]="true"
-                                  inputId="time" name="expiredAt"></p-calendar>
+                                  inputId="time" name="expiredAt" [(ngModel)]="createThreadHdr.expiredAt"></p-calendar>
                               </div>
                             </div>
                           </div>
