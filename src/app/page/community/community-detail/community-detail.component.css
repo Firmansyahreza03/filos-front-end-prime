@@ -33,7 +33,6 @@
     width: 100%;
   }
 .image-box{
-    /* height:400px; */
     width:410px;
     object-fit: cover;
     object-position: center;
@@ -44,4 +43,13 @@
     border-radius: 10px;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
 }
-
+@media (max-width: 992px) {
+    .image-box{
+        height:200px;
+        width:300px;
+        object-fit: cover;
+    }
+    .card-community{
+        height: 490px;
+    }
+  }

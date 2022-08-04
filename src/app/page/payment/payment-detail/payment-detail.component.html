@@ -147,11 +147,11 @@
                         </div>
                         <div class="col-12">
                             <div class="grid mb-1">
-                                <div class="col-5">
+                                <div class="md:col-5 col-12">
                                     <p class="text-sm font-medium">Virtual Account Number:</p>
                                     <p class="font-bold text-green-700">10511091003273</p>
                                 </div>
-                                <div class="col-7">
+                                <div class="md:col-7 col-12">
                                     <p class="text-sm font-medium">Total:</p>
                                     <p class="font-bold text-green-700">Rp.400.000</p>
                                 </div>
@@ -194,29 +194,21 @@
                     <div class="container">
                     <div class="grid mt-2 justify-content-center">
                         <div class="col-12">
-                            <p class="text-sm">Upload your proof of payment for confirmation. </p>
+                            <p class="text-sm text-center">Upload your proof of payment for confirmation. </p>
                         </div>
                         <form (ngSubmit)="confirmation()">
                         <!-- Upload Foto -->
                         <div class="col-12">
-                            <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)">
-                            <ng-template pTemplate="content">
-                                <ul *ngIf="uploadedFiles.length">
-                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                                </ul>
-                            </ng-template>
-                            </p-fileUpload>
+                            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
                         </div>
 
                         <!-- Action -->
-                        <div class="col-12 mt-3 pb-0">
+                        <div class="col-12 mt-5 pb-0">
                             <div class="grid justify-content-center">
-                                <div class="col-6">
                                     <button pButton pRipple type="submit"
                           class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
                           styleClass="p-button-sm text-center" label="Confirmation"></button>
                                 </div>
-                            </div>
                         </div>
                         </form>
                     </div>

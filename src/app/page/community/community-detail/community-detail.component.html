@@ -13,10 +13,10 @@
           <!-- Card Event -->
           <div class="card">
             <div class="container">
-
+            
               <!-- header -->
               <div class="grid flex flex-wrap justify-content-start row-gap-0">
-                <div class="md:col-6 col-12 flex justify-content-center">
+                <div class="md:col-6 col-12 justify-content-center">
                   <div class="image-content">
                     <div class="image-box">
                       <img src="http://localhost:3333/files/{{communityData.data?.idFile}}" alt="" srcset=""
@@ -32,44 +32,44 @@
                   </div>
                   <div class="grid mt-3">
                     <div class="col-12">
-                      <div class="grid">
-                        <div class="col-1">
-                          <i class="pi pi-users color-purple" style="font-size: 1rem"></i>
+                      <div class="flex column-gap-4">
+                        <div class="flex pt-1">
+                          <i class="pi pi-users color-purple"  style="font-size: 15px"></i>
                         </div>
-                        <div class="col-11">
-                          <p class="text-800 font-medium text-base"> {{communityData.data?.provider}}</p>
+                        <div class="flex-1">
+                          <p class="text-800 font-medium text-sm"> {{communityData.data?.provider}}</p>
                         </div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <div class="grid">
-                        <div class="col-1">
+                      <div class="flex column-gap-4">
+                        <div class="flex pt-1">
                           <i class="pi 
-                            pi-money-bill color-purple" style="font-size: 12px"></i>
+                            pi-money-bill color-purple" style="font-size: 15px"></i>
                         </div>
-                        <div class="col-11">
-                          <p class="color-yellow font-semibold text-lg"> Rp. {{communityData.data?.price}}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="grid">
-                        <div class="col-1">
-                          <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
-                        </div>
-                        <div class="col-11">
-                          <p class="text-800 font-medium text-base"> {{communityData.data?.startAt}}</p>
-                          <p class="mt-2 text-800 font-medium text-base"> {{communityData.data?.endAt}}</p>
+                        <div class="flex-1">
+                          <p class="color-yellow font-semibold text-base"> Rp. {{communityData.data?.price}}</p>
                         </div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <div class="grid">
-                        <div class="col-1">
+                      <div class="flex column-gap-4">
+                        <div class="flex pt-1">
+                          <i class="pi pi-calendar color-purple" style="font-size: 15px"></i>
+                        </div>
+                        <div class="flex-1">
+                          <p class="text-800 font-medium text-sm"> {{communityData.data?.startAt}}</p>
+                          <p class="mt-2 text-800 font-medium text-sm"> {{communityData.data?.endAt}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="flex align-content-center column-gap-4">
+                        <div class="flex align-items-center">
                           <i class="pi pi-circle-fill color-purple" style="font-size: 12px"></i>
                         </div>
-                        <div class="col-11">
-                          <p class="text-800 font-medium text-base">{{communityData.data?.location}}</p>
+                        <div class="flex-1 align-items-center">
+                          <p class="text-800 font-medium text-sm">{{communityData.data?.location}}</p>
                         </div>
                       </div>
                     </div>
@@ -78,9 +78,9 @@
               </div>
 
               <!-- Content -->
-              <div class="grid mt-4 flex flex-wrap justify-content-start row-gap-0">
+              <div class="grid mt-1 flex flex-wrap justify-content-start row-gap-0">
                 <div class="col-12">
-                  <p>{{communityData.data?.desc}}</p>
+                  <p class="text-sm">{{communityData.data?.desc}}</p>
                 </div>
               </div>
 

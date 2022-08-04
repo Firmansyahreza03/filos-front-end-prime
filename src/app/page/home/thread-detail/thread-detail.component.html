@@ -15,30 +15,26 @@
             <div class="container">
 
               <!-- header -->
-              <div class="grid">
-                <div class="col-1">
+              <div class="flex column-gap-4">
+                <div class="flex">
                   <div class="image-content">
                     <div class="image-box">
                       <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.photoProfileCreator" alt="" srcset="" class="profile-pic">
                     </div>
                   </div>
                 </div>
-                <div class="col-11">
-                  <div class="grid mt-1">
-                    <div class="col-12">
+                <div class="flex flex-column pt-2">
                       <p class="text-base font-medium">{{threadHdrData.data?.creatorName}}</p>
                       <p class="text-xs">{{threadHdrData.data?.createdAt}}</p>
-                    </div>
-                  </div>
                 </div>
               </div>
 
               <!-- content -->
-              <div class="grid mt-2">
-                <div class="col-12">
+              <div class="flex flex-column mt-5 row-gap-3">
+                <div class="flex">
                   <p class="text-base font-semibold">{{threadHdrData.data?.threadName}}</p>
                 </div>
-                <div class="col-12">
+                <div class="flex">
                   <p class="text-sm">{{threadHdrData.data?.threadContent}}</p>
                   <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.fileId" alt="">
                 </div>
@@ -48,56 +44,43 @@
         </div>
         <div class="col-12 mt-1">
           <!-- Write Comment -->
-          <div class="grid">
-            <div class="col-12">
-              <div class="grid">
-                <div class="col-1 ml-4">
-                  <i class="pi pi-circle-fill color-purple" style="font-size: 2rem"></i>
-                </div>
-                <div class="col -ml-4 mt-1">
-                  <p class="font-semibold text-base">Comment</p>
-                </div>
-              </div>
+          <div class="flex flex-column">
+            <div class="flex ml-4 column-gap-3 align-content-center">
+                  <i class="pi pi-circle-fill color-purple flex align-items-center" style="font-size: 2rem"></i>
+                  <p class="font-semibold text-base flex align-items-center"> Comment</p>
             </div>
-            <div class="col-12 -mt-1">
+            <div class="flex-1 mt-2">
               <div class="card">
-                <form action="">
-                  <div class="grid">
-                    <div class="col-1">
-                      <div class="image-content">
-                        <div class="image-box">
-                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                <div class="container">
+                  <form action="">
+                    <div class="flex column-gap-4 ">
+                      <div class="flex">
+                        <div class="image-content">
+                          <div class="image-box">
+                            <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                          </div>
                         </div>
                       </div>
+                      <div class="flex-1">
+                          <div class="flex flex-wrap">
+                              <div class="col-12">
+                                <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
+                              </div>
+                              <div class="col-12">
+                                <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                              </div>
+                            </div>
+                            <div class="flex -mb-3 justify-content-end">
+                              <div class="flex">
+                                <button pButton pRipple type="submit"
+                                  class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                                  styleClass="p-button-sm text-center" label="Post"></button>
+                              </div>
+                            </div>
+                      </div>
                     </div>
-                    <div class="col-11">
-                        <div class="grid flex flex-wrap">
-                            <div class="col-12">
-                              <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
-                            </div>
-                            <div class="col-12">
-                              <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
-                            </div>
-                          </div>
-                          <p-divider></p-divider>
-                          <div class="grid -mt-3 -mb-3">
-                            <div class="col-1">
-                              <button pButton pRipple type="button" icon="pi pi-image"
-                                class="p-button-rounded p-button-help p-button-text"></button>
-                            </div>
-                            <div class="col-1">
-                              <button pButton pRipple type="button" icon="pi pi-bars"
-                                class="p-button-rounded p-button-help p-button-text"></button>
-                            </div>
-                            <div class="col-2 col-offset-8">
-                              <button pButton pRipple type="submit"
-                                class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                                styleClass="p-button-sm text-center" label="Post"></button>
-                            </div>
-                          </div>
-                    </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
