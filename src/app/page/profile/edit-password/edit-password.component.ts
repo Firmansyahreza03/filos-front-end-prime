@@ -7,6 +7,9 @@ import { Router } from "@angular/router";
     styleUrls:['edit-password.component.css'],
 })
 export class EditPasswordComponent{
+    password!:string
+    confirmPassword!:string
+
     constructor(
         private router: Router
         ){}
