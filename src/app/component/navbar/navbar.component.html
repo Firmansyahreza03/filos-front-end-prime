@@ -1,8 +1,28 @@
-<p-menubar [model]="items">
+<p-menubar  [model]="items">
     <ng-template pTemplate="start">
         <img src="../../../assets/image/logo-filos-1.png" height="40" class="mr-2">
     </ng-template>    
     <ng-template pTemplate="end">
-        <button pButton pRipple type="button"  icon="pi pi-sign-out" class="p-button-rounded p-button-danger"  (click)="logout()"></button>
+        <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()">   
+            <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar></button>
     </ng-template>
 </p-menubar>
+<div class="layout-topbar-menu" [ngClass]="{'show':topMenuActive , 'hidden':!topMenuActive}">
+    <div class="flex flex-column row-gap-3">
+        <div class="flex">
+            <button class="p-link layout-topbar-button" (click)="settings()">
+                <i class="pi pi-cog text-sm"></i>
+                <span class="text-sm"> Settings</span>
+              </button>
+        </div>
+        <div class="flex">
+            <button class="p-link layout-topbar-button" (click)="logout()">
+                <i class="pi pi-sign-out text-sm font-semibold text-red-700"></i>
+                <span class="text-sm font-semibold text-red-700"> Log Out</span>
+              </button>
+        </div>
+        
+    </div>
+  
+   
+  </div>
