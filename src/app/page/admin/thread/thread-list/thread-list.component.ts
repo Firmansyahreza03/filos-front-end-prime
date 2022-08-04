@@ -39,10 +39,6 @@ export class ThreadListComponent {
       header: 'category'
     },
     {
-      field: 'industryName',
-      header: 'Industry'
-    },
-    {
       field: 'creatorName',
       header: 'creator'
     },
@@ -71,7 +67,7 @@ export class ThreadListComponent {
     this.maxPage = maxPage
     this.query = query
 
-    this.subscription = this.service.getAllThreadHdr(startPage, maxPage, query)
+    this.subscription = this.service.getAllThreadHdr(query, startPage, maxPage)
       .subscribe((result) => {
         this.loading = false;
         this.listData = result.data!;

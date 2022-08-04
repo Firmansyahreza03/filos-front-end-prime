@@ -1,3 +1,4 @@
+import { PaymentService } from './payment.service';
 import { ArticleService } from './article.service';
 import { CommunityCategoriesService } from 'src/app/service/community-category.service';
 import { UserService } from 'src/app/service/user.service';
@@ -29,5 +30,6 @@ export {
   ThreadHdrService,
   ThreadLikedService,
   UserService,
-  ArticleService
+  ArticleService,
+  PaymentService
 }

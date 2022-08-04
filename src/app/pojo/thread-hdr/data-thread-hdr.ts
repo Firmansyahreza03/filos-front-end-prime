@@ -7,8 +7,6 @@ export interface DataThreadHdr {
 	threadCode ?:string
 	threadContent ?:string
 	isPremium ?:boolean
-	industryId ?:string
-	industryName ?:string
 	categoryid ?:string
 	categoryName ?:string
 	pollingHdrsId ?:string
