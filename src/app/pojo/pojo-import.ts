@@ -68,6 +68,7 @@ import { FindPaymentTransactionRes } from "./payment-transaction/find-payment-tr
 import { FindAllPaymentTransactionRes } from "./payment-transaction/find-all-payment-transaction-res";
 import { InsertPaymentTransactionReq } from "./payment-transaction/insert-payment-transaction-req";
 import { UpdatePaymentTransactionReq } from "./payment-transaction/update-payment-transaction-req";
+import { ValidPaymentTransactionReq } from "./payment-transaction/valid-payment-transaction-req";
 
 import { DataPollingAnswer } from "./polling-answer/data-polling-answer";
 import { FindPollingAnswerRes } from "./polling-answer/find-polling-answer-res";
@@ -141,7 +142,7 @@ export {
   DataCommunityCategory,  FindCommunityCategoryRes, FindAllCommunityCategoryRes, InsertCommunityCategoryReq, UpdateCommunityCategoryReq,
   DataIndustry, FindIndustryRes, FindAllIndustryRes, InsertIndustryReq, UpdateIndustryReq,
   DataMemberCommunity, FindMemberCommunityRes, FindAllMemberCommunityRes, InsertMemberCommunityReq, UpdateMemberCommunityReq,
-  DataPaymentTransaction, FindPaymentTransactionRes, FindAllPaymentTransactionRes, InsertPaymentTransactionReq, UpdatePaymentTransactionReq,
+  DataPaymentTransaction, FindPaymentTransactionRes, FindAllPaymentTransactionRes, InsertPaymentTransactionReq, UpdatePaymentTransactionReq, ValidPaymentTransactionReq,
   DataPollingAnswer, FindPollingAnswerRes, FindAllPollingAnswerRes, InsertPollingAnswerReq,
   DataPollingOption, FindPollingOptionRes, FindAllPollingOptionRes, InsertPollingOptionReq, UpdatePollingOptionReq,
   DataPollingHeader, FindPollingHeaderRes, FindAllPollingHeaderRes, InsertPollingHeaderReq, UpdatePollingHeaderReq,

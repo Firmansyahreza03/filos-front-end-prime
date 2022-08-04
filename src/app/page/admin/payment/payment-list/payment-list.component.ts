@@ -2,83 +2,116 @@ import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
-import { LazyLoadEvent } from 'primeng/api';
-import { DataPaymentTransaction} from "../../../../pojo/pojo-import";
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
+import { DataPaymentTransaction, ValidPaymentTransactionReq} from "../../../../pojo/pojo-import";
 import { PaymentService } from "../../../../service/import.service";
 
 @Component({
   selector: 'admin-payment-list',
   templateUrl: './payment-list.component.html',
+  providers: [ConfirmationService, MessageService]
 })
 export class PaymentListComponent {
-//   subscription ? : Subscription;
-//   loading: boolean = true;
+  subscription ? : Subscription;
+  loading: boolean = true;
 
-//   listData: DataPaymentTransaction[] = [];
+  listData: DataPaymentTransaction[] = [];
+  req!: ValidPaymentTransactionReq;
 
-//   startPage: number = 0;
-//   maxPage: number = 5;
-//   totalData: number = 0;
-//   query ? : string;
-//   slcId!: string;
-//   mainUrl!: string;
+  startPage: number = 0;
+  maxPage: number = 5;
+  totalData: number = 0;
+  query ? : string;
+  slcId!: string;
+  fileAtt!:string;
+  mainUrl!: string;
+  
+  cols: any[] = [
+    {
+      field: 'code',
+      header: 'code'
+    },
+    {
+      field: 'desc',
+      header: 'description'
+    },
+    {
+      field: 'price',
+      header: 'price'
+    },
+    {
+      field: 'isAcc',
+      header: 'validation'
+    },
+  ];
 
-//   cols: any[] = [
-//     {
-//       field: 'PaymentCode',
-//       header: 'code'
-//     },
-//     {
-//       field: 'PaymentName',
-//       header: 'title'
-//     },
-//     {
-//       field: 'categoryName',
-//       header: 'category'
-//     },
-//     {
-//       field: 'creatorName',
-//       header: 'creator'
-//     },
-//     {
-//       field: 'createdAt',
-//       header: 'created at'
-//     },
-//     {
-//       field: 'isPremium',
-//       header: 'premium only'
-//     }
-//   ];
+  constructor(
+    private service: PaymentService,
+    private router: Router,
+    private confirmationService: ConfirmationService
+  ) {}
 
-//   constructor(
-//     private service: PaymentService,
-//     private router: Router
-//   ) {}
+  loadData(event: LazyLoadEvent) {
+    this.viewData(event.first, event.rows, event.globalFilter)
+  }
 
-//   loadData(event: LazyLoadEvent) {
-//     this.viewData(event.first, event.rows, event.globalFilter)
-//   }
+  viewData(startPage: number = this.startPage, maxPage: number = this.maxPage, query ? : string): void {
+    this.loading = true;
+    this.startPage = startPage
+    this.maxPage = maxPage
+    this.query = query
 
-//   viewData(startPage: number = this.startPage, maxPage: number = this.maxPage, query ? : string): void {
-//     this.loading = true;
-//     this.startPage = startPage
-//     this.maxPage = maxPage
-//     this.query = query
+    this.subscription = this.service.getAll(query, startPage, maxPage)
+      .subscribe((result) => {
+        this.loading = false;
+        this.listData = result.data!;
+        this.totalData = result.count??this.listData.length;
+      });
+  }
 
-//     this.subscription = this.service.getAll(query, startPage, maxPage)
-//       .subscribe((result) => {
-//         this.loading = false;
-//         this.listData = result.data!;
-//         this.totalData = result.count??this.listData.length;
-//       });
-//   }
+  ngOnInit(): void {
+    const thisUrl: string[] = this.router.url.split("/");
+    this.mainUrl = thisUrl[1] + "/" + thisUrl[2] + "/";
+  }
 
-//   ngOnInit(): void {
-//     const thisUrl: string[] = this.router.url.split("/");
-//     this.mainUrl = thisUrl[1] + "/" + thisUrl[2] + "/";
-//   }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+  
+  getFile(fileId: string): void {
+    this.fileAtt = 'http://localhost:3333/files/'+fileId;
+    this.confirmationService.confirm({
+        message: 'Do you sure want to download this file?',
+        header: 'Download file',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          this.downloadFile();
+        },
+        reject: () => { }
+    });
+  }
 
-//   ngOnDestroy(): void {
-//     this.subscription?.unsubscribe();
-//   }
+  downloadFile(): void {
+    window.open(this.fileAtt, '_blank');
+  }
+
+  confirmPayment(id: string): void {
+    this.req.id = id;
+    this.confirmationService.confirm({
+      message: 'Do you sure want to validation this payment transaction?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          this.validationPayment();
+        },
+        reject: () => { }
+    });
+  }
+
+  validationPayment(): void {
+    this.subscription = this.service.valid(this.req)
+      .subscribe( ()=> {
+        this.viewData(this.startPage,  this.maxPage, "")
+      })
+  }
 }
