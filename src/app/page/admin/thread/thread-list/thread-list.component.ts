@@ -27,36 +27,32 @@ export class ThreadListComponent {
 
   cols: any[] = [
     {
-      field: 'code',
+      field: 'threadCode',
       header: 'code'
     },
     {
-      field: 'title',
+      field: 'threadName',
       header: 'title'
     },
     {
-      field: 'nameCategory',
+      field: 'categoryName',
       header: 'category'
     },
     {
-      field: 'nameIndustry',
+      field: 'industryName',
       header: 'Industry'
     },
     {
-      field: 'provider',
-      header: 'provider'
+      field: 'creatorName',
+      header: 'creator'
     },
     {
-      field: 'price',
-      header: 'price'
+      field: 'createdAt',
+      header: 'created at'
     },
     {
-      field: 'startAt',
-      header: 'startAt'
-    },
-    {
-      field: 'endAt',
-      header: 'endAt'
+      field: 'isPremium',
+      header: 'premium only'
     }
   ];
 

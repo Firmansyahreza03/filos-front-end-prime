@@ -9,13 +9,15 @@ import { FindAllThreadHdrRes, FindThreadHdrRes, InsertThreadHdrReq } from "../po
 })
 export class ThreadHdrService {
   constructor(private http: HttpClient) {}
-  getAllThreadHdr(startPage?: number, maxPage?: number): Observable < FindAllThreadHdrRes > {
-    let url = 'http://localhost:3333/threads';
-    if(!startPage && !maxPage){
-      return this.http.get < FindAllThreadHdrRes > (url);
-    } else{
-      return this.http.get<FindAllThreadHdrRes>(`${url}?=startPage=${startPage}&maxPage=${maxPage}`);
+  getAllThreadHdr(startPage?: number, maxPage?: number, query?: string): Observable < FindAllThreadHdrRes > {
+    let url = `http://localhost:3333/threads?`;
+    if(startPage != undefined && maxPage){
+        url = url+`&startPage=${startPage}`+`&maxPage=${maxPage}`
     }
+    if(query ){
+        url = url+`&query=${query}`
+    }
+    return this.http.get<FindAllThreadHdrRes>(url);
   }
 
   getAllThreadHdrByUserLogged(data: string): Observable < FindAllThreadHdrRes > {
