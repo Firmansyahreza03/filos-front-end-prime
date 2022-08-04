@@ -1,6 +1,6 @@
 export interface InsertPollingHeaderReq {
-	isActive : boolean
+	isActive? : boolean
 
-	options:string[]
-	pollingName:string
+	options?:string[]
+	pollingName?:string
 }
