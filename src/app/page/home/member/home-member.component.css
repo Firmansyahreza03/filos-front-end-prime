@@ -1,7 +1,8 @@
-.upload-profile-pic{
+/* #login-profile-pic{
     height: 150px;
+    width: 150px;
     border-radius: 50%;
-}
+} */
 .profile-pic{
     height: 50px;
     border-radius: 50%;
@@ -57,7 +58,6 @@
     border-radius: 2px;
 }
 
-
 p {
     margin: 0;
 }
@@ -73,3 +73,24 @@ p {
     background-color: none;
 }
 
+.polling{
+    padding: 20px;
+    background-color: rgb(244, 243, 243);
+    border-radius: 20px;
+}
+
+.image-content-login{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.image-box-login{
+    height: 100%;
+    width: 100%;
+}
+.image-box-login img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
