@@ -335,4 +335,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.polling = true;
     this.pollingArray.reset();
   }
+
+  toEditProfile(){
+    this.router.navigateByUrl('/profile')
+  }
 }
