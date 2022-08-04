@@ -9,11 +9,13 @@ import { FindAllThreadHdrRes, FindThreadHdrRes, InsertPollingHeaderReq, InsertTh
 })
 export class ThreadHdrService {
   constructor(private http: HttpClient) {}
+  
   getAllThreadHdr(query?: string, startPage?: number, maxPage?: number): Observable < FindAllThreadHdrRes > {
     let url = 'http://localhost:3333/threads';
     if(!startPage && !maxPage){
       return this.http.get < FindAllThreadHdrRes > (url);
-    } else{
+    } 
+    else{
       return this.http.get<FindAllThreadHdrRes>(`${url}?=startPage=${startPage}&maxPage=${maxPage}`);
     }
   }

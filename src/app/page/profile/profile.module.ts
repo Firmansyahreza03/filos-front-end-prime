@@ -9,6 +9,7 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import {PasswordModule} from 'primeng/password';
+import { FormsModule } from "@angular/forms";
 @NgModule({
     imports:[
         ProfileRouting,
@@ -18,7 +19,8 @@ import {PasswordModule} from 'primeng/password';
         ButtonModule,
         InputTextModule,
         DropdownModule,
-        PasswordModule
+        PasswordModule,
+        FormsModule
     ],
     declarations:[
         EditProfileComponent,
