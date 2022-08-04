@@ -2,14 +2,14 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { InsertRes } from "../pojo/insert-res";
-import { FindAllThreadHdrRes, FindThreadHdrRes, InsertThreadHdrReq } from "../pojo/pojo-import";
+import { FindAllThreadHdrRes, FindThreadHdrRes, InsertPollingHeaderReq, InsertThreadHdrReq } from "../pojo/pojo-import";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThreadHdrService {
   constructor(private http: HttpClient) {}
-  getAllThreadHdr(startPage?: number, maxPage?: number): Observable < FindAllThreadHdrRes > {
+  getAllThreadHdr(query?: string, startPage?: number, maxPage?: number): Observable < FindAllThreadHdrRes > {
     let url = 'http://localhost:3333/threads';
     if(!startPage && !maxPage){
       return this.http.get < FindAllThreadHdrRes > (url);
@@ -23,7 +23,7 @@ export class ThreadHdrService {
   }
 
   insertThreadHdr(data: InsertThreadHdrReq): Observable < InsertRes > {
-    return this.http.post < InsertRes > ('http://localhost:3333/threads', data)
+    return this.http.post < InsertRes > ('http://localhost:3333/threads', data);
   }
 
   getThreadThatAreLikedByUser(email: string): Observable<FindAllThreadHdrRes> {
