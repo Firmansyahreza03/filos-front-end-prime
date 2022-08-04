@@ -44,6 +44,11 @@ const routes: Routes = [
         loadChildren: () => import('./page/payment/payment.module').then(m => m.PaymentModule)
     },
     {
+        path: 'profile',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/profile/profile.module').then(m => m.ProfileModule)
+    },
+    {
         path: 'admin',
         component: AdminLayoutComponent,
         loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)

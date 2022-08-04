@@ -21,6 +21,14 @@ const routes : Routes=[
         path: 'article', 
         loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
     },
+    {
+        path: 'community', 
+        loadChildren: () => import('./community/community.module').then(m => m.CommunityModule)
+    },
+    {
+        path: 'thread', 
+        loadChildren: () => import('./thread/thread.module').then(m => m.ThreadModule)
+    },
 ]
 @NgModule({
     imports: [

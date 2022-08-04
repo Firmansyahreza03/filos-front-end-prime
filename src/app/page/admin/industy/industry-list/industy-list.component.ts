@@ -9,7 +9,7 @@ import { DeleteRes } from "src/app/pojo/pojo-import";
 import { IndustryService } from "src/app/service/import.service";
 
 @Component({
-  selector: 'app-industy-list',
+  selector: 'admin-industy-list',
   templateUrl: './industy-list.component.html',
   providers: [ConfirmationService, MessageService]
 })
@@ -72,8 +72,8 @@ export class IndustyListComponent {
   deleteConfirm(id: string) {
     this.slcId = id;
     this.confirmationService.confirm({
-      message: 'Apakah kau yakin ingin mendelete data ini?',
-      header: 'Hapus data',
+      message: 'Are you sure want delete this data?',
+      header: 'Delete data',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.messageService.add({

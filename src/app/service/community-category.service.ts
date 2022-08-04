@@ -22,7 +22,7 @@ export class CommunityCategoriesService{
     update(data : UpdateCommunityCategoryReq) : Observable<UpdateRes>{
         return this.http.put<UpdateRes>('http://localhost:3333/community-categories', data)
     }
-    delete(id : number) : Observable<DeleteRes>{
+    delete(id : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`http://localhost:3333/community-categories/${id}`)
     }
 }
