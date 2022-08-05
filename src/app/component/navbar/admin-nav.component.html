@@ -8,9 +8,9 @@
   </button>
 
   <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-active':appMain.topMenuActive}">
-    <button class="p-link layout-topbar-button">
-      <i class="pi pi-cog"></i>
-      <span>Settings</span>
+    <button class="p-link layout-topbar-button" routerLink="/home-member">
+      <i class="pi pi-home"></i>
+      <span>Go to main home</span>
     </button>
     <button class="p-link layout-topbar-button" (click)="logOut()">
       <i class="pi pi-sign-out"></i>

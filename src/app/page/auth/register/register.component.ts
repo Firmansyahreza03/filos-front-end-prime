@@ -7,6 +7,7 @@ import { RegisterService } from "src/app/service/register.service";
 import { FindAllIndustryRes} from "src/app/pojo/pojo-import";
 import { InsertProfileReq } from "src/app/pojo/profile/insert-profile-req";
 import { FileService } from "src/app/service/file.service";
+import { verificationUserReq } from "src/app/pojo/user/user-verification-req";
 
 
 @Component({
@@ -23,9 +24,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     
     password!: string
     confirmPassword!: string
-    
-    registrationCode!: string
-    
+        
     register: InsertProfileReq = {
         companyName: undefined,
         fileExt: undefined,
@@ -39,6 +38,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
         verificationCode: undefined
     };
 
+    verificationData: verificationUserReq = {
+        codeVerification: '',
+        email: ''
+    };
 
     listIndustry: FindAllIndustryRes = {
         count: undefined,
@@ -64,18 +67,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     onVerify(): void {
-        this.registerSubscription = this.registerService.generateCode(this.register.userEmail!).subscribe((res) => {
-            this.registrationCode = res.code;
+        this.registerSubscription = this.registerService.generateCode(this.register.userEmail!).subscribe(() => {
             this.step = 1;
         })
     }
 
     onSubmit(): void {
-        if (this.registrationCode == this.register.verificationCode) {
-            this.step = 2;
-        } else {
-            this.step = 1;
-        }
+        this.verificationData.codeVerification = this.register.verificationCode!;
+        this.verificationData.email = this.register.userEmail!;
+        this.registerSubscription = this.registerService.validateCode(this.verificationData).subscribe((res)=>{
+            if(res.result == true){
+                this.step = 2;
+            }
+        })
     }
 
     onSubmitProfile(): void {

@@ -26,15 +26,17 @@ export class CustomInterceptor implements HttpInterceptor {
     return next.handle(reqClone).pipe(
       tap({
         next: (result) => {
-          if (result instanceof HttpResponse) {
-            if (result.body.message) {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Sukses',
-                detail: result.body.message,
-                life: 1000,
-              });
-            }
+          if (result instanceof HttpResponse) {            
+            if (result.body) {
+              if(result.body.message){
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Sukses',
+                  detail: result.body.message,
+                  life: 1000,
+                });
+              }
+            } 
           }
         },
         error: (result) => {
