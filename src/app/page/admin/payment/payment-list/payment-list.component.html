@@ -1,8 +1,8 @@
-<!-- <div class="container mt-3">
+<div class="container mt-3">
   <div class="card">
     <div class="card-header">
       <div class="text-center">
-        <p class="title fs-1">Data <strong>thread</strong></p>
+        <p class="title fs-1">Data <strong>Payment</strong></p>
         <p-divider align="center">
         </p-divider>
       </div>
@@ -11,7 +11,7 @@
 
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
-        [globalFilterFields]="['threadCode','threadName','categoryName','creatorName']"
+        [globalFilterFields]="['code','desc','price','isAcc']"
         [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-gridlines"
         [rowHover]="true">
 
@@ -31,13 +31,13 @@
         <ng-template pTemplate="header">
           <tr>
             <th>no</th>
+
             <th>code</th>
-            <th>title</th>
-            <th>category</th>
-            <th>creator</th>
-            <th>created at</th>
-            <th class="text-center">premium only</th>
-            <th class="text-center">active</th>
+            <th>description</th>
+            <th>price</th>
+            <th>proof file</th>
+
+            <th class="text-center">validation</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
@@ -45,20 +45,21 @@
             <td>{{rowIndex + 1}}</td>
 
 
-            <td>{{data.threadCode}}</td>
-            <td>{{data.threadName}}</td>
-            <td>{{data.categoryName}}</td>
-            <td>{{data.creatorName}}</td>
-            <td>{{data.createdAt}}</td>
+            <td>{{data.code}}</td>
+            <td>{{data.desc}}</td>
+            <td>{{data.price}}</td>
+            <td>
+              <button pButton pRipple type="button" label="" icon="fa fa-file" class="p-button-info"
+              title="Download File" (click)="getFile(data.fileId)" *ngIf="data.fileId != null">
+            </button>
 
-            <td class="text-center">
-              <i *ngIf="data.isPremium" class="pi pi-check-square"></i>
-              <i *ngIf="!data.isPremium" class="pi pi-stop"></i>
             </td>
 
             <td class="text-center">
-              <i *ngIf="data.isActive" class="pi pi-check-square"></i>
-              <i *ngIf="!data.isActive" class="pi pi-stop"></i>
+              <i *ngIf="data.isAcc" class="pi pi-check-square"></i>
+              <button pButton pRipple *ngIf="!data.isAcc" type="button" icon="fa fa-check" class="p-button-rounded p-button-success"
+                title="Approve" (click)="confirmPayment(data.id)">
+              </button>
             </td>
 
           </tr>
@@ -66,4 +67,8 @@
       </p-table>
     </div>
   </div>
-</div> -->
+</div>
+
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-rounded p-button-secondary" acceptButtonStyleClass="p-button-rounded p-button-info">
+</p-confirmDialog>

@@ -1,11 +1,11 @@
 import { Component, NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
-import { ThreadListComponent } from "./payment-list/payment-list.component";
+import { PaymentListComponent } from "./payment-list/payment-list.component";
 
 const routes : Routes =[
     {
         path : '',
-        component : ThreadListComponent
+        component : PaymentListComponent
     }
 ]
 
@@ -17,4 +17,4 @@ const routes : Routes =[
         RouterModule
     ]
 })
-export class ThreadRouting{}
+export class PaymentRouting{}

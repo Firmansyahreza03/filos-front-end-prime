@@ -29,6 +29,10 @@ const routes : Routes=[
         path: 'thread', 
         loadChildren: () => import('./thread/thread.module').then(m => m.ThreadModule)
     },
+    {
+        path: 'payment', 
+        loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule)
+    },
 ]
 @NgModule({
     imports: [

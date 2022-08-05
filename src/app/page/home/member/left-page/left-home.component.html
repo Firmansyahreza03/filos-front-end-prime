@@ -1,0 +1,55 @@
+<!-- Halaman Sebelah Kiri -->
+<div class="card">
+  <div class="container">
+    <div class="grid justify-content-center" [style]="{'margin-bottom':'-20px'}">
+      <div class="col align-content-center">
+
+        <!-- Header -->
+        <div class="flex flex-column">
+          <!-- Pic -->
+          <div class="flex justify-content-center">
+            <div class="image-content-login">
+              <div class="image-box-login">
+                <img [src]='proPic' alt="" srcset="" id="login-profile-pic">
+              </div>
+            </div>
+          </div>
+
+          <!-- FullName & Position -->
+          <div class="flex justify-content-center mt-2">
+            <div class="flex flex-column text-center">
+              <span class="bold-medium color-black text-heading-2">{{profileData.data?.fullName}}</span>
+              <p class="text-extrasmall bold-medium">{{profileData.data?.positionName}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex flex-column mt-5 row-gap-2">
+          <!-- Email -->
+          <div class="flex">
+            <div class="flex flex-column">
+              <span class="bold-medium text-500 text-extrasmall">Email</span>
+              <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">
+                {{profileData.data?.userEmail}}</p>
+            </div>
+          </div>
+          <!-- Balance -->
+          <div class="flex">
+            <div class="flex flex-column">
+              <span class="bold-medium text-500 text-extrasmall">Balance</span>
+              <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data?.balance}}
+                <p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-grow-1 flex-column text-center">
+              <p-divider></p-divider>
+              <a routerLink="/profile" class="text-sm font-medium">Edit Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

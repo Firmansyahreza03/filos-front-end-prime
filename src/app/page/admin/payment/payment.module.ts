@@ -4,7 +4,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { ThreadRouting } from "./payment.routing";
+import { PaymentRouting } from "./payment.routing";
 
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
@@ -24,7 +24,7 @@ import { PaymentListComponent } from "./payment-list/payment-list.component";
         PaymentListComponent
     ],
     imports:[
-        ThreadRouting,
+        PaymentRouting,
         CommonModule,
         FormsModule,
         HttpClientModule,
@@ -45,4 +45,4 @@ import { PaymentListComponent } from "./payment-list/payment-list.component";
         PaymentListComponent
     ]
 })
-export class ThreadModule{}
+export class PaymentModule{}

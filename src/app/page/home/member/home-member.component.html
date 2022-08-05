@@ -1,82 +1,25 @@
 <div class="container mt-3">
   <div class="grid">
 
-    <!-- Halaman Sebelah Kiri -->
     <div class="md:col-3 left-page col-12">
-      <div class="card">
-        <div class="container">
-          <div class="grid justify-content-center" [style]="{'margin-bottom':'-20px'}">
-            <div class="col align-content-center">
-
-              <!-- Header -->
-              <div class="flex flex-column">
-                <!-- Pic -->
-                <div class="flex justify-content-center">
-                  <div class="image-content-login">
-                    <div class="image-box-login">
-                      <img [src]='proPic' alt="" srcset="" id="login-profile-pic">
-                    </div>
-                  </div>
-                </div>
-
-                <!-- FullName & Position -->
-                <div class="flex justify-content-center mt-2">
-                  <div class="flex flex-column text-center">
-                    <span class="bold-medium color-black text-heading-2">{{profileData.data?.fullName}}</span>
-                    <p class="text-extrasmall bold-medium">{{profileData.data?.positionName}}</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Content -->
-              <div class="flex flex-column mt-5 row-gap-2">
-                <!-- Email -->
-                <div class="flex">
-                  <div class="flex flex-column">
-                    <span class="bold-medium text-500 text-extrasmall">Email</span>
-                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">
-                      {{profileData.data?.userEmail}}</p>
-                  </div>
-                </div>
-                <!-- Balance -->
-                <div class="flex">
-                  <div class="flex flex-column">
-                    <span class="bold-medium text-500 text-extrasmall">Balance</span>
-                    <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{profileData.data?.balance}}
-                      <p>
-                  </div>
-                </div>
-                <div class="flex">
-                  <div class="flex flex-grow-1 flex-column text-center">
-                    <p-divider></p-divider>
-                    <a routerLink="/profile" class="text-sm font-medium">Edit Profile</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <home-left-page></home-left-page>
     </div>
 
     <!-- Halaman Tengah -->
     <div class="md:col-6 middle-page col-12">
       <div class="container">
         <p-tabView>
-
           <!-- My Activities -->
           <p-tabPanel header="My Activities">
             <div class="card">
               <div class="container">
                 <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
                   <div class="col align-content-center">
-
                     <!-- form thread -->
                     <form (ngSubmit)="onSubmit()">
                       <div class="flex mb-3 column-gap-2">
                         <div class="flex">
-                          <img [src]="proPic" alt="" srcset=""
-                            class="profile-pic">
+                          <img [src]="proPic" alt="" srcset="" class="profile-pic">
                         </div>
                         <div class="flex">
                           <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId"
@@ -255,7 +198,8 @@
                     <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                   </div>
                   <div class="col-12">
-                    <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
+                    <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a
+                        (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
                   </div>
                   <div class="image-content" *ngIf="threadHdr.fileId!=null">
                     <div class="image-box">
@@ -381,8 +325,7 @@
                     <form (ngSubmit)="onSubmit()">
                       <div class="flex mb-3 column-gap-2">
                         <div class="flex">
-                          <img [src]="proPic" alt="" srcset=""
-                            class="profile-pic">
+                          <img [src]="proPic" alt="" srcset="" class="profile-pic">
                         </div>
                         <div class="flex">
                           <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId"
@@ -409,24 +352,24 @@
                             <!-- form polling -->
                             <div class="col-12">
                               <input pInputText type="text" required="true" class="w-full border-radius-20px"
-                                placeholder="Title Polling" name="pollingName" [(ngModel)]="createThreadHdr.pollingName" />
+                                placeholder="Title Polling" name="pollingName"
+                                [(ngModel)]="createThreadHdr.pollingName" />
                             </div>
                             <div class="col-12">
                               <div class="grid">
                                 <div class="md:col-9 col-7">
-                                  <input pInputText type="text" required="true" #optionLabel class="w-full border-radius-20px"
-                                    placeholder="Option"/>
+                                  <input pInputText type="text" required="true" #optionLabel
+                                    class="w-full border-radius-20px" placeholder="Option" />
                                 </div>
                                 <div class="md:col-3 col-5">
                                   <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
                                     (click)="addInputControl(optionLabel.value);optionLabel.value=''"></button>
                                 </div>
                               </div>
-                              <div class="grid"
-                              *ngFor="let polling of pollingArray; let i = index ">
+                              <div class="grid" *ngFor="let polling of pollingArray; let i = index ">
                                 <div class="md:col-9 col-7">
                                   <input pInputText type="text" required="true" class="w-full border-radius-20px"
-                                    placeholder="Option" [value]="polling" (change)="changeValue(i, $event)"/>
+                                    placeholder="Option" [value]="polling" (change)="changeValue(i, $event)" />
                                 </div>
                                 <div class="md:col-3 col-5">
                                   <button pButton pRipple type="button" icon="pi pi-trash"
@@ -573,7 +516,8 @@
                         <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
+                        <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a
+                            (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -706,7 +650,8 @@
                         <span class="bold black text-heading-3">{{threadHdrLike.threadName}}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">{{readMoreContent(threadHdrLike.threadContent!)}} <a (click)="onClick(threadHdrLike.id)" class="font-semibold click">continue reading</a></p>
+                        <p class="text-small">{{readMoreContent(threadHdrLike.threadContent!)}} <a
+                            (click)="onClick(threadHdrLike.id)" class="font-semibold click">continue reading</a></p>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -796,71 +741,7 @@
 
     <!-- Halaman Sebelah Kanan -->
     <div class="md:col-3 col-12 right-page">
-      <div class="grid justify-content-center">
-        <div class="col-12 mt-1">
-          <span class="bold text-heading-3">Event for you</span>
-        </div>
-      </div>
-      <div class="card-transparent">
-        <div class="container">
-          <div class="grid justify-content-center" *ngFor="let event of listEvent.data">
-            <div class="col align-content-center">
-              <div class="grid btnClick" [style]="{ 'margin-top':'-20px'}"
-                [routerLink]="'/communities/detail/'+event.id">
-                <div class="col-4">
-                  <img [src]="getPhotoCommun(event.idFile!)" alt="" srcset="" class="event-pic">
-                </div>
-                <div class="col-7 ml-1">
-                  <div class="grid">
-                    <div class="col-12">
-                      <span class="text-small bold">{{event.title}}</span>
-                    </div>
-                  </div>
-                  <div class="grid -mt-3">
-                    <div class="col-12">
-                      <span class="text-extrasmall bold-medium">{{event.provider}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Training -->
-      <div class="grid justify-content-center">
-        <div class="col-12 mt-1">
-          <span class="bold text-heading-3">Training for you</span>
-        </div>
-      </div>
-      <div class="card-transparent">
-        <div class="container">
-          <div class="grid justify-content-center" *ngFor="let training of listTraining.data; let i=index">
-            <div class="col align-content-center">
-              <div class="grid btnClick" [style]="{ 'margin-top':'-20px'}"
-                [routerLink]="'/communities/detail/'+training.id">
-                <div class="col-4">
-                  <img [src]="getPhotoCommun(training.idFile!)" alt="" srcset="" class="event-pic">
-                </div>
-                <div class="col-7 ml-1">
-                  <div class="grid">
-                    <div class="col-12">
-                      <span class="text-small bold">{{training.title}}</span>
-                    </div>
-                  </div>
-                  <div class="grid -mt-3">
-                    <div class="col-12">
-                      <span class="text-extrasmall bold-medium">{{training.provider}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <home-right-page></home-right-page>
     </div>
   </div>
 </div>

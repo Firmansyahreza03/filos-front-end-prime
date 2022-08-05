@@ -1,3 +1,4 @@
+
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -6,6 +7,7 @@ import { AdminLayoutComponent } from "./component/layout/admin-layout.component"
 
 import { SharedModule } from "./component/shared.module";
 import { NotFoundComponent } from "./page/not-found/not-found.component";
+import { AlreadyLoginGuard, LoginGuard } from './guard/guard-import';
 
 const routes: Routes = [
     {
@@ -21,16 +23,19 @@ const routes: Routes = [
     {
         path: 'login',
         component: MainLayoutComponent,
+        canLoad : [AlreadyLoginGuard],
         loadChildren: () => import('./page/auth/login/login.module').then(m => m.LoginModule)
     },
     {
         path: 'register',
         component: MainLayoutComponent,
+        canLoad : [AlreadyLoginGuard],
         loadChildren: () => import('./page/auth/register/register.module').then(m => m.RegisterModule)
     },
     {
         path: 'home-member',
         component: MainLayoutComponent,
+        canLoad : [LoginGuard],
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {

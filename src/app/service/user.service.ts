@@ -16,7 +16,7 @@ export class UserService{
         return this.http.get<FindProfileRes>('http://localhost:3333/users/email/'+ data)
     }
 
-    findById(id : string) : Observable<FindProfileRes>{
+    findById(id: string) : Observable<FindProfileRes>{
         return this.http.get<FindProfileRes>(`http://localhost:3333/users/${id}`)
     }
 
@@ -36,10 +36,16 @@ export class UserService{
     insert(data:InsertProfileReq): Observable<InsertRes> {
         return this.http.post<InsertRes>("http://localhost:3333/users", data)
     }
+
     update(data : UpdateProfileReq) : Observable<UpdateRes>{
-        return this.http.put<UpdateRes>('http://localhost:3333/users', data)
+        return this.http.put<UpdateRes>('http://localhost:3333/users/profiles', data)
     }
+    
     delete(id : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`http://localhost:3333/users/${id}`)
+    }
+
+    findByUserLogged(): Observable<FindProfileRes> {
+        return this.http.get<FindProfileRes>('http://localhost:3333/users/profiles')
     }
 }
