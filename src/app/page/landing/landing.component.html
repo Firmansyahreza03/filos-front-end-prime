@@ -1,42 +1,42 @@
 <div class="container">
-  <div class="flex">
-    <div class="col-4">
-      <div class="col-12">
-        <p-card [style]="{'margin-bottom': '2em'}">
-          <p class="text-lg font-bold text-900 text-center my-3">Subscribe</p>
-          <img src="../../../assets/image/subscribe.png" class="w-10 h-10 mx-auto text-center" alt="startup">
+  <div class="flex flex-wrap md:py-7">
+    <div class="md:col-4 col-12 ">
+      <div class="col-10 col-offset-1">
+        <p-card>
+          <div class="flex flex-column justify-content-center row-gap-0">
+            <p class="text-lg font-bold text-900 text-center">Subscribe</p>
+            <img src="../../../assets/image/subscribe.png" class="w-10 h-10 mx-auto text-center" alt="startup">
+            <div class="my-1 text-center">
+              <span class="text-4xl font-bold mr-2 text-900">Rp. 50.000</span>
+              <span class="text-600">/ month</span>
+              <!-- <button pButton pRipple label="Try Free" class="block mx-auto mt-4 p-button-rounded border-none ml-3 font-light line-height-2 bg-blue-500 text-white"></button> -->
+            </div>
+            <p-divider class="w-full bg-surface-200"></p-divider>
+          <ul class="list-none p-0 flex text-900 flex-column">
+            <li class="py-1">
+              <i class="pi pi-fw pi-check text-xl text-cyan-500 mr-2"></i>
+              <span class="text-xl line-height-3">Premium Content</span>
+            </li>
+          </ul>
+          </div>
         </p-card>
         
       </div>
     
     </div>
-    <div class="col-8">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores tempora maiores necessitatibus quibusdam doloribus nulla, ratione voluptatem optio tempore alias nihil ea modi dolorum, facere sunt rerum vel! Amet, numquam.</p>
-    </div>
-  </div>
-  <div id="pricing" class="py-4 px-4 lg:px-8 my-2 md:my-4">
-    <div class="grid justify-content-between mt-8 md:mt-0">
-      <div class="col-12 lg:col-4 p-0 md:p-3 mt-4 md:mt-0">
-        <div class="p-3 flex flex-column border-200 pricing-card cursor-pointer"
-          style="border:2px solid; border-radius:10px;">
-          <h3 class="text-900 text-center my-3">Subscribe</h3>
-          <img src="../../../assets/image/subscribe.png" class="w-10 h-10 mx-auto" alt="startup">
-          <div class="my-1 text-center">
-            <span class="text-4xl font-bold mr-2 text-900">Rp. 50.000</span>
-            <span class="text-600">/ month</span>
-            <button pButton pRipple label="Try Free" class="block mx-auto mt-4 p-button-rounded border-none ml-3 font-light line-height-2 bg-blue-500 text-white"></button>
-          </div>
-          <p-divider class="w-full bg-surface-200"></p-divider>
-          <ul class="list-none p-0 flex text-900 flex-column">
-            <li class="py-2">
-              <i class="pi pi-fw pi-check text-xl text-cyan-500 mr-2"></i>
-              <span class="text-xl line-height-3">Premium Content</span>
-            </li>
-          </ul>
-        </div>
+    <div class="md:col-8 col-12 flex align-content-center justify-content-center flex-column row-gap-4 ">
+      <div class="flex align-items-center column-gap-2 flex-wrap ">
+        <span class="flex text-4xl font-medium vertical-align-sub">Welcome to </span>
+        <img src="../../../assets/image/logo-filos-large.png" alt="" height="40px" > 
+        <span class="flex text-4xl font-medium vertical-align-sub"> Community</span>
       </div>
-
+      <div class="flex align-items-center">
+        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ullam saepe corrupti fugiat dolorum sequi eius libero facere nesciunt id expedita eum a animi, laboriosam quos consequuntur? Hic, quasi placeat.</span>
+      </div>
+      <div class="flex align-self-center">
+        <button pButton pRipple type="button" label="Sign in" class="p-button-rounded" (click)="login()"></button>
+      </div>
     </div>
-  </div>
-  
+  </div>  
+
 </div>

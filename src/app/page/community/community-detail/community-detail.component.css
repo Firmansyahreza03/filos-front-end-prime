@@ -45,7 +45,7 @@
 }
 @media (max-width: 992px) {
     .image-box{
-        height:200px;
+        max-height:auto;
         width:300px;
         object-fit: cover;
     }
