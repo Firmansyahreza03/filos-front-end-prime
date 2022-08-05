@@ -19,6 +19,8 @@ import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
 import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
 import { LeftPageComponent } from './member/left-page/left-home.component';
+import { RightPageComponent } from './member/right-page/right-home.component';
+import { FormComponent } from './member/form/form.component';
 @NgModule({
   imports: [
     HomeMemberRouting,
@@ -41,12 +43,16 @@ import { LeftPageComponent } from './member/left-page/left-home.component';
   declarations: [
     HomeMemberComponent, 
     LeftPageComponent,
+    RightPageComponent,
+    FormComponent,
     ThreadDetailComponent, 
     TimeAgoPipe
   ],
   exports: [
     HomeMemberComponent, 
     LeftPageComponent,
+    RightPageComponent,
+    FormComponent,
     ThreadDetailComponent
   ],
 })
