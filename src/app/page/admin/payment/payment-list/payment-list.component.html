@@ -11,9 +11,8 @@
 
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
-        [globalFilterFields]="['code','desc','price','isAcc']"
-        [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-gridlines"
-        [rowHover]="true">
+        [globalFilterFields]="['code','desc','price','isAcc']" [totalRecords]="totalData"
+        [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-gridlines" [rowHover]="true">
 
         <ng-template pTemplate="caption">
           <div class="flex">
@@ -35,7 +34,7 @@
             <th>code</th>
             <th>description</th>
             <th>price</th>
-            <th>proof file</th>
+            <th class="text-center">proof file</th>
 
             <th class="text-center">validation</th>
           </tr>
@@ -48,17 +47,16 @@
             <td>{{data.code}}</td>
             <td>{{data.desc}}</td>
             <td>{{data.price}}</td>
-            <td>
+            <td class="text-center">
               <button pButton pRipple type="button" label="" icon="fa fa-file" class="p-button-info"
-              title="Download File" (click)="getFile(data.fileId)" *ngIf="data.fileId != null">
-            </button>
-
+                title="Download File" (click)="getFile(data.fileId)" *ngIf="data.fileId != null">
+              </button>
             </td>
 
             <td class="text-center">
               <i *ngIf="data.isAcc" class="pi pi-check-square"></i>
-              <button pButton pRipple *ngIf="!data.isAcc" type="button" icon="fa fa-check" class="p-button-rounded p-button-success"
-                title="Approve" (click)="confirmPayment(data.id)">
+              <button pButton pRipple *ngIf="!data.isAcc" type="button" icon="fa fa-check"
+                class="p-button-rounded p-button-success" title="Approve" (click)="confirmPayment(data.id)">
               </button>
             </td>
 
