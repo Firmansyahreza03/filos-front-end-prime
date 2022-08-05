@@ -18,9 +18,11 @@ import { threadReducer } from './member/home-member.reducer';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
 import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
+import { LeftPageComponent } from './member/left-page/left-home.component';
 @NgModule({
   imports: [
     HomeMemberRouting,
+    
     CardModule,
     TabViewModule,
     FormsModule,
@@ -36,7 +38,16 @@ import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
     DialogModule,
     CalendarModule,
   ],
-  declarations: [HomeMemberComponent, ThreadDetailComponent, TimeAgoPipe],
-  exports: [HomeMemberComponent, ThreadDetailComponent],
+  declarations: [
+    HomeMemberComponent, 
+    LeftPageComponent,
+    ThreadDetailComponent, 
+    TimeAgoPipe
+  ],
+  exports: [
+    HomeMemberComponent, 
+    LeftPageComponent,
+    ThreadDetailComponent
+  ],
 })
 export class HomeMemberModule {}
