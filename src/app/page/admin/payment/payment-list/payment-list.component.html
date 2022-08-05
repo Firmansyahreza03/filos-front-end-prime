@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <div class="text-center">
-        <p class="title fs-1">Data <strong>thread</strong></p>
+        <p class="title fs-1">Data <strong>Payment</strong></p>
         <p-divider align="center">
         </p-divider>
       </div>
@@ -11,7 +11,7 @@
 
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
-        [globalFilterFields]="['threadCode','threadName','categoryName','creatorName']"
+        [globalFilterFields]="['code','desc','price','isAcc']"
         [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-gridlines"
         [rowHover]="true">
 
@@ -32,14 +32,12 @@
           <tr>
             <th>no</th>
 
-            
             <th>code</th>
             <th>description</th>
             <th>price</th>
-            <th>validation</th>
             <th>proof file</th>
 
-            <th class="text-center">action</th>
+            <th class="text-center">validation</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
@@ -51,7 +49,6 @@
             <td>{{data.desc}}</td>
             <td>{{data.price}}</td>
             <td>
-              
               <button pButton pRipple type="button" label="" icon="fa fa-file" class="p-button-info"
               title="Download File" (click)="getFile(data.fileId)" *ngIf="data.fileId != null">
             </button>
@@ -60,9 +57,9 @@
 
             <td class="text-center">
               <i *ngIf="data.isAcc" class="pi pi-check-square"></i>
-                <button pButton pRipple *ngIf="!data.isAcc" type="button" icon="fa fa-check" class="p-button-rounded p-button-success"
-                  title="Konfirmasi Absen" (click)="confirmPayment(data.id)">
-                </button>
+              <button pButton pRipple *ngIf="!data.isAcc" type="button" icon="fa fa-check" class="p-button-rounded p-button-success"
+                title="Approve" (click)="confirmPayment(data.id)">
+              </button>
             </td>
 
           </tr>

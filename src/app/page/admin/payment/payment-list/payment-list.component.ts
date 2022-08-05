@@ -5,7 +5,6 @@ import { Subscription } from "rxjs";
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { DataPaymentTransaction, ValidPaymentTransactionReq} from "../../../../pojo/pojo-import";
 import { PaymentService } from "../../../../service/import.service";
-
 @Component({
   selector: 'admin-payment-list',
   templateUrl: './payment-list.component.html',
@@ -16,18 +15,20 @@ export class PaymentListComponent {
   loading: boolean = true;
 
   listData: DataPaymentTransaction[] = [];
-  req!: ValidPaymentTransactionReq;
+  req: ValidPaymentTransactionReq ={
+    id : "",
+    version : 0
+  };
 
   startPage: number = 0;
   maxPage: number = 5;
   totalData: number = 0;
   query ? : string;
   slcId!: string;
-  fileAtt!:string;
+  fileAtt!: string;
   mainUrl!: string;
-  
-  cols: any[] = [
-    {
+
+  cols: any[] = [{
       field: 'code',
       header: 'code'
     },
@@ -74,20 +75,17 @@ export class PaymentListComponent {
     this.mainUrl = thisUrl[1] + "/" + thisUrl[2] + "/";
   }
 
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
-  
+
   getFile(fileId: string): void {
-    this.fileAtt = 'http://localhost:3333/files/'+fileId;
+    this.fileAtt = 'http://localhost:3333/files/' + fileId;
     this.confirmationService.confirm({
-        message: 'Do you sure want to download this file?',
-        header: 'Download file',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          this.downloadFile();
-        },
-        reject: () => { }
+      message: 'Do you sure want to download this file?',
+      header: 'Download file',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.downloadFile();
+      },
+      reject: () => {}
     });
   }
 
@@ -96,22 +94,26 @@ export class PaymentListComponent {
   }
 
   confirmPayment(id: string): void {
-    this.req.id = id;
+    console.log(id);
+        this.req.id = id;
     this.confirmationService.confirm({
       message: 'Do you sure want to validation this payment transaction?',
-        header: 'Confirmation',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          this.validationPayment();
-        },
-        reject: () => { }
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.validationPayment();
+      },
+      reject: () => {}
     });
   }
 
   validationPayment(): void {
     this.subscription = this.service.valid(this.req)
-      .subscribe( ()=> {
-        this.viewData(this.startPage,  this.maxPage, "")
+      .subscribe(() => {
+        this.viewData(this.startPage, this.maxPage, "")
       })
+  }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }
