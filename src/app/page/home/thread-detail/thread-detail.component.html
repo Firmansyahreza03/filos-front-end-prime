@@ -18,13 +18,14 @@
                 <div class="flex">
                   <div class="image-content">
                     <div class="image-box">
-                      <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.photoProfileCreator" alt="" srcset="" class="profile-pic">
+                      <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.photoProfileCreator" alt=""
+                        srcset="" class="profile-pic">
                     </div>
                   </div>
                 </div>
                 <div class="flex flex-column pt-2">
-                      <p class="text-base font-medium">{{threadHdrData.data?.creatorName}}</p>
-                      <p class="text-xs">{{threadHdrData.data?.createdAt}}</p>
+                  <p class="text-base font-medium">{{threadHdrData.data?.creatorName}}</p>
+                  <p class="text-xs">{{threadHdrData.data?.createdAt}}</p>
                 </div>
               </div>
 
@@ -33,20 +34,25 @@
                 <div class="flex">
                   <p class="text-base font-semibold">{{threadHdrData.data?.threadName}}</p>
                 </div>
-                <div class="flex">
+                <div class="flex flex-column row-gap-3">
                   <p class="text-sm">{{threadHdrData.data?.threadContent}}</p>
-                  <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.fileId" alt="">
+                  <div class="image-box-thread mx-auto" *ngIf="threadHdrData.data?.fileId!=null">
+                    <div class="image-content-thread ">
+                      <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.fileId" alt="">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div class="col-12 mt-1">
           <!-- Write Comment -->
           <div class="flex flex-column">
             <div class="flex ml-4 column-gap-3 align-content-center">
-                  <i class="pi pi-circle-fill color-purple flex align-items-center" style="font-size: 2rem"></i>
-                  <p class="font-semibold text-base flex align-items-center"> Comment</p>
+              <i class="pi pi-circle-fill color-purple flex align-items-center" style="font-size: 2rem"></i>
+              <p class="font-semibold text-base flex align-items-center"> Comment</p>
             </div>
             <div class="flex-1 mt-2">
               <div class="card">
@@ -56,26 +62,27 @@
                       <div class="flex">
                         <div class="image-content">
                           <div class="image-box">
-                            <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
+                            <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                              class="profile-pic">
                           </div>
                         </div>
                       </div>
                       <div class="flex-1">
-                          <div class="flex flex-wrap">
-                              <div class="col-12">
-                                <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
-                              </div>
-                              <div class="col-12">
-                                <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
-                              </div>
-                            </div>
-                            <div class="flex -mb-3 justify-content-end">
-                              <div class="flex">
-                                <button pButton pRipple type="submit"
-                                  class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                                  styleClass="p-button-sm text-center" label="Post"></button>
-                              </div>
-                            </div>
+                        <div class="flex flex-wrap">
+                          <div class="col-12">
+                            <input type="text" pInputText class="w-full border-radius-20px" placeholder="Title" />
+                          </div>
+                          <div class="col-12">
+                            <textarea pInputTextarea class="w-full border-radius-20px" placeholder="Content"></textarea>
+                          </div>
+                        </div>
+                        <div class="flex -mb-3 justify-content-end">
+                          <div class="flex">
+                            <button pButton pRipple type="submit"
+                              class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                              styleClass="p-button-sm text-center" label="Post"></button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </form>
@@ -84,27 +91,121 @@
             </div>
           </div>
         </div>
+
         <div class="col-12 mt-1">
           <!-- Comment -->
           <div class="flex flex-column">
             <div class="flex ml-4 column-gap-3 align-content-center">
-                  <i class="pi pi-comments color-purple flex align-items-center" style="font-size: 20px"></i>
-                  <p class="text-sm flex align-items-center"> 17 Comment</p>
+              <i class="pi pi-comments color-purple flex align-items-center" style="font-size: 20px"></i>
+              <p class="text-sm flex align-items-center"> 17 Comment</p>
             </div>
+
+            <!-- Card Comment -->
+            <!-- contoh card 1 -->
             <div class="flex-1 mt-2">
               <div class="card">
                 <div class="container">
-                
+                  <!-- Header -->
+                  <div class="flex column-gap-4" [style]="{'margin-bottom':'-20px'}">
+                    <div class="flex">
+                      <div class="image-content">
+                        <div class="image-box">
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                            class="profile-pic">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-column pt-2">
+                      <p class="text-base font-medium">Muhammad Reza Firmansyah</p>
+                      <p class="text-xs">1 Hour ago</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Content -->
+                <div class="grid mt-5 mt-3 mr-2 ml-2">
+                  <div class="col-12">
+                    <span class="bold black text-heading-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas, vel ipsam itaque culpa neque eveniet. Commodi aut dolorum facere iusto distinctio expedita.
+                      Corrupti repudiandae labore commodi at voluptas repellendus eum.</span>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eaque placeat
+                      fugit perspiciatis? Commodi officiis nobis vero architecto ullam, harum temporibus sequi in cumque
+                      enim deserunt laudantium odit dignissimos rem.
+                      Impedit quisquam dignissimos dolorem amet tenetur harum, sequi est quam minus at corrupti adipisci
+                      tempora vitae consequatur suscipit error iusto? Cupiditate perspiciatis numquam non perferendis
+                      soluta inventore libero officiis modi!
+                      Soluta magni itaque dicta ab nemo repellat! Repellendus a similique labore, doloribus natus
+                      dolores! Quis veritatis rerum fuga atque dicta nostrum natus eius dolore odit magni! Reprehenderit
+                      ratione aspernatur quos.
+                      Quo voluptatum laboriosam expedita doloremque optio eos odit quibusdam alias unde enim obcaecati
+                      sint quaerat pariatur dolore commodi dolorem, quidem, animi quas perferendis temporibus vitae at
+                      delectus eius. Numquam, architecto!
+                      Reiciendis neque animi sequi labore, mollitia itaque tempora voluptatibus, tempore ex dolorem eos
+                      asperiores magni dolore, dolores cupiditate accusantium. Magni, omnis delectus qui quae totam
+                      inventore provident optio impedit exercitationem.
+                      Temporibus, eius officiis. Illo eius aperiam quo explicabo nisi possimus architecto labore sequi
+                      fuga minima aliquam, pariatur neque tempora animi exercitationem enim dolores culpa magnam. Nulla
+                      ullam reiciendis ipsa voluptatibus!
+                      Reiciendis ad sunt inventore explicabo officia laboriosam molestiae culpa ex optio, veniam facere
+                      tenetur laudantium quos beatae doloribus esse, impedit amet numquam hic nisi, iure est voluptatum
+                      architecto? Aliquid, eligendi?
+                      Voluptas quas omnis maiores, ipsa, ad at vitae officiis doloribus iure maxime consectetur nemo
+                      amet dolor expedita. Quasi consectetur reprehenderit aliquid amet libero iste necessitatibus
+                      porro, alias nesciunt esse a!
+                      Voluptas maiores ipsum deleniti ipsa, rerum a nulla molestias ad quisquam id ea cumque obcaecati
+                      minus, excepturi iure necessitatibus laborum quam provident ab! Exercitationem nemo asperiores
+                      voluptate delectus, commodi ipsam?
+                      Sequi deserunt sunt omnis, eius praesentium harum id consequuntur! Doloribus dicta distinctio
+                      quibusdam similique natus ut laudantium commodi. Eligendi repudiandae debitis asperiores officiis
+                      nobis et magni, illo obcaecati exercitationem accusantium.</p>
+                  </div>
                 </div>
               </div>
             </div>
+           <!-- contoh card 2 -->
+           <div class="flex-1 mt-2">
+            <div class="card">
+              <div class="container">
+                <!-- Header -->
+                <div class="flex column-gap-4" [style]="{'margin-bottom':'-20px'}">
+                  <div class="flex">
+                    <div class="image-content">
+                      <div class="image-box">
+                        <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                          class="profile-pic">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-column pt-2">
+                    <p class="text-base font-medium">Muhammad Reza Firmansyah</p>
+                    <p class="text-xs">1 Hour ago</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="grid mt-5 mt-3 mr-2 ml-2">
+                <div class="col-12">
+                  <span class="bold black text-heading-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quas, vel ipsam itaque culpa neque eveniet. Commodi aut dolorum facere iusto distinctio expedita.
+                    Corrupti repudiandae labore commodi at voluptas repellendus eum.</span>
+                </div>
+                <div class="col-12">
+                  <p class="text-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eaque placeat
+                  
+                    nobis et magni, illo obcaecati exercitationem accusantium.</p>
+                </div>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
       </div>
     </div>
 
-     <!-- Halaman Kanan -->
-     <div class="md:col-3 col-12 right-page">
+
+    <!-- Halaman Kanan -->
+    <div class="md:col-3 col-12 right-page">
       <div class="grid justify-content-center">
         <div class="col-12 mt-1">
           <span class="bold text-heading-3">Training for you</span>
