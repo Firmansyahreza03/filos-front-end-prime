@@ -101,12 +101,8 @@
                     <form (ngSubmit)="onSubmit()">
                       <div class="flex mb-3 column-gap-2">
                         <div class="flex">
-                          <img
-                            [src]="proPic"
-                            alt=""
-                            srcset=""
-                            class="profile-pic"
-                          />
+                          <img [src]="proPic" alt="" srcset=""
+                            class="profile-pic">
                         </div>
                         <div class="flex">
                           <p-dropdown
@@ -278,17 +274,9 @@
               >
                 <div class="container">
                   <!-- Header -->
-                  <div
-                    class="flex justify-content-between column-gap-4"
-                    [style]="{ 'margin-bottom': '-20px' }"
-                  >
+                  <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
                     <div class="flex">
-                      <img
-                        [src]="proPic"
-                        alt=""
-                        srcset=""
-                        class="profile-pic"
-                      />
+                      <img [src]="proPic" alt="" srcset="" class="profile-pic">
                     </div>
                     <div class="flex-grow-1">
                       <div class="grid">
@@ -306,11 +294,9 @@
                         </div>
                       </div>
                     </div>
-                    <div class="flex-none" *ngIf="threadHdr.isPremium">
-                      <p class="text-xs text-orange-500 font-medium">
-                        Premium
-                        <i class="pi pi-star-fill" style="font-size: 10px"></i>
-                      </p>
+                    <div class="flex-none " *ngIf="threadHdr.isPremium">
+                      <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                          style="font-size: 10px"></i></p>
                     </div>
                   </div>
                 </div>
@@ -322,7 +308,7 @@
                     }}</span>
                   </div>
                   <div class="col-12">
-                    <p class="text-small">{{ threadHdr.threadContent }}</p>
+                    <p class="text-small">{{threadHdr.threadContent}}</p>
                   </div>
 
                   <div class="image-content" *ngIf="threadHdr.fileId != null">
@@ -369,19 +355,11 @@
               >
                 <div class="container">
                   <!-- Header -->
-                  <div
-                    class="flex justify-content-between column-gap-4"
-                    [style]="{ 'margin-bottom': '-20px' }"
-                  >
+                  <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
                     <div class="flex">
-                      <img
-                        [src]="proPic"
-                        alt=""
-                        srcset=""
-                        class="profile-pic"
-                      />
+                      <img [src]="proPic" alt="" srcset="" class="profile-pic">
                     </div>
-                    <div class="col-8">
+                    <div class="flex-grow-1">
                       <div class="grid">
                         <div class="col-12">
                           <span class="bold black text-heading-3">{{
@@ -397,30 +375,21 @@
                         </div>
                       </div>
                     </div>
-                    <div class="flex-none" *ngIf="threadHdr.isPremium">
-                      <p class="text-xs text-orange-500 font-medium">
-                        Premium
-                        <i class="pi pi-star-fill" style="font-size: 10px"></i>
-                      </p>
+                    <div class="flex-none " *ngIf="threadHdr.isPremium">
+                      <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                          style="font-size: 10px"></i></p>
                     </div>
                   </div>
                 </div>
                 <!-- Content -->
-                <div class="grid mt-3 mr-2 ml-2">
+                <div class="grid mt-5 mt-3 mr-2 ml-2">
                   <div class="col-12">
                     <span class="bold black text-heading-3">{{
                       threadHdr.threadName
                     }}</span>
                   </div>
                   <div class="col-12">
-                    <p class="text-small">
-                      {{ readMoreContent(threadHdr.threadContent!) }}
-                      <a
-                        (click)="onClick(threadHdr.id)"
-                        class="font-semibold click"
-                        >Continue Reading</a
-                      >
-                    </p>
+                    <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
                   </div>
                   <div class="image-content" *ngIf="threadHdr.fileId != null">
                     <div class="image-box">
@@ -603,12 +572,8 @@
                     <form (ngSubmit)="onSubmit()">
                       <div class="flex mb-3 column-gap-2">
                         <div class="flex">
-                          <img
-                            [src]="proPic"
-                            alt=""
-                            srcset=""
-                            class="profile-pic"
-                          />
+                          <img [src]="proPic" alt="" srcset=""
+                            class="profile-pic">
                         </div>
                         <div class="flex">
                           <p-dropdown
@@ -652,27 +617,14 @@
                           <div class="grid mt-1 flex flex-wrap">
                             <!-- form polling -->
                             <div class="col-12">
-                              <input
-                                pInputText
-                                type="text"
-                                required="true"
-                                class="w-full border-radius-20px"
-                                placeholder="Title Polling"
-                                name="pollingName"
-                                [(ngModel)]="createThreadHdr.pollingName"
-                              />
+                              <input pInputText type="text" required="true" class="w-full border-radius-20px"
+                                placeholder="Title Polling" name="pollingName" [(ngModel)]="createThreadHdr.pollingName" />
                             </div>
                             <div class="col-12">
                               <div class="grid">
                                 <div class="md:col-9 col-7">
-                                  <input
-                                    pInputText
-                                    type="text"
-                                    required="true"
-                                    #optionLabel
-                                    class="w-full border-radius-20px"
-                                    placeholder="Option"
-                                  />
+                                  <input pInputText type="text" required="true" #optionLabel class="w-full border-radius-20px"
+                                    placeholder="Option"/>
                                 </div>
                                 <div class="md:col-3 col-5">
                                   <button
@@ -688,23 +640,11 @@
                                   ></button>
                                 </div>
                               </div>
-                              <div
-                                class="grid"
-                                *ngFor="
-                                  let polling of pollingArray;
-                                  let i = index
-                                "
-                              >
+                              <div class="grid"
+                              *ngFor="let polling of pollingArray; let i = index ">
                                 <div class="md:col-9 col-7">
-                                  <input
-                                    pInputText
-                                    type="text"
-                                    required="true"
-                                    class="w-full border-radius-20px"
-                                    placeholder="Option"
-                                    [value]="polling"
-                                    (change)="changeValue(i, $event)"
-                                  />
+                                  <input pInputText type="text" required="true" class="w-full border-radius-20px"
+                                    placeholder="Option" [value]="polling" (change)="changeValue(i, $event)"/>
                                 </div>
                                 <div class="md:col-3 col-5">
                                   <button
@@ -768,30 +708,15 @@
               <!-- Thread -->
               <p-tabPanel header="Thread">
                 <!-- thread -->
-                <div
-                  class="thread"
-                  *ngFor="let threadHdr of listThreadHdr.data!; let i = index"
-                >
+                <div class="thread" *ngFor="let threadHdr of listThreadHdr.data!; let i=index">
                   <!-- thread yang kurang dari 100 karakter -->
-                  <div
-                    class="card mt-0 mb-3"
-                    *ngIf="threadHdr.threadContent!.length < 100"
-                  >
+                  <div class="card mt-0 mb-3" *ngIf="threadHdr.threadContent!.length < 100">
                     <div class="container">
                       <!-- Header -->
-                      <div
-                        class="flex justify-content-between column-gap-4"
-                        [style]="{ 'margin-bottom': '-20px' }"
-                      >
+                      <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
                         <div class="flex">
-                          <img
-                            [src]="
-                              getPhotoThread(threadHdr.photoProfileCreator!)
-                            "
-                            alt=""
-                            srcset=""
-                            class="profile-pic"
-                          />
+                          <img [src]="getPhotoThread(threadHdr.photoProfileCreator!)" alt="" srcset=""
+                            class="profile-pic">
                         </div>
                         <div class="flex-grow-1">
                           <div class="grid">
@@ -828,7 +753,7 @@
                         }}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">{{ threadHdr.threadContent }}</p>
+                        <p class="text-small">{{threadHdr.threadContent}}</p>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -873,27 +798,15 @@
                   </div>
 
                   <!-- thread yang lebih dari 100 karakter -->
-                  <div
-                    class="card mt-0 mb-3"
-                    *ngIf="threadHdr.threadContent!.length < 100"
-                  >
+                  <div class="card mt-0 mb-3" *ngIf="threadHdr.threadContent!.length > 100">
                     <div class="container">
                       <!-- Header -->
-                      <div
-                        class="flex justify-content-between column-gap-4"
-                        [style]="{ 'margin-bottom': '-20px' }"
-                      >
+                      <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
                         <div class="flex">
-                          <img
-                            [src]="
-                              getPhotoThread(threadHdr.photoProfileCreator!)
-                            "
-                            alt=""
-                            srcset=""
-                            class="profile-pic"
-                          />
+                          <img [src]="getPhotoThread(threadHdr.photoProfileCreator!)" alt="" srcset=""
+                            class="profile-pic">
                         </div>
-                        <div class="col-8">
+                        <div class="flex-grow-1">
                           <div class="grid">
                             <div class="col-12">
                               <span class="bold black text-heading-3">{{
@@ -909,33 +822,22 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-2" *ngIf="threadHdr.isPremium">
-                          <p class="text-xs text-orange-500 font-medium">
-                            Premium
-                            <i
-                              class="pi pi-star-fill"
-                              style="font-size: 10px"
-                            ></i>
-                          </p>
+                        <div class="flex-none " *ngIf="threadHdr.isPremium">
+                          <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                              style="font-size: 10px"></i></p>
                         </div>
                       </div>
+
                     </div>
                     <!-- Content -->
-                    <div class="grid -mb-3 ml-1">
+                    <div class="grid mt-5 -mb-3 ml-1 mr-1">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{
                           threadHdr.threadName
                         }}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">
-                          {{ readMoreContent(threadHdr.threadContent!) }}
-                          <a
-                            (click)="onClick(threadHdr.id)"
-                            class="font-semibold click"
-                            >Continue Reading</a
-                          >
-                        </p>
+                        <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -983,33 +885,15 @@
 
               <!-- Like -->
               <p-tabPanel header="Like">
-                <div
-                  class="thread"
-                  *ngFor="
-                    let threadHdrLike of listThreadHdrLike.data!;
-                    let i = index
-                  "
-                >
+                <div class="thread" *ngFor="let threadHdrLike of listThreadHdrLike.data!; let i=index">
                   <!-- thread yang kurang dari 100 karakter -->
-                  <div
-                    class="card mt-0 mb-3"
-                    *ngIf="threadHdrLike.threadContent!.length < 100"
-                  >
+                  <div class="card mt-0 mb-3" *ngIf="threadHdrLike.threadContent!.length < 100">
                     <div class="container">
                       <!-- Header -->
-                      <div
-                        class="flex justify-content-between column-gap-4"
-                        [style]="{ 'margin-bottom': '-20px' }"
-                      >
+                      <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
                         <div class="flex">
-                          <img
-                            [src]="
-                              getPhotoThread(threadHdrLike.photoProfileCreator!)
-                            "
-                            alt=""
-                            srcset=""
-                            class="profile-pic"
-                          />
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                            class="profile-pic">
                         </div>
                         <div class="flex-grow-1">
                           <div class="grid">
@@ -1071,27 +955,15 @@
                   </div>
 
                   <!-- thread yang lebih dari 100 karakter -->
-                  <div
-                    class="card mt-3"
-                    *ngIf="threadHdrLike.threadContent!.length > 100"
-                  >
+                  <div class="card mt-0 mb-3" *ngIf="threadHdrLike.threadContent!.length > 100">
                     <div class="container">
                       <!-- Header -->
-                      <div
-                        class="grid card-login"
-                        [style]="{ 'margin-bottom': '-20px' }"
-                      >
-                        <div class="col-2">
-                          <img
-                            [src]="
-                              getPhotoThread(threadHdrLike.photoProfileCreator!)
-                            "
-                            alt=""
-                            srcset=""
-                            class="profile-pic"
-                          />
+                      <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
+                        <div class="flex">
+                          <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
+                            class="profile-pic">
                         </div>
-                        <div class="col-10">
+                        <div class="flex-grow-1">
                           <div class="grid">
                             <div class="col-12">
                               <span class="bold black text-heading-3">{{
@@ -1107,24 +979,22 @@
                             </div>
                           </div>
                         </div>
+                        <div class="flex-none ">
+                          <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                              style="font-size: 10px"></i></p>
+                        </div>
                       </div>
+
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-3 mr-2 ml-2">
+                    <div class="grid mt-5 -mb-3 mr-1 ml-1">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{
                           threadHdrLike.threadName
                         }}</span>
                       </div>
                       <div class="col-12">
-                        <p class="text-small">
-                          {{ readMoreContent(threadHdrLike.threadContent!) }}
-                          <a
-                            (click)="onClick(threadHdrLike.id)"
-                            class="font-semibold click"
-                            >Continue Reading</a
-                          >
-                        </p>
+                        <p class="text-small">{{readMoreContent(threadHdrLike.threadContent!)}} <a (click)="onClick(threadHdrLike.id)" class="font-semibold click">continue reading</a></p>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -1147,32 +1017,23 @@
                   </div>
                 </div>
               </p-tabPanel>
-              <!-- Halaman Sebelah Kanan -->
-              <div class="md:col-3 col-12 right-page">
-                <div class="grid justify-content-center">
-                  <div class="col-12 mt-1">
-                    <span class="bold text-heading-3">Event for you</span>
-                  </div>
-                </div>
-                <div class="card-transparent">
-                  <div class="container">
-                    <div
-                      class="grid justify-content-center"
-                      *ngFor="let event of listEvent.data"
-                    >
-                      <div class="col align-content-center">
-                        <div
-                          class="grid btnClick"
-                          [style]="{ 'margin-top': '-20px' }"
-                          [routerLink]="'/communities/detail/' + event.id"
-                        >
-                          <div class="col-4">
-                            <img
-                              [src]="getPhotoCommun(event.idFile!)"
-                              alt=""
-                              srcset=""
-                              class="event-pic"
-                            />
+
+              <!-- Bookmark -->
+              <p-tabPanel header="Bookmark">
+                <div class="thread" *ngFor="let threadHdr of bookmarkdata$ | async; let i=index">
+                  <div class="card mt-0 mb-3">
+                    <div class="container">
+                      <!-- Header -->
+                      <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
+                        <div class="flex">
+                          <img [src]="getPhotoThread(threadHdr.photoProfileCreator!)" alt="" srcset=""
+                            class="profile-pic">
+                        </div>
+                        <div class="flex-grow-1">
+                          <div class="grid">
+                            <div class="col-12">
+                              <span class="bold black text-heading-3">{{threadHdr.creatorName}}</span>
+                            </div>
                           </div>
                           <div class="col-7 ml-1">
                             <div class="grid">
