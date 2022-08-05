@@ -45,4 +45,8 @@ export class LeftPageComponent implements OnInit, OnDestroy {
   toEditProfile(){
     this.router.navigateByUrl('/profile')
   }
+
+  toWallet(){
+    this.router.navigateByUrl('/wallet')
+  }
 }
