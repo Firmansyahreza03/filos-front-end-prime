@@ -3,23 +3,23 @@
         <img src="../../../assets/image/logo-filos-1.png" height="40" class="mr-2">
     </ng-template>    
     <ng-template pTemplate="end">
-        <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()">   
-            <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar></button>
+        <div class="click"  (click)="showNav()">   
+            <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar></div>
     </ng-template>
 </p-menubar>
 <div class="layout-topbar-menu" [ngClass]="{'show':topMenuActive , 'hidden':!topMenuActive}">
     <div class="flex flex-column row-gap-3">
         <div class="flex">
-            <button class="p-link layout-topbar-button" (click)="settings()">
+            <div class="click" (click)="settings()">
                 <i class="pi pi-cog text-sm"></i>
                 <span class="text-sm"> Settings</span>
-              </button>
+              </div>
         </div>
         <div class="flex">
-            <button class="p-link layout-topbar-button" (click)="logout()">
+            <div class="click" (click)="logout()">
                 <i class="pi pi-sign-out text-sm font-semibold text-red-700"></i>
                 <span class="text-sm font-semibold text-red-700"> Log Out</span>
-              </button>
+              </div>
         </div>
         
     </div>
