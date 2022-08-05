@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { threadReducer } from './member/home-member.reducer';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
+import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
 @NgModule({
   imports: [
     HomeMemberRouting,
@@ -35,7 +36,7 @@ import { CalendarModule } from 'primeng/calendar';
     DialogModule,
     CalendarModule,
   ],
-  declarations: [HomeMemberComponent, ThreadDetailComponent],
+  declarations: [HomeMemberComponent, ThreadDetailComponent, TimeAgoPipe],
   exports: [HomeMemberComponent, ThreadDetailComponent],
 })
 export class HomeMemberModule {}
