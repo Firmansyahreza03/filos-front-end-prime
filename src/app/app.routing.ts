@@ -17,7 +17,6 @@ const routes: Routes = [
     },
     {
         path: 'landing',
-        // component: MainLayoutComponent,
         loadChildren: () => import('./page/landing/landing.module').then(m => m.LandingModule)
     },
     {
@@ -52,6 +51,11 @@ const routes: Routes = [
         path: 'profile',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/profile/profile.module').then(m => m.ProfileModule)
+    },
+    {
+        path: 'wallet',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/wallet/wallet.module').then(m => m.WalletModule)
     },
     {
         path: 'admin',
