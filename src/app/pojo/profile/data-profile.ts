@@ -3,16 +3,16 @@ export interface DataProfile {
     version : number
     isActive : boolean
 
-	fullName:string
-	companyName:string
-	positionName:string
-	industryId:string
-	industryName:string
-	userId:string
-	userEmail:string
+	fullName?:string
+	companyName?:string
+	positionName?:string
+	industryId?:string
+	industryName?:string
+	userId?:string
+	userEmail?:string
 	fileId?:string
-	roleCode:string
-	roleName:string
-	balance:string
-	isSubscriber:boolean
+	roleCode?:string
+	roleName?:string
+	balance?:string
+	isSubscriber?:boolean
 }
