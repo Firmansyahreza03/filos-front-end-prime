@@ -22,10 +22,10 @@
               <!-- Card Event -->
                 <div class="card card-community btnClick" (click)="onClick(event.id)">
                   <div class="container">
-                    <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
+                    <div class="grid justify-content-center -mt-3">
                       <div class="col-12 flex justify-content-center">
                         <div class="image-content">
-                          <div class="image-box">
+                          <div class="image-box mx-auto">
                             <img src="http://localhost:3333/files/{{event.idFile}}" alt="" class="event-pic">
                           </div>
                         </div>
@@ -34,13 +34,9 @@
                         <span class="bold-medium black text-xs"> <i class="pi pi-users color-purple"
                             style="font-size: 1rem"></i> {{event.provider}}</span>
                       </div>
-                    </div>
-                    <div class="grid justify-content-center mt-3" [style]="{'margin-bottom':'-20px', 'height':'80px'}">
-                      <div class="col-12">
-                        <span class="bold black text-sm title">{{event.title}}</span>
+                      <div class="surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis title pl-2 mb-2 mr-auto" >
+                          <span class="bold black text-sm title">{{event.title}}</span>
                       </div>
-                    </div>
-                    <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
                       <div class="col-12">
                         <span class="bold color-yellow text-xs"> <i class="pi 
                         pi-money-bill color-purple" style="font-size: 12px"></i> Rp.{{event.price}}</span>
@@ -56,7 +52,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-12">
+                      <div class="col-12 pt-0">
                         <span class="black text-xs"> <i class="pi pi-circle-fill color-purple"
                             style="font-size: 12px"></i> {{event.location}}</span>
                       </div>
@@ -75,10 +71,10 @@
               <!-- Card Training -->
                 <div class="card card-community btnClick" (click)="onClick(training.id)">
                   <div class="container">
-                    <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
+                    <div class="grid justify-content-center -mt-3">
                       <div class="col-12 flex justify-content-center">
                         <div class="image-content">
-                          <div class="image-box">
+                          <div class="image-box mx-auto">
                             <img src="http://localhost:3333/files/{{training.idFile}}" alt="" class="event-pic">
                           </div>
                         </div>
@@ -87,32 +83,28 @@
                         <span class="bold-medium black text-xs"> <i class="pi pi-users color-purple"
                             style="font-size: 1rem"></i> {{training.provider}}</span>
                       </div>
-                    </div>
-                    <div class="grid justify-content-center mt-3" [style]="{'margin-bottom':'-20px', 'height':'80px'}">
-                      <div class="col-12">
+                      <div class="surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis title pl-2 mb-2 mr-auto" >
                         <span class="bold black text-sm title">{{training.title}}</span>
-                      </div>
                     </div>
-                    <div class="grid justify-content-center -mt-3" [style]="{'margin-bottom':'-20px'}">
-                      <div class="col-12">
-                        <span class="bold color-yellow text-xs"> <i class="pi 
-                        pi-money-bill color-purple" style="font-size: 12px"></i> Rp.{{training.price}}</span>
-                      </div>
-                      <div class="col-12">
-                        <div class="grid">
-                          <div class="col-12 pb-0">
-                            <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
-                            <span class="black text-xs"> {{training.startAt}} s/d</span>
-                          </div>
-                          <div class="col-12 ml-3 pt-0">
-                            <span class="black text-xs"> {{training.endAt}}</span>
-                          </div>
+                    <div class="col-12">
+                      <span class="bold color-yellow text-xs"> <i class="pi 
+                      pi-money-bill color-purple" style="font-size: 12px"></i> Rp.{{training.price}}</span>
+                    </div>
+                    <div class="col-12">
+                      <div class="grid">
+                        <div class="col-12 pb-0">
+                          <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
+                          <span class="black text-xs"> {{training.startAt}} s/d</span>
+                        </div>
+                        <div class="col-12 ml-3 pt-0">
+                          <span class="black text-xs"> {{training.endAt}}</span>
                         </div>
                       </div>
-                      <div class="col-12">
-                        <span class="black text-xs"> <i class="pi pi-circle-fill color-purple"
-                            style="font-size: 12px"></i> {{training.location}}</span>
-                      </div>
+                    </div>
+                    <div class="col-12 pt-0">
+                      <span class="black text-xs"> <i class="pi pi-circle-fill color-purple"
+                          style="font-size: 12px"></i> {{training.location}}</span>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -132,15 +124,15 @@
                 <!-- schedule -->
               <div *ngFor="let training of listCommunity.data" >
               <div class="container">
-                <div class="grid">
-                  <div class="col-3">
+                <div class="grid ">
+                  <div class="md:col-3 col-12">
                     <div class="image-content">
-                      <div class="image-box">
+                      <div class="image-box mx-auto">
                         <img src="http://localhost:3333/files/{{training.idFile}}" alt="" srcset="">
                       </div>
                     </div>
                   </div>
-                  <div class="col-9">
+                  <div class="md:col-9 col-12">
                     <div class="grid">
                         <div class="col-12">
                           <span class="bold black text-base title">{{training.title}}</span>
