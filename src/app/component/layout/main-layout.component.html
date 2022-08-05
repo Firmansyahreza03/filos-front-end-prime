@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 
-<router-outlet></router-outlet>
+<router-outlet>
+</router-outlet>
+
+<button pButton type="button" icon="pi pi-arrow-up" class="p-button-rounded p-button-secondary" id="toTopBtn" (click)="toTop()"  [ngClass]="{'hidden':!btnActive}" ></button>
 
 <app-footer></app-footer>

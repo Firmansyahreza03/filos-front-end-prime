@@ -6,6 +6,10 @@ const routes:Routes=[
     {
         path:'',
         component: PaymentDetailComponent
+    },
+    {
+        path:':id',
+        component: PaymentDetailComponent
     }
 ]
 @NgModule({
