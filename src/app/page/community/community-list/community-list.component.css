@@ -24,11 +24,7 @@
   height: 100%;
   width: 100%;
 }
-.title{
-    line-height: 1.5rem;
-    max-height: calc(1.5rem);
-    overflow: hidden;
-}
+
 .btnClick{
     cursor: pointer;
 }
@@ -40,8 +36,11 @@
         object-fit: cover;
     }
     .card-community{
-        height: 490px;
+        height: 465px;
     }
+    /* .card-community>img{
+       justify-content: center;
+    } */
   }
 
 @media (min-width: 1200px) {
@@ -52,7 +51,10 @@
         object-position: center;
     }
     .card-community{
-        height: 490px;
+        height: 440px;
+    }
+    .title{
+        width:350px
     }
     
 }
