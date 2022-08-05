@@ -87,6 +87,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
         }
     }
 
+    login():void{
+        this.router.navigateByUrl('/login')
+    }
+
     onSubmitProfilePic(): void {
         this.registerSubscription = this.registerService.register(this.register).subscribe((res) => {
             this.router.navigateByUrl("/login");
