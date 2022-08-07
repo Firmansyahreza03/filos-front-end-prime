@@ -83,6 +83,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.loginService.isLogin());
+    
     this.createThreadHdr.isActive = true;
     this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
 
