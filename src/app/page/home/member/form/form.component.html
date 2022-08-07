@@ -1,0 +1,74 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="flex mb-3 column-gap-2">
+    <div class="flex">
+      <img [src]="" alt="" srcset="" class="profile-pic">
+    </div>
+    <div class="flex">
+      <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId"
+        optionLabel="categoryName" optionValue="id" name="categoryName" (onChange)="checkPollling($event)"></p-dropdown>
+    </div>
+  </div>
+  <div class="grid flex flex-wrap">
+    <div class="col-12">
+      <input type="text" required="true" pInputText class="w-full border-radius-20px"
+        [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
+    </div>
+    <div class="col-12">
+      <textarea pInputTextarea required="true" class="w-full border-radius-20px"
+        [(ngModel)]="createThreadHdr.threadContent" placeholder="Content" name="threadContent"></textarea>
+    </div>
+  </div>
+  <p-divider></p-divider>
+  <div class="grid -mt-3 -mb-3 flex justify-content-between">
+    <div class="col-12" *ngIf="polling">
+      <div class="grid mt-1 flex flex-wrap">
+        <!--  polling -->
+        <div class="col-12">
+          <input pInputText type="text" required="true" class="w-full border-radius-20px" placeholder="Title Polling"
+            name="pollingName" [(ngModel)]="createThreadHdr.pollingName" />
+        </div>
+        <div class="col-12">
+          <div class="grid">
+            <div class="md:col-9 col-7">
+              <input pInputText type="text" required="true" #optionLabel class="w-full border-radius-20px"
+                placeholder="Option" />
+            </div>
+            <div class="md:col-3 col-5">
+              <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+                (click)="addInputControl(optionLabel.value);optionLabel.value=''"></button>
+            </div>
+          </div>
+          <div class="grid" *ngFor="let polling of pollingArray; let i = index ">
+            <div class="md:col-9 col-7">
+              <input pInputText type="text" required="true" class="w-full border-radius-20px" placeholder="Option"
+                [value]="polling" (change)="changeValue(i, $event)" />
+            </div>
+            <div class="md:col-3 col-5">
+              <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                (click)="removeInputControl(i)"></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field col-12 md:col-4">
+            <label for="time" class="text-sm">Expired</label>
+            <p-calendar [(ngModel)]="expiredPolling" [showTime]="true" [showSeconds]="true" inputId="time"
+              name="expiredAt" [(ngModel)]="createThreadHdr.expiredAt"></p-calendar>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit pic/suubmit form -->
+    <div class="col-2">
+      <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)" chooseIcon="pi pi-image"
+        [auto]="true" [customUpload]="true">
+      </p-fileUpload>
+    </div>
+    <div class="md:col-2 col-4">
+      <button pButton pRipple type="submit"
+        class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+        styleClass="p-button-sm text-center" label="Post"></button>
+    </div>
+  </div>
+</form>

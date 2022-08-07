@@ -11,7 +11,7 @@
 
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
-        [globalFilterFields]="['threadCode','threadName','categoryName','creatorName']"
+        [globalFilterFields]="['threadCode','threadName','categoryName']"
         [totalRecords]="totalData" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-gridlines"
         [rowHover]="true">
 

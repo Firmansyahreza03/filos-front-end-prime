@@ -5,12 +5,14 @@
         <div class="md:col-5 col-12">
             <div class="grid">
                 <div class="col-12">
-                    <span class="back font-medium" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+                    <span class="back font-medium" (click)="back()"><i class="pi pi-angle-left"></i>Back</span>
                 </div>
                 <div class="col-12">
                     <div class="grid mt-1 mb-1 justify-content-center">
                         <div class="col-11 warning">
-                            <p class="text-base font-medium">Please complete your payment now, otherwise your schedule will be released</p>
+                            <p class="text-base font-medium">
+                                Please complete your payment now, otherwise your schedule will be released
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -45,17 +47,21 @@
                         <div class="md:col-4 col-12 ">
                             <div class="image-content">
                                 <div class="image-box">
-                                    <img src="../../../../assets/image/tips-memulai-bisnis-startup.jpg" alt="">
+                                    <img src="{{orderData.idFile}}" alt="" srcset="">
                                 </div>
                             </div>
                         </div>
                         <div class="md:col-8 col-12">
                             <div class="grid">
                                 <div class="col-12">
-                                    <p class="font-semibold">Reqruitment interviews expert training</p>
+                                    <p class="font-semibold">
+                                        {{orderData.title}}
+                                    </p>
                                 </div>
                                 <div class="col-12">
-                                    <p class="text-sm">Location</p>
+                                    <p class="text-sm">
+                                        {{orderData.location}}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +76,9 @@
                             <p class="text-left text-sm">Start Date</p>
                         </div>
                         <div class="col-6">
-                            <p class="text-right text-sm font-semibold">12 Agustus 2022</p>
+                            <p class="text-right text-sm font-semibold">
+                                {{orderData.startAt}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -80,21 +88,9 @@
                             <p class="text-left text-sm">End Date</p>
                         </div>
                         <div class="col-6">
-                            <p class="text-right text-sm font-semibold">12 Agustus 2022</p>
-                        </div>
-                    </div>
-                    <p-divider></p-divider>
-                </div>
-                <div class="col-12 pt-0">
-                    <span class="back font-medium">Payment Detail</span>
-                </div>
-                <div class="col-12 pb-0 pt-0">
-                    <div class="grid ">
-                        <div class="col-6">
-                            <p class="text-left text-sm">Price</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-right text-sm font-semibold">Rp. 400.000</p>
+                            <p class="text-right text-sm font-semibold">
+                                {{orderData.endAt}}
+                            </p>
                         </div>
                     </div>
                     <p-divider></p-divider>
@@ -102,10 +98,12 @@
                 <div class="col-12 pb-0 pt-0">
                     <div class="grid ">
                         <div class="col-6">
-                            <span class="back font-medium">Total</span>
+                            <span class="back font-medium">Price</span>
                         </div>
                         <div class="col-6">
-                            <p class="text-right text-sm font-semibold">Rp. 400.000</p>
+                            <p class="text-right text-sm font-semibold">
+                                Rp. {{orderData.price}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -199,7 +197,7 @@
                         <form (ngSubmit)="confirmation()">
                         <!-- Upload Foto -->
                         <div class="col-12">
-                            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+                            <p-fileUpload #fubauto mode="basic" accept="image/*" [customUpload]="true" (uploadHandler)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
                         </div>
 
                         <!-- Action -->

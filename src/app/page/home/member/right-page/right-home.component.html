@@ -1,0 +1,62 @@
+<div class="grid justify-content-center">
+  <div class="col-12 mt-1">
+    <span class="bold text-heading-3">Event for you</span>
+  </div>
+</div>
+<div class="card-transparent">
+  <div class="container">
+    <div class="grid justify-content-center" *ngFor="let event of listEvent.data">
+      <div class="col align-content-center">
+        <div class="grid btnClick" [style]="{ 'margin-top':'-20px'}" [routerLink]="'/communities/detail/'+event.id">
+          <div class="col-4">
+            <img [src]="getPhotoCommun(event.idFile!)" alt="" srcset="" class="event-pic img-fluid">
+          </div>
+          <div class="col-7 ml-1">
+            <div class="grid">
+              <div class="col-12">
+                <span class="text-small bold">{{event.title}}</span>
+              </div>
+            </div>
+            <div class="grid -mt-3">
+              <div class="col-12">
+                <span class="text-extrasmall bold-medium">{{event.provider}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Training -->
+<div class="grid justify-content-center">
+  <div class="col-12 mt-1">
+    <span class="bold text-heading-3">Training for you</span>
+  </div>
+</div>
+<div class="card-transparent">
+  <div class="container">
+    <div class="grid justify-content-center" *ngFor="let training of listTraining.data; let i=index">
+      <div class="col align-content-center">
+        <div class="grid btnClick" [style]="{ 'margin-top':'-20px'}" [routerLink]="'/communities/detail/'+training.id">
+          <div class="col-4">
+            <img [src]="getPhotoCommun(training.idFile!)" alt="" srcset="" class="event-pic img-fluid">
+          </div>
+          <div class="col-7 ml-1">
+            <div class="grid">
+              <div class="col-12">
+                <span class="text-small bold">{{training.title}}</span>
+              </div>
+            </div>
+            <div class="grid -mt-3">
+              <div class="col-12">
+                <span class="text-extrasmall bold-medium">{{training.provider}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

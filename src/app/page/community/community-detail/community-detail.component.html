@@ -18,7 +18,7 @@
               <div class="grid flex flex-wrap justify-content-start row-gap-0">
                 <div class="md:col-6 col-12 justify-content-center">
                   <div class="image-content">
-                    <div class="image-box">
+                    <div class="image-box mx-auto">
                       <img src="http://localhost:3333/files/{{communityData.data?.idFile}}" alt="" srcset=""
                       class="event-pic">
                     </div>
@@ -89,11 +89,9 @@
                 <div class="md:col-5 col-12">
                   <button pButton pRipple type="submit"
                   class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                  styleClass="p-button-sm text-center" label="Next to Payment >" routerLink="/payment"></button>
+                  styleClass="p-button-sm text-center" label="Next to Payment >" (click)="toPayment()"></button>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>

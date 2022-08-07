@@ -1,7 +1,8 @@
 export interface InsertPaymentTransactionReq {
 	isActive : boolean
 
-	isAcc:boolean
+	desc: string
+	price: number
 
 	fileId?:string
 	fileName?:string
