@@ -35,7 +35,6 @@ const routes: Routes = [
     {
         path: 'home-member',
         component: MainLayoutComponent,
-        canLoad : [LoginGuard],
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
