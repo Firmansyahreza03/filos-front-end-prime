@@ -16,7 +16,6 @@ import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
 
 import { HomeMemberRouting } from './home-member.routing';
-import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
 import { threadReducer } from './member/home-member.reducer';
 import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
@@ -51,8 +50,7 @@ import { HomeMemberComponent } from './member/home-member.component';
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent,
-    ThreadDetailComponent, 
+    FormComponent, 
 
   ],
   exports: [

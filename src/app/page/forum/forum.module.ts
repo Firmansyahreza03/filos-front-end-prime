@@ -17,9 +17,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { AvatarModule } from 'primeng/avatar';
 
 import { ForumRouting } from './forum.routing';
-import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
 import { ThreadDetailComponent } from './detail/thread-detail.component';
 import { FormChatComponent } from './insert/form-chat.component';
+import { SharedModule } from 'src/app/component/shared.module';
 
 @NgModule({
   imports: [
@@ -39,11 +39,11 @@ import { FormChatComponent } from './insert/form-chat.component';
     HttpClientModule,
     DialogModule,
     CalendarModule,
+    SharedModule
   ],
   declarations: [
     ThreadDetailComponent,
     FormChatComponent, 
-    TimeAgoPipe
   ],
   exports: [
     ThreadDetailComponent,
