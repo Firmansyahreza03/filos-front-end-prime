@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
+import { DefaultPic } from 'src/app/constant/default-pic';
 import {
   FindAllCommunityRes,
   FindCommunityRes,
@@ -69,6 +70,14 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.listEvent = res;
       });
+  }
+
+  getPhoto(fileId: string): string {
+    if(fileId != null){
+      return `http://localhost:3333/files/${fileId}`;
+    } else {
+      return DefaultPic.commFile;
+    }
   }
 
   getAllTraining(): void {
