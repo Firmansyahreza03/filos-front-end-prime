@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="mt-3">
+    <span class="back" (click)="back()"><i class="pi pi-angle-left"></i>Back to home</span>
+  </div>
+  <p-divider></p-divider>
+  <div class="card">
+    <div class="container">
+      <div class="flex column-gap-4">
+        <div class="flex">
+          <div class="image-content">
+            <div class="image-box">
+              <img [src]="threadHdrData.data?.photoProfileCreator" alt="" srcset="" class="profile-pic">
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-column pt-2">
+          <p class="text-base font-medium">{{threadHdrData.data?.creatorName}}</p>
+          <p class="text-xs">{{threadHdrData.data?.createdAt|timeAgo}}</p>
+        </div>
+      </div>
+      <div class="flex flex-column mt-5 row-gap-3">
+        <div class="flex">
+          <p class="text-base font-semibold">{{threadHdrData.data?.threadName}}</p>
+        </div>
+        <div class="flex flex-column row-gap-3">
+          <p class="text-sm">{{threadHdrData.data?.threadContent}}</p>
+          <div class="image-box-thread mx-auto" *ngIf="threadHdrData.data?.fileId!=null">
+            <div class="image-content-thread ">
+              <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.fileId" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p-divider align="left">
+    <div class="inline-flex align-items-center">
+      <p class="font-semibold text-base flex align-items-center">
+        <i class="pi pi-circle-fill color-purple flex align-items-center" style="font-size: 2rem"></i>Comment
+      </p>
+    </div>
+  </p-divider>
+
+  <div class="mt-2">
+    <forum-form-chat></forum-form-chat>
+  </div>
+
+  <p-divider align="left">
+    <div class="flex flex-column">
+      <div class="flex ml-4 column-gap-3 align-content-center">
+        <i class="pi pi-comments color-purple flex align-items-center" style="font-size: 20px"></i>
+        <p class="text-sm flex align-items-center">
+          {{countChat}}
+        </p>
+      </div>
+    </div>
+  </p-divider>
+
+  <div class="flex-1 mt-2" *ngFor="let datas of threadDtlData.data; let i = index">
+    <div class="card">
+      <div class="container">
+        <div class="flex column-gap-4" [style]="{'margin-bottom':'-20px'}">
+          <div class="flex">
+            <div class="image-content">
+              <div class="image-box">
+                <img [src]="datas.proPic" alt="" srcset="" class="profile-pic">
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-column pt-2">
+            <p class="text-base font-medium">
+              {{datas.userFullName}}
+            </p>
+            <p class="text-xs">
+              {{datas.createdAt|timeAgo}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="grid mt-5 mt-3 mr-2 ml-2">
+        <div class="col-12">
+          <p class="text-small">
+            {{datas.threadComment}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

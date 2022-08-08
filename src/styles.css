@@ -13,6 +13,10 @@ body{
   vertical-align: baseline;
 }
 
+textarea {
+  resize: none;
+}
+
 #toTopBtn {
   display: block;
   position: fixed; 

@@ -48,4 +48,8 @@ export class UserService{
     findByUserLogged(): Observable<FindProfileRes> {
         return this.http.get<FindProfileRes>('http://localhost:3333/users/profiles')
     }
+
+    findByUserId(id : string): Observable<FindProfileRes> {
+        return this.http.get<FindProfileRes>(`http://localhost:3333/users/user-id/${id}`)
+    }
 }

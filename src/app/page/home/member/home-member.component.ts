@@ -314,7 +314,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   onClick(id: string): void {
-    this.router.navigateByUrl(`/home-member/detail/${id}`);
+    this.router.navigateByUrl(`/forum/${id}`);
   }
 
   onChangeFile(event: any): void {
