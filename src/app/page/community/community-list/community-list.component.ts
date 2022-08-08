@@ -26,12 +26,6 @@ export class CommunityListComponent implements OnInit{
     ngOnInit(): void {
         this.communitySubscription=this.communityService.getAllCommunity().subscribe((result)=>{
             this.listCommunity=result
-            // this.listCommunity.data!.forEach(d => {
-            //     const len = d.title.length
-            //     if(len > 30) {
-            //         d.title = d.title.substring(0, 60) + " ...  " ;
-            //       }
-            // });
         })
     }
     onClick(id:string):void{

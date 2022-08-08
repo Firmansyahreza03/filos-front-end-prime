@@ -21,6 +21,7 @@ import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
 import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
 import { FormComponent } from './member/form/form.component';
+import { SharedModule } from 'src/app/component/shared.module';
 @NgModule({
   imports: [
     HomeMemberRouting,
@@ -39,6 +40,7 @@ import { FormComponent } from './member/form/form.component';
     StoreModule.forFeature('thread', threadReducer),
     DialogModule,
     CalendarModule,
+    SharedModule
   ],
   declarations: [
     HomeMemberComponent, 
@@ -46,7 +48,6 @@ import { FormComponent } from './member/form/form.component';
     RightPageComponent,
     FormComponent,
     ThreadDetailComponent, 
-    TimeAgoPipe
   ],
   exports: [
     HomeMemberComponent, 

@@ -52,6 +52,11 @@ const routes: Routes = [
         loadChildren: () => import('./page/profile/profile.module').then(m => m.ProfileModule)
     },
     {
+        path: 'articles',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/article/article-member.module').then(m => m.ArticleMemberModule)
+    },
+    {
         path: 'wallet',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/wallet/wallet.module').then(m => m.WalletModule)
