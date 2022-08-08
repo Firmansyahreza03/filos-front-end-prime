@@ -53,6 +53,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { PasswordModule } from 'primeng/password';
 import { PickListModule } from 'primeng/picklist';
 import { ProgressBarModule } from 'primeng/progressbar';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
@@ -86,9 +87,9 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { MainLayoutComponent } from "./layout/main-layout.component";
 import { AdminLayoutComponent } from "./layout/admin-layout.component";
-import { style } from "@angular/animations";
 import { AdminNavComponent } from "./navbar/admin-nav.component";
 import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
+import { TimeAgoPipe } from "../pipe/time-ago.pipe";
 
 @NgModule({
     declarations : [
@@ -98,6 +99,7 @@ import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
         MainLayoutComponent,
         AdminLayoutComponent,
         AdminSidebarComponent,
+        TimeAgoPipe
     ],
     imports : [
         RouterModule,
@@ -154,6 +156,7 @@ import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
         PasswordModule,
         PickListModule,
         ProgressBarModule,
+        ProgressSpinnerModule,
         RadioButtonModule,
         RatingModule,
         RippleModule,
@@ -191,6 +194,7 @@ import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
         MainLayoutComponent,
         AdminLayoutComponent,
         AdminSidebarComponent,
+        TimeAgoPipe
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

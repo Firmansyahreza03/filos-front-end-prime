@@ -1,3 +1,4 @@
+
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -6,6 +7,7 @@ import { AdminLayoutComponent } from "./component/layout/admin-layout.component"
 
 import { SharedModule } from "./component/shared.module";
 import { NotFoundComponent } from "./page/not-found/not-found.component";
+import { AlreadyLoginGuard, LoginGuard } from './guard/guard-import';
 
 const routes: Routes = [
     {
@@ -15,17 +17,18 @@ const routes: Routes = [
     },
     {
         path: 'landing',
-        component: MainLayoutComponent,
         loadChildren: () => import('./page/landing/landing.module').then(m => m.LandingModule)
     },
     {
         path: 'login',
         component: MainLayoutComponent,
+        canLoad : [AlreadyLoginGuard],
         loadChildren: () => import('./page/auth/login/login.module').then(m => m.LoginModule)
     },
     {
         path: 'register',
         component: MainLayoutComponent,
+        canLoad : [AlreadyLoginGuard],
         loadChildren: () => import('./page/auth/register/register.module').then(m => m.RegisterModule)
     },
     {
@@ -47,6 +50,16 @@ const routes: Routes = [
         path: 'profile',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/profile/profile.module').then(m => m.ProfileModule)
+    },
+    {
+        path: 'articles',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/article/article-member.module').then(m => m.ArticleMemberModule)
+    },
+    {
+        path: 'wallet',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/wallet/wallet.module').then(m => m.WalletModule)
     },
     {
         path: 'admin',

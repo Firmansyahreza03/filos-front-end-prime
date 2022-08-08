@@ -5,12 +5,14 @@
         <div class="md:col-5 col-12">
             <div class="grid">
                 <div class="col-12">
-                    <span class="back font-medium" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+                    <span class="back font-medium" (click)="back()"><i class="pi pi-angle-left"></i>Back</span>
                 </div>
                 <div class="col-12">
                     <div class="grid mt-1 mb-1 justify-content-center">
                         <div class="col-11 warning">
-                            <p class="text-base font-medium">Please complete your payment now, otherwise your schedule will be released</p>
+                            <p class="text-base font-medium">
+                                Please complete your payment now, otherwise your schedule will be released
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -45,17 +47,21 @@
                         <div class="md:col-4 col-12 ">
                             <div class="image-content">
                                 <div class="image-box">
-                                    <img src="../../../../assets/image/tips-memulai-bisnis-startup.jpg" alt="">
+                                    <img src="{{orderData.fileId}}" alt="" srcset="">
                                 </div>
                             </div>
                         </div>
                         <div class="md:col-8 col-12">
                             <div class="grid">
                                 <div class="col-12">
-                                    <p class="font-semibold">Reqruitment interviews expert training</p>
+                                    <p class="font-semibold">
+                                        {{orderData.type}}
+                                    </p>
                                 </div>
                                 <div class="col-12">
-                                    <p class="text-sm">Location</p>
+                                    <p class="text-sm">
+                                        {{orderData.desc}}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -64,48 +70,15 @@
                 </div>
 
                 <!-- Content -->
-                <div class="col-12 pt-0">
-                    <div class="grid ">
-                        <div class="col-6">
-                            <p class="text-left text-sm">Start Date</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-right text-sm font-semibold">12 Agustus 2022</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-12 pb-0 pt-0">
                     <div class="grid ">
                         <div class="col-6">
-                            <p class="text-left text-sm">End Date</p>
+                            <span class="back font-medium">Price</span>
                         </div>
                         <div class="col-6">
-                            <p class="text-right text-sm font-semibold">12 Agustus 2022</p>
-                        </div>
-                    </div>
-                    <p-divider></p-divider>
-                </div>
-                <div class="col-12 pt-0">
-                    <span class="back font-medium">Payment Detail</span>
-                </div>
-                <div class="col-12 pb-0 pt-0">
-                    <div class="grid ">
-                        <div class="col-6">
-                            <p class="text-left text-sm">Price</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-right text-sm font-semibold">Rp. 400.000</p>
-                        </div>
-                    </div>
-                    <p-divider></p-divider>
-                </div>
-                <div class="col-12 pb-0 pt-0">
-                    <div class="grid ">
-                        <div class="col-6">
-                            <span class="back font-medium">Total</span>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-right text-sm font-semibold">Rp. 400.000</p>
+                            <p class="text-right text-sm font-semibold">
+                                Rp.{{orderData.price}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -147,13 +120,13 @@
                         </div>
                         <div class="col-12">
                             <div class="grid mb-1">
-                                <div class="col-5">
+                                <div class="md:col-5 col-12">
                                     <p class="text-sm font-medium">Virtual Account Number:</p>
                                     <p class="font-bold text-green-700">10511091003273</p>
                                 </div>
-                                <div class="col-7">
+                                <div class="md:col-7 col-12">
                                     <p class="text-sm font-medium">Total:</p>
-                                    <p class="font-bold text-green-700">Rp.400.000</p>
+                                    <p class="font-bold text-green-700">Rp.{{orderData.price}}</p>
                                 </div>
                             </div>
                         </div>
@@ -194,29 +167,21 @@
                     <div class="container">
                     <div class="grid mt-2 justify-content-center">
                         <div class="col-12">
-                            <p class="text-sm">Upload your proof of payment for confirmation. </p>
+                            <p class="text-sm text-center">Upload your proof of payment for confirmation. </p>
                         </div>
                         <form (ngSubmit)="confirmation()">
                         <!-- Upload Foto -->
                         <div class="col-12">
-                            <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)">
-                            <ng-template pTemplate="content">
-                                <ul *ngIf="uploadedFiles.length">
-                                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-                                </ul>
-                            </ng-template>
-                            </p-fileUpload>
+                            <p-fileUpload #fubauto mode="basic" accept="image/*" [customUpload]="true" (uploadHandler)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
                         </div>
 
                         <!-- Action -->
-                        <div class="col-12 mt-3 pb-0">
+                        <div class="col-12 mt-5 pb-0">
                             <div class="grid justify-content-center">
-                                <div class="col-6">
                                     <button pButton pRipple type="submit"
                           class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
                           styleClass="p-button-sm text-center" label="Confirmation"></button>
                                 </div>
-                            </div>
                         </div>
                         </form>
                     </div>

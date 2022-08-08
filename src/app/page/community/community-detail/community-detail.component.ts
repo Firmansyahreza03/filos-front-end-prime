@@ -32,7 +32,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
     private loginService: LoginService,
   ) {}
 
-  ngOnInit(): void {
+  getDtlData():void{
     this.communityDtlSubscription = this.activatedRouted.params.subscribe(
       (result) => {
         const resultTmp: any = result;
@@ -44,7 +44,10 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
           });
       }
     );
+  }
 
+  ngOnInit(): void {
+    this.getDtlData();
     this.getAllEvent();
     this.getAllTraining();
   }
@@ -52,7 +55,9 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
   back(): void {
     this.router.navigateByUrl('/communities');
   }
-
+  toPayment():void {
+    this.router.navigateByUrl('/payment/'+this.idParam);
+  }
   getAllEvent(): void {
     this.eventSubs = this.communityService
       .getByIndustryAndCategory(

@@ -1,11 +1,11 @@
 export interface UpdateProfileReq {
     id : string
-    version : number
-	isActive : boolean
+    version: number
 
-    fullName:string
-    companyName:string
-    positionName:string
-    industryId:string
-    userId:string
+    fullName?:string
+    companyName?:string
+    positionName?:string
+    industryId?:string
+    fileName?: string;
+    fileExt?: string;
 }

@@ -27,36 +27,28 @@ export class ThreadListComponent {
 
   cols: any[] = [
     {
-      field: 'code',
+      field: 'threadCode',
       header: 'code'
     },
     {
-      field: 'title',
+      field: 'threadName',
       header: 'title'
     },
     {
-      field: 'nameCategory',
+      field: 'categoryName',
       header: 'category'
     },
     {
-      field: 'nameIndustry',
-      header: 'Industry'
+      field: 'creatorName',
+      header: 'creator'
     },
     {
-      field: 'provider',
-      header: 'provider'
+      field: 'createdAt',
+      header: 'created at'
     },
     {
-      field: 'price',
-      header: 'price'
-    },
-    {
-      field: 'startAt',
-      header: 'startAt'
-    },
-    {
-      field: 'endAt',
-      header: 'endAt'
+      field: 'isPremium',
+      header: 'premium only'
     }
   ];
 
@@ -75,7 +67,7 @@ export class ThreadListComponent {
     this.maxPage = maxPage
     this.query = query
 
-    this.subscription = this.service.getAllThreadHdr(query, startPage, maxPage)
+    this.subscription = this.service.getAllThreadHdr(startPage, maxPage, query)
       .subscribe((result) => {
         this.loading = false;
         this.listData = result.data!;

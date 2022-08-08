@@ -3,6 +3,8 @@ export interface UpdatePaymentTransactionReq {
     version : number
 
 	isAcc:boolean
+	desc: string
+	price: number
 
 	fileId?:string
 	fileName?:string

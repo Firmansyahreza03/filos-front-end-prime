@@ -7,20 +7,22 @@ export interface DataThreadHdr {
 	threadCode ?:string
 	threadContent ?:string
 	isPremium ?:boolean
-	pollingHdrsId ?:string
-	pollingName ?:string
 	categoryid ?:string
 	categoryName ?:string
-	industryId ?:string
-	industryName ?:string
+	pollingHdrsId ?:string
+	pollingName ?:string
 	fileId?:string
 	fileName?:string
 	fileTxt?:string
+
 	creatorName?:string
 	createdAt?:Date
+
 	photoProfileCreator?:string
-	counterLike?: string;
-	counterComment?: string;
+	
 	isLike?: boolean;
 	isBookmark?:boolean;
+
+	counterLike?: string;
+	counterComment?: string;
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { MenuItem} from 'primeng/api';
-import { DefaultPic } from "../../constant/DefaultPic";
+import { DefaultPic } from "../../constant/default-pic";
 import { LoginService, UserService } from "src/app/service/import.service";
 import { AdminLayoutComponent } from '../layout/admin-layout.component';
 

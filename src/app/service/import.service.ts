@@ -1,3 +1,4 @@
+import { PaymentService } from './payment.service';
 import { ArticleService } from './article.service';
 import { CommunityCategoriesService } from 'src/app/service/community-category.service';
 import { UserService } from 'src/app/service/user.service';
@@ -13,6 +14,7 @@ import { CommunityService } from 'src/app/service/community.service';
 import { BookmarkService } from './bookmark.service';
 import { MenuService } from './app.menu.service';
 import { ConfigService } from './app.config.service';
+import { MemberCommunityService } from './member-community.service'
 
 export {
   ConfigService,
@@ -29,5 +31,7 @@ export {
   ThreadHdrService,
   ThreadLikedService,
   UserService,
-  ArticleService
+  ArticleService,
+  PaymentService,
+  MemberCommunityService,
 }

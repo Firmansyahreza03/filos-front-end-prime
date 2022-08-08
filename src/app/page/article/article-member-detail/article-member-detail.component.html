@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="grid justify-content-center mt-2">
+        <div class="col-11">
+            <span class="back click" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+          </div>
+        <div class="md:col-11 col-12">
+            <div class="card">
+                <div class="container">
+                    <div class="flex flex-column">
+                        <div class="flex">
+                            <p class="text-lg font-medium">{{articleData.data.title}}</p>
+                        </div>
+                        <div class="flex mt-2 column-gap-4">
+                            <span class="text-xs color-yellow flex" >
+                                {{articleData.data.nameIndustry}}
+                            </span>
+                            <span class="text-xs flex">{{articleData.data.createdAt|timeAgo}}</span>
+                        </div>
+                        <div class="flex mt-5">
+                            <p>{{articleData.data.content}}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

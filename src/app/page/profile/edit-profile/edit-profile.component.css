@@ -45,14 +45,14 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #91aae6;
+    background: white;
     width: 40px;
     height: 40px;
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.4);
   }
   
   .upload .round input[type = "file"]{

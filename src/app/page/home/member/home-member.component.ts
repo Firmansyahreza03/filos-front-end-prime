@@ -1,20 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, Subscription, toArray } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/DefaultPic';
+import { DefaultPic } from 'src/app/constant/default-pic';
 import {
-  DataBookmark,
   DataThreadHdr,
   FindAllCommunityRes,
   FindAllThreadCategoryRes,
   FindAllThreadHdrRes,
   FindProfileRes,
   InsertThreadHdrReq,
-  ErorRes,
-  FindAllPollingOptionRes,
-  InsertPollingHeaderReq
 } from 'src/app/pojo/pojo-import';
 import { BookmarkService } from 'src/app/service/bookmark.service';
 import { CommunityService } from 'src/app/service/community.service';
@@ -88,6 +83,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.loginService.isLogin());
+    
     this.createThreadHdr.isActive = true;
     this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
 

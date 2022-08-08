@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="card card-login">
     <div class="grid justify-content-center card-login " [style]="{'margin-bottom':'-20px'}">
@@ -52,10 +53,11 @@
       <div class="col align-content-center">
         <div class="field">
           <span class="text-small bold-medium">
-            Don't have an account? <a class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}"
-              routerLink="/landing">
+            Don't have an account? 
+            <span class="text-small bold color-yellow btnClick" [style]="{'margin-top':'-5px'}"
+              (click)="registerClick()">
               Register now
-            </a>
+            </span>
           </span>
         </div>
       </div>

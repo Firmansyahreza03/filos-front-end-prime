@@ -1,0 +1,79 @@
+<!-- Halaman Sebelah Kiri -->
+
+<!-- Card Profile -->
+<div class="card">
+  <div class="container">
+    <div class="grid justify-content-center -mb-3">
+      <div class="col align-content-center">
+
+        <!-- Header -->
+        <div class="flex flex-column">
+          <!-- Pic -->
+          <div class="flex justify-content-center">
+            <div class="image-content-login">
+              <div class="image-box-profile">
+                <img [src]='proPic' alt="" srcset="" id="login-profile-pic">
+              </div>
+            </div>
+          </div>
+
+          <!-- FullName & Position -->
+          <div class="flex justify-content-center mt-2">
+            <div class="flex flex-column text-center">
+              <span class="bold-medium color-black text-heading-2">{{profileData.data?.fullName}}</span>
+              <p class="text-extrasmall bold-medium">{{profileData.data?.positionName}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="flex flex-column mt-5 row-gap-2">
+          <!-- Email -->
+          <div class="flex">
+            <div class="flex flex-column">
+              <span class="bold-medium text-500 text-extrasmall">Email</span>
+              <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">
+                {{profileData.data?.userEmail}}</p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-column">
+              <span class="bold-medium text-500 text-extrasmall">Status</span>
+              <p class="text-extrasmall bold-medium" [style]="{'margin-top':'0px'}">{{status}}
+                <p>
+            </div>
+          </div>
+          <div class="flex">
+            <div class="flex flex-grow-1 flex-column text-center">
+              <p-divider></p-divider>
+              <span class="text-sm font-medium btnClick" (click)="toEditProfile()">Edit Profile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card Balance -->
+<div class="card my-2 bg-primary click " (click)="toWallet()">
+  <div class="container">
+    <div class="grid justify-content-center -mb-3">
+      <div class="col align-content-center">
+
+        <div class="flex flex-column">
+          <!-- Balance -->
+          <div class="flex">
+            <div class="flex flex-column row-gap-2">
+              <span class="bold-medium text-50 text-extrasmall">My Wallet</span>
+              <p class="text-xl font-semibold text-50 mt-0" > <i class="pi pi-wallet text-50 mr-1"></i>
+                Rp.{{profileData.data?.balance}}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

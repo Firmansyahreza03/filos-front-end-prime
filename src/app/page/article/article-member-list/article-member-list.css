@@ -1,0 +1,9 @@
+.article{
+    border-bottom: 4px solid #DAA300;
+}
+.title-article:hover{
+    color: var(--primary-400);
+}
+.click{
+cursor: pointer;
+}
