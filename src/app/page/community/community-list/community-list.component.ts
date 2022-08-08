@@ -1,45 +1,65 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { Subscription } from "rxjs";
-import { FindAllCommunityRes } from "src/app/pojo/pojo-import";
-import { CommunityService } from "src/app/service/community.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CommunityCategory } from 'src/app/constant/community-category';
+import { DefaultPic } from 'src/app/constant/default-pic';
+import { FindAllCommunityRes } from 'src/app/pojo/pojo-import';
+import { CommunityService } from 'src/app/service/community.service';
 
 @Component({
-    selector:'app-community-list',
-    templateUrl:'./community-list.component.html',
-    styleUrls:['community-list.component.css']
+  selector: 'app-community-list',
+  templateUrl: './community-list.component.html',
+  styleUrls: ['community-list.component.css'],
 })
-export class CommunityListComponent implements OnInit{
-    constructor(
-        private router: Router,
-        private communityService: CommunityService,
-        ){}
-    communitySubscription?:Subscription
-    idDetail!:string
+export class CommunityListComponent implements OnInit {
+  eventSubscription?: Subscription;
+  trainingSubscription?: Subscription;
+  idDetail!: string;
 
-    listCommunity:FindAllCommunityRes={
-        data: [],
-        count: 0
-    }
-    
+  listEvent: FindAllCommunityRes = {
+    data: [],
+    count: 0,
+  };
 
-    ngOnInit(): void {
-        this.communitySubscription=this.communityService.getAllCommunity().subscribe((result)=>{
-            this.listCommunity=result
-            // this.listCommunity.data!.forEach(d => {
-            //     const len = d.title.length
-            //     if(len > 30) {
-            //         d.title = d.title.substring(0, 60) + " ...  " ;
-            //       }
-            // });
-        })
-    }
-    onClick(id:string):void{
-        this.idDetail = id;
-        this.router.navigateByUrl(`/communities/detail/${id}`)
-    }
+  listTraining: FindAllCommunityRes = {
+    data: [],
+    count: 0,
+  };
 
-    ngOnDestroy(): void {
-        this.communitySubscription?.unsubscribe()
+  constructor(
+    private router: Router,
+    private communityService: CommunityService
+  ) {}
+
+  ngOnInit(): void {
+    this.eventSubscription = this.communityService
+      .getAll(CommunityCategory.training)
+      .subscribe((result) => {
+        this.listEvent = result;
+      });
+
+    this.trainingSubscription = this.communityService
+      .getAll(CommunityCategory.event)
+      .subscribe((res) => {
+        this.listTraining = res;
+      });
+  }
+
+  getCommPic(fileId: string): string {
+    if (fileId != null) {
+      return 'http://localhost:3333/files/' + fileId;
+    } else {
+      return DefaultPic.commFile;
     }
+  }
+
+  onClick(id: string): void {
+    this.idDetail = id;
+    this.router.navigateByUrl(`/communities/detail/${id}`);
+  }
+
+  ngOnDestroy(): void {
+    this.eventSubscription?.unsubscribe();
+    this.trainingSubscription?.unsubscribe();
+  }
 }
