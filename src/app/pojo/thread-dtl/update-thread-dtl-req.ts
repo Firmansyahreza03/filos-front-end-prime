@@ -3,7 +3,6 @@ export interface UpdateThreadDtlReq {
     version : number
 	
 	hdrId ?: string
-    userId ?: string
     
 	threadComment ?: string
 }

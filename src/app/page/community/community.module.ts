@@ -36,7 +36,7 @@ import { CommunityAddComponent } from "./community-add/community-add.component";
     declarations: [
         CommunityListComponent,
         CommunityDetailComponent,
-        CommunityAddComponent
+        CommunityAddComponent,
     ],
     exports: [
         CommunityListComponent,

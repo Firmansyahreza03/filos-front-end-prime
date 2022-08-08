@@ -75,7 +75,7 @@ export class CommunityListComponent {
     this.maxPage = maxPage
     this.query = query
 
-    this.subscription = this.service.getAll(startPage, maxPage, query)
+    this.subscription = this.service.getAll(null, query, startPage, maxPage)
       .subscribe((result) => {
         this.loading = false;
         this.listData = result.data!;
