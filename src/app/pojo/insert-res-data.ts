@@ -1,3 +1,3 @@
 export interface InsertResData {
-    id ?: number
+    id ?: string
 }

@@ -14,6 +14,7 @@ import { CommunityService } from 'src/app/service/community.service';
 import { BookmarkService } from './bookmark.service';
 import { MenuService } from './app.menu.service';
 import { ConfigService } from './app.config.service';
+import { MemberCommunityService } from './member-community.service'
 
 export {
   ConfigService,
@@ -31,5 +32,6 @@ export {
   ThreadLikedService,
   UserService,
   ArticleService,
-  PaymentService
+  PaymentService,
+  MemberCommunityService,
 }

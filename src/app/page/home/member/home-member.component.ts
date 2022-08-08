@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/DefaultPic';
+import { DefaultPic } from 'src/app/constant/default-pic';
 import {
   DataThreadHdr,
   FindAllCommunityRes,

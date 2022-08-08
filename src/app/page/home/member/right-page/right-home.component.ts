@@ -4,7 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommunityCategory } from 'src/app/constant/community-category';
 import { FindAllCommunityRes } from 'src/app/pojo/pojo-import';
 import { CommunityService, LoginService } from 'src/app/service/import.service';
-import { DefaultPic } from 'src/app/constant/DefaultPic';
+import { DefaultPic } from 'src/app/constant/default-pic';
 
 @Component({
   selector: 'home-right-page',

@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { DefaultPic } from 'src/app/constant/DefaultPic';
 import { FindAllThreadCategoryRes, InsertThreadHdrReq } from 'src/app/pojo/pojo-import';
 import { FileService, LoginService, ThreadCategoryService, ThreadHdrService, UserService } from 'src/app/service/import.service';
 import { HomeMemberComponent } from '../home-member.component';

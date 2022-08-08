@@ -10,6 +10,7 @@ export class LandingComponent{
     constructor(
         public router: Router
         ){}
+
     login():void{
         this.router.navigateByUrl('/login')
     }
