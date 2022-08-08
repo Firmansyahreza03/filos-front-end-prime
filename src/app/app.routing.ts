@@ -37,6 +37,11 @@ const routes: Routes = [
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
+        path: 'forum',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/forum/forum.module').then(m => m.ForumModule)
+    },
+    {
         path: 'communities',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/community/community.module').then(m => m.CommunityModule)
