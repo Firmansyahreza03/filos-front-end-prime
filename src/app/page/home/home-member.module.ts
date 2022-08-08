@@ -22,7 +22,11 @@ import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
 import { FormComponent } from './member/form/form.component';
 
+import { SharedModule } from 'src/app/component/shared.module';
+
+
 import { HomeMemberComponent } from './member/home-member.component';
+
 @NgModule({
   imports: [
     HomeMemberRouting,
@@ -41,13 +45,15 @@ import { HomeMemberComponent } from './member/home-member.component';
     StoreModule.forFeature('thread', threadReducer),
     DialogModule,
     CalendarModule,
+    SharedModule
   ],
   declarations: [
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
     FormComponent,
-    TimeAgoPipe
+    ThreadDetailComponent, 
+
   ],
   exports: [
     HomeMemberComponent, 

@@ -40,12 +40,16 @@ export class NavbarComponent implements OnInit {
     this.items = [{
       label: 'Home',
       routerLink: '/home-member'
-      }, 
-      {
+    },
+    {
       label: 'Community',
       routerLink: '/communities'
-       },
-      {
+    },
+    {
+      label: 'Article',
+      routerLink: '/articles'
+    },
+    {
       label: 'To Admin',
       routerLink: '/admin'
     }];

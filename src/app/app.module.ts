@@ -14,7 +14,7 @@ import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AppRouting,
@@ -26,6 +26,7 @@ import { StoreModule } from '@ngrx/store';
     ToastModule,
     StoreModule.forRoot({}, {})
   ],
+
   providers: [
     {provide : HTTP_INTERCEPTORS, useClass:CustomInterceptor, multi:true},
     MessageService,

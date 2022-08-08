@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="grid justify-content-center mt-2">
+        <div class="md:col-11 col-12">
+            <div class="card">
+                <div class="container">
+                    <div class="grid justify-content-center flex flex-column">
+                        <div class="flex">
+                            <p class="text-lg article ml-2 text-color-secondary mb-5">Articles</p>
+                        </div>
+                        <p-progressSpinner *ngIf="showSpinner" class="flex justify-content-center"></p-progressSpinner>
+                        <div class="col-12 flex flex-column" *ngFor="let article of listArticle.data" >
+                                <div class="flex">
+                                    <p class="text-lg title-article click" (click)="onDetail(article.id)">{{article.title}}</p>
+                                </div>
+                                <div class="flex mt-2 column-gap-4">
+                                    <span class="text-xs color-yellow flex" >
+                                        {{article.nameIndustry}}
+                                    </span>
+                                    <span class="text-xs flex">{{article.createdAt|timeAgo}}</span>
+                                </div>
+                                <p-divider></p-divider>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
