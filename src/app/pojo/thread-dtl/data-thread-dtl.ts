@@ -8,4 +8,8 @@ export interface DataThreadDtl {
 
 	userFullName ?: string
 	threadComment ?: string
+    
+	proPic ?: string
+	isFromMe ?: boolean
+	createdAt?:Date
 }

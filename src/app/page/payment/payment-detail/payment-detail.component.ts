@@ -14,7 +14,6 @@ import {
 } from 'src/app/service/import.service';
 import { DefaultPic } from 'src/app/constant/default-pic';
 import { TransactionType } from 'src/app/constant/transaction-type';
-import { TransactionDesc } from 'src/app/constant/transaction-desc';
 import { SubscriptionPrice } from 'src/app/constant/subscription-price';
 
 @Component({
@@ -113,7 +112,7 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
 
   getSubsPayment(): void {
     this.orderData.type = TransactionType.SUBS;
-    this.orderData.desc = TransactionDesc.SUBS;
+    this.orderData.desc = "Subscription";
     this.orderData.price = SubscriptionPrice.SUBS;
     this.orderData.fileId = DefaultPic.subs;
   }
@@ -126,7 +125,7 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
         .getCommunityById(this.idParam)
         .subscribe((result) => {
           this.orderData.type = TransactionType.COMM;
-          this.orderData.desc = TransactionDesc.COMM + result.data?.title;
+          this.orderData.desc = result.data?.title;
           this.orderData.price = result.data?.price;
           if(result.data?.idFile != null){
             this.orderData.fileId =

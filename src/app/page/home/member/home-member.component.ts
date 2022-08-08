@@ -49,6 +49,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   pollingArray: string[] = [];
   expiredPolling!: Date;
 
+  inputDisable: boolean = false;
+
   listThreadCategory: FindAllThreadCategoryRes = {};
 
   listThreadHdr: FindAllThreadHdrRes = {};
@@ -118,6 +120,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedByUserLoggedSubs?.unsubscribe();
     this.profileSubs?.unsubscribe();
     this.threadBookmarkSubs?.unsubscribe();
+  }
+
+  chooseOption(): void {
+    this.inputDisable = true;
+    console.log(this.inputDisable);
   }
 
   readMoreContent(content: string): string{
@@ -307,7 +314,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   onClick(id: string): void {
-    this.router.navigateByUrl(`/home-member/detail/${id}`);
+    this.router.navigateByUrl(`/forum/${id}`);
   }
 
   onChangeFile(event: any): void {

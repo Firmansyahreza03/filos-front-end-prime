@@ -14,23 +14,18 @@ import { DividerModule } from 'primeng/divider';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
+import { AvatarModule } from 'primeng/avatar';
 
-import { HomeMemberRouting } from './home-member.routing';
+import { ForumRouting } from './forum.routing';
 import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
-import { threadReducer } from './member/home-member.reducer';
-import { LeftPageComponent } from './member/left-page/left-home.component';
-import { RightPageComponent } from './member/right-page/right-home.component';
-import { FormComponent } from './member/form/form.component';
-
-import { SharedModule } from 'src/app/component/shared.module';
-
-
-import { HomeMemberComponent } from './member/home-member.component';
+import { ThreadDetailComponent } from './detail/thread-detail.component';
+import { FormChatComponent } from './insert/form-chat.component';
 
 @NgModule({
   imports: [
-    HomeMemberRouting,
+    ForumRouting,
     
+    AvatarModule,
     CardModule,
     TabViewModule,
     FormsModule,
@@ -42,24 +37,17 @@ import { HomeMemberComponent } from './member/home-member.component';
     DividerModule,
     FileUploadModule,
     HttpClientModule,
-    StoreModule.forFeature('thread', threadReducer),
     DialogModule,
     CalendarModule,
-    SharedModule
   ],
   declarations: [
-    HomeMemberComponent, 
-    LeftPageComponent,
-    RightPageComponent,
-    FormComponent,
-    ThreadDetailComponent, 
-
+    ThreadDetailComponent,
+    FormChatComponent, 
+    TimeAgoPipe
   ],
   exports: [
-    HomeMemberComponent, 
-    LeftPageComponent,
-    RightPageComponent,
-    FormComponent,
+    ThreadDetailComponent,
+    FormChatComponent,
   ],
 })
-export class HomeMemberModule {}
+export class ForumModule {}
