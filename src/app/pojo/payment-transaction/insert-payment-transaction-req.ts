@@ -1,6 +1,5 @@
 export interface InsertPaymentTransactionReq {
-	isActive : boolean
-
+	type: string
 	desc: string
 	price: number
 

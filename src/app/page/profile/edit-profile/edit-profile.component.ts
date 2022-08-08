@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { DefaultPic } from "src/app/constant/DefaultPic";
-import { DataIndustry, DataProfile, FindProfileRes, UpdateProfileReq } from "src/app/pojo/pojo-import";
+import { DefaultPic } from "src/app/constant/default-pic";
+import { DataIndustry, DataProfile, UpdateProfileReq } from "src/app/pojo/pojo-import";
 import { FileService } from "src/app/service/file.service";
 import { IndustryService } from "src/app/service/industry.service";
 import { UserService } from "src/app/service/user.service";

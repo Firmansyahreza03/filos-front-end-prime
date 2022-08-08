@@ -94,8 +94,7 @@ export class PaymentListComponent {
   }
 
   confirmPayment(id: string): void {
-    console.log(id);
-        this.req.id = id;
+    this.req.id = id;
     this.confirmationService.confirm({
       message: 'Do you sure want to validation this payment transaction?',
       header: 'Confirmation',

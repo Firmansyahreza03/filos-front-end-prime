@@ -47,7 +47,7 @@
                         <div class="md:col-4 col-12 ">
                             <div class="image-content">
                                 <div class="image-box">
-                                    <img src="{{orderData.idFile}}" alt="" srcset="">
+                                    <img src="{{orderData.fileId}}" alt="" srcset="">
                                 </div>
                             </div>
                         </div>
@@ -55,12 +55,12 @@
                             <div class="grid">
                                 <div class="col-12">
                                     <p class="font-semibold">
-                                        {{orderData.title}}
+                                        {{orderData.type}}
                                     </p>
                                 </div>
                                 <div class="col-12">
                                     <p class="text-sm">
-                                        {{orderData.location}}
+                                        {{orderData.desc}}
                                     </p>
                                 </div>
                             </div>
@@ -70,31 +70,6 @@
                 </div>
 
                 <!-- Content -->
-                <div class="col-12 pt-0">
-                    <div class="grid ">
-                        <div class="col-6">
-                            <p class="text-left text-sm">Start Date</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-right text-sm font-semibold">
-                                {{orderData.startAt}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 pb-0 pt-0">
-                    <div class="grid ">
-                        <div class="col-6">
-                            <p class="text-left text-sm">End Date</p>
-                        </div>
-                        <div class="col-6">
-                            <p class="text-right text-sm font-semibold">
-                                {{orderData.endAt}}
-                            </p>
-                        </div>
-                    </div>
-                    <p-divider></p-divider>
-                </div>
                 <div class="col-12 pb-0 pt-0">
                     <div class="grid ">
                         <div class="col-6">
@@ -102,7 +77,7 @@
                         </div>
                         <div class="col-6">
                             <p class="text-right text-sm font-semibold">
-                                Rp. {{orderData.price}}
+                                Rp.{{orderData.price}}
                             </p>
                         </div>
                     </div>
@@ -151,7 +126,7 @@
                                 </div>
                                 <div class="md:col-7 col-12">
                                     <p class="text-sm font-medium">Total:</p>
-                                    <p class="font-bold text-green-700">Rp.400.000</p>
+                                    <p class="font-bold text-green-700">Rp.{{orderData.price}}</p>
                                 </div>
                             </div>
                         </div>

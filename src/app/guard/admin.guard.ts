@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { LoginService } from "../service/login.service";
-import { ContantRole } from "../constant/ContantRole";
+import { RoleType } from "../constant/role-type";
 
 @Injectable({
     providedIn : 'root'
@@ -13,7 +13,7 @@ export class AdminGuard implements CanLoad{
 
     canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         const role = this.loginService.getLoggedRole();
-        if(role == ContantRole.ADMIN) {
+        if(role == RoleType.ADMIN) {
             return true;
         }
         else{

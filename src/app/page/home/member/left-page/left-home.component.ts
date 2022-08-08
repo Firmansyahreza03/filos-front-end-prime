@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { DefaultPic } from 'src/app/constant/DefaultPic';
+import { DefaultPic } from 'src/app/constant/default-pic';
 import { FindProfileRes } from 'src/app/pojo/pojo-import';
 import { LoginService, UserService } from 'src/app/service/import.service';
 
@@ -14,6 +14,7 @@ import { LoginService, UserService } from 'src/app/service/import.service';
 export class LeftPageComponent implements OnInit, OnDestroy {
   profileSubs?: Subscription;
   proPic!: string;
+  status!: string;
 
   profileData: FindProfileRes = {};
 
@@ -39,6 +40,7 @@ export class LeftPageComponent implements OnInit, OnDestroy {
       } else{
         this.proPic = DefaultPic.proFile;
       }      
+      this.status = this.profileData.data?.isSubscriber == true ? "Subscriber" : "Non Subscriber";
     })
   }
 

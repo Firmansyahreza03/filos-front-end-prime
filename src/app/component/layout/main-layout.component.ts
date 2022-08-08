@@ -12,7 +12,6 @@ export class MainLayoutComponent {
     const verticalOffset = window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop || 0;
-    console.log(this.btnActive);
     if (verticalOffset > 20)
       this.btnActive = true
     else
