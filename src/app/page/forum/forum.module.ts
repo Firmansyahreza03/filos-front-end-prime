@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +16,6 @@ import { CalendarModule } from 'primeng/calendar';
 import { AvatarModule } from 'primeng/avatar';
 
 import { ForumRouting } from './forum.routing';
-import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
 import { ForumDetailComponent } from './detail/forum-detail.component';
 import { FormChatComponent } from './insert/form-chat.component';
 import { SharedModule } from 'src/app/component/shared.module';

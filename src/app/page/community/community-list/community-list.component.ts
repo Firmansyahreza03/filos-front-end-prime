@@ -11,6 +11,7 @@ import { CommunityService } from 'src/app/service/community.service';
   templateUrl: './community-list.component.html',
   styleUrls: ['community-list.component.css'],
 })
+
 export class CommunityListComponent implements OnInit {
   eventSubscription?: Subscription;
   trainingSubscription?: Subscription;

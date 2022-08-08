@@ -21,7 +21,6 @@ import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
 import { FormComponent } from './member/form/form.component';
 import { SharedModule } from 'src/app/component/shared.module';
-import { ForumDetailComponent } from '../forum/detail/forum-detail.component';
 import { HomeMemberComponent } from './member/home-member.component';
 
 @NgModule({
@@ -48,7 +47,7 @@ import { HomeMemberComponent } from './member/home-member.component';
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent,
+    FormComponent, 
   ],
   exports: [
     HomeMemberComponent, 
