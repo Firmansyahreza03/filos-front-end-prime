@@ -12,7 +12,7 @@ import { ArticleService } from "src/app/service/article.service";
 export class ArticleMemberListComponent implements OnInit, OnDestroy{
     articleSubscription?:Subscription
     idDetail!:string
-    showSpinner=true;
+    showSpinner!:boolean;
 
     constructor(
         private router:Router,
