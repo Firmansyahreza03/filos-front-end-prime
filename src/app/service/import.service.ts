@@ -15,6 +15,7 @@ import { BookmarkService } from './bookmark.service';
 import { MenuService } from './app.menu.service';
 import { ConfigService } from './app.config.service';
 import { MemberCommunityService } from './member-community.service'
+import { PollingService } from './polling.service'
 
 export {
   ConfigService,
@@ -34,4 +35,5 @@ export {
   ArticleService,
   PaymentService,
   MemberCommunityService,
+  PollingService
 }
