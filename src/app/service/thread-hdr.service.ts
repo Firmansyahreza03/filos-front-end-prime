@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { InsertRes } from "../pojo/insert-res";
-import { FindAllThreadHdrRes, FindThreadHdrRes, InsertPollingHeaderReq, InsertThreadHdrReq } from "../pojo/pojo-import";
+import { FindAllThreadHdrRes, FindThreadHdrRes, InsertPollingHeaderReq, InsertThreadHdrReq, UpdateRes, UpdateThreadHdrReq } from "../pojo/pojo-import";
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +39,8 @@ export class ThreadHdrService {
   
   findThreadHdrById(id:string):Observable<FindThreadHdrRes>{
     return this.http.get<FindThreadHdrRes>(`http://localhost:3333/threads/${id}`)
+  }
+  updateThreadHdr(data: UpdateThreadHdrReq):Observable<UpdateRes>{
+    return this.http.put<UpdateRes>('http://localhost:3333/threads', data)
   }
 }

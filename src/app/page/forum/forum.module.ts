@@ -19,6 +19,7 @@ import { ForumRouting } from './forum.routing';
 import { ForumDetailComponent } from './detail/forum-detail.component';
 import { FormChatComponent } from './insert/form-chat.component';
 import { SharedModule } from 'src/app/component/shared.module';
+import { EditForumComponent } from './edit/edit-forum.component';
 
 @NgModule({
   imports: [
@@ -43,10 +44,12 @@ import { SharedModule } from 'src/app/component/shared.module';
   declarations: [
     ForumDetailComponent,
     FormChatComponent, 
+    EditForumComponent
   ],
   exports: [
     ForumDetailComponent,
     FormChatComponent,
+    EditForumComponent
   ],
 })
 export class ForumModule {}

@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="grid justify-content-center mt-2">
+        <div class="col-11">
+            <span class="back click" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+          </div>
+        <div class="md:col-11 col-12">
+            <div class="card">
+                <div class="container">
+                    <div class="flex flex-column">
+                    <!-- form thread -->
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="grid flex mb-5">
+                          <div class="col-3">
+                            <p-dropdown [options]="listThreadCategory!" [(ngModel)]="req.categoryId"
+                              optionLabel="categoryName" optionValue="id" name="categoryId"></p-dropdown>
+                          </div>
+                        </div>
+                        <div class="grid flex flex-wrap">
+                          <div class="col-12">
+                            <input type="text" required="true" pInputText class="w-full border-radius-20px"
+                              [(ngModel)]="req.threadName" placeholder="Title" name="threadName" />
+                          </div>
+                          <div class="col-12">
+                            <textarea pInputTextarea required="true" class="w-full border-radius-20px"
+                              [(ngModel)]="req.threadContent" placeholder="Content" rows="7"
+                              name="threadContent" ></textarea>
+                          </div>
+                        </div>
+                        <!-- Action -->
+                        <div class="md:col-2 col-4">
+                          <button pButton pRipple type="submit"
+                            class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                            styleClass="p-button-sm text-center" label="Post"></button>
+                        </div>
+                      
+                      </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

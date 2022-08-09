@@ -16,6 +16,7 @@ export class CommunityListComponent implements OnInit {
   eventSubscription?: Subscription;
   trainingSubscription?: Subscription;
   idDetail!: string;
+  showSpinner!:boolean;
 
   listEvent: FindAllCommunityRes = {
     data: [],
@@ -33,7 +34,10 @@ export class CommunityListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.eventSubscription = this.communityService
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.eventSubscription = this.communityService
       .getAll(CommunityCategory.training)
       .subscribe((result) => {
         this.listEvent = result;
@@ -44,6 +48,8 @@ export class CommunityListComponent implements OnInit {
       .subscribe((res) => {
         this.listTraining = res;
       });
+    },1000)
+    
   }
 
   getCommPic(fileId: string): string {
