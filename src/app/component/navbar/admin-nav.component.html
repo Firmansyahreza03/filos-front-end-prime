@@ -1,20 +1,20 @@
 <div class="layout-topbar">
-  <button class="p-link layout-menu-button layout-topbar-button" (click)="appMain.toggleMenu($event)">
+  <div class="p-link layout-menu-button layout-topbar-button" (click)="appMain.toggleMenu($event)">
     <i class="pi pi-bars"></i>
-  </button>
+  </div>
 
-  <button class="p-link layout-topbar-menu-button layout-topbar-button" (click)="appMain.toggleTopMenu($event)">
+  <div class="p-link layout-topbar-menu-button layout-topbar-button" (click)="appMain.toggleTopMenu($event)">
     <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar>
-  </button>
+  </div>
 
   <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-active':appMain.topMenuActive}">
-    <button class="p-link layout-topbar-button" routerLink="/home-member">
+    <span class="p-link layout-topbar-button" routerLink="/home-member">
       <i class="pi pi-home"></i>
-      <span>Go to main home</span>
-    </button>
-    <button class="p-link layout-topbar-button" (click)="logOut()">
+      <p>Go to main home</p>
+    </span>
+    <span class="p-link layout-topbar-button" (click)="logOut()">
       <i class="pi pi-sign-out"></i>
-      <span>Log Out</span>
-    </button>
+      <p>Log Out</p>
+    </span>
   </div>
 </div>

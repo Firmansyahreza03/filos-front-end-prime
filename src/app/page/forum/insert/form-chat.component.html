@@ -1,0 +1,31 @@
+
+  <div class="card">
+    <div class="container">
+      <form (ngSubmit)="save()" >
+
+        <div class="flex column-gap-4 ">
+          <div class="flex">
+            <div class="image-content">
+              <div class="image-box">
+                <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex flex-wrap">
+                <textarea pInputTextarea type="text" class="form-control w-full" name="threadComment" id="threadComment"
+                [(ngModel)]="req.threadComment" placeholder="Type here" rows="3" required></textarea>
+            </div>
+            <div class="flex justify-content-end">
+              <div class="flex">
+
+                <button pButton pRipple type="submit"
+                  class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                  styleClass="p-button-sm text-center" icon="pi pi-send"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

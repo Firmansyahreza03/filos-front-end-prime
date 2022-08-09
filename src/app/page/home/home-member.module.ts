@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
-import { HomeMemberComponent } from './member/home-member.component';
-import { HomeMemberRouting } from './home-member.routing';
-import { CardModule } from 'primeng/card';
-import { TabViewModule } from 'primeng/tabview';
+import { StoreModule } from '@ngrx/store';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
+import { CardModule } from 'primeng/card';
+import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
-import { ThreadDetailComponent } from './thread-detail/thread-detail.component';
 import { FileUploadModule } from 'primeng/fileupload';
-import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { threadReducer } from './member/home-member.reducer';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
-import { TimeAgoPipe } from 'src/app/pipe/time-ago.pipe';
+
+import { HomeMemberRouting } from './home-member.routing';
+import { threadReducer } from './member/home-member.reducer';
 import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
 import { FormComponent } from './member/form/form.component';
+import { SharedModule } from 'src/app/component/shared.module';
+import { HomeMemberComponent } from './member/home-member.component';
+
 @NgModule({
   imports: [
     HomeMemberRouting,
@@ -39,21 +41,19 @@ import { FormComponent } from './member/form/form.component';
     StoreModule.forFeature('thread', threadReducer),
     DialogModule,
     CalendarModule,
+    SharedModule
   ],
   declarations: [
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent,
-    ThreadDetailComponent, 
-    TimeAgoPipe
+    FormComponent, 
   ],
   exports: [
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
     FormComponent,
-    ThreadDetailComponent
   ],
 })
 export class HomeMemberModule {}

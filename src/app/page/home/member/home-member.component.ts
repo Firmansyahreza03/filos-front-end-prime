@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/DefaultPic';
+import { DefaultPic } from 'src/app/constant/default-pic';
 import {
   DataThreadHdr,
   FindAllCommunityRes,
@@ -48,6 +48,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   polling!:boolean
   pollingArray: string[] = [];
   expiredPolling!: Date;
+
+  inputDisable: boolean = false;
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -118,6 +120,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedByUserLoggedSubs?.unsubscribe();
     this.profileSubs?.unsubscribe();
     this.threadBookmarkSubs?.unsubscribe();
+  }
+
+  chooseOption(): void {
+    this.inputDisable = true;
+    console.log(this.inputDisable);
   }
 
   readMoreContent(content: string): string{
@@ -307,7 +314,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   onClick(id: string): void {
-    this.router.navigateByUrl(`/home-member/detail/${id}`);
+    this.router.navigateByUrl(`/forum/${id}`);
   }
 
   onChangeFile(event: any): void {

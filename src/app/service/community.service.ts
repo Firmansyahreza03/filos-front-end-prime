@@ -20,18 +20,16 @@ export class CommunityService{
     }
 
     
-    getAll(startPage?: number, maxPage?: number, query?: string, code?:string):Observable<FindAllCommunityRes> {
+    getAll(code?:string | null, query?: string | null, startPage?: number | null, maxPage?: number | null):Observable<FindAllCommunityRes> {
         let url = this.mainUrl+"?";
-        if(startPage != undefined && maxPage){
-            console.log(startPage)
-            console.log(maxPage)
-            url = url+`&startPage=${startPage}`+`&maxPage=${maxPage}`
+        if(code){
+            url = url+`code=${code}`
         }
         if(query){
-            url = url+`&query=${query}`
+            url = url+`query=${query}`
         }
-        if(code){
-            url = url+`&code=${code}`
+        if(startPage != null && maxPage != null){
+            url = url+`&startPage=${startPage}`+`&maxPage=${maxPage}`
         }
         return this.http.get<FindAllCommunityRes>(url);
     }

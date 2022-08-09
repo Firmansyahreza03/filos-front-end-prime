@@ -37,6 +37,11 @@ const routes: Routes = [
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
+        path: 'forum',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/forum/forum.module').then(m => m.ForumModule)
+    },
+    {
         path: 'communities',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/community/community.module').then(m => m.CommunityModule)
@@ -50,6 +55,11 @@ const routes: Routes = [
         path: 'profile',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/profile/profile.module').then(m => m.ProfileModule)
+    },
+    {
+        path: 'articles',
+        component: MainLayoutComponent,
+        loadChildren: () => import('./page/article/article-member.module').then(m => m.ArticleMemberModule)
     },
     {
         path: 'wallet',

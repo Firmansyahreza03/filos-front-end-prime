@@ -1,4 +1,4 @@
-import { DefaultPic } from './../../../../constant/DefaultPic';
+import { DefaultPic } from '../../../../constant/default-pic';
 import { Component } from "@angular/core";
 import { Subscription } from "rxjs";
 

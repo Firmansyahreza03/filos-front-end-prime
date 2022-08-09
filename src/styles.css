@@ -13,6 +13,10 @@ body{
   vertical-align: baseline;
 }
 
+textarea {
+  resize: none;
+}
+
 #toTopBtn {
   display: block;
   position: fixed; 
@@ -145,4 +149,25 @@ p.title{
   line-height: 1;
   font-weight: 400;
   font-size: calc(1.375rem + 1.5vw) !important;
+}
+
+@keyframes p-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #d62d20;
+  }
+  40% {
+      stroke: #0057e7;
+  }
+  66% {
+      stroke: #008744;
+  }
+  80%,
+  90% {
+      stroke: #ffa700;
+  }
+}
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite, 
+  custom-progress-spinner-color 6s ease-in-out infinite;
 }

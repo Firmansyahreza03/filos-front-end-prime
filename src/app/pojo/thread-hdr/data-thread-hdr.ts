@@ -11,6 +11,7 @@ export interface DataThreadHdr {
 	categoryName ?:string
 	pollingHdrsId ?:string
 	pollingName ?:string
+	
 	fileId?:string
 	fileName?:string
 	fileTxt?:string

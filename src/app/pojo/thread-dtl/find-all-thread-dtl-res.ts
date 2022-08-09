@@ -1,6 +1,6 @@
 import { DataThreadDtl } from "./data-thread-dtl";
 
 export interface FindAllThreadDtlRes{
-    data : DataThreadDtl[],
-    count : number
+    data ?: DataThreadDtl[],
+    count ?: number
 }
