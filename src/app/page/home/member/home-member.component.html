@@ -109,7 +109,7 @@
               <div class="card mt-3" *ngIf="threadHdr.threadContent!.length < 100">
                 <div class="container">
                   <!-- Header -->
-                  <div class="flex column-gap-4">
+                  <div class="flex justify-content-between column-gap-4">
                     <div class="flex">
                       <div class="image-content-profile">
                         <div class="image-box-profile">
@@ -117,7 +117,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-column pt-1">
+                    <div class="flex-grow-1 flex-column pt-1">
                       <p class="text-base font-medium">{{threadHdr.creatorName}}</p>
                       <p class="text-xs">{{threadHdr.createdAt| timeAgo}}</p>
                     </div>
@@ -125,8 +125,11 @@
                       <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
                           style="font-size: 10px"></i></p>
                     </div>
+                     <div class="flex-none click" >
+                      <i class="pi pi-pencil font-semibold" style="font-size: 12px" (click)="toEditThread(threadHdr.id)"></i>
+                    </div>
                   </div>
-  
+
                   <!-- Content -->
                   <div class="grid mt-3 mr-1 ml-1">
                     <div class="col-12">
@@ -158,7 +161,7 @@
                     </div>
                   </div>
                   <p-divider></p-divider>
-  
+
                   <!-- Action -->
                   <div class="grid -mb-3 ml-1 mr-1">
                     <div class="col-2" *ngIf="!threadHdr.isLike">
@@ -181,14 +184,14 @@
                     </div>
                   </div>
                 </div>
-               
+
               </div>
 
               <!-- thread yang lebih dari 100 karakter -->
               <div class="card mt-3" *ngIf="threadHdr.threadContent!.length > 100">
                 <div class="container">
                   <!-- Header -->
-                  <div class="flex column-gap-4">
+                  <div class="flex justify-content-between column-gap-4">
                     <div class="flex">
                       <div class="image-content-profile">
                         <div class="image-box-profile">
@@ -196,13 +199,16 @@
                         </div>
                       </div>
                     </div>
-                    <div class="flex flex-column pt-1">
+                    <div class="flex-grow-1 flex-column pt-1">
                       <p class="text-base font-medium">{{threadHdr.creatorName}}</p>
                       <p class="text-xs">{{threadHdr.createdAt| timeAgo}}</p>
                     </div>
                     <div class="flex-none " *ngIf="threadHdr.isPremium">
                       <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
                           style="font-size: 10px"></i></p>
+                    </div>
+                    <div class="flex-none click" >
+                      <i class="pi pi-pencil font-semibold" style="font-size: 12px" (click)="toEditThread(threadHdr.id)"></i>
                     </div>
                   </div>
                 </div>
@@ -368,7 +374,7 @@
                   <div class="card mt-0 mb-3" *ngIf="threadHdr.threadContent!.length < 100">
                     <div class="container">
                       <!-- Header -->
-                      <div class="flex column-gap-4">
+                      <div class="flex justify-content-between column-gap-4">
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
@@ -377,7 +383,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="flex flex-column pt-1">
+                        <div class="flex-grow-1 flex-column pt-1">
                           <p class="text-base font-medium">{{threadHdr.creatorName}}</p>
                           <p class="text-xs">{{threadHdr.createdAt| timeAgo}}</p>
                         </div>
@@ -452,7 +458,7 @@
                   <div class="card mt-0 mb-3" *ngIf="threadHdr.threadContent!.length > 100">
                     <div class="container">
                       <!-- Header -->
-                      <div class="flex column-gap-4">
+                      <div class="flex justify-content-between column-gap-4">
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
@@ -461,7 +467,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="flex flex-column pt-1">
+                        <div class="flex-grow-1 flex-column pt-1">
                           <p class="text-base font-medium">{{threadHdr.creatorName}}</p>
                           <p class="text-xs">{{threadHdr.createdAt| timeAgo}}</p>
                         </div>
@@ -542,16 +548,18 @@
                   <div class="card mt-0 mb-3" *ngIf="threadHdrLike.threadContent!.length < 100">
                     <div class="container">
                       <!-- Header -->
-                      <div class="flex column-gap-4">
+                      <div class="flex justify-content-between column-gap-4">
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
+
                               <img [src]="getPhotoThread(threadHdrLike.photoProfileCreator!)" alt="" srcset=""
                               class="profile-pic">
+
                             </div>
                           </div>
                         </div>
-                        <div class="flex flex-column pt-1">
+                        <div class="flex-grow-1 flex-column pt-1">
                           <p class="text-base font-medium">{{threadHdrLike.creatorName}}</p>
                           <p class="text-xs">{{threadHdrLike.createdAt| timeAgo}}</p>
                         </div>
@@ -610,16 +618,18 @@
                   <div class="card mt-0 mb-3" *ngIf="threadHdrLike.threadContent!.length > 100">
                     <div class="container">
                       <!-- Header -->
-                      <div class="flex column-gap-4">
+                      <div class="flex  justify-content-between column-gap-4">
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
+
                               <img [src]="getPhotoThread(threadHdrLike.photoProfileCreator!)" alt="" srcset=""
                               class="profile-pic">
+
                             </div>
                           </div>
                         </div>
-                        <div class="flex flex-column pt-1">
+                        <div class="flex-grow-1 flex-column pt-1">
                           <p class="text-base font-medium">{{threadHdrLike.creatorName}}</p>
                           <p class="text-xs">{{threadHdrLike.createdAt| timeAgo}}</p>
                         </div>
@@ -683,20 +693,20 @@
                   <div class="card mt-0 mb-3">
                     <div class="container">
                       <!-- Header -->
-                      <div class="flex column-gap-4">
+                      <div class="flex justify-content-between column-gap-4">
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
                               <img [src]="getPhotoThread(threadHdr.photoProfileCreator!)" alt="" srcset=""
-                              class="profile-pic">
+                                class="profile-pic">
                             </div>
                           </div>
                         </div>
-                        <div class="flex flex-column pt-1">
+                        <div class="flex-grow-1 flex-column pt-1">
                           <p class="text-base font-medium">{{threadHdr.creatorName}}</p>
                           <p class="text-xs">{{threadHdr.createdAt| timeAgo}}</p>
                         </div>
-                        <div class="flex-none ">
+                        <div class="flex-none" *ngIf="threadHdr.isPremium">
                           <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
                               style="font-size: 10px"></i></p>
                         </div>

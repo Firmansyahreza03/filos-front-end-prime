@@ -24,6 +24,7 @@ import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 import { PollingService } from 'src/app/service/polling.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-home-member',
@@ -381,5 +382,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   toEditProfile(){
     this.router.navigateByUrl('/profile')
+  }
+  
+  toEditThread(id:string){
+    this.router.navigateByUrl(`/forum/edit/${id}`);
   }
 }
