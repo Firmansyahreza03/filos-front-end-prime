@@ -15,11 +15,11 @@ import {
 } from 'src/app/service/import.service';
 
 @Component({
-  selector: 'app-thread-detail',
-  templateUrl: './thread-detail.component.html',
+  selector: 'app-forum-detail',
+  templateUrl: './forum-detail.component.html',
   styleUrls: ['../forum.component.css'],
 })
-export class ThreadDetailComponent implements OnInit, OnDestroy {
+export class ForumDetailComponent implements OnInit, OnDestroy {
   idParam!: string;
   countChat: number = 0 ;
 

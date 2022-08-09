@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ThreadDetailComponent } from "./detail/thread-detail.component";
+import { ForumDetailComponent } from "./detail/forum-detail.component";
 
 const routes : Routes=[
     {
         path:':id',
-        component:ThreadDetailComponent
+        component:ForumDetailComponent
     },
 ]
 @NgModule({

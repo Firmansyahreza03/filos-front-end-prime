@@ -20,10 +20,7 @@ import { threadReducer } from './member/home-member.reducer';
 import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
 import { FormComponent } from './member/form/form.component';
-
 import { SharedModule } from 'src/app/component/shared.module';
-
-
 import { HomeMemberComponent } from './member/home-member.component';
 
 @NgModule({
@@ -51,7 +48,6 @@ import { HomeMemberComponent } from './member/home-member.component';
     LeftPageComponent,
     RightPageComponent,
     FormComponent, 
-
   ],
   exports: [
     HomeMemberComponent, 

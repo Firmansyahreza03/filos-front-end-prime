@@ -14,7 +14,7 @@ import {
   ThreadHdrService, 
   UserService
 } from 'src/app/service/import.service';
-import { ThreadDetailComponent } from '../detail/thread-detail.component';
+import { ForumDetailComponent } from '../detail/forum-detail.component';
 
 @Component({
   selector: 'forum-form-chat',
@@ -37,7 +37,7 @@ export class FormChatComponent implements OnInit, OnDestroy {
     private threadDtlService: ThreadDtlService,
     private activatedRouted: ActivatedRoute,
     private router: Router,
-    private threadDtl: ThreadDetailComponent
+    private threadDtl: ForumDetailComponent
   ) {}
 
 
