@@ -22,6 +22,7 @@ import { UserService } from 'src/app/service/user.service';
 import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-home-member',
@@ -352,5 +353,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   toEditProfile(){
     this.router.navigateByUrl('/profile')
+  }
+  
+  toEditThread(id:string){
+    this.router.navigateByUrl(`/forum/edit/${id}`);
   }
 }

@@ -22,6 +22,8 @@ import { RightPageComponent } from './member/right-page/right-home.component';
 import { FormComponent } from './member/form/form.component';
 import { SharedModule } from 'src/app/component/shared.module';
 import { HomeMemberComponent } from './member/home-member.component';
+import {PanelModule} from 'primeng/panel';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({
   imports: [
@@ -41,19 +43,21 @@ import { HomeMemberComponent } from './member/home-member.component';
     StoreModule.forFeature('thread', threadReducer),
     DialogModule,
     CalendarModule,
-    SharedModule
+    SharedModule,
+    PanelModule,
+    MenuModule
   ],
   declarations: [
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent, 
+    FormComponent
   ],
   exports: [
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent,
+    FormComponent
   ],
 })
 export class HomeMemberModule {}
