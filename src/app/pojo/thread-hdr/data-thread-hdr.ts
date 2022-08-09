@@ -1,3 +1,5 @@
+import { DataPollingHeader } from "../pojo-import"
+
 export interface DataThreadHdr {
     id : string
     version : number
@@ -9,8 +11,6 @@ export interface DataThreadHdr {
 	isPremium ?:boolean
 	categoryid ?:string
 	categoryName ?:string
-	pollingHdrsId ?:string
-	pollingName ?:string
 	
 	fileId?:string
 	fileName?:string
@@ -24,6 +24,10 @@ export interface DataThreadHdr {
 	isLike?: boolean;
 	isBookmark?:boolean;
 
+	pollingHdr?: DataPollingHeader;
+
 	counterLike?: string;
 	counterComment?: string;
+
+	isVoted?: boolean;
 }
