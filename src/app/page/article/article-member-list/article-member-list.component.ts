@@ -31,14 +31,9 @@ export class ArticleMemberListComponent implements OnInit, OnDestroy{
             this.articleSubscription=this.articleService.getAll().subscribe((result)=>{
                 this.listArticle=result
                })
-        },1000)
+        },500)
     }
-    loadData(){
-        this.showSpinner=false;
-        setTimeout(()=>{
-            this.showSpinner=true;
-        },5000)
-    }
+    
     onDetail(id:string):void{
         this.router.navigateByUrl(`/articles/detail/${id}`)
     }

@@ -1,10 +1,11 @@
 <div class="container">
     <div class="grid justify-content-center mt-2">
-        <div class="col-11">
-            <span class="back click" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
-          </div>
-        <div class="md:col-11 col-12">
-            <div class="card">
+      <div class="col-12 px-7">
+        <span class="back click" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
+      </div>
+      <p-progressSpinner *ngIf="showSpinner==true"></p-progressSpinner>
+      <div class="col-12  px-7">
+            <div class="card" *ngIf="showSpinner==false">
                 <div class="container">
                     <div class="flex flex-column">
                     <!-- form thread -->
@@ -27,12 +28,13 @@
                           </div>
                         </div>
                         <!-- Action -->
-                        <div class="md:col-2 col-4">
-                          <button pButton pRipple type="submit"
-                            class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                            styleClass="p-button-sm text-center" label="Post"></button>
+                        <div class="grid justify-content-end">
+                          <div class="md:col-2 col-4">
+                            <button pButton pRipple type="submit"
+                              class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                              styleClass="p-button-sm text-center" label="Post"></button>
+                          </div>
                         </div>
-                      
                       </form>
                     </div>
                     </div>

@@ -13,6 +13,7 @@ export class ArticleMemberDetailComponent implements OnInit, OnDestroy{
     idParam!:string
     articleDtlSubscription?:Subscription
     articleData!:FindArticleRes;
+    showSpinner!:boolean;
 
     constructor(
         private router:Router,
@@ -35,7 +36,11 @@ export class ArticleMemberDetailComponent implements OnInit, OnDestroy{
         )
     }
     ngOnInit(): void {
-        this.getDtlData();
+        this.showSpinner=true;
+        setTimeout(()=>{
+            this.showSpinner=false;
+            this.getDtlData();
+        },500)
     }
     back():void{
         this.router.navigateByUrl('/articles')

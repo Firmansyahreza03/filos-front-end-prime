@@ -20,7 +20,7 @@ import { ForumDetailComponent } from './detail/forum-detail.component';
 import { FormChatComponent } from './insert/form-chat.component';
 import { SharedModule } from 'src/app/component/shared.module';
 import { EditForumComponent } from './edit/edit-forum.component';
-
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
   imports: [
     ForumRouting,
@@ -39,7 +39,8 @@ import { EditForumComponent } from './edit/edit-forum.component';
     HttpClientModule,
     DialogModule,
     CalendarModule,
-    SharedModule
+    SharedModule,
+    ProgressSpinnerModule
   ],
   declarations: [
     ForumDetailComponent,
