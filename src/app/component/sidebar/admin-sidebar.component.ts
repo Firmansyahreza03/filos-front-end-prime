@@ -51,7 +51,7 @@ export class AdminSidebarComponent {
           },
           {
             label: 'Industry',
-            icon: 'pi pi-flag',
+            icon: 'fa fa-industry',
             routerLink: '/admin/industry'
           }
         ],
@@ -62,6 +62,15 @@ export class AdminSidebarComponent {
             label: 'payment',
             icon: 'fa fa-usd',
             routerLink: '/admin/payment'
+          }
+        ],
+      },
+      {
+        label: 'report',
+        items: [{
+            label: 'report',
+            icon: 'pi pi-flag',
+            routerLink: '/admin/report'
           }
         ],
       },

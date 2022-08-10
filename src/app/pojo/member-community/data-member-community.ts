@@ -10,8 +10,5 @@ export interface DataMemberCommunity {
 	nameCommunity : string
 
 	idPayment : string
-	fileIdPayment : string
-	fileNamePayment : string
-	fileExtPayment : string
 	isAccPayment : boolean
 }
