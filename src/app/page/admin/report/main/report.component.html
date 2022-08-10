@@ -10,15 +10,23 @@
       <form (ngSubmit)="onSubmit()" ngnativevalidate #form="ngForm">
         <div class="grid mb-3 mb:md-1">
           <div class="col-12 md:col-6">
-            <label for="startAt">start at</label>
+            <!-- <label for="startAt">start at</label>
             <p-calendar [(ngModel)]="req.startAt" dateFormat="dd-MM-yyyy" [showButtonBar]="true" inputId="startAt">
-            </p-calendar>
+            </p-calendar> -->
+            <span class="p-float-label">
+              <p-calendar inputId="inputStartDate"  [required]="true" [showTime]="true" [showSeconds]="true" name="startAt" styleClass="w-full" [(ngModel)]="req.startAt"></p-calendar>
+            <label for="inputStartDate">Start Date <span class="text-red-500">*</span></label>
+          </span>
           </div>
         </div>
         <div class="col-12 md:col-6">
-          <label for="endAt">end at</label>
+          <!-- <label for="endAt">end at</label>
           <p-calendar [(ngModel)]="req.endAt" dateFormat="dd-MM-yyyy" [showButtonBar]="true" inputId="endAt">
-          </p-calendar>
+          </p-calendar> -->
+          <span class="p-float-label">
+            <p-calendar inputId="inputStartDate"  [required]="true" [showTime]="true" [showSeconds]="true" name="startAt" styleClass="w-full" [(ngModel)]="req.endAt"></p-calendar>
+          <label for="inputStartDate">Start Date <span class="text-red-500">*</span></label>
+        </span>
         </div>
         <button pButton pRipple type="submit" name="submitBtn" id="submitBtn" [disabled]="!form.valid"
           class="p-button-success" icon="pi pi-plus-circle" label="submit">
