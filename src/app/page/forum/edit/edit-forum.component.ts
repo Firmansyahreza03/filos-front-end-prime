@@ -17,6 +17,7 @@ export class EditForumComponent implements OnInit{
     threadCategorySubs?:Subscription;
     idParam!:string;
     proPic!: string;
+    showSpinner!:boolean;
     listThreadCategory: DataThreadCategory[] = [];
     req:UpdateThreadHdrReq={}
     constructor(
@@ -28,21 +29,25 @@ export class EditForumComponent implements OnInit{
       ) {}
 
     ngOnInit(): void {
-        this.activitedRoute.params.subscribe(res=>{
-            const resultTmp:any=res
-            this.idParam=resultTmp.id
-            this.req.id=this.idParam
-            this.threadSubs=this.threadService.findThreadHdrById(this.idParam)
-            .subscribe(result=>{                
-                this.req.id=result.data?.id
-                this.req.categoryId=result.data?.categoryid
-                this.req.threadName=result.data?.threadName
-                this.req.threadContent=result.data?.threadContent
-                this.req.version=result.data?.version
-                this.req.email=this.loginService.getLoggedEmail()!;              
-            }) 
-            this.getThreadCategory()
-        })
+        this.showSpinner=true;
+        setTimeout(()=>{
+            this.showSpinner=false;
+            this.activitedRoute.params.subscribe(res=>{
+                const resultTmp:any=res
+                this.idParam=resultTmp.id
+                this.req.id=this.idParam
+                this.threadSubs=this.threadService.findThreadHdrById(this.idParam)
+                .subscribe(result=>{                
+                    this.req.id=result.data?.id
+                    this.req.categoryId=result.data?.categoryid
+                    this.req.threadName=result.data?.threadName
+                    this.req.threadContent=result.data?.threadContent
+                    this.req.version=result.data?.version
+                    this.req.email=this.loginService.getLoggedEmail()!;              
+                }) 
+                this.getThreadCategory()
+            })
+        },1000)
     }
     getThreadCategory():void{
         this.threadCategorySubs = this.threadCategoryService
@@ -59,12 +64,17 @@ export class EditForumComponent implements OnInit{
             
         });
     }
-    onSubmit():void{        
+    onSubmit():void{       
         this.updateThreadSubscription = this.threadService
         .updateThreadHdr(this.req)
         .subscribe(result=>{
-            this.router.navigateByUrl('/home-member')
+            this.showSpinner=true;
+            setTimeout(()=>{
+                this.showSpinner=false;
+                this.router.navigateByUrl('/home-member')
+            },1000)
         })
+        
     }
     back():void{        
         this.router.navigateByUrl('/home-member')

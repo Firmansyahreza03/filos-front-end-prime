@@ -137,6 +137,7 @@
                       name="password" class="w-full border-radius-20px">
                     <label for="inputConfirmPassword">Confirm Password</label>
                   </span>
+                  <label class="text-xs ml-3 text-red-600" *ngIf="password!=confirmPassword">Passwords don't match!</label>
                 </div>
               </div>
               <div class="md:col-6 sm:col-12">
@@ -195,18 +196,23 @@
           <div class="col align-content-center">
             <div class="grid justify-content-center">
               <div class="col-12 ">
-                <div class="grid justify-content-center">
-                  <div class="field">
-                    <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
-                      class="upload-profile-pic">
+                <div class="upload">
+                  <div class="image-content flex justify-content-center">
+                      <div class="image-box">
+                          <img [src]="proPic" alt="" >
+                      </div>
                   </div>
-                </div>
-                <div class="field">
-                  <button pButton pRipple type="submit"
-                    class="p-button-rounded color-bg-yellow w-full text-small color-black bold"
-                    styleClass="p-button-sm text-center" label="Done"></button>
-                </div>
+                  <div class="round">
+                      <input type="file" (change)="onChangeFile($event)">
+                      <i class = "pi pi-camera text-800" style="font-weight: 600"></i>
+                  </div>
               </div>
+            </div>
+            <div class="field col-12">
+              <button pButton pRipple type="submit"
+                class="p-button-rounded color-bg-yellow w-full text-small color-black bold"
+                styleClass="p-button-sm text-center" label="Done"></button>
+            </div>
             </div>
           </div>
         </div>

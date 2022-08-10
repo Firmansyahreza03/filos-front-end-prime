@@ -52,6 +52,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   pollingArray: string[] = [];
   expiredPolling!: Date;
   isLogin?: boolean = this.loginService.isLogin();
+  inputDisable: boolean = false;
+  showSpinner!:boolean;
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -95,12 +97,17 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     
     this.threadCategorySubs = this.threadCategoryService
-    .getAllThreadCategory()
-    .subscribe((result) => {
-      this.listThreadCategory = result;
-    });
-    
-    if(this.isLogin){
+      .getAllThreadCategory()
+      .subscribe((result) => {
+        this.listThreadCategory = result;
+      });
+    this.getProfile();
+    this.showSpinner=true;
+
+    setTimeout(()=>{
+      this.showSpinner=false;
+      
+      if(this.isLogin){
         this.createThreadHdr.isActive = true;
         this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
         this.getAllThreadByUserLogged();
@@ -112,24 +119,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
           this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
         })
     }
-    
-    this.getAllThread();
-        
-  }
-
-  resetForm(): InsertThreadHdrReq {
-    return this.createThreadHdr = {
-      categoryId: "",
-      email: this.loginService.getLoggedEmail()!,
-      expiredAt: "",
-      fileExt: "",
-      fileName: "",
-      isActive: true,
-      options: [],
-      pollingName: "",
-      threadContent: "",
-      threadName: "",
-    }
+      this.getAllThread();
+      })
+    },2000)
   }
 
   ngOnDestroy(): void {
@@ -146,6 +138,20 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadBookmarkSubs?.unsubscribe();
     this.pollingAnswerSubs?.unsubscribe();
   }
+  
+  resetForm(): InsertThreadHdrReq {
+    return this.createThreadHdr = {
+      categoryId: "",
+      email: this.loginService.getLoggedEmail()!,
+      expiredAt: "",
+      fileExt: "",
+      fileName: "",
+      isActive: true,
+      options: [],
+      pollingName: "",
+      threadContent: "",
+      threadName: "",
+    }
 
   chooseOption(hdrId: string, pollingId: string): void {
     this.insertAnswerPolling.isActive = true;

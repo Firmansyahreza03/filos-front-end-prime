@@ -1,5 +1,6 @@
 .color-bg-yellow {
   background: #DAA300;
+  border: none;
 }
 
 .color-black {
@@ -39,4 +40,58 @@ a:link {
   padding-right: 10px;
   padding-left: 10px;
   margin-top: 15px;
+}
+
+.upload{
+  max-width: 150px;
+  position: relative;
+  margin: auto;
+}
+
+.upload img{
+  border-radius: 50%;
+}
+
+.upload .round{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+.upload .round input[type = "file"]{
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}
+
+input[type=file]::-webkit-file-upload-button{
+    cursor: pointer;
+}
+.click{
+  cursor: pointer;
+}
+
+.image-content{
+  height: 100%;
+  width: 100%;
+}
+
+.image-box{
+  height: 150px;
+  width:150px;
+  object-fit: cover;
+}
+.image-box img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: #ababab solid 1px;
 }
