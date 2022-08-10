@@ -1,12 +1,12 @@
 <div class="container mt-3">
-  <div class="grid">
+  <div class="grid ">
 
-    <div class="md:col-3 left-page col-12">
+    <div class="md:col-3 left-page col-12 pr-0">
       <home-left-page></home-left-page>
     </div>
 
     <!-- Halaman Tengah -->
-    <div class="md:col-6 middle-page col-12">
+    <div class="md:col-6 middle-page col-12 px-0">
       <div class="container">
         <p-tabView>
           <!-- My Activities -->
@@ -28,22 +28,22 @@
                         <div class="flex">
                           <p-dropdown [options]="listThreadCategory.data!" [(ngModel)]="createThreadHdr.categoryId"
                             optionLabel="categoryName" optionValue="id" name="categoryName"
-                            (onChange)="checkPollling($event)"></p-dropdown>
+                            (onChange)="checkPollling($event)" pTooltip="Category" tooltipPosition="right"></p-dropdown>
                         </div>
                       </div>
                       <div class="grid flex flex-wrap">
                         <div class="col-12">
                           <input type="text" required="true" pInputText class="w-full border-radius-20px"
-                            [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
+                            [(ngModel)]="createThreadHdr.threadName" placeholder="Write your title thread" name="threadName" />
                         </div>
                         <div class="col-12">
                           <textarea pInputTextarea required="true" class="w-full border-radius-20px"
-                            [(ngModel)]="createThreadHdr.threadContent" placeholder="Content"
+                            [(ngModel)]="createThreadHdr.threadContent" placeholder="Content ..."
                             name="threadContent"></textarea>
                         </div>
                       </div>
                       <p-divider></p-divider>
-                      <div class="grid -mt-3 -mb-3 flex justify-content-between">
+                      <div class="grid -mt-3 -mb-3 flex">
                         <div class="col-12" *ngIf="polling">
                           <div class="grid mt-1 flex flex-wrap">
 
@@ -86,15 +86,18 @@
                         </div>
 
                         <!-- Action -->
-                        <div class="col-2">
-                          <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
+
+                        <div class="col-12 flex justify-content-between">
+                          <div class="flex">
+                            <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
                             chooseIcon="pi pi-image" [auto]="true" [customUpload]="true">
                           </p-fileUpload>
-                        </div>
-                        <div class="md:col-2 col-4">
-                          <button pButton pRipple type="submit"
-                            class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                            styleClass="p-button-sm text-center" label="Post"></button>
+                          </div>
+                          <div class="flex ">
+                            <button pButton pRipple type="submit"
+                              class="p-button-rounded p-button-sm w-full text-small bold"
+                              styleClass="p-button-sm text-center" icon="pi pi-send"></button>
+                          </div>
                         </div>
                       </div>
                     </form>
@@ -104,6 +107,10 @@
             </div>
 
             <!-- thread -->
+
+            <div class="flex mt-4 justify-content-center" *ngIf="showSpinner">
+              <p-progressSpinner></p-progressSpinner>
+            </div>
             <div class="thread" *ngFor="let threadHdr of listThreadHdrByUserLogged.data; let i=index">
               <!-- thread yang kurang dari 100 karakter -->
               <div class="card mt-3" *ngIf="threadHdr.threadContent!.length < 100">
@@ -126,12 +133,12 @@
                           style="font-size: 10px"></i></p>
                     </div>
                      <div class="flex-none click" >
-                      <i class="pi pi-pencil font-semibold" style="font-size: 12px" (click)="toEditThread(threadHdr.id)"></i>
+                      <i class="pi pi-pencil font-semibold" style="font-size: 12px" (click)="toEditThread(threadHdr.id)" pTooltip="Edit Thread" tooltipPosition="bottom"></i>
                     </div>
                   </div>
 
                   <!-- Content -->
-                  <div class="grid mt-3 mr-1 ml-1">
+                  <div class="grid mt-3 mr-2 ml-2">
                     <div class="col-12">
                       <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                     </div>
@@ -192,12 +199,12 @@
                           style="font-size: 10px"></i></p>
                     </div>
                     <div class="flex-none click" >
-                      <i class="pi pi-pencil font-semibold" style="font-size: 12px" (click)="toEditThread(threadHdr.id)"></i>
+                      <i class="pi pi-pencil font-semibold" style="font-size: 12px" (click)="toEditThread(threadHdr.id)" pTooltip="Edit Thread" tooltipPosition="bottom"></i>
                     </div>
                   </div>
                 </div>
                 <!-- Content -->
-                <div class="grid mt-5 mt-3 mr-2 ml-2">
+                <div class="grid mt-3 mr-2 ml-2">
                   <div class="col-12">
                     <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                   </div>
@@ -238,9 +245,9 @@
             </div>
 
             <!-- Contoh Polling -->
-            <div class="card mt-3">
+            <!-- <div class="card mt-3">
               <div class="container">
-                <!-- Header -->
+                
                 <div class="flex justify-content-between column-gap-4" [style]="{'margin-bottom':'-20px'}">
                   <div class="flex">
                     <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset="" class="profile-pic">
@@ -263,7 +270,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Content -->
+             
               <div class="grid mt-5 mr-2 ml-2">
                 <div class="col-12">
                   <span class="bold black text-heading-3">Hati-hati bagi yang melamar kerja dibandung, terutama startup
@@ -304,7 +311,6 @@
               </div>
               <p-divider></p-divider>
 
-              <!-- Action -->
               <div class="grid -mb-3 ml-1 mr-1">
                 <div class="col-2">
                   <div>
@@ -319,7 +325,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </p-tabPanel>
 
           <!-- All -->
@@ -347,11 +353,11 @@
                       <div class="grid flex flex-wrap">
                         <div class="col-12">
                           <input type="text" required="true" pInputText class="w-full border-radius-20px"
-                            [(ngModel)]="createThreadHdr.threadName" placeholder="Title" name="threadName" />
+                            [(ngModel)]="createThreadHdr.threadName" placeholder="Write your title thread" name="threadName" />
                         </div>
                         <div class="col-12">
                           <textarea pInputTextarea required="true" class="w-full border-radius-20px"
-                            [(ngModel)]="createThreadHdr.threadContent" placeholder="Content"
+                            [(ngModel)]="createThreadHdr.threadContent" placeholder="Content ..."
                             name="threadContent"></textarea>
                         </div>
                       </div>
@@ -399,15 +405,17 @@
                         </div>
 
                         <!-- Action -->
-                        <div class="col-2">
-                          <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
+                        <div class="col-12 flex justify-content-between">
+                          <div class="flex">
+                            <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)"
                             chooseIcon="pi pi-image" [auto]="true" [customUpload]="true">
                           </p-fileUpload>
-                        </div>
-                        <div class="md:col-2 col-4">
-                          <button pButton pRipple type="submit"
-                            class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                            styleClass="p-button-sm text-center" label="Post"></button>
+                          </div>
+                          <div class="flex ">
+                            <button pButton pRipple type="submit"
+                              class="p-button-rounded p-button-sm w-full text-small bold"
+                              styleClass="p-button-sm text-center" icon="pi pi-send"></button>
+                          </div>
                         </div>
                       </div>
                     </form>
@@ -446,7 +454,7 @@
 
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-5 -mb-3">
+                    <div class="grid mt-3 mr-2 ml-2">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
@@ -514,7 +522,7 @@
 
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-5 -mb-3 ml-1 mr-1">
+                    <div class="grid mt-3 mr-2 ml-2">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
@@ -588,7 +596,7 @@
 
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-5 -mb-3 mr-1 ml-1">
+                    <div class="grid mt-3 mr-2 ml-2">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdrLike.threadName}}</span>
                       </div>
@@ -599,7 +607,7 @@
                     <p-divider></p-divider>
 
                     <!-- Action -->
-                    <div class="grid -mb-3 ml-1">
+                    <div class="grid -mb-3 ml-1 mr-1">
                       <div class="col-2">
                         <div (click)="likeThread(threadHdrLike.id, i)">
                           <i class="pi pi-heart-fill text-red-600 click"></i>
@@ -640,7 +648,7 @@
 
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-5 -mb-3 mr-1 ml-1">
+                    <div class="grid mt-3 mr-2 ml-2">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdrLike.threadName}}</span>
                       </div>
@@ -652,7 +660,7 @@
                     <p-divider></p-divider>
 
                     <!-- Action -->
-                    <div class="grid -mb-3 ml-1">
+                    <div class="grid -mb-3 ml-1 mr-1">
                       <div class="col-2">
                         <div (click)="likeThread(threadHdrLike.id, i)">
                           <i class="pi pi-heart-fill text-red-600 click"></i>
@@ -696,7 +704,7 @@
                       </div>
                     </div>
                     <!-- Content -->
-                    <div class="grid mt-5 -mb-3 mr-1 ml-1">
+                    <div class="grid mt-3 mr-2 ml-2">
                       <div class="col-12">
                         <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
                       </div>
@@ -707,7 +715,7 @@
                     <p-divider></p-divider>
 
                     <!-- Action -->
-                    <div class="grid -mb-3 ml-2 mr-1">
+                    <div class="grid  -mb-3 ml-1 mr-1">
                       <div class="col-2">
                         <div (click)="onClick(threadHdr.id)">
                           <i class="pi pi-comments click"></i>
@@ -731,7 +739,7 @@
     </div>
 
     <!-- Halaman Sebelah Kanan -->
-    <div class="md:col-3 col-12 right-page">
+    <div class="md:col-3 col-12 right-page pl-0">
       <home-right-page></home-right-page>
     </div>
   </div>

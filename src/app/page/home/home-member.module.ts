@@ -24,6 +24,8 @@ import { SharedModule } from 'src/app/component/shared.module';
 import { HomeMemberComponent } from './member/home-member.component';
 import {PanelModule} from 'primeng/panel';
 import {MenuModule} from 'primeng/menu';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import {MenuModule} from 'primeng/menu';
     CalendarModule,
     SharedModule,
     PanelModule,
-    MenuModule
+    MenuModule,
+    ProgressSpinnerModule,
+    TooltipModule
   ],
   declarations: [
     HomeMemberComponent, 
