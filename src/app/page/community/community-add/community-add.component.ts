@@ -1,3 +1,4 @@
+import { formatDate } from "@angular/common";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -56,11 +57,23 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
     }
 
     onSubmit():void{
+
+        const startDate: string = formatDate(this.createCommunity.startAt!, `yyyy-MM-dd'T'HH:mm:ss.SSS${this.getTimeZone()}`, 'en')
+        const endDate: string = formatDate(this.createCommunity.endAt!, `yyyy-MM-dd'T'HH:mm:ss.SSS${this.getTimeZone()}`, 'en')
+
+        this.createCommunity.startAt = startDate;
+        this.createCommunity.endAt = endDate;
+
         this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
             this.router.navigateByUrl("/communities")
         })
-
     }
+
+    getTimeZone() {
+        var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+        return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+    }
+    
     ngOnDestroy(): void {
        this.communitySubscription?.unsubscribe();
        this.communityCategorySubscription?.unsubscribe();

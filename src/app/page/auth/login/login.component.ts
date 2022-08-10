@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { RoleType } from 'src/app/constant/role-type';
 import { LoginReq } from 'src/app/pojo/pojo-import';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -21,7 +22,11 @@ export class LoginComponent implements OnDestroy {
   loginClick(): void {
     this.loginService.login(this.login).subscribe((result) => {
       this.loginService.saveData(result);
-      this.router.navigateByUrl('/home-member');
+      if(result.data.roleCode == RoleType.ADMIN){
+        this.router.navigateByUrl('/admin');
+      } else if(result.data.roleCode == RoleType.NONADMIN){
+        this.router.navigateByUrl('/home-member');
+      }
     });
   }
 

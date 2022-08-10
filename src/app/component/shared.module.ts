@@ -90,6 +90,7 @@ import { AdminLayoutComponent } from "./layout/admin-layout.component";
 import { AdminNavComponent } from "./navbar/admin-nav.component";
 import { AdminSidebarComponent } from "./sidebar/admin-sidebar.component";
 import { TimeAgoPipe } from "../pipe/time-ago.pipe";
+import { CurrencyRupiahPipe } from '../pipe/currency-rupiah.pipe';
 
 @NgModule({
     declarations : [
@@ -99,7 +100,8 @@ import { TimeAgoPipe } from "../pipe/time-ago.pipe";
         MainLayoutComponent,
         AdminLayoutComponent,
         AdminSidebarComponent,
-        TimeAgoPipe
+        TimeAgoPipe,
+        CurrencyRupiahPipe
     ],
     imports : [
         RouterModule,
@@ -194,7 +196,8 @@ import { TimeAgoPipe } from "../pipe/time-ago.pipe";
         MainLayoutComponent,
         AdminLayoutComponent,
         AdminSidebarComponent,
-        TimeAgoPipe
+        TimeAgoPipe,
+        CurrencyRupiahPipe
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA

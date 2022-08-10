@@ -17,6 +17,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { CommunityAddComponent } from "./community-add/community-add.component";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { SharedModule } from "src/app/component/shared.module";
 @NgModule({
     imports: [
         CommunityRouting,
@@ -33,7 +34,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
         CalendarModule,
         FileUploadModule,
         HttpClientModule,
-        ProgressSpinnerModule
+        ProgressSpinnerModule,
+        SharedModule
     ],
     declarations: [
         CommunityListComponent,

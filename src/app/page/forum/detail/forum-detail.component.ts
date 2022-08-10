@@ -29,6 +29,7 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
 
   threadHdrData: FindThreadHdrRes = {};
   threadDtlData: FindAllThreadDtlRes = {};
+  isLogin?: boolean = this.loginService.isLogin();
 
   constructor(
     private loginService: LoginService,

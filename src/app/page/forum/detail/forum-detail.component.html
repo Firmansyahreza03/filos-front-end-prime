@@ -42,7 +42,7 @@
   </p-divider>
 
   <div class="mt-2">
-    <forum-form-chat></forum-form-chat>
+    <forum-form-chat *ngIf="isLogin"></forum-form-chat>
   </div>
 
   <p-divider align="left">
