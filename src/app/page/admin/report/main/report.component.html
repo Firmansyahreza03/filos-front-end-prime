@@ -7,22 +7,27 @@
     </div>
     <p-divider></p-divider>
     <div class="card-body">
-      <form (ngSubmit)="onSubmit()" ngnativevalidate #form="ngForm">
+      <form ngnativevalidate #form="ngForm">
         <div class="grid mb-3 mb:md-1">
           <div class="col-12 md:col-6">
             <label for="startAt">start at</label>
-            <p-calendar [(ngModel)]="req.startAt" dateFormat="dd-MM-yyyy" [showButtonBar]="true" inputId="startAt">
-            </p-calendar>
+            <p-calendar inputId="startAt" [required]="true" [showSeconds]="true" name="startAt"
+              styleClass="w-full" [(ngModel)]="req.startAt"></p-calendar>
+          </div>
+          <div class="col-12 md:col-6">
+            <label for="endAt">end at</label>
+            <p-calendar inputId="endAt" [required]="true" [showSeconds]="true" name="endAt"
+              styleClass="w-full" [(ngModel)]="req.endAt"></p-calendar>
           </div>
         </div>
-        <div class="col-12 md:col-6">
-          <label for="endAt">end at</label>
-          <p-calendar [(ngModel)]="req.endAt" dateFormat="dd-MM-yyyy" [showButtonBar]="true" inputId="endAt">
-          </p-calendar>
-        </div>
-        <button pButton pRipple type="submit" name="submitBtn" id="submitBtn" [disabled]="!form.valid"
-          class="p-button-success" icon="pi pi-plus-circle" label="submit">
+        <div class="flex-1 flex align-items-center justify-content-end gap-3">
+        <button pButton pRipple type="button" name="submitBtn" id="submitBtn" [disabled]="!form.valid"
+          class="p-button-secondary" icon="pi pi-file" (click)="confirimation(1)" label="User Report">
         </button>
+        <button pButton pRipple type="button" name="submitBtn" id="submitBtn" [disabled]="!form.valid"
+          class="p-button-secondary" icon="pi pi-file" (click)="confirimation(2)" label="Payment Report">
+        </button>
+        </div>
       </form>
     </div>
   </div>

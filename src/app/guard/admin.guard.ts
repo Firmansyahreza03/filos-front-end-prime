@@ -17,7 +17,7 @@ export class AdminGuard implements CanLoad{
             return true;
         }
         else{
-            this.router.navigateByUrl("/landing");
+            this.router.navigateByUrl("/home-member");
             return false;
         }
     }
