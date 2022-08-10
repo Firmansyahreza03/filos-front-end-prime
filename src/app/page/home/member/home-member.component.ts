@@ -52,6 +52,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   pollingArray: string[] = [];
   expiredPolling!: Date;
   isLogin?: boolean = this.loginService.isLogin();
+  inputDisable: boolean = false;
+  showSpinner!:boolean;
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -96,11 +98,15 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     
     this.threadCategorySubs = this.threadCategoryService
     .getAllThreadCategory()
-    .subscribe((result) => {
-      this.listThreadCategory = result;
-    });
-    
-    if(this.isLogin){
+      .subscribe((result) => {
+        this.listThreadCategory = result;
+      });
+    this.getProfile();
+    this.showSpinner=true;
+
+    setTimeout(()=>{
+      this.showSpinner=false;
+      if(this.isLogin){
         this.createThreadHdr.isActive = true;
         this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
         this.getAllThreadByUserLogged();
@@ -111,10 +117,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
           this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
         })
-    }
-    
-    this.getAllThread();
-        
+      }
+      this.getAllThread();
+    },2000)
   }
 
   resetForm(): InsertThreadHdrReq {
