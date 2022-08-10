@@ -4,7 +4,7 @@ export interface DataPaymentTransaction {
     isActive? : boolean
 	
 	isAcc?:boolean
-	type?: string;
+	type?: string
 	code?: string
 	desc?: string
 	price?: number
