@@ -9,6 +9,7 @@ import {
   FindAllThreadCategoryRes,
   FindAllThreadHdrRes,
   FindProfileRes,
+  InsertPollingAnswerReq,
   InsertThreadHdrReq,
 } from 'src/app/pojo/pojo-import';
 import { BookmarkService } from 'src/app/service/bookmark.service';
@@ -22,6 +23,7 @@ import { UserService } from 'src/app/service/user.service';
 import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
+import { PollingService } from 'src/app/service/polling.service';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -44,6 +46,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   threadLikedByUserLoggedSubs?: Subscription;
   profileSubs?: Subscription;
   threadBookmarkSubs?: Subscription;
+  pollingAnswerSubs?: Subscription;
   panelTab: string = 'myActivities';
   proPic!: string;
   polling!:boolean
@@ -72,6 +75,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   dataPol?: string[];
 
+  insertAnswerPolling: InsertPollingAnswerReq = {
+    isActive: true,
+    optionId: '',
+  };
+
   constructor(
     private threadCategoryService: ThreadCategoryService,
     private threadHdrService: ThreadHdrService,
@@ -83,6 +91,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private store: Store,
+    private pollingService: PollingService,
   ) {}
 
   ngOnInit(): void {
@@ -126,11 +135,34 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedByUserLoggedSubs?.unsubscribe();
     this.profileSubs?.unsubscribe();
     this.threadBookmarkSubs?.unsubscribe();
+    this.pollingAnswerSubs?.unsubscribe();
   }
 
-  chooseOption(): void {
-    this.inputDisable = true;
-    console.log(this.inputDisable);
+  chooseOption(hdrId: string, pollingId: string): void {
+
+    this.insertAnswerPolling.isActive = true;
+    this.insertAnswerPolling.optionId = pollingId;
+    this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res)=>{
+      console.log(res);
+    })
+
+    for(let i=0; i<this.listThreadHdr.data?.length!; i++){
+      if(hdrId == this.listThreadHdr.data![i].id){
+        this.listThreadHdr.data![i].isVoted = true;
+      }
+    }
+
+    for(let i=0; i<this.listThreadHdrByUserLogged.data?.length!; i++){
+      if(hdrId == this.listThreadHdrByUserLogged.data![i].id){
+        this.listThreadHdrByUserLogged.data![i].isVoted = true;
+      }
+    }
+
+    for(let i=0; i<this.listThreadHdrLike.data?.length!; i++){
+      if(hdrId == this.listThreadHdrLike.data![i].id){
+        this.listThreadHdrLike.data![i].isVoted = true;
+      }
+    }
   }
 
   readMoreContent(content: string): string{
@@ -168,8 +200,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .getByIndustryAndCategory(
         this.loginService.getLoggedEmail()!,
         CommunityCategory.event,
-        0,
-        3
+        0,3
       )
       .subscribe((res) => {
         this.listEvent = res;
@@ -196,7 +227,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadHdrListSubscription = this.threadHdrService
       .getAllThreadHdr()
       .subscribe((result) => {
-        this.listThreadHdr = result;
+        this.listThreadHdr = result;        
       });
   }
 

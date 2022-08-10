@@ -145,6 +145,22 @@
                     <div class="col-12">
                       <p class="text-small">{{threadHdr.threadContent}}</p>
                     </div>
+                    <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
+                      <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>
+                      <div class="grid mt-2 mb-2 pr-4 pl-4">
+                        <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdr.isVoted">
+                          <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdr.isVoted" (click)="chooseOption(threadHdr.id, polling.id)"
+                            styleClass="p-button-sm">{{polling.optionName}}</button>
+                        </div>
+                        <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
+                          <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
+                            styleClass="p-button-sm">{{polling.optionName}}</button>
+                        </div>
+                      </div>
+                      <div class="flex column-gap-5">
+                        <span class="text-xs flex text-color-secondary">{{threadHdr.pollingHdr.expiredAt}}</span>
+                      </div>
+                    </div>
                     <div class="image-content" *ngIf="threadHdr.fileId!=null">
                       <div class="image-box mx-auto">
                         <img [src]="'http://localhost:3333/files/'+threadHdr.fileId" alt="" alt="">
@@ -211,6 +227,22 @@
                   <div class="col-12">
                     <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a
                         (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
+                  </div>
+                  <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
+                    <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>
+                    <div class="grid mt-2 mb-2 pr-4 pl-4">
+                      <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdr.isVoted">
+                        <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdr.isVoted" (click)="chooseOption(threadHdr.id, polling.id)"
+                          styleClass="p-button-sm">{{polling.optionName}}</button>
+                      </div>
+                      <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
+                        <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
+                          styleClass="p-button-sm">{{polling.optionName}}</button>
+                      </div>
+                    </div>
+                    <div class="flex column-gap-5">
+                      <span class="text-xs flex text-color-secondary">{{threadHdr.pollingHdr.expiredAt}}</span>
+                    </div>
                   </div>
                   <div class="image-content" *ngIf="threadHdr.fileId!=null">
                     <div class="image-box">
@@ -326,6 +358,7 @@
                 </div>
               </div>
             </div> -->
+
           </p-tabPanel>
 
           <!-- All -->
@@ -461,6 +494,22 @@
                       <div class="col-12">
                         <p class="text-small">{{threadHdr.threadContent}}</p>
                       </div>
+                      <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
+                        <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>
+                        <div class="grid mt-2 mb-2 pr-4 pl-4">
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdr.isVoted" (click)="chooseOption(threadHdr.id, polling.id)"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                        </div>
+                        <div class="flex column-gap-5">
+                          <span class="text-xs flex text-color-secondary">{{threadHdr.pollingHdr.expiredAt}}</span>
+                        </div>
+                      </div>
                     </div>
                     <p-divider></p-divider>
 
@@ -530,6 +579,22 @@
                         <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a
                             (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
                       </div>
+                      <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
+                        <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>
+                        <div class="grid mt-2 mb-2 pr-4 pl-4">
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdr.isVoted" (click)="chooseOption(threadHdr.id, polling.id)"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                        </div>
+                        <div class="flex column-gap-5">
+                          <span class="text-xs flex text-color-secondary">{{threadHdr.pollingHdr.expiredAt}}</span>
+                        </div>
+                      </div>
                     </div>
                     <p-divider></p-divider>
 
@@ -579,8 +644,10 @@
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
-                              <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
-                                class="profile-pic">
+
+                              <img [src]="getPhotoThread(threadHdrLike.photoProfileCreator!)" alt="" srcset=""
+                              class="profile-pic">
+
                             </div>
                           </div>
                         </div>
@@ -602,6 +669,22 @@
                       </div>
                       <div class="col-12">
                         <p class="text-small">{{threadHdrLike.threadContent}}
+                      </div>
+                      <div class="col-12 polling" *ngIf="threadHdrLike.pollingHdr">
+                        <p class="text-sm text-center">{{threadHdrLike.pollingHdr.pollingName}}</p>
+                        <div class="grid mt-2 mb-2 pr-4 pl-4">
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdrLike.isVoted">
+                            <button *ngFor="let polling of threadHdrLike.pollingHdr.option; let i=index" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdrLike.isVoted" (click)="chooseOption(threadHdrLike.id, polling.id)"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdrLike.isVoted">
+                            <button *ngFor="let polling of threadHdrLike.pollingHdr.option; let i=index" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdrLike.isVoted"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                        </div>
+                        <div class="flex column-gap-5">
+                          <span class="text-xs flex text-color-secondary">{{threadHdrLike.pollingHdr.expiredAt}}</span>
+                        </div>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -631,8 +714,10 @@
                         <div class="flex">
                           <div class="image-content-profile">
                             <div class="image-box-profile">
-                              <img src="../../../assets/image/profile-pic-example.jpeg" alt="" srcset=""
-                                class="profile-pic">
+
+                              <img [src]="getPhotoThread(threadHdrLike.photoProfileCreator!)" alt="" srcset=""
+                              class="profile-pic">
+
                             </div>
                           </div>
                         </div>
@@ -655,6 +740,22 @@
                       <div class="col-12">
                         <p class="text-small">{{readMoreContent(threadHdrLike.threadContent!)}} <a
                             (click)="onClick(threadHdrLike.id)" class="font-semibold click">continue reading</a></p>
+                      </div>
+                      <div class="col-12 polling" *ngIf="threadHdrLike.pollingHdr">
+                        <p class="text-sm text-center">{{threadHdrLike.pollingHdr.pollingName}}</p>
+                        <div class="grid mt-2 mb-2 pr-4 pl-4">
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdrLike.isVoted">
+                            <button *ngFor="let polling of threadHdrLike.pollingHdr.option; let i=index" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdrLike.isVoted" (click)="chooseOption(threadHdrLike.id, polling.id)"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdrLike.isVoted">
+                            <button *ngFor="let polling of threadHdrLike.pollingHdr.option; let i=index" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdrLike.isVoted"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                        </div>
+                        <div class="flex column-gap-5">
+                          <span class="text-xs flex text-color-secondary">{{threadHdrLike.pollingHdr.expiredAt}}</span>
+                        </div>
                       </div>
                     </div>
                     <p-divider></p-divider>
@@ -710,6 +811,22 @@
                       </div>
                       <div class="col-12">
                         <p class="text-small">{{threadHdr.threadContent}}
+                      </div>
+                      <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
+                        <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>
+                        <div class="grid mt-2 mb-2 pr-4 pl-4">
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdr.isVoted" (click)="chooseOption(threadHdr.id, polling.id)"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                        </div>
+                        <div class="flex column-gap-5">
+                          <span class="text-xs flex text-color-secondary">{{threadHdr.pollingHdr.expiredAt}}</span>
+                        </div>
                       </div>
                     </div>
                     <p-divider></p-divider>
