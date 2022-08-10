@@ -24,7 +24,6 @@ import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 import { PollingService } from 'src/app/service/polling.service';
-import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-home-member',
@@ -52,6 +51,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   polling!:boolean
   pollingArray: string[] = [];
   expiredPolling!: Date;
+  isLogin?: boolean = this.loginService.isLogin();
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -93,27 +93,43 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.loginService.isLogin());
     
-    this.createThreadHdr.isActive = true;
-    this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
-
     this.threadCategorySubs = this.threadCategoryService
-      .getAllThreadCategory()
-      .subscribe((result) => {
-        this.listThreadCategory = result;
-      });
-
-    this.getProfile();
+    .getAllThreadCategory()
+    .subscribe((result) => {
+      this.listThreadCategory = result;
+    });
+    
+    if(this.isLogin){
+        this.createThreadHdr.isActive = true;
+        this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
+        this.getAllThreadByUserLogged();
+        this.getAllEvent();
+        this.getAllTraining();
+        this.getAllThreadThatAreLikedByUserLogged();
+        this.getProfile();
+        this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
+          this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
+        })
+    }
+    
     this.getAllThread();
-    this.getAllThreadByUserLogged();
-    this.getAllEvent();
-    this.getAllTraining();
-    this.getAllThreadThatAreLikedByUserLogged();
         
-    this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
-      this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
-    })
+  }
+
+  resetForm(): InsertThreadHdrReq {
+    return this.createThreadHdr = {
+      categoryId: "",
+      email: this.loginService.getLoggedEmail()!,
+      expiredAt: "",
+      fileExt: "",
+      fileName: "",
+      isActive: true,
+      options: [],
+      pollingName: "",
+      threadContent: "",
+      threadName: "",
+    }
   }
 
   ngOnDestroy(): void {
@@ -132,7 +148,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   chooseOption(hdrId: string, pollingId: string): void {
-
     this.insertAnswerPolling.isActive = true;
     this.insertAnswerPolling.optionId = pollingId;
     this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res)=>{

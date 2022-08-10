@@ -10,5 +10,5 @@ export interface InsertThreadHdrReq {
 
 	pollingName?: string
 	options?: string[]
-	expiredAt?: string[]
+	expiredAt?: string
 }
