@@ -8,6 +8,7 @@ import { FindAllIndustryRes} from "src/app/pojo/pojo-import";
 import { InsertProfileReq } from "src/app/pojo/profile/insert-profile-req";
 import { FileService } from "src/app/service/file.service";
 import { verificationUserReq } from "src/app/pojo/user/user-verification-req";
+import { DefaultPic } from "src/app/constant/default-pic";
 
 
 @Component({
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     items: MenuItem[] = [];
     step: number = 0;
+    proPic?: string=DefaultPic.proFile;
     
     password!: string
     confirmPassword!: string
@@ -92,11 +94,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     onSubmitProfilePic(): void {
+       
         this.registerSubscription = this.registerService.register(this.register).subscribe((res) => {
             this.router.navigateByUrl("/login");
             this.step = 4;
         });
     }
+    onChangeFile(event: any): void {
+        const file = event.target.files[0];
+        this.fileService.uploadAsBase64(file).then((res) => {
+            this.register.fileName = res[0];
+            this.register.fileExt = res[1];
+          });
+      }
 
     ngOnDestroy(): void {
         this.registerSubscription?.unsubscribe();

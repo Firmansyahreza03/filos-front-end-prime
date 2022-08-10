@@ -52,6 +52,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   polling!:boolean
   pollingArray: string[] = [];
   expiredPolling!: Date;
+  inputDisable: boolean = false;
+  showSpinner!:boolean;
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -103,17 +105,22 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         this.listThreadCategory = result;
       });
-
     this.getProfile();
-    this.getAllThread();
-    this.getAllThreadByUserLogged();
-    this.getAllEvent();
-    this.getAllTraining();
-    this.getAllThreadThatAreLikedByUserLogged();
-        
-    this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
-      this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
-    })
+    this.showSpinner=true;
+
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.getAllThread();
+      this.getAllThreadByUserLogged();
+      this.getAllEvent();
+      this.getAllTraining();
+      this.getAllThreadThatAreLikedByUserLogged();
+      
+      this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
+        this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
+      })
+    },2000)
+   
   }
 
   ngOnDestroy(): void {
