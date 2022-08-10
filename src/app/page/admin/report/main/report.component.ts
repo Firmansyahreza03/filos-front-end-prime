@@ -7,6 +7,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { LimitTimeReq } from '../../../../pojo/pojo-import';
 import { ReportService } from "../../../../service/import.service";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: 'admin-report',
@@ -15,7 +16,10 @@ import { ReportService } from "../../../../service/import.service";
 })
 export class ReportComponent {
   loading: boolean = true;
-  req!:LimitTimeReq;
+  req:LimitTimeReq = { 
+    startAt:"",
+    endAt:""
+  };
 
   
   constructor(
@@ -23,10 +27,6 @@ export class ReportComponent {
     private confirmationService: ConfirmationService
   ) {}
   
-  onSubmit():void{
-
-  }
-
   confirimation(chose:number): void {
     this.confirmationService.confirm({
       message: 'Do you sure want to download this file?',
@@ -40,6 +40,10 @@ export class ReportComponent {
   }
 
   downloadReport(chose:number): void {
+    const startDate = formatDate(this.req.startAt, `yyyy-MM-dd`, 'en')
+    const endDate = formatDate(this.req.endAt, `yyyy-MM-dd`, 'en')
+    this.req.startAt = startDate;
+    this.req.endAt = endDate;
     if(chose == 1 ) this.service.reportUserComm(this.req);
     if(chose == 2 ) this.service.reportIncomeComm(this.req);
   }
