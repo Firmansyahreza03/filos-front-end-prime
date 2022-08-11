@@ -1,6 +1,4 @@
-import { style } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
-import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -22,11 +20,11 @@ export class ReportComponent implements OnInit {
     endAt:""
   };
 
-  
   constructor(
     private service: ReportService,
     private confirmationService: ConfirmationService
   ) {}
+  
   ngOnInit(): void {
     this.showSpinner=true;
     setTimeout(()=>{

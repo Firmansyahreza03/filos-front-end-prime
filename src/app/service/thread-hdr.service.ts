@@ -43,4 +43,11 @@ export class ThreadHdrService {
   updateThreadHdr(data: UpdateThreadHdrReq):Observable<UpdateRes>{
     return this.http.put<UpdateRes>('http://localhost:3333/threads', data)
   }
+
+  
+  getAllNoLogin(): Observable < FindAllThreadHdrRes > {
+    const url = 'http://localhost:3333/threads/no-login'
+    
+    return this.http.get < FindAllThreadHdrRes > (url);
+  }
 }

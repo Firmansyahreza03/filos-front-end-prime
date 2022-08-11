@@ -11,11 +11,6 @@ import { AlreadyLoginGuard, LoginGuard } from './guard/guard-import';
 
 const routes: Routes = [
     {
-      path: '',
-      redirectTo: '/landing',
-      pathMatch: 'full',
-    },
-    {
         path: 'landing',
         loadChildren: () => import('./page/landing/landing.module').then(m => m.LandingModule)
     },
@@ -37,7 +32,7 @@ const routes: Routes = [
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
-        path: 'home-not-member',
+        path: 'home-landing',
         component: MainLayoutComponent,
         loadChildren: () => import('./page/home/home-not-member.module').then(m => m.HomeNotMemberModule)
     },
@@ -75,6 +70,11 @@ const routes: Routes = [
         path: 'admin',
         component: AdminLayoutComponent,
         loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)
+    },
+    {
+      path: '',
+      redirectTo: '/landing',
+      pathMatch: 'full',
     },
     {
       path: '**',
