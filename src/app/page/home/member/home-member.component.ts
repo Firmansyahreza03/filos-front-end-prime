@@ -24,6 +24,7 @@ import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 import { PollingService } from 'src/app/service/polling.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-member',
@@ -54,6 +55,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   isLogin?: boolean = this.loginService.isLogin();
   inputDisable: boolean = false;
   showSpinner!:boolean;
+  title = 'Home Page';
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -92,10 +94,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private store: Store,
     private pollingService: PollingService,
+    private titleService:Title,
   ) {}
 
   ngOnInit(): void {
-    
+    this.titleService.setTitle(this.title)
     this.threadCategorySubs = this.threadCategoryService
     .getAllThreadCategory()
       .subscribe((result) => {

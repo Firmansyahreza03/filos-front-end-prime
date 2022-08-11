@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
@@ -20,7 +21,8 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
   communityDtlSubscription?: Subscription;
   eventSubs?: Subscription;
   trainingSubs?: Subscription;
-  communityData: FindCommunityRes = {};
+  communityData!: FindCommunityRes ;
+  showSpinner!:boolean;
 
   listEvent: FindAllCommunityRes = {};
 
@@ -31,6 +33,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
     private communityService: CommunityService,
     private activatedRouted: ActivatedRoute,
     private loginService: LoginService,
+    private titleService:Title
   ) {}
 
   getDtlData():void{
@@ -42,13 +45,18 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
           .getCommunityById(this.idParam)
           .subscribe((result) => {
             this.communityData = result;
+            this.titleService.setTitle(this.communityData.data?.title)
           });
       }
     );
   }
 
   ngOnInit(): void {
-    this.getDtlData();
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.getDtlData();
+    },500)
     this.getAllEvent();
     this.getAllTraining();
   }

@@ -10,8 +10,11 @@
       <div class="grid">
 
         <div class="col-12">
+          <div class="grid mt-4 justify-content-center" *ngIf="showSpinner==true">
+            <p-progressSpinner class="flex justify-content-center"></p-progressSpinner>
+          </div>
           <!-- Card Event -->
-          <div class="card">
+          <div class="card" *ngIf="showSpinner==false">
             <div class="container">
             
               <!-- header -->

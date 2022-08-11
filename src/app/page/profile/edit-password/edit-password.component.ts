@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 
 @Component({
@@ -6,13 +7,18 @@ import { Router } from "@angular/router";
     templateUrl:'./edit-password.component.html',
     styleUrls:['edit-password.component.css'],
 })
-export class EditPasswordComponent{
+export class EditPasswordComponent implements OnInit{
     password!:string
     confirmPassword!:string
+    title = 'Edit Password';
 
     constructor(
-        private router: Router
+        private router: Router,
+        private titleService:Title
         ){}
+    ngOnInit(): void {
+        this.titleService.setTitle(this.title)
+    }
         
     editPassword():void{
         this.router.navigateByUrl('/profile/edit-password')
