@@ -33,3 +33,6 @@
     background: #DAA300;
     border: none;
 }
+.click{
+    cursor: pointer;
+}
