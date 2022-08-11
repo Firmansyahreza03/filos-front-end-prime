@@ -22,6 +22,8 @@ import { ArticleDtlComponent } from './article-dtl/article-dtl.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { ArticleListComponent } from "./article-list/article-list.component";
 import { ArticleAddComponent } from './article-add/article-add.component';
+
+import { ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
     declarations:[
         ArticleListComponent,
@@ -45,7 +47,8 @@ import { ArticleAddComponent } from './article-add/article-add.component';
         ConfirmDialogModule,
         InputTextareaModule,
         DropdownModule,
-        ScrollPanelModule
+        ScrollPanelModule,
+        ProgressSpinnerModule
     ],
     exports :[
         ArticleListComponent,

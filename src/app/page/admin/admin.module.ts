@@ -9,6 +9,7 @@ import { AdminRouting } from './admin.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IndustyModule } from './industy/industry.module';
 
+import { ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
     declarations: [
         DashboardComponent,
@@ -25,7 +26,8 @@ import { IndustyModule } from './industy/industry.module';
         CommonModule,
         FormsModule,
 
-        SharedModule
+        SharedModule,
+        ProgressSpinnerModule
     ],
     providers: [
     ],

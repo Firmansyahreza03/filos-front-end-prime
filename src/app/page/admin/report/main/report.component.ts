@@ -1,5 +1,5 @@
 import { style } from "@angular/animations";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
@@ -14,8 +14,9 @@ import { formatDate } from "@angular/common";
   templateUrl: './report.component.html',
   providers: [ConfirmationService, MessageService]
 })
-export class ReportComponent {
+export class ReportComponent implements OnInit {
   loading: boolean = true;
+  showSpinner:boolean=false;
   req:LimitTimeReq = { 
     startAt:"",
     endAt:""
@@ -26,6 +27,12 @@ export class ReportComponent {
     private service: ReportService,
     private confirmationService: ConfirmationService
   ) {}
+  ngOnInit(): void {
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+    },500)
+  }
   
   confirimation(chose:number): void {
     this.confirmationService.confirm({

@@ -8,7 +8,6 @@
       </div>
     </div>
     <div class="card-body">
-
       <p-table #dt styleClass="p-datatable-gridlines" [value]="listData" [columns]="cols" [rows]="maxPage"
         [loading]="loading" [lazy]="true" (onLazyLoad)="loadData($event)" responsiveLayout="scroll" [paginator]="true"
         [globalFilterFields]="['code', 'title', 'nameIndustry', 'provider']"

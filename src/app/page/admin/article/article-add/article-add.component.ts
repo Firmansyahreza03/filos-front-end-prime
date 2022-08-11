@@ -15,6 +15,7 @@ export class ArticleAddComponent {
   subscription ? : Subscription;
   mainUrl!: string;
   idParam!: number;
+  showSpinner!:boolean;
 
   listIndustry: FindAllIndustryRes = {
     count: undefined,
@@ -43,14 +44,22 @@ export class ArticleAddComponent {
   }
 
   save() {
-    this.subscription = this.service.insert(this.req)
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.subscription = this.service.insert(this.req)
       .subscribe(() => {
         this.router.navigateByUrl(this.mainUrl);
       })
+    },500)
   }
 
   ngOnInit(): void {
-    this.findAllIndustries();
+    this.showSpinner=true;
+    setTimeout(()=>{
+        this.showSpinner=false;
+        this.findAllIndustries();
+      },500)
     const thisUrl: string[] = this.router.url.split("/");
     this.mainUrl = thisUrl[1] + "/" + thisUrl[2];
   }

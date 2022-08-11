@@ -19,6 +19,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CommunityListComponent } from "./community-list/community-list.component";
 
+import { ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
     declarations:[
         CommunityListComponent
@@ -39,7 +40,8 @@ import { CommunityListComponent } from "./community-list/community-list.componen
         ConfirmDialogModule,
         InputTextareaModule,
         DropdownModule,
-        ScrollPanelModule
+        ScrollPanelModule,
+        ProgressSpinnerModule
     ],
     exports :[
         CommunityListComponent

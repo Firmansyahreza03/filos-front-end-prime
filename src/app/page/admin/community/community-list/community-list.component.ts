@@ -66,7 +66,9 @@ export class CommunityListComponent {
   ) {}
 
   loadData(event: LazyLoadEvent) {
-    this.viewData(event.first, event.rows, event.globalFilter)
+    setTimeout(()=>{
+      this.viewData(event.first, event.rows, event.globalFilter)
+    },1000)
   }
 
   viewData(startPage: number = this.startPage, maxPage: number = this.maxPage, query ? : string): void {
