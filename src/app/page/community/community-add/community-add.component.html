@@ -3,9 +3,15 @@
     <div class="md:col-6 col-12 text-center">
       <p class="text-xl font-medium">Create your event or training with Filos here</p>
     </div>
+    <div class="col-10">
+      <span class="back click" (click)="back()"><i class="pi pi-angle-left"></i>Back to community</span>
+    </div>
     <div class="md:col-10 col-12 text-center">
       <div class="card">
-        <div class="container">
+        <div class="grid mt-4 justify-content-center" *ngIf="showSpinner==true">
+          <p-progressSpinner class="flex justify-content-center"></p-progressSpinner>
+        </div>
+        <div class="container" *ngIf="showSpinner==false">
         <form (ngSubmit)="onSubmit()">
             <div class="grid justify-content-center flex flex-wrap row-gap-2">
               <div class="md:col-2">

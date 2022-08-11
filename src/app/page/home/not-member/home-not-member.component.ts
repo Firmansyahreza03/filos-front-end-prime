@@ -1,5 +1,6 @@
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Subscription } from 'rxjs';
-import { Component } from "@angular/core";
 import { DefaultPic } from "src/app/constant/default-pic";
 import { FileService, LoginService, ThreadHdrService, UserService } from "src/app/service/import.service";
 import { FindAllThreadHdrRes } from 'src/app/pojo/pojo-import';
@@ -10,8 +11,10 @@ import { Router } from '@angular/router';
   templateUrl: './home-not-member.component.html',
   styleUrls: ['home-not-member.component.css']
 })
+
 export class HomeNotMemberComponent {
   proPic!: string;
+  title = 'Home Page';
   subs?: Subscription;
   showSpinner: boolean = true;
 
@@ -20,6 +23,7 @@ export class HomeNotMemberComponent {
   constructor(
     private router: Router,
     private threadHdrService: ThreadHdrService,
+    private titleService:Title
   ) {}
 
   onClick(id: string): void {
@@ -35,6 +39,7 @@ export class HomeNotMemberComponent {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle(this.title)
     setTimeout(() => {
       this.showSpinner = false;
       this.getAllThread();

@@ -10,9 +10,13 @@
       <p-tabView>
         <!-- All Event -->
         <p-tabPanel header="All Event">
-          <div class="grid">
-            <div class="md:col-3 col-12" *ngFor="let event of listEvent.data">
+           
+          <div class="grid mt-4 justify-content-center" *ngIf="showSpinner==true">
+            <p-progressSpinner class="flex justify-content-center"></p-progressSpinner>
+          </div>
 
+          <div class="grid" *ngIf="showSpinner==false">
+            <div class="md:col-3 col-12" *ngFor="let event of listEvent.data">
               <!-- Card Event -->
                 <div class="card card-community btnClick" (click)="onClick(event.id)">
                   <div class="container">

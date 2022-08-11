@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { FindArticleRes } from "src/app/pojo/pojo-import";
@@ -18,7 +19,8 @@ export class ArticleMemberDetailComponent implements OnInit, OnDestroy{
     constructor(
         private router:Router,
         private articleService:ArticleService,
-        private activatedRouted:ActivatedRoute
+        private activatedRouted:ActivatedRoute,
+        private titleService:Title
     ){}
   
 
@@ -31,6 +33,7 @@ export class ArticleMemberDetailComponent implements OnInit, OnDestroy{
                 .findById(this.idParam)
                 .subscribe((result)=>{
                     this.articleData=result;
+                    this.titleService.setTitle(this.articleData.data.title)
                 })
             }
         )

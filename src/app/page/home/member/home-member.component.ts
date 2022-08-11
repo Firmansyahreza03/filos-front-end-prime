@@ -24,6 +24,7 @@ import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 import { PollingService } from 'src/app/service/polling.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-member',
@@ -54,10 +55,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   expiredPolling!: Date;
   polling!: boolean
   inputDisable: boolean = false;
+  title = 'Home Page';
   showSpinner: boolean = true;
   isLogin ? : boolean = this.loginService.isLogin();
   dataPol ? : string[];
-
+  
   listThreadCategory: FindAllThreadCategoryRes = {};
   listThreadHdr: FindAllThreadHdrRes = {};
   listThreadHdrByUserLogged: FindAllThreadHdrRes = {};
@@ -80,11 +82,40 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private likeThreadService: ThreadLikedService,
     private bookmarkService: BookmarkService,
     private communityService: CommunityService,
-    private pollingService: PollingService,
     private fileService: FileService,
     private userService: UserService,
     private router: Router,
     private store: Store,
+    private pollingService: PollingService,
+    private titleService:Title,
+  ) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle(this.title)
+    this.threadCategorySubs = this.threadCategoryService
+    .getAllThreadCategory()
+      .subscribe((result) => {
+        this.listThreadCategory = result;
+      });
+    this.getProfile();
+    this.showSpinner=true;
+
+    setTimeout(()=>{
+      this.showSpinner=false;
+      if(this.isLogin){
+        this.createThreadHdr.isActive = true;
+        this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
+        this.getAllThreadByUserLogged();
+        this.getAllEvent();
+        this.getAllTraining();
+        this.getAllThreadThatAreLikedByUserLogged();
+        this.getProfile();
+        this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
+          this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
+        })
+      }
+      this.getAllThread();
+    },2000)
   ) {}
 
   getPhotoCommun(fileId: string): string {
@@ -95,6 +126,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     if (fileId == null) return DefaultPic.proFile;
     else return 'http://localhost:3333/files/' + fileId;
   }
+
   resetForm(): InsertThreadHdrReq {
     return this.createThreadHdr = {
       categoryId: "",

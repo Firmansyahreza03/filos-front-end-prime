@@ -15,6 +15,7 @@ import {
 import { DefaultPic } from 'src/app/constant/default-pic';
 import { TransactionType } from 'src/app/constant/transaction-type';
 import { SubscriptionPrice } from 'src/app/constant/subscription-price';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-payment-detail',
@@ -51,7 +52,8 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
     private fileService: FileService,
     private communityService: CommunityService,
     private paymentService: PaymentService,
-    private memberCommunityService: MemberCommunityService
+    private memberCommunityService: MemberCommunityService,
+    private titleService: Title
   ) {}
 
   back(): void {
@@ -94,6 +96,7 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Payment')
     const thisUrl: string[] = this.router.url.split('/');
     if (thisUrl[2] == null) {
       this.backUrl = '/home-member';
