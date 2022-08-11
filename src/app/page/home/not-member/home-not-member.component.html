@@ -1,96 +1,62 @@
 <div class="container">
-    <div class="grid justify-content-center mt-2">
-        <div class="md:col-11 col-12">
-            <div class="card">
-                <div class="container">
-                    <div class="grid justify-content-center flex flex-column">
-                        <div class="flex">
-                            <p class="text-lg threads ml-2 text-color-secondary mb-5">Threads</p>
-                        </div>
-                        <!-- <p-progressSpinner *ngIf="showSpinner" class="flex justify-content-center"></p-progressSpinner> -->
-                        <div class="col-12 flex flex-column px-4  thread " >
-                            <div class="flex justify-content-between column-gap-4">
-                                <div class="flex">
-                                  <div class="image-content-profile">
-                                    <div class="image-box-profile">
-                                      <img src="../../../../assets/image/profile-pic-example.jpeg" alt="">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="flex-grow-1 flex-column pt-1">
-                                  <p class="text-base font-medium">Muhammad Reza Firmansyah</p>
-                                  <p class="text-xs">8 Hour Ago</p>
-                                </div>
-                                <div class="flex-none ">
-                                  <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
-                                      style="font-size: 10px"></i></p>
-                                </div>
-                              </div>
-            
-                              <!-- Content -->
-                              <div class="grid mt-1">
-                                <div class="col-12">
-                                  <span class="bold black text-heading-3 title-thread">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque doloremque rerum iste ipsam natus, a nihil, libero architecto optio vitae repudiandae dolorum sequi minus enim sapiente ducimus voluptatum debitis adipisci?</span>
-                                </div>
-                                <div class="col-12 surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis content-thread" style="width:1000px">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam laborum repellat reprehenderit, illo soluta labore incidunt voluptates fugiat blanditiis eveniet repudiandae pariatur, cupiditate maxime alias recusandae. Assumenda natus maxime praesentium!
-                                </div>
-                              </div>
-            
-                              <!-- Action -->
-                              <div class="flex mt-2 -mb-2 ml-1 mr-1 justify-content-start">
-                                <div class="flex see-more click" >
-                                  <div >
-                                    <i class="pi pi-eye  text-sm font-medium"></i>
-                                    <span class="text-sm font-medium"> See More</span>
-                                  </div>
-                                </div>
-                              </div>
-                                <p-divider></p-divider>
-                        </div>
-                        <div class="col-12 flex flex-column px-4  thread " >
-                            <div class="flex justify-content-between column-gap-4">
-                                <div class="flex">
-                                  <div class="image-content-profile">
-                                    <div class="image-box-profile">
-                                      <img src="../../../../assets/image/profile-pic-example.jpeg" alt="">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="flex-grow-1 flex-column pt-1">
-                                  <p class="text-base font-medium">Fitra Fatimah Putri</p>
-                                  <p class="text-xs">1 Hour Ago</p>
-                                </div>
-                                <div class="flex-none ">
-                                  <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
-                                      style="font-size: 10px"></i></p>
-                                </div>
-                              </div>
-            
-                              <!-- Content -->
-                              <div class="grid mt-1">
-                                <div class="col-12">
-                                  <span class="bold black text-heading-3 title-thread">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque doloremque rerum iste ipsam natus, a nihil, libero architecto optio vitae repudiandae dolorum sequi minus enim sapiente ducimus voluptatum debitis adipisci?</span>
-                                </div>
-                                <div class="col-12 surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis content-thread" style="width:1000px">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam laborum repellat reprehenderit, illo soluta labore incidunt voluptates fugiat blanditiis eveniet repudiandae pariatur, cupiditate maxime alias recusandae. Assumenda natus maxime praesentium!
-                                </div>
-                              </div>
-            
-                              <!-- Action -->
-                              <div class="flex mt-2 -mb-2 ml-1 mr-1 justify-content-start">
-                                <div class="flex see-more click" >
-                                  <div >
-                                    <i class="pi pi-eye  text-sm font-medium"></i>
-                                    <span class="text-sm font-medium"> See More</span>
-                                  </div>
-                                </div>
-                              </div>
-                                <p-divider></p-divider>
-                        </div>
-                      </div>
-                </div>
+  <div class="grid justify-content-center mt-2">
+    <div class="md:col-11 col-12">
+      <div class="card">
+        <div class="container">
+          <div class="grid justify-content-center flex flex-column">
+            <div class="flex">
+              <p class="text-lg threads ml-2 text-color-secondary mb-5">Threads</p>
             </div>
+            <!-- <p-progressSpinner *ngIf="showSpinner" class="flex justify-content-center"></p-progressSpinner> -->
+            <div class="col-12 flex flex-column px-4 thread" *ngFor="let datas of listThreadHdr.data!; let i=index">
+              <div class="flex justify-content-between column-gap-4">
+                <div class="flex">
+                  <div class="image-content-profile">
+                    <div class="image-box-profile">
+                      <img [src]="getPhotoThread(datas.photoProfileCreator!)" alt="" srcset=""
+                        class="profile-pic">
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-grow-1 flex-column pt-1">
+                  <p class="text-base font-medium">{{datas.creatorName}}</p>
+                  <p class="text-xs">{{datas.createdAt| timeAgo}}</p>
+                </div>
+                <div class="flex-none " *ngIf="datas.isPremium">
+                  <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                      style="font-size: 10px"></i></p>
+                </div>
+              </div>
+
+              <!-- Content -->
+              <div class="grid mt-1">
+                <div class="col-12">
+                  <span class="bold black text-heading-3 title-thread">
+                    {{datas.threadName}}
+                  </span>
+                </div>
+                <div class="col-12 surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis content-thread"
+                  style="width:1000px">
+                  <p class="text-small" *ngIf="datas.threadContent!.length > 100">{{readMoreContent(datas.threadContent!)}} <a  (click)="onClick(datas.id)" class="font-semibold click"> continue read</a></p>
+                  <p class="text-small" *ngIf="datas.threadContent!.length <= 100">{{datas.threadContent!}} </p>
+                </div>
+              </div>
+
+              <!-- Action -->
+              <div class="flex mt-2 -mb-2 ml-1 mr-1 justify-content-start">
+                <div class="flex see-more click">
+                  <div>
+                    <i class="pi pi-eye  text-sm font-medium"></i>
+                    <span class="text-sm font-medium"> See More</span>
+                  </div>
+                </div>
+              </div>
+              <p-divider></p-divider>
+            </div>
+            
+          </div>
         </div>
+      </div>
     </div>
-</div>  
+  </div>
+</div>

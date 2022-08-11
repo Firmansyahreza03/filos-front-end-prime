@@ -185,7 +185,7 @@
                     <div class="col-2">
                       <div (click)="onClick(threadHdr.id)">
                         <i class="pi pi-comments click"></i>
-                        <span> 5</span>
+                        <span> {{threadHdr.counterComment}}</span>
                       </div>
                     </div>
                   </div>
@@ -268,7 +268,7 @@
                   <div class="col-2">
                     <div (click)="onClick(threadHdr.id)">
                       <i class="pi pi-comments click"></i>
-                      <span> 5</span>
+                      <span> {{threadHdr.counterComment}}</span>
                     </div>
                   </div>
                 </div>
@@ -446,7 +446,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdr.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> 5</span>
+                          <span> {{threadHdr.counterComment!}}</span>
                         </div>
                       </div>
                       <div class="col-2 col-offset-6 text-right" *ngIf="!threadHdr.isBookmark">
@@ -531,7 +531,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdr.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> 5</span>
+                          <span> {{threadHdr.counterComment!}}</span>
                         </div>
                       </div>
                       <div class="col-2 col-offset-6 text-right" *ngIf="!threadHdr.isBookmark">
@@ -616,7 +616,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdrLike.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> 5</span>
+                          <span> {{threadHdrLike.counterComment}}</span>
                         </div>
                       </div>
                     </div>
@@ -687,7 +687,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdrLike.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> 5</span>
+                          <span> {{threadHdrLike.counterLike!}}</span>
                         </div>
                       </div>
                     </div>
@@ -752,7 +752,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdr.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> 5</span>
+                          <span> {{threadHdr.counterComment}}</span>
                         </div>
                       </div>
                       <div class="col-2 col-offset-8 text-right">

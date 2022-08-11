@@ -1,6 +1,4 @@
-import { style } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
-import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -22,11 +20,11 @@ export class ReportComponent implements OnInit {
     endAt:""
   };
 
-  
   constructor(
     private service: ReportService,
     private confirmationService: ConfirmationService
   ) {}
+  
   ngOnInit(): void {
     this.showSpinner=true;
     setTimeout(()=>{
@@ -51,8 +49,8 @@ export class ReportComponent implements OnInit {
     const endDate = formatDate(this.req.endAt, `yyyy-MM-dd`, 'en')
     this.req.startAt = startDate;
     this.req.endAt = endDate;
-    if(chose == 1 ) this.service.reportUserComm(this.req);
-    if(chose == 2 ) this.service.reportIncomeComm(this.req);
+    if(chose == 1 ) this.service.adminReportUserComm(this.req);
+    if(chose == 2 ) this.service.adminReportIncomeComm(this.req);
   }
 
 }
