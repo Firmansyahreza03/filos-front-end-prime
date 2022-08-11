@@ -15,6 +15,7 @@ export class ArticleDtlComponent {
   subscription ? : Subscription;
   mainUrl!: string;
   idParam!: string;
+  showSpinner!:boolean;
 
   listIndustry: FindAllIndustryRes = {
     count: undefined,
@@ -38,15 +39,19 @@ export class ArticleDtlComponent {
   }
 
   initData(): void {
-    this.activatedRoute.params.subscribe(result => {
-      const resultTemp: any = result;
-      this.idParam = resultTemp.id;
-      console.log(this.idParam);
-      this.subscription = this.service.findById(this.idParam)
-        .subscribe(result => {
-          this.dataRes = result;
-        })
-    })
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.activatedRoute.params.subscribe(result => {
+        const resultTemp: any = result;
+        this.idParam = resultTemp.id;
+        console.log(this.idParam);
+        this.subscription = this.service.findById(this.idParam)
+          .subscribe(result => {
+            this.dataRes = result;
+          })
+      })
+    },500)
   }
 
   ngOnInit(): void {

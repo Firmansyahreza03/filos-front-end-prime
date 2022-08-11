@@ -1,4 +1,7 @@
-<div class="grid mb-3">
+<div class="grid justify-content-center p-8 mb-5" *ngIf="showSpinner==true">
+  <p-progressSpinner ></p-progressSpinner>
+</div>
+<div class="grid mb-3" *ngIf="showSpinner==false">
   <div class="col-12 lg:col-6 xl:col-3">
     <div class="card mb-0">
       <div class="flex justify-content-between mb-3">
@@ -64,7 +67,7 @@
     </div>
   </div>
 </div>
-<div class="grid mb-3">
+<div class="grid mb-3" *ngIf="showSpinner==false">
   <div class="col-12">
     <div class="card mb-0">
       <div class="text-center">

@@ -11,7 +11,10 @@
         </div>
     </div>
     <p-divider></p-divider>
-    <div class="card-body">
+    <div class="grid justify-content-center"  *ngIf="showSpinner==true">
+        <p-progressSpinner ></p-progressSpinner>
+    </div>
+    <div class="card-body" *ngIf="showSpinner==false">
         <form action="" (ngSubmit)="ins()" ngnativevalidate #form="ngForm">
             <div class="grid mb-3 mb:md-1">
               <div class="col-12 md:col-6">
