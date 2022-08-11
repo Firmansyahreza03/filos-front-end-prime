@@ -33,7 +33,7 @@ export class CommunityListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.eventSubscription = this.communityService
+      this.eventSubscription = this.communityService
       .getAll(CommunityCategory.training)
       .subscribe((result) => {
         this.listEvent = result;

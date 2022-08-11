@@ -1,3 +1,7 @@
+import { LimitTimeReq } from './report/limit-time-req';
+import { ReportPaymentByCommunityRes } from './report/report-payment-by-community-res';
+import { ReportUserByCommunityRes } from "./report/report-user-by-community-res";
+
 import { LoginReq } from "./login/login-req";
 import { LoginRes } from "./login/login-res";
 import { GeneratedCode } from "./code/generate-code";
@@ -152,5 +156,6 @@ export {
   DataThreadDtl, FindThreadDtlRes, FindAllThreadDtlRes, InsertThreadDtlReq, UpdateThreadDtlReq,
   DataThreadHdr, FindThreadHdrRes, FindAllThreadHdrRes, InsertThreadHdrReq, UpdateThreadHdrReq,
   DataThreadLiked, FindThreadLikedRes, FindAllThreadLikedRes, InsertThreadLikedReq, UpdateThreadLikedReq,
-  DataUser, FindUserRes, FindAllUserRes, InsertUserReq, UpdateUserReq, RegisUserReq
+  DataUser, FindUserRes, FindAllUserRes, InsertUserReq, UpdateUserReq, RegisUserReq,
+  ReportUserByCommunityRes, ReportPaymentByCommunityRes, LimitTimeReq
 }

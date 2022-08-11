@@ -39,16 +39,16 @@
                       </div>
                       <div class="col-12">
                         <span class="bold color-yellow text-xs"> <i class="pi 
-                        pi-money-bill color-purple" style="font-size: 12px"></i> {{event.price | currency:'Rp':'symbol'}}</span>
+                        pi-money-bill color-purple" style="font-size: 12px"></i> {{event.price | rupiahCurrency}}</span>
                       </div>
                       <div class="col-12">
                         <div class="grid">
                           <div class="col-12 pb-0">
                             <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
-                            <span class="black text-xs"> {{event.startAt}} s/d</span>
+                            <span class="black text-xs"> {{event.startAt | date: 'medium'}} s/d</span>
                           </div>
                           <div class="col-12 ml-3 pt-0">
-                            <span class="black text-xs"> {{event.endAt}}</span>
+                            <span class="black text-xs"> {{event.endAt | date: 'medium'}}</span>
                           </div>
                         </div>
                       </div>
@@ -88,16 +88,16 @@
                     </div>
                     <div class="col-12">
                       <span class="bold color-yellow text-xs"> <i class="pi 
-                      pi-money-bill color-purple" style="font-size: 12px"></i> {{training.price | currency:'Rp':'symbol'}}</span>
+                      pi-money-bill color-purple" style="font-size: 12px"></i> {{training.price | rupiahCurrency}}</span>
                     </div>
                     <div class="col-12">
                       <div class="grid">
                         <div class="col-12 pb-0">
                           <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
-                          <span class="black text-xs"> {{training.startAt}} s/d</span>
+                          <span class="black text-xs"> {{training.startAt | date: 'medium'}} s/d</span>
                         </div>
                         <div class="col-12 ml-3 pt-0">
-                          <span class="black text-xs"> {{training.endAt}}</span>
+                          <span class="black text-xs"> {{training.endAt | date: 'medium'}}</span>
                         </div>
                       </div>
                     </div>
@@ -145,7 +145,7 @@
                           <div class="grid">
                             <div class="col-12 pb-0">
                               <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
-                              <span class="black text-sm"> {{training.startAt}} s/d {{training.endAt}}</span>
+                              <span class="black text-sm"> {{training.startAt | date: 'medium'}} s/d {{training.endAt | date: 'medium'}}</span>
                             </div>
                           </div>
                         </div>

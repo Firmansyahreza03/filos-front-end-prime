@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { MenuItem} from 'primeng/api';
@@ -11,7 +11,7 @@ import { AdminLayoutComponent } from '../layout/admin-layout.component';
   templateUrl: './admin-nav.component.html',
   styleUrls: ['../../../assets/sass/sakai.scss']
 })
-export class AdminNavComponent {
+export class AdminNavComponent implements OnInit, OnDestroy {
 
   subscribtion ? : Subscription;
   items: MenuItem[] = [];
@@ -41,5 +41,9 @@ export class AdminNavComponent {
   }
   ngOnInit(): void {
     this.findPic();
+  }
+
+  ngOnDestroy(): void {
+    this.subscribtion?.unsubscribe();
   }
 }

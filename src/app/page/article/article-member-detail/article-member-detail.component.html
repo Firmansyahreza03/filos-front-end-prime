@@ -4,7 +4,8 @@
             <span class="back click" (click)="back()"><i class="pi pi-angle-left"></i>Back to all</span>
           </div>
         <div class="md:col-11 col-12">
-            <div class="card">
+            <p-progressSpinner *ngIf="showSpinner==true" class="flex justify-content-center"></p-progressSpinner>
+            <div class="card" *ngIf="showSpinner==false">
                 <div class="container">
                     <div class="flex flex-column">
                         <div class="flex">

@@ -35,21 +35,20 @@
   </div>
 
   <p-divider align="left">
-    <div class="inline-flex align-items-center">
-      <p class="font-semibold text-base flex align-items-center">
-        <i class="pi pi-circle-fill color-purple flex align-items-center" style="font-size: 2rem"></i>Comment
-      </p>
+    <div class="inline-flex align-items-center column-gap-3">
+      <i class="pi pi-circle-fill color-purple flex align-items-center" style="font-size: 1rem"></i>
+      <span class="font-semibold text-base flex align-items-center">Comment</span>
     </div>
   </p-divider>
 
   <div class="mt-2">
-    <forum-form-chat></forum-form-chat>
+    <forum-form-chat *ngIf="isLogin"></forum-form-chat>
   </div>
 
   <p-divider align="left">
     <div class="flex flex-column">
-      <div class="flex ml-4 column-gap-3 align-content-center">
-        <i class="pi pi-comments color-purple flex align-items-center" style="font-size: 20px"></i>
+      <div class="flex column-gap-3 align-content-center">
+        <i class="pi pi-comments color-purple flex align-items-center" style="font-size: 1rem"></i>
         <p class="text-sm flex align-items-center">
           {{countChat}}
         </p>

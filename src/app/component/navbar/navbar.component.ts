@@ -17,6 +17,9 @@ export class NavbarComponent implements OnInit {
   subscribtion?: Subscription;
   proPic!: string;
   topMenuActive: boolean = false
+  isLogin?: boolean = this.loginService.isLogin();
+  
+
   constructor(
     public router: Router,
     private loginService: LoginService,
@@ -38,6 +41,7 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit() {
     this.items = [{
+      icon: 'pi pi-home',
       label: 'Home',
       routerLink: '/home-member'
     },
@@ -57,6 +61,10 @@ export class NavbarComponent implements OnInit {
   }
   logout(): void {
     localStorage.clear()
+    this.router.navigateByUrl('/login')
+  }
+
+  login(): void{
     this.router.navigateByUrl('/login')
   }
   settings(): void {

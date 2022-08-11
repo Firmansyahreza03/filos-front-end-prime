@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { Observable, tap } from "rxjs";
 import { MessageService } from 'primeng/api';
 import { LoginService } from "../service/login.service";
+import { RoleType } from "../constant/role-type";
 
 
 @Injectable()
@@ -42,16 +43,33 @@ export class CustomInterceptor implements HttpInterceptor {
         error: (result) => {
           if (result instanceof HttpErrorResponse) {
             if (result.status == 401) {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: result.error.message,
-                life: 1000,
-              });
               if (!isLoginReq) {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: "You must login first",
+                  life: 1000,
+                });
                 this.router.navigateByUrl('/login');
               }
-              localStorage.clear();
+
+              if(this.loginService.getLoggedRole() == RoleType.NONADMIN){
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: "This feature is only for non admins",
+                  life: 1000,
+                });
+                this.router.navigateByUrl('/home-member');
+              } else if(this.loginService.getLoggedRole() == RoleType.ADMIN){
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: "This feature is only for admin",
+                  life: 1000,
+                });
+                this.router.navigateByUrl('/admin');
+              }
             } 
             else if (result.status == 500 || result.status == 404 || result.status == 400) {
               this.messageService.add({

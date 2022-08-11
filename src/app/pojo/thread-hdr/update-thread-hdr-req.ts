@@ -1,10 +1,9 @@
 export interface UpdateThreadHdrReq {
-    id : string
-    version : number
+    id ?: string
+    version?: number
 	
 	threadName ?:string
-	threadCode ?:string
-	pollingHdrsId ?:string
-	categoryid ?:string
-	industryId ?:string
+	threadContent ?:string
+	categoryId ?:string
+	email?: string
 }

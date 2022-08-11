@@ -16,6 +16,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { CommunityAddComponent } from "./community-add/community-add.component";
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { SharedModule } from "src/app/component/shared.module";
 @NgModule({
     imports: [
         CommunityRouting,
@@ -31,7 +33,9 @@ import { CommunityAddComponent } from "./community-add/community-add.component";
         CarouselModule,
         CalendarModule,
         FileUploadModule,
-        HttpClientModule
+        HttpClientModule,
+        ProgressSpinnerModule,
+        SharedModule
     ],
     declarations: [
         CommunityListComponent,

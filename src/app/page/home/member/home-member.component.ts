@@ -9,6 +9,7 @@ import {
   FindAllThreadCategoryRes,
   FindAllThreadHdrRes,
   FindProfileRes,
+  InsertPollingAnswerReq,
   InsertThreadHdrReq,
 } from 'src/app/pojo/pojo-import';
 import { BookmarkService } from 'src/app/service/bookmark.service';
@@ -22,6 +23,7 @@ import { UserService } from 'src/app/service/user.service';
 import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
+import { PollingService } from 'src/app/service/polling.service';
 
 @Component({
   selector: 'app-home-member',
@@ -43,13 +45,15 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   threadLikedByUserLoggedSubs?: Subscription;
   profileSubs?: Subscription;
   threadBookmarkSubs?: Subscription;
+  pollingAnswerSubs?: Subscription;
   panelTab: string = 'myActivities';
   proPic!: string;
   polling!:boolean
   pollingArray: string[] = [];
   expiredPolling!: Date;
-
+  isLogin?: boolean = this.loginService.isLogin();
   inputDisable: boolean = false;
+  showSpinner!:boolean;
 
   listThreadCategory: FindAllThreadCategoryRes = {};
 
@@ -71,6 +75,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   dataPol?: string[];
 
+  insertAnswerPolling: InsertPollingAnswerReq = {
+    isActive: true,
+    optionId: '',
+  };
+
   constructor(
     private threadCategoryService: ThreadCategoryService,
     private threadHdrService: ThreadHdrService,
@@ -82,30 +91,50 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private store: Store,
+    private pollingService: PollingService,
   ) {}
 
   ngOnInit(): void {
-    console.log(this.loginService.isLogin());
     
-    this.createThreadHdr.isActive = true;
-    this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
-
     this.threadCategorySubs = this.threadCategoryService
-      .getAllThreadCategory()
+    .getAllThreadCategory()
       .subscribe((result) => {
         this.listThreadCategory = result;
       });
-
     this.getProfile();
-    this.getAllThread();
-    this.getAllThreadByUserLogged();
-    this.getAllEvent();
-    this.getAllTraining();
-    this.getAllThreadThatAreLikedByUserLogged();
-    
-    this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
-      this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
-    })
+    this.showSpinner=true;
+
+    setTimeout(()=>{
+      this.showSpinner=false;
+      if(this.isLogin){
+        this.createThreadHdr.isActive = true;
+        this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
+        this.getAllThreadByUserLogged();
+        this.getAllEvent();
+        this.getAllTraining();
+        this.getAllThreadThatAreLikedByUserLogged();
+        this.getProfile();
+        this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
+          this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
+        })
+      }
+      this.getAllThread();
+    },2000)
+  }
+
+  resetForm(): InsertThreadHdrReq {
+    return this.createThreadHdr = {
+      categoryId: "",
+      email: this.loginService.getLoggedEmail()!,
+      expiredAt: "",
+      fileExt: "",
+      fileName: "",
+      isActive: true,
+      options: [],
+      pollingName: "",
+      threadContent: "",
+      threadName: "",
+    }
   }
 
   ngOnDestroy(): void {
@@ -120,11 +149,33 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadLikedByUserLoggedSubs?.unsubscribe();
     this.profileSubs?.unsubscribe();
     this.threadBookmarkSubs?.unsubscribe();
+    this.pollingAnswerSubs?.unsubscribe();
   }
 
-  chooseOption(): void {
-    this.inputDisable = true;
-    console.log(this.inputDisable);
+  chooseOption(hdrId: string, pollingId: string): void {
+    this.insertAnswerPolling.isActive = true;
+    this.insertAnswerPolling.optionId = pollingId;
+    this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res)=>{
+      console.log(res);
+    })
+
+    for(let i=0; i<this.listThreadHdr.data?.length!; i++){
+      if(hdrId == this.listThreadHdr.data![i].id){
+        this.listThreadHdr.data![i].isVoted = true;
+      }
+    }
+
+    for(let i=0; i<this.listThreadHdrByUserLogged.data?.length!; i++){
+      if(hdrId == this.listThreadHdrByUserLogged.data![i].id){
+        this.listThreadHdrByUserLogged.data![i].isVoted = true;
+      }
+    }
+
+    for(let i=0; i<this.listThreadHdrLike.data?.length!; i++){
+      if(hdrId == this.listThreadHdrLike.data![i].id){
+        this.listThreadHdrLike.data![i].isVoted = true;
+      }
+    }
   }
 
   readMoreContent(content: string): string{
@@ -162,8 +213,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .getByIndustryAndCategory(
         this.loginService.getLoggedEmail()!,
         CommunityCategory.event,
-        0,
-        3
+        0,3
       )
       .subscribe((res) => {
         this.listEvent = res;
@@ -190,7 +240,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadHdrListSubscription = this.threadHdrService
       .getAllThreadHdr()
       .subscribe((result) => {
-        this.listThreadHdr = result;
+        this.listThreadHdr = result;        
       });
   }
 
@@ -352,5 +402,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   toEditProfile(){
     this.router.navigateByUrl('/profile')
+  }
+  
+  toEditThread(id:string){
+    this.router.navigateByUrl(`/forum/edit/${id}`);
   }
 }

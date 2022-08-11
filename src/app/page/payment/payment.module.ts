@@ -12,6 +12,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { PaymentRouting } from "./payment.routing";
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { SharedModule } from "src/app/component/shared.module";
 
 @NgModule({
     imports:[
@@ -26,7 +27,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
         CommonModule,
         FormsModule,
         CardModule,
-        RadioButtonModule
+        RadioButtonModule,
+        SharedModule
     ],
     declarations:[
         PaymentDetailComponent
