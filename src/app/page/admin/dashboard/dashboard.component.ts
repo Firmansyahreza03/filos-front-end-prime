@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
     sumCommunity:number = 0 ;
     sumArticle:number = 0 ;
     sumThread:number = 0 ;
+    showSpinner!:boolean;
 
     constructor(
         private userService: UserService,
@@ -54,11 +55,14 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.countUser();
-        this.countArticle();
-        this.countThread();
-        this.countCommunity();
-        
+        this.showSpinner=true;
+        setTimeout(()=>{
+            this.showSpinner=false;
+            this.countUser();
+            this.countArticle();
+            this.countThread();
+            this.countCommunity();
+        },1000)
     }
     ngOnDestroy(): void {
         this.subscription?.unsubscribe();

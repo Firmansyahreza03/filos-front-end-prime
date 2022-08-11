@@ -15,6 +15,7 @@ export class IndustyAddComponent {
   subscription ? : Subscription;
   mainUrl!: string;
   idParam!: number;
+  showSpinner:boolean=false;
   req: InsertIndustryReq = {
     isActive: true,
     name: "",
@@ -27,7 +28,10 @@ export class IndustyAddComponent {
   ) {}
 
   ins() {
-    this.subscription = this.industryService.insert(this.req)
+    this.showSpinner=true;
+    setTimeout(()=>{
+        this.showSpinner=false;
+        this.subscription = this.industryService.insert(this.req)
       .subscribe(result => {
         this.router.navigateByUrl('/', {
           skipLocationChange: true
@@ -35,6 +39,8 @@ export class IndustyAddComponent {
           this.router.navigate([this.mainUrl]);
         });
       })
+      },500)
+    
   }
 
   ngOnInit(): void {

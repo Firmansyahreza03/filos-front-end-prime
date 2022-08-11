@@ -17,6 +17,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { IndustyAddComponent } from "./industry-add/industy-add.component";
 
+import { ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
     declarations:[
         IndustyListComponent,
@@ -37,7 +38,8 @@ import { IndustyAddComponent } from "./industry-add/industy-add.component";
         InputTextModule,
         InputSwitchModule,
         ConfirmDialogModule,
-        InputTextareaModule
+        InputTextareaModule,
+        ProgressSpinnerModule
     ],
     exports :[
         IndustyListComponent,

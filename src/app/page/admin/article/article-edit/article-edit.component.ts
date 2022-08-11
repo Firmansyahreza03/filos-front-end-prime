@@ -15,6 +15,7 @@ export class ArticleEditComponent {
   subscription ? : Subscription;
   mainUrl!: string;
   idParam!: string;
+  showSpinner!:boolean;
 
   listIndustry: FindAllIndustryRes = {
     count: undefined,
@@ -45,29 +46,38 @@ export class ArticleEditComponent {
   }
 
   save() {
-    this.subscription = this.service.update(this.req)
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.subscription = this.service.update(this.req)
       .subscribe(() => {
         this.router.navigateByUrl(this.mainUrl);
       })
+    },500)
   }
 
   initData(): void {
-    this.activatedRoute.params.subscribe(result => {
-      const resultTemp: any = result;
-      this.idParam = resultTemp.id;
-      console.log(this.idParam);
-      this.subscription = this.service.findById(this.idParam)
-        .subscribe(result => {
-          console.log(result);
-          this.req.id = result.data?.id;
-          this.req.version = result.data?.version;
-          this.req.isActive = result.data?.isActive;
-
-          this.req.title = result.data?.title;
-          this.req.content = result.data?.content;
-          this.req.idIndustry = result.data?.idIndustry;
-        })
-    })
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.activatedRoute.params.subscribe(result => {
+        const resultTemp: any = result;
+        this.idParam = resultTemp.id;
+        console.log(this.idParam);
+        this.subscription = this.service.findById(this.idParam)
+          .subscribe(result => {
+            console.log(result);
+            this.req.id = result.data?.id;
+            this.req.version = result.data?.version;
+            this.req.isActive = result.data?.isActive;
+  
+            this.req.title = result.data?.title;
+            this.req.content = result.data?.content;
+            this.req.idIndustry = result.data?.idIndustry;
+          })
+      })
+    },500)
+    
   }
 
   ngOnInit(): void {
