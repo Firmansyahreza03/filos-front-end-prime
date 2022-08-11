@@ -97,7 +97,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     
     this.threadCategorySubs = this.threadCategoryService
-      .getAllThreadCategory()
+    .getAllThreadCategory()
       .subscribe((result) => {
         this.listThreadCategory = result;
       });
@@ -106,7 +106,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
     setTimeout(()=>{
       this.showSpinner=false;
-      
       if(this.isLogin){
         this.createThreadHdr.isActive = true;
         this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
@@ -118,10 +117,24 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
           this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
         })
-    }
+      }
       this.getAllThread();
-      })
     },2000)
+  }
+
+  resetForm(): InsertThreadHdrReq {
+    return this.createThreadHdr = {
+      categoryId: "",
+      email: this.loginService.getLoggedEmail()!,
+      expiredAt: "",
+      fileExt: "",
+      fileName: "",
+      isActive: true,
+      options: [],
+      pollingName: "",
+      threadContent: "",
+      threadName: "",
+    }
   }
 
   ngOnDestroy(): void {
@@ -138,20 +151,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     this.threadBookmarkSubs?.unsubscribe();
     this.pollingAnswerSubs?.unsubscribe();
   }
-  
-  resetForm(): InsertThreadHdrReq {
-    return this.createThreadHdr = {
-      categoryId: "",
-      email: this.loginService.getLoggedEmail()!,
-      expiredAt: "",
-      fileExt: "",
-      fileName: "",
-      isActive: true,
-      options: [],
-      pollingName: "",
-      threadContent: "",
-      threadName: "",
-    }
 
   chooseOption(hdrId: string, pollingId: string): void {
     this.insertAnswerPolling.isActive = true;
