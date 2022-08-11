@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DefaultPic } from 'src/app/constant/default-pic';
@@ -22,6 +23,7 @@ import {
 export class ForumDetailComponent implements OnInit, OnDestroy {
   idParam!: string;
   countChat: number = 0 ;
+  title = 'Thread Detail';
 
   hdrSubs ? : Subscription;
   dtlSubs ? : Subscription;
@@ -37,7 +39,8 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
     private threadHdrService: ThreadHdrService,
     private threadDtlService: ThreadDtlService,
     private activatedRouted: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {}
 
   findDataHeader(): void {
@@ -70,6 +73,7 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
       .findByHdrId(this.idParam)
       .subscribe((result) => {
         this.threadDtlData = result;
+        this.countChat = 0;
         for (let i = 0; i < this.threadDtlData.data!.length; i++) {
           this.countChat++;
           this.userSubs = this.userService.findByUserId(this.threadDtlData.data![i].userId!).subscribe((res) => {
@@ -90,6 +94,7 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle(this.title)
     this.findDataHeader();
     this.findDataChat();
   }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { DefaultPic } from "src/app/constant/default-pic";
@@ -17,6 +18,7 @@ export class EditProfileComponent implements OnInit, OnDestroy{
     profileSubs? : Subscription;
     updateProfileSubs?: Subscription;
     industrySubs?: Subscription;
+    title = 'Edit Profile';
     profileData: DataProfile = {
         id: '',
         isActive: false,
@@ -33,10 +35,12 @@ export class EditProfileComponent implements OnInit, OnDestroy{
         private router: Router,
         private profileService: UserService,
         private industryService: IndustryService,
-        private fileService: FileService
+        private fileService: FileService,
+        private titleService:Title
     ){}
 
     ngOnInit(): void {
+        this.titleService.setTitle(this.title)
         this.getAllIndustry();
         this.getProfileData();
     }

@@ -45,7 +45,9 @@ export class IndustyListComponent {
   ) {}
 
   loadData(event: LazyLoadEvent) {
-    this.viewData(event.first, event.rows, event.globalFilter)
+    setTimeout(()=>{
+      this.viewData(event.first, event.rows, event.globalFilter)
+    },800)
   }
 
   viewData(startPage: number = this.startPage, maxPage: number = this.maxPage, query ? : string): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { DataThreadCategory, FindAllThreadCategoryRes, UpdateThreadHdrReq } from "src/app/pojo/pojo-import";
@@ -18,17 +19,21 @@ export class EditForumComponent implements OnInit{
     idParam!:string;
     proPic!: string;
     showSpinner!:boolean;
+    title = 'Edit Thread';
     listThreadCategory: DataThreadCategory[] = [];
     req:UpdateThreadHdrReq={}
+    
     constructor(
         private threadCategoryService: ThreadCategoryService,
         private threadService:ThreadHdrService,
         private router: Router,
         private activitedRoute:ActivatedRoute,
         private loginService: LoginService,
+        private titleService:Title
       ) {}
 
     ngOnInit(): void {
+        this.titleService.setTitle(this.title)
         this.showSpinner=true;
         setTimeout(()=>{
             this.showSpinner=false;

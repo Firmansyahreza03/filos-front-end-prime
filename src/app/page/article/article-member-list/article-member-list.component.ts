@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { FindAllArticleRes } from "src/app/pojo/pojo-import";
@@ -13,10 +14,12 @@ export class ArticleMemberListComponent implements OnInit, OnDestroy{
     articleSubscription?:Subscription
     idDetail!:string
     showSpinner!:boolean;
+    title = 'Articles';
 
     constructor(
         private router:Router,
-        private articleService:ArticleService
+        private articleService:ArticleService,
+        private titleService:Title
     ){}
   
     listArticle:FindAllArticleRes={
@@ -25,6 +28,7 @@ export class ArticleMemberListComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
+        this.titleService.setTitle(this.title)
         this.showSpinner=true;
         setTimeout(()=>{
             this.showSpinner=false;

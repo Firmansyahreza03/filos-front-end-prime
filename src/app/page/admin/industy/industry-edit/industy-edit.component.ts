@@ -15,6 +15,8 @@ export class IndustyEditComponent {
   subscription ?: Subscription;
   mainUrl!: string;
   idParam!: string;
+  showSpinner!:boolean;
+
   req: UpdateIndustryReq = {
   }
 
@@ -25,7 +27,10 @@ export class IndustyEditComponent {
   ) {}
 
   save() {
-    this.subscription = this.industryService.update(this.req)
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.subscription = this.industryService.update(this.req)
       .subscribe(result => {
         this.router.navigateByUrl('/', {
           skipLocationChange: true
@@ -33,13 +38,17 @@ export class IndustyEditComponent {
           this.router.navigate([this.mainUrl]);
         });
       })
+    },500)
+  
   }
 
   ngOnInit(): void {
     const thisUrl: string[] = this.router.url.split("/");
     this.mainUrl = thisUrl[1] + "/" + thisUrl[2];
-
-    this.activatedRoute.params.subscribe(result =>{
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner=false;
+      this.activatedRoute.params.subscribe(result =>{
         const resultTemp : any = result;
         this.idParam = resultTemp.id;
         this.subscription = this.industryService.findById(this.idParam)
@@ -51,6 +60,7 @@ export class IndustyEditComponent {
             this.req.name = result.data?.name;
         })
     })
+    },500)
   }
 
   back() {

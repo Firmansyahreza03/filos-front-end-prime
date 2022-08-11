@@ -1,6 +1,9 @@
 <div class="container mt-3">
   <div class="card">
-    <div class="card-header card-container">
+    <div class="grid justify-content-center"  *ngIf="showSpinner==true">
+        <p-progressSpinner ></p-progressSpinner>
+    </div>
+    <div class="card-header card-container" *ngIf="showSpinner==false">
         <div class="float-start">
             <button pButton pRipple type="button" label="back" icon="fa fa-chevron-left"
             class="p-button-secondary" title="back" (click)="back()">
@@ -11,7 +14,7 @@
         </div>
     </div>
     <p-divider></p-divider>
-    <div class="card-body">
+    <div class="card-body" *ngIf="showSpinner==false">
         <form action="" (ngSubmit)="save()" ngnativevalidate #form="ngForm">
             <div class="grid mb-3 mb:md-1">
                 <div class="col-12 md:col-6">

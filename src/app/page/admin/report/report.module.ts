@@ -14,6 +14,7 @@ import { ReportRouting } from './report.routing';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DropdownModule } from 'primeng/dropdown';
 
+import { ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
     declarations:[
         ReportComponent
@@ -32,7 +33,8 @@ import { DropdownModule } from 'primeng/dropdown';
         CalendarModule,
         ConfirmDialogModule,
         DropdownModule,
-        ScrollPanelModule
+        ScrollPanelModule,
+        ProgressSpinnerModule
     ],
     exports :[
         ReportComponent

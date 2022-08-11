@@ -24,6 +24,7 @@ import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 import { PollingService } from 'src/app/service/polling.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-member',
@@ -33,48 +34,42 @@ import { PollingService } from 'src/app/service/polling.service';
 export class HomeMemberComponent implements OnInit, OnDestroy {
   startPage: number = 0;
   maxPage: number = 5;
-  threadSubscription?: Subscription;
-  threadHdrListSubscription?: Subscription;
-  threadHdrListByUserLoggedSubscription?: Subscription;
-  profileThreadSubscription?: Subscription;
-  threadCategorySubs?: Subscription;
-  threadLikedSubs?: Subscription;
-  bookmarkSubs?: Subscription;
-  eventSubs?: Subscription;
-  trainingSubs?: Subscription;
-  threadLikedByUserLoggedSubs?: Subscription;
-  profileSubs?: Subscription;
-  threadBookmarkSubs?: Subscription;
-  pollingAnswerSubs?: Subscription;
+
+  threadSubscription ? : Subscription;
+  threadHdrListSubscription ? : Subscription;
+  threadHdrListByUserLoggedSubscription ? : Subscription;
+  profileThreadSubscription ? : Subscription;
+  threadCategorySubs ? : Subscription;
+  threadLikedSubs ? : Subscription;
+  bookmarkSubs ? : Subscription;
+  eventSubs ? : Subscription;
+  trainingSubs ? : Subscription;
+  threadLikedByUserLoggedSubs ? : Subscription;
+  profileSubs ? : Subscription;
+  threadBookmarkSubs ? : Subscription;
+  pollingAnswerSubs ? : Subscription;
+
   panelTab: string = 'myActivities';
   proPic!: string;
-  polling!:boolean
   pollingArray: string[] = [];
   expiredPolling!: Date;
-  isLogin?: boolean = this.loginService.isLogin();
+  polling!: boolean
   inputDisable: boolean = false;
-  showSpinner!:boolean;
-
+  title = 'Home Page';
+  showSpinner: boolean = true;
+  isLogin ? : boolean = this.loginService.isLogin();
+  dataPol ? : string[];
+  
   listThreadCategory: FindAllThreadCategoryRes = {};
-
   listThreadHdr: FindAllThreadHdrRes = {};
-
   listThreadHdrByUserLogged: FindAllThreadHdrRes = {};
-
   listEvent: FindAllCommunityRes = {};
-
   listTraining: FindAllCommunityRes = {};
-
   createThreadHdr: InsertThreadHdrReq = {};
-
   listThreadHdrLike: FindAllThreadHdrRes = {};
-
   profileData: FindProfileRes = {};
-
-  bookmarkdata$ : Observable<DataThreadHdr[]> = this.store.select(getAllBookmark);
-
-  dataPol?: string[];
-
+  bookmarkdata$: Observable < DataThreadHdr[] > = this.store.select(getAllBookmark);
+  
   insertAnswerPolling: InsertPollingAnswerReq = {
     isActive: true,
     optionId: '',
@@ -88,14 +83,15 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     private bookmarkService: BookmarkService,
     private communityService: CommunityService,
     private fileService: FileService,
-    private router: Router,
     private userService: UserService,
+    private router: Router,
     private store: Store,
     private pollingService: PollingService,
+    private titleService:Title,
   ) {}
 
   ngOnInit(): void {
-    
+    this.titleService.setTitle(this.title)
     this.threadCategorySubs = this.threadCategoryService
     .getAllThreadCategory()
       .subscribe((result) => {
@@ -120,12 +116,21 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       }
       this.getAllThread();
     },2000)
+  ) {}
+
+  getPhotoCommun(fileId: string): string {
+    if (fileId == null)  return DefaultPic.commFile;
+    else return 'http://localhost:3333/files/' + fileId;
+  }
+  getPhotoThread(fileId: string): string {
+    if (fileId == null) return DefaultPic.proFile;
+    else return 'http://localhost:3333/files/' + fileId;
   }
 
   resetForm(): InsertThreadHdrReq {
     return this.createThreadHdr = {
       categoryId: "",
-      email: this.loginService.getLoggedEmail()!,
+      email: this.loginService.getLoggedEmail() !,
       expiredAt: "",
       fileExt: "",
       fileName: "",
@@ -137,60 +142,83 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.threadSubscription?.unsubscribe();
-    this.threadHdrListSubscription?.unsubscribe();
-    this.threadCategorySubs?.unsubscribe();
-    this.threadHdrListByUserLoggedSubscription?.unsubscribe();
-    this.profileThreadSubscription?.unsubscribe();
-    this.threadLikedSubs?.unsubscribe();
-    this.eventSubs?.unsubscribe();
-    this.trainingSubs?.unsubscribe();
-    this.threadLikedByUserLoggedSubs?.unsubscribe();
-    this.profileSubs?.unsubscribe();
-    this.threadBookmarkSubs?.unsubscribe();
-    this.pollingAnswerSubs?.unsubscribe();
+  toEditProfile() {
+    this.router.navigateByUrl('/profile')
+  }
+  toEditThread(id: string) {
+    this.router.navigateByUrl(`/forum/edit/${id}`);
+  }
+  onClick(id: string): void {
+    this.router.navigateByUrl(`/forum/${id}`);
+  }
+
+  ngOnInit(): void {
+    this.threadCategorySubs = this.threadCategoryService
+      .getAllThreadCategory()
+      .subscribe((result) => {
+        this.listThreadCategory = result;
+      });
+    this.showSpinner = true;
+
+    setTimeout(() => {
+      this.showSpinner = false;
+      if (this.isLogin) {
+        this.createThreadHdr.isActive = true;
+        this.createThreadHdr.email = this.loginService.getLoggedEmail() !;
+        this.getAllThreadByUserLogged();
+        this.getAllEvent();
+        this.getAllTraining();
+        this.getAllThreadThatAreLikedByUserLogged();
+        this.getProfile();
+        this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail() !).subscribe((res) => {
+          this.store.dispatch(loadBookmarkAction({
+            payload: res.data!
+          }));
+        })
+      }
+      this.getAllThread();
+    })
   }
 
   chooseOption(hdrId: string, pollingId: string): void {
     this.insertAnswerPolling.isActive = true;
     this.insertAnswerPolling.optionId = pollingId;
-    this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res)=>{
+    this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res) => {
       console.log(res);
     })
 
-    for(let i=0; i<this.listThreadHdr.data?.length!; i++){
-      if(hdrId == this.listThreadHdr.data![i].id){
+    for (let i = 0; i < this.listThreadHdr.data?.length!; i++) {
+      if (hdrId == this.listThreadHdr.data![i].id) {
         this.listThreadHdr.data![i].isVoted = true;
       }
     }
 
-    for(let i=0; i<this.listThreadHdrByUserLogged.data?.length!; i++){
-      if(hdrId == this.listThreadHdrByUserLogged.data![i].id){
+    for (let i = 0; i < this.listThreadHdrByUserLogged.data?.length!; i++) {
+      if (hdrId == this.listThreadHdrByUserLogged.data![i].id) {
         this.listThreadHdrByUserLogged.data![i].isVoted = true;
       }
     }
 
-    for(let i=0; i<this.listThreadHdrLike.data?.length!; i++){
-      if(hdrId == this.listThreadHdrLike.data![i].id){
+    for (let i = 0; i < this.listThreadHdrLike.data?.length!; i++) {
+      if (hdrId == this.listThreadHdrLike.data![i].id) {
         this.listThreadHdrLike.data![i].isVoted = true;
       }
     }
   }
 
-  readMoreContent(content: string): string{
+  readMoreContent(content: string): string {
     const contentAfterEdit: string = content.slice(0, 100) + "...";
     return contentAfterEdit;
   }
 
-  getProfile(): void{
-    this.profileSubs = this.userService.findByEmail(this.loginService.getLoggedEmail()!).subscribe((res)=>{
-      this.profileData = res;      
-      if(this.profileData.data && this.profileData.data.fileId != null){
-        this.proPic = 'http://localhost:3333/files/'+this.profileData.data.fileId;
-      } else{
+  getProfile(): void {
+    this.profileSubs = this.userService.findByEmail(this.loginService.getLoggedEmail() !).subscribe((res) => {
+      this.profileData = res;
+      if (this.profileData.data && this.profileData.data.fileId != null) {
+        this.proPic = 'http://localhost:3333/files/' + this.profileData.data.fileId;
+      } else {
         this.proPic = DefaultPic.proFile;
-      }      
+      }
     })
   }
 
@@ -200,20 +228,12 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     });
   }
 
-  getPhotoCommun(fileId: string): string {
-    if(fileId == null){
-      return DefaultPic.commFile;
-    } else {
-      return 'http://localhost:3333/files/'+fileId;
-    }
-  }
-
   getAllEvent(): void {
     this.eventSubs = this.communityService
       .getByIndustryAndCategory(
-        this.loginService.getLoggedEmail()!,
+        this.loginService.getLoggedEmail() !,
         CommunityCategory.event,
-        0,3
+        0, 3
       )
       .subscribe((res) => {
         this.listEvent = res;
@@ -222,39 +242,33 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   getAllTraining(): void {
     this.trainingSubs = this.communityService
-      .getByIndustryAndCategory(this.loginService.getLoggedEmail()!,CommunityCategory.training,0,3)
+      .getByIndustryAndCategory(this.loginService.getLoggedEmail() !, CommunityCategory.training, 0, 3)
       .subscribe((res) => {
         this.listTraining = res;
       });
-  }
-
-  getPhotoThread(fileId: string): string{
-    if(fileId == null){
-      return DefaultPic.proFile;
-    } else{
-      return 'http://localhost:3333/files/'+fileId;
-    }
   }
 
   getAllThread(): void {
     this.threadHdrListSubscription = this.threadHdrService
       .getAllThreadHdr()
       .subscribe((result) => {
-        this.listThreadHdr = result;        
+        this.listThreadHdr = result;
       });
   }
 
   getAllThreadByUserLogged(): void {
     this.threadHdrListByUserLoggedSubscription = this.threadHdrService
-      .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail()!)
-      .subscribe((result) => {        
+      .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail() !)
+      .subscribe((result) => {
         this.listThreadHdrByUserLogged = result;
+        console.log(this.listThreadHdrByUserLogged);
+
       });
   }
 
   getAllThreadThatAreLikedByUserLogged(): void {
     this.threadLikedByUserLoggedSubs = this.threadHdrService
-      .getThreadThatAreLikedByUser(this.loginService.getLoggedEmail()!)
+      .getThreadThatAreLikedByUser(this.loginService.getLoggedEmail() !)
       .subscribe((res) => {
         this.listThreadHdrLike = res;
       });
@@ -262,17 +276,17 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   getAllThreadThatAreBookmarkedByUserLogged(): void {
     this.threadLikedByUserLoggedSubs = this.threadHdrService
-      .getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {        
+      .getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail() !)
+      .subscribe((res) => {
         this.listThreadHdrLike = res;
       });
   }
 
   onSubmit(): void {
-    if(this.pollingArray.length != 0){
+    if (this.pollingArray.length != 0) {
       this.createThreadHdr.options = this.pollingArray;
     }
-    
+
     this.threadSubscription = this.threadHdrService
       .insertThreadHdr(this.createThreadHdr)
       .subscribe(() => {
@@ -283,7 +297,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   likeThread(id: string, index: number): void {
     this.threadLikedSubs = this.likeThreadService
-      .likeThread(id, this.loginService.getLoggedEmail()!)
+      .likeThread(id, this.loginService.getLoggedEmail() !)
       .subscribe((res) => {
         if (res.isLiked == true && this.listThreadHdr.data![index].isLike == false) {
           this.listThreadHdr.data![index].isLike = true;
@@ -310,13 +324,13 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
             }
           }
         }
-        this.getAllThreadThatAreLikedByUserLogged();        
+        this.getAllThreadThatAreLikedByUserLogged();
       });
   }
 
   likeThreadLoggedUser(id: string, index: number): void {
     this.threadLikedSubs = this.likeThreadService
-      .likeThread(id, this.loginService.getLoggedEmail()!)
+      .likeThread(id, this.loginService.getLoggedEmail() !)
       .subscribe((res) => {
         if (res.isLiked == true && this.listThreadHdrByUserLogged.data![index].isLike == false) {
           this.listThreadHdrByUserLogged.data![index].isLike = true;
@@ -350,21 +364,23 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   bookmarkThread(id: string, index: number): void {
     this.bookmarkSubs = this.bookmarkService
-      .bookmarkThread(id, this.loginService.getLoggedEmail()!)
-      .subscribe((res) => {        
-        if(res.isBookmark == true){
-          this.store.dispatch(bookmarkAction({payload: {...this.listThreadHdr.data![index]}}))
+      .bookmarkThread(id, this.loginService.getLoggedEmail() !)
+      .subscribe((res) => {
+        if (res.isBookmark == true) {
+          this.store.dispatch(bookmarkAction({
+            payload: {
+              ...this.listThreadHdr.data![index]
+            }
+          }))
           this.listThreadHdr.data![index].isBookmark = true;
-          
-        } else {
-          this.store.dispatch(unbookmarkAction({ payload: id}))
-          this.listThreadHdr.data![index].isBookmark = false;
-        }        
-      });
-  }
 
-  onClick(id: string): void {
-    this.router.navigateByUrl(`/forum/${id}`);
+        } else {
+          this.store.dispatch(unbookmarkAction({
+            payload: id
+          }))
+          this.listThreadHdr.data![index].isBookmark = false;
+        }
+      });
   }
 
   onChangeFile(event: any): void {
@@ -375,11 +391,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     });
   }
 
-  checkPollling(event:any){
+  checkPollling(event: any) {
     const label = event.originalEvent.srcElement.innerText;
     console.log(label)
 
-    if(label == "Polling")
+    if (label == "Polling")
       this.polling = true;
     else this.polling = false;
     console.log(this.polling)
@@ -390,21 +406,28 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
 
   removeInputControl(index: number) {
-     this.pollingArray.splice(index,1);
+    this.pollingArray.splice(index, 1);
   }
 
   changeValue(index: number, event: any) {
-    const label = event.target.value;    
+    const label = event.target.value;
     this.pollingArray[index] = label;
     console.log(this.pollingArray[index]);
     console.log(index);
   }
 
-  toEditProfile(){
-    this.router.navigateByUrl('/profile')
-  }
-  
-  toEditThread(id:string){
-    this.router.navigateByUrl(`/forum/edit/${id}`);
+  ngOnDestroy(): void {
+    this.threadSubscription?.unsubscribe();
+    this.threadHdrListSubscription?.unsubscribe();
+    this.threadCategorySubs?.unsubscribe();
+    this.threadHdrListByUserLoggedSubscription?.unsubscribe();
+    this.profileThreadSubscription?.unsubscribe();
+    this.threadLikedSubs?.unsubscribe();
+    this.eventSubs?.unsubscribe();
+    this.trainingSubs?.unsubscribe();
+    this.threadLikedByUserLoggedSubs?.unsubscribe();
+    this.profileSubs?.unsubscribe();
+    this.threadBookmarkSubs?.unsubscribe();
+    this.pollingAnswerSubs?.unsubscribe();
   }
 }

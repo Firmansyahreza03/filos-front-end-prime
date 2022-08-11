@@ -10,8 +10,11 @@
       <div class="grid">
 
         <div class="col-12">
+          <div class="grid mt-4 justify-content-center" *ngIf="showSpinner==true">
+            <p-progressSpinner class="flex justify-content-center"></p-progressSpinner>
+          </div>
           <!-- Card Event -->
-          <div class="card">
+          <div class="card" *ngIf="showSpinner==false">
             <div class="container">
             
               <!-- header -->
@@ -58,8 +61,8 @@
                           <i class="pi pi-calendar color-purple" style="font-size: 15px"></i>
                         </div>
                         <div class="flex-1">
-                          <p class="text-800 font-medium text-sm"> {{communityData.data?.startAt}}</p>
-                          <p class="mt-2 text-800 font-medium text-sm"> {{communityData.data?.endAt}}</p>
+                          <p class="text-800 font-medium text-sm"> {{communityData.data?.startAt | date: 'medium' }}</p>
+                          <p class="mt-2 text-800 font-medium text-sm"> {{communityData.data?.endAt| date: 'medium'}}</p>
                         </div>
                       </div>
                     </div>

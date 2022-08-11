@@ -1,5 +1,6 @@
 import { formatDate } from "@angular/common";
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityReq } from "src/app/pojo/pojo-import";
@@ -19,12 +20,15 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
         private communityCategoriesService: CommunityCategoriesService, 
         private communityService:CommunityService,
         private industryService:IndustryService,
-        private fileService: FileService
+        private fileService: FileService,
+        private titleService:Title
         ){}
     
     communityCategorySubscription?:Subscription
     communitySubscription?:Subscription
     industrySubscription?:Subscription
+    title = 'Add Community';
+    showSpinner:boolean=false;
 
     listCommunityCategories: FindAllCommunityCategoryRes={
         data: [],
@@ -39,6 +43,7 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
     }
 
     ngOnInit(): void {
+        this.titleService.setTitle(this.title)
         this.createCommunity.isActive=true;
         this.communityCategorySubscription=this.communityCategoriesService.getAllCommunityCategory().subscribe((result)=>{
             this.listCommunityCategories=result;
@@ -63,17 +68,22 @@ export class CommunityAddComponent implements OnInit, OnDestroy{
 
         this.createCommunity.startAt = startDate;
         this.createCommunity.endAt = endDate;
-
-        this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
-            this.router.navigateByUrl("/communities")
-        })
+        setTimeout(()=>{
+            this.showSpinner=true; 
+            this.communitySubscription=this.communityService.insertCommunity(this.createCommunity).subscribe((_)=>{
+                this.router.navigateByUrl("/communities")
+            })
+        },500)
     }
 
     getTimeZone() {
         var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
         return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
     }
-    
+
+    back():void{
+        this.router.navigateByUrl('/communities')
+    }
     ngOnDestroy(): void {
        this.communitySubscription?.unsubscribe();
        this.communityCategorySubscription?.unsubscribe();

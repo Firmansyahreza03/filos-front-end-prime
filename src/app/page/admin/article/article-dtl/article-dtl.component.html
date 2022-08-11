@@ -12,13 +12,16 @@
     </div>
     <p-divider></p-divider>
     <div class="card-body">
-      <div class="text-center">
+      <div class="grid justify-content-center"  *ngIf="showSpinner==true">
+        <p-progressSpinner ></p-progressSpinner>
+    </div>
+      <div class="text-center"  *ngIf="showSpinner==false">
         <h1>{{dataRes.data.title}}</h1>
       </div>
-      <p-divider align="center">
+      <p-divider align="center"  *ngIf="showSpinner==false">
         <h3>{{dataRes.data.nameIndustry}}</h3>
       </p-divider>
-      <div class="grid">
+      <div class="grid"  *ngIf="showSpinner==false">
         <div class="col-12">
             <p-scrollPanel [style]="{width: '100%', height: '200px'}">
                 <p>{{dataRes.data.content}}</p>

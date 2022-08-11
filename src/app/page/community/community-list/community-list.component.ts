@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
@@ -16,6 +17,8 @@ export class CommunityListComponent implements OnInit {
   eventSubscription?: Subscription;
   trainingSubscription?: Subscription;
   idDetail!: string;
+  title = 'Community';
+  showSpinner!:boolean;
 
   listEvent: FindAllCommunityRes = {
     data: [],
@@ -29,21 +32,27 @@ export class CommunityListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private communityService: CommunityService
+    private communityService: CommunityService,
+    private titleService:Title
   ) {}
 
   ngOnInit(): void {
-      this.eventSubscription = this.communityService
-      .getAll(CommunityCategory.training)
-      .subscribe((result) => {
-        this.listEvent = result;
-      });
-
-    this.trainingSubscription = this.communityService
-      .getAll(CommunityCategory.event)
-      .subscribe((res) => {
-        this.listTraining = res;
-      });
+      this.showSpinner=true;  
+      this.titleService.setTitle(this.title)
+      setTimeout(()=>{
+        this.showSpinner=false;  
+        this.eventSubscription = this.communityService
+        .getAll(CommunityCategory.training)
+        .subscribe((result) => {
+          this.listEvent = result;
+        });
+  
+      this.trainingSubscription = this.communityService
+        .getAll(CommunityCategory.event)
+        .subscribe((res) => {
+          this.listTraining = res;
+        });
+      },500)
   }
 
   getCommPic(fileId: string): string {
