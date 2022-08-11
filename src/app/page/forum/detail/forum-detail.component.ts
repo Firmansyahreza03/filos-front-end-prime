@@ -70,6 +70,7 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
       .findByHdrId(this.idParam)
       .subscribe((result) => {
         this.threadDtlData = result;
+        this.countChat = 0;
         for (let i = 0; i < this.threadDtlData.data!.length; i++) {
           this.countChat++;
           this.userSubs = this.userService.findByUserId(this.threadDtlData.data![i].userId!).subscribe((res) => {

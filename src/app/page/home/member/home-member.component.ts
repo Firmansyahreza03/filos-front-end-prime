@@ -101,7 +101,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .subscribe((result) => {
         this.listThreadCategory = result;
       });
-    this.getProfile();
     this.showSpinner=true;
 
     setTimeout(()=>{
@@ -119,7 +118,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         })
       }
       this.getAllThread();
-    },2000)
+    })
   }
 
   resetForm(): InsertThreadHdrReq {
@@ -247,8 +246,10 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   getAllThreadByUserLogged(): void {
     this.threadHdrListByUserLoggedSubscription = this.threadHdrService
       .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail()!)
-      .subscribe((result) => {        
+      .subscribe((result) => {                
         this.listThreadHdrByUserLogged = result;
+        console.log(this.listThreadHdrByUserLogged);
+        
       });
   }
 
