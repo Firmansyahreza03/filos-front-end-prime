@@ -68,7 +68,7 @@ export class CommunityListComponent implements OnInit {
           this.listComm= res;
         });
 
-      },500)
+      });
   }
 
   getCommPic(fileId: string): string {
@@ -87,5 +87,6 @@ export class CommunityListComponent implements OnInit {
   ngOnDestroy(): void {
     this.eventSubscription?.unsubscribe();
     this.trainingSubscription?.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }
