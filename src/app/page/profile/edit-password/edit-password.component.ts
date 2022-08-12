@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 @Component({
     selector:'app-edit-password',
     templateUrl:'./edit-password.component.html',
-    styleUrls:['edit-password.component.css'],
+    styleUrls:['../profile.component.css']
 })
 export class EditPasswordComponent implements OnInit{
     password!:string
@@ -18,16 +18,5 @@ export class EditPasswordComponent implements OnInit{
         ){}
     ngOnInit(): void {
         this.titleService.setTitle(this.title)
-    }
-        
-    editPassword():void{
-        this.router.navigateByUrl('/profile/edit-password')
-    }
-    editProfile():void{
-        this.router.navigateByUrl('/profile')
-    }
-    logout():void{
-        localStorage.clear()
-        this.router.navigateByUrl('/login')
     }
 }

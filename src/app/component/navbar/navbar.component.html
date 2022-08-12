@@ -4,7 +4,7 @@
     </ng-template>    
     <ng-template pTemplate="end">
         <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()">   
-            <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar></button>
+            <p-avatar [image]="config.proImg!" size="large" shape="circle"></p-avatar></button>
     </ng-template>
 </p-menubar>
 <div class="layout-topbar-menu" [ngClass]="{'show':topMenuActive , 'hidden':!topMenuActive}">
@@ -16,7 +16,7 @@
               </button>
         </div>
         <div class="flex">
-            <button class="p-link layout-topbar-button" (click)="logout()">
+            <button class="p-link layout-topbar-button" (click)="logout()"  *ngIf="isLogin">
                 <i class="pi pi-sign-out text-sm font-semibold text-red-700"></i>
                 <span class="text-sm font-semibold text-red-700"> Log Out</span>
               </button>
