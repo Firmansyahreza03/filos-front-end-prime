@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="grid mt-2 md:mr-1 flex justify-content-end flex-wrap">
+  <div class="grid mt-2 md:mr-1 flex justify-content-end flex-wrap" *ngIf="isLogin">
     <div class="md:col-1 col-3">
       <button pButton pRipple type="submit" class="p-button-rounded p-button-sm  text-small bold"
         styleClass="p-button-sm text-center" icon="pi pi-plus" label="Add" routerLink="/communities/add"></button>
@@ -116,7 +116,7 @@
 
 
         <!-- My Schedule  // Event dan Training yang dia buat -->
-        <p-tabPanel header="My Schedule">
+        <p-tabPanel header="My Schedule" *ngIf="isLogin">
           <div class="grid flex flex-wrap row-gap-6">
             <div class="col-12">
 

@@ -100,8 +100,13 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   back(): void {
-    this.router.navigateByUrl('/home-member');
+    if(this.isLogin){
+      this.router.navigateByUrl('/home-member');
+    }else{
+      this.router.navigateByUrl('/home-landing');
+    }
   }
+
 
   ngOnDestroy(): void {
     this.hdrSubs?.unsubscribe();
