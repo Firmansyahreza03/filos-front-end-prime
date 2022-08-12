@@ -11,7 +11,7 @@ export class LandingComponent{
         public router: Router
         ){}
 
-    login():void{
-        this.router.navigateByUrl('/login')
+    getStarted():void{
+        this.router.navigateByUrl('/home-landing')
     }
 }

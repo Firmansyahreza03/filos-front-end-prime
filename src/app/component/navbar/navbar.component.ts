@@ -53,23 +53,40 @@ export class NavbarComponent implements OnInit {
   }
 
   initMenu():void{
-    this.items = [{
-      icon: 'pi pi-home',
-      label: 'Home',
-      routerLink: '/home-member'
-    },
-    {
-      label: 'Community',
-      routerLink: '/communities'
-    },
-    {
-      label: 'Article',
-      routerLink: '/articles'
-    },
-    {
-      label: 'To Admin',
-      routerLink: '/admin'
-    }];
+    if(this.isLogin){
+      this.items = [
+        {
+          icon: 'pi pi-home',
+          label: 'Home',
+          routerLink: '/home-member'
+          
+        },
+        {
+          label: 'Community',
+          routerLink: '/communities'
+        },
+        {
+          label: 'Article',
+          routerLink: '/articles'
+        }];
+    }else{
+      this.items = [
+        {
+          icon: 'pi pi-home',
+          label: 'Home',
+          routerLink: '/home-landing'
+          
+        },
+        {
+          label: 'Community',
+          routerLink: '/communities'
+        },
+        {
+          label: 'Article',
+          routerLink: '/articles'
+        }];
+    }
+  
   }
 
   logout(): void {

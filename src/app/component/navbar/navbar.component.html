@@ -3,10 +3,10 @@
         <img src="../../../assets/image/logo-filos-1.png" height="40" class="mr-2">
     </ng-template>  >   
     <ng-template pTemplate="end">
-        <button pButton pRipple type="button" label="Login" class="p-button-rounded  p-button-sm color-bg-yellow w-full text-small color-black bold 
-        font-bold" (click)="login()"></button>
-        <!-- <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()">   
-            <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar></button> -->
+        <button pButton pRipple type="button" label="Sign in" class="p-button-rounded  p-button-sm color-bg-yellow w-full text-small color-black bold 
+        font-bold" (click)="login()" *ngIf="!isLogin"></button>
+        <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()" *ngIf="isLogin">    
+            <p-avatar [image]="config.proImg!" size="large" shape="circle"></p-avatar></button>
     </ng-template>
 </p-menubar>
 <div class="layout-topbar-menu" [ngClass]="{'show':topMenuActive , 'hidden':!topMenuActive}">
