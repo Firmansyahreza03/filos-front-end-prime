@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppConfig } from '../api/appconfig';
 import { LoginReq, LoginRes } from '../pojo/pojo-import';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
+
   constructor(private http: HttpClient) {}
 
   login(data: LoginReq): Observable<LoginRes> {
@@ -41,10 +43,6 @@ export class LoginService {
     const data = this.getData()?.data.token;
     if (data) return data;
     return null;
-  }
-
-  clearData(): void {
-    localStorage.clear();
   }
 
   isLogin(): boolean {

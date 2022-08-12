@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/service/app.config.service';
 import { AppConfig } from 'src/app/api/appconfig';
 import { AppComponent } from '../../app.component';
-import { StyleClass } from 'primeng/styleclass';
 
 @Component({
     selector: 'admin-layout',
@@ -32,22 +31,19 @@ export class AdminLayoutComponent {
     public profileActive: boolean = false;
     public topMenuActive: boolean = false;
     public topMenuLeaving: boolean = false;
-    public theme?: string;
     config!: AppConfig;
 
     documentClickListener?: (() => void);
 
     menuClick: boolean = false;
     topMenuButtonClick: boolean = false;
-    configActive: boolean = false;
-    configClick: boolean = false;
     subscription?: Subscription;
     
     constructor(public renderer: Renderer2, public configService: ConfigService, public app:AppComponent) { }
 
     ngOnInit() {
         this.config = this.configService.config;
-        this.subscription = this.configService.configUpdate$.subscribe(config => this.config = config);
+        this.subscription = this.configService.onConfigUpdate.subscribe(config => this.config = config);
     }
 
     isStatic() {
@@ -79,11 +75,6 @@ export class AdminLayoutComponent {
                 }
             }
 
-            if (this.configActive && !this.configClick) {
-                this.configActive = false;
-            }
-
-            this.configClick = false;
             this.menuClick = false;
             this.topMenuButtonClick = false;
         });
@@ -141,10 +132,6 @@ export class AdminLayoutComponent {
 
     onMenuClick() {
         this.menuClick = true;
-    }
-
-    onConfigClick(event:any) {
-        this.configClick = true;
     }
 
     isDesktop() {

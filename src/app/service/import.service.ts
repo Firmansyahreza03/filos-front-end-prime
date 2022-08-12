@@ -13,14 +13,12 @@ import { IndustryService } from 'src/app/service/industry.service';
 import { FileService } from 'src/app/service/file.service';
 import { CommunityService } from 'src/app/service/community.service';
 import { BookmarkService } from './bookmark.service';
-import { MenuService } from './app.menu.service';
 import { ConfigService } from './app.config.service';
 import { MemberCommunityService } from './member-community.service'
 import { PollingService } from './polling.service'
 
 export {
   ConfigService,
-  MenuService,
   BookmarkService,
   CommunityService,
   CommunityCategoriesService,
