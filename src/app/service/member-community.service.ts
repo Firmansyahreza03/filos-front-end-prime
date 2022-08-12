@@ -27,14 +27,18 @@ export class MemberCommunityService {
         return this.http.get<FindAllMemberCommunityRes>(urlAPI);
     }
 
-    insert(data:InsertMemberCommunityReq): Observable<InsertRes> {
-        return this.http.post<InsertRes>("http://localhost:3333/community-members", data)
+    insert(data:InsertMemberCommunityReq): void {
+        this.http.post<InsertRes>("http://localhost:3333/community-members", data)
     }
     update(data : UpdateMemberCommunityReq) : Observable<UpdateRes>{
         return this.http.put<UpdateRes>('http://localhost:3333/community-members', data)
     }
     delete(id : string) : Observable<DeleteRes>{
         return this.http.delete<DeleteRes>(`http://localhost:3333/community-members/${id}`)
+    }
+
+    checkIsJoined(id: string): Observable<boolean>{
+        return this.http.get<boolean>(`http://localhost:3333/community-members/communities/${id}`)
     }
 
 }

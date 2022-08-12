@@ -22,7 +22,7 @@
                 <div class="md:col-6 col-12 justify-content-center">
                   <div class="image-content">
                     <div class="image-box mx-auto">
-                      <img [src]="getPhoto(communityData.data?.idFile!)" alt="" srcset=""
+                      <img [src]="getPhoto(communityData.idFile!)" alt="" srcset=""
                       class="event-pic">
                     </div>
                   </div>
@@ -30,7 +30,7 @@
                 <div class="md:col-6 col-12">
                   <div class="grid">
                     <div class="col-12">
-                      <p class="text-lg font-semibold">{{communityData.data?.title}}</p>
+                      <p class="text-lg font-semibold">{{communityData.title}}</p>
                     </div>
                   </div>
                   <div class="grid mt-3">
@@ -40,7 +40,7 @@
                           <i class="pi pi-users color-purple"  style="font-size: 15px"></i>
                         </div>
                         <div class="flex-1">
-                          <p class="text-800 font-medium text-sm"> {{communityData.data?.provider}}</p>
+                          <p class="text-800 font-medium text-sm"> {{communityData.provider}}</p>
                         </div>
                       </div>
                     </div>
@@ -51,7 +51,7 @@
                             pi-money-bill color-purple" style="font-size: 15px"></i>
                         </div>
                         <div class="flex-1">
-                          <p class="color-yellow font-semibold text-base"> {{communityData.data?.price | rupiahCurrency}}</p>
+                          <p class="color-yellow font-semibold text-base"> {{communityData.price | rupiahCurrency}}</p>
                         </div>
                       </div>
                     </div>
@@ -61,8 +61,8 @@
                           <i class="pi pi-calendar color-purple" style="font-size: 15px"></i>
                         </div>
                         <div class="flex-1">
-                          <p class="text-800 font-medium text-sm"> {{communityData.data?.startAt | date: 'medium' }}</p>
-                          <p class="mt-2 text-800 font-medium text-sm"> {{communityData.data?.endAt| date: 'medium'}}</p>
+                          <p class="text-800 font-medium text-sm"> {{communityData.startAt | date: 'medium' }}</p>
+                          <p class="mt-2 text-800 font-medium text-sm"> {{communityData.endAt| date: 'medium'}}</p>
                         </div>
                       </div>
                     </div>
@@ -72,7 +72,7 @@
                           <i class="pi pi-circle-fill color-purple" style="font-size: 12px"></i>
                         </div>
                         <div class="flex-1 align-items-center">
-                          <p class="text-800 font-medium text-sm">{{communityData.data?.location}}</p>
+                          <p class="text-800 font-medium text-sm">{{communityData.location}}</p>
                         </div>
                       </div>
                     </div>
@@ -83,16 +83,23 @@
               <!-- Content -->
               <div class="grid mt-1 flex flex-wrap justify-content-start row-gap-0">
                 <div class="col-12">
-                  <p class="text-sm">{{communityData.data?.desc}}</p>
+                  <p class="text-sm">{{communityData.desc}}</p>
                 </div>
               </div>
 
               <!-- Action -->
               <div class="grid mt-4 flex flex-wrap justify-content-end row-gap-0">
                 <div class="md:col-5 col-12">
-                  <button pButton pRipple type="submit"
+                  <button pButton pRipple type="submit" *ngIf="!isJoined"
                   class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
                   styleClass="p-button-sm text-center" label="Next to Payment >" (click)="toPayment()"></button>
+                </div>
+              </div>
+              <div class="grid mt-4 flex flex-wrap justify-content-end row-gap-0">
+                <div class="md:col-5 col-12">
+                  <button pButton pRipple type="button" *ngIf="isJoined"
+                  class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                  styleClass="p-button-sm text-center" label="You have joined this event/training" disabled></button>
                 </div>
               </div>
             </div>

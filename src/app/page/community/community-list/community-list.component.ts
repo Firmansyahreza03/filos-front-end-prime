@@ -42,13 +42,13 @@ export class CommunityListComponent implements OnInit {
       setTimeout(()=>{
         this.showSpinner=false;  
         this.eventSubscription = this.communityService
-        .getAll(CommunityCategory.training)
+        .getAll(CommunityCategory.event)
         .subscribe((result) => {
           this.listEvent = result;
         });
   
       this.trainingSubscription = this.communityService
-        .getAll(CommunityCategory.event)
+        .getAll(CommunityCategory.training)
         .subscribe((res) => {
           this.listTraining = res;
         });

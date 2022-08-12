@@ -1,6 +1,4 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
 import { LimitTimeReq } from "../pojo/pojo-import";
 
 @Injectable({
@@ -9,7 +7,7 @@ import { LimitTimeReq } from "../pojo/pojo-import";
 export class ReportService{
     mainUrl:string = "http://localhost:3333/report/"
 
-    constructor(private http: HttpClient){}
+    constructor(){}
 
     adminReportUserComm(data: LimitTimeReq):void{
         let url = this.mainUrl + "admin-user/?";

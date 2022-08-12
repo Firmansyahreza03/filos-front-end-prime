@@ -16,7 +16,7 @@ export interface DataCommunity {
 	idIndustry :string
 	nameIndustry :string
 
-	idFile ?:string
-	nameFile ?:string
-	extFile ?:string
+	idFile?:string
+	nameFile?:string
+	extFile?:string
 }
