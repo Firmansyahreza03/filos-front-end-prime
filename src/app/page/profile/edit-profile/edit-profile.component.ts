@@ -30,8 +30,14 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     version: 0
   };
   updateProfile: UpdateProfileReq = {
-    id: '',
-    version: 0
+    id : '',
+    fullName : '',
+    industryId : '',
+    companyName : '',
+    positionName : '',
+    fileName : '',
+    fileExt : '',
+    version : 0
   };
 
   constructor(
@@ -124,6 +130,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.getProfileData();
         this.step = 0;
+        this.config.proImg = 'http://localhost:3333/files/' + this.profileData!.fileId;
       })
   }
 
@@ -138,7 +145,8 @@ export class EditProfileComponent implements OnInit, OnDestroy {
         fileExt : '',
         version : 0
     };
-    
+    this.proPic = this.config.proImg;
+    this.getProfileData();
     this.step = 0;
   }
 }
