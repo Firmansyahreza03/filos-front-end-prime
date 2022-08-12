@@ -25,6 +25,7 @@ export class RightPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllTraining();
+    this.getAllEvent();
   }
 
   ngOnDestroy(): void {
