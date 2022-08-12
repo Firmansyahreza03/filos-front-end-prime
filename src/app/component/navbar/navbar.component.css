@@ -21,3 +21,16 @@
     width: fit-content;
 }
 
+.color-bg-yellow {
+    background: #DAA300;
+    border: none;
+  }
+  
+  .color-black {
+    color: black;
+  }
+  
+  .color-bg-yellow:hover {
+    background: #DAA300;
+    color: black;
+  }
