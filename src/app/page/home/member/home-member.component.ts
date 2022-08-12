@@ -115,8 +115,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         })
       }
       this.getAllThread();
-    },2000)
-  ) {}
+    })
+  }
 
   getPhotoCommun(fileId: string): string {
     if (fileId == null)  return DefaultPic.commFile;
@@ -150,34 +150,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   }
   onClick(id: string): void {
     this.router.navigateByUrl(`/forum/${id}`);
-  }
-
-  ngOnInit(): void {
-    this.threadCategorySubs = this.threadCategoryService
-      .getAllThreadCategory()
-      .subscribe((result) => {
-        this.listThreadCategory = result;
-      });
-    this.showSpinner = true;
-
-    setTimeout(() => {
-      this.showSpinner = false;
-      if (this.isLogin) {
-        this.createThreadHdr.isActive = true;
-        this.createThreadHdr.email = this.loginService.getLoggedEmail() !;
-        this.getAllThreadByUserLogged();
-        this.getAllEvent();
-        this.getAllTraining();
-        this.getAllThreadThatAreLikedByUserLogged();
-        this.getProfile();
-        this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail() !).subscribe((res) => {
-          this.store.dispatch(loadBookmarkAction({
-            payload: res.data!
-          }));
-        })
-      }
-      this.getAllThread();
-    })
   }
 
   chooseOption(hdrId: string, pollingId: string): void {
