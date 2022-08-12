@@ -94,12 +94,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     onSubmitProfilePic(): void {
-       
         this.registerSubscription = this.registerService.register(this.register).subscribe((res) => {
             this.router.navigateByUrl("/login");
             this.step = 4;
         });
     }
+
     onChangeFile(event: any): void {
         const file = event.target.files[0];
         this.fileService.uploadAsBase64(file).then((res) => {

@@ -2,116 +2,143 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { DefaultPic } from "src/app/constant/default-pic";
-import { DataIndustry, DataProfile, UpdateProfileReq } from "src/app/pojo/pojo-import";
-import { FileService } from "src/app/service/file.service";
-import { IndustryService } from "src/app/service/industry.service";
-import { UserService } from "src/app/service/user.service";
+import { AppConfig } from '../../../api/appconfig';
+import { DefaultPic } from "../../../constant/default-pic";
+import { DataIndustry, DataProfile, UpdateProfileReq } from "../../../pojo/pojo-import";
+import { ConfigService, FileService, IndustryService, UserService } from "../../../service/import.service";
 
 @Component({
-    selector:'app-edit-profile',
-    templateUrl:'./edit-profile.component.html',
-    styleUrls:['edit-profile.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['../profile.component.css']
 })
-export class EditProfileComponent implements OnInit, OnDestroy{
-    step: number = 0;
-    profileSubs? : Subscription;
-    updateProfileSubs?: Subscription;
-    industrySubs?: Subscription;
-    title = 'Edit Profile';
-    profileData: DataProfile = {
-        id: '',
-        isActive: false,
-        version: 0
-    };
-    industries?: DataIndustry[];
-    proPic?: string;
-    updateProfile: UpdateProfileReq = {
-        id: '',
-        version: 0
-    };
+export class EditProfileComponent implements OnInit, OnDestroy {
+  title = 'Edit Profile';
+  step: number = 0;
+  proPic ? : any;
+  config!: AppConfig;
 
-    constructor(
-        private router: Router,
-        private profileService: UserService,
-        private industryService: IndustryService,
-        private fileService: FileService,
-        private titleService:Title
-    ){}
+  profileSubs ? : Subscription;
+  updateProfileSubs ? : Subscription;
+  industrySubs ? : Subscription;
+  confiqSub ? : Subscription;
 
-    ngOnInit(): void {
-        this.titleService.setTitle(this.title)
-        this.getAllIndustry();
-        this.getProfileData();
+  industries: DataIndustry[] = [];
+  profileData: DataProfile = {
+    id: '',
+    isActive: false,
+    version: 0
+  };
+  updateProfile: UpdateProfileReq = {
+    id: '',
+    version: 0
+  };
+
+  constructor(
+    private profileService: UserService,
+    private industryService: IndustryService,
+    private fileService: FileService,
+    public configService: ConfigService,
+    private titleService: Title
+  ) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle(this.title);
+
+    this.config = this.configService.config;
+    this.confiqSub = this.configService.onConfigUpdate.subscribe(config => this.config = config);
+
+    this.getAllIndustry();
+    this.getProfileData();
+  }
+
+  ngOnDestroy(): void {
+    this.confiqSub?.unsubscribe();
+    this.profileSubs?.unsubscribe();
+    this.industrySubs?.unsubscribe();
+    this.updateProfileSubs?.unsubscribe();
+  }
+
+  findProPic(fileId: string | undefined): void {
+    if (!fileId) {
+      this.proPic = DefaultPic.proFile;
+    } else {
+      this.proPic = 'http://localhost:3333/files/' + this.profileData!.fileId;
     }
+  }
 
-    ngOnDestroy(): void {
-        this.profileSubs?.unsubscribe();
-        this.industrySubs?.unsubscribe();
-        this.updateProfileSubs?.unsubscribe();
-    }
+  getProfileData() {
+    this.profileSubs = this.profileService.findByUserLogged()
+      .subscribe((result) => {
+        this.profileData = result.data!;
+        console.log(result.data);
+        this.findProPic(this.profileData?.fileId);
+      })
+  }
 
-    changeProPic(fileId: string | undefined): void {
-        if(!fileId) {
-            this.proPic = DefaultPic.proFile;
-        } else {
-            this.proPic = 'http://localhost:3333/files/'+this.profileData!.fileId;
-        }
-    } 
+  getAllIndustry() {
+    this.industrySubs = this.industryService.getAllIndustry()
+      .subscribe((result) => {
+        this.industries = result.data;
+      })
+  }
 
-    getProfileData() {
-        this.profileSubs = this.profileService.findByUserLogged().subscribe((res)=>{
-            this.profileData = res.data!;
-            this.changeProPic(this.profileData?.fileId);
-        })
-    }
+  editClick(): void {
+    this.step = 1;
+  }
 
-    getAllIndustry() {
-        this.industrySubs = this.industryService.getAllIndustry().subscribe((res) => {
-            this.industries = res.data;
-        })
-    }
-       
-    editClick():void{
-        this.step=1;
-    }
+  onChangeFile(event: any): void {
+    const file = event.target.files[0];
 
-    editPassword():void{
-        this.router.navigateByUrl('/profile/edit-password')
-    }
-
-    editProfile():void{
-        this.router.navigateByUrl('/profile')
-    }
-
-    logout():void{
-        localStorage.clear()
-        this.router.navigateByUrl('/login')
-    }
-
-    onChangeFile(event: any): void {
-        const file = event.target.files[0];
-        this.fileService.uploadAsBase64(file).then((res) => {
-          this.updateProfile.fileName = res[0];
-          this.updateProfile.fileExt = res[1];
-        });
+    if (!file) {
+      this.proPic = this.config.proImg;
+      this.updateProfile.fileName = undefined;
+      this.updateProfile.fileExt = undefined;
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file)
+      reader.onload = (event) => {
+        console.log(event)
+        this.proPic = event.target?.result;
       }
-
-    submitUpdate(): void{
-        this.updateProfile.companyName = this.profileData.companyName;
-        this.updateProfile.fullName = this.profileData.fullName;
-        this.updateProfile.id = this.profileData.id;
-        this.updateProfile.industryId = this.profileData.industryId;
-        this.updateProfile.positionName = this.profileData.positionName;
-        this.updateProfile.version = this.profileData.version;
-        
-        this.updateProfileSubs = this.profileService.update(this.updateProfile).subscribe((res)=>{
-            this.getProfileData();
-            this.step = 0;
-        })
+      this.upload(file);
     }
+  }
 
-    cancel(): void{
+  upload(file: any): void {
+    this.fileService.uploadAsBase64(file).then((res) => {
+      this.updateProfile.fileName = res[0];
+      this.updateProfile.fileExt = res[1];
+    });
+  }
+
+  submitUpdate(): void {
+    this.updateProfile.id = this.profileData.id;
+    this.updateProfile.fullName = this.profileData.fullName;
+    this.updateProfile.industryId = this.profileData.industryId;
+    this.updateProfile.companyName = this.profileData.companyName;
+    this.updateProfile.positionName = this.profileData.positionName;
+    this.updateProfile.version = this.profileData.version;
+
+    this.updateProfileSubs = this.profileService.update(this.updateProfile)
+      .subscribe(() => {
+        this.getProfileData();
         this.step = 0;
-    }
+      })
+  }
+
+  cancel(): void {
+    this.updateProfile = {
+        id : '',
+        fullName : '',
+        industryId : '',
+        companyName : '',
+        positionName : '',
+        fileName : '',
+        fileExt : '',
+        version : 0
+    };
+    
+    this.step = 0;
+  }
 }

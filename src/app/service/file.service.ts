@@ -14,7 +14,7 @@ export class FileService {
     findById(id : string) : Observable<FindFileRes>{
       return this.http.get<FindFileRes>(`http://localhost:3333/files/${id}`)
     }
-
+    
     uploadAsBase64(file: any) : Promise<[string, string]> {
         return new Promise<[string, string]>((resolve, reject) => {
           const fileName = (file.name as string)

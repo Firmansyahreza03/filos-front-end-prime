@@ -1,12 +1,10 @@
 <div class="layout-wrapper" [ngClass]="{
                                 'layout-overlay':isOverlay(),
                                 'layout-static':isStatic(),
-                                'layout-theme-light':!config.dark,
-                                'layout-theme-dark':config.dark,
+                                'layout-theme-light':true,
                                 'layout-overlay-sidebar-active': overlayMenuActive,
                                 'layout-static-sidebar-inactive': staticMenuInactive,
-                                'layout-mobile-sidebar-active':menuActiveMobile,
-                                'p-ripple-disabled': !config.ripple
+                                'layout-mobile-sidebar-active':menuActiveMobile
                             }">
     <admin-nav></admin-nav>
     <div class="layout-sidebar">
