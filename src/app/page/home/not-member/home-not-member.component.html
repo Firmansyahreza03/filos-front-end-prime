@@ -35,8 +35,7 @@
                     {{datas.threadName}}
                   </span>
                 </div>
-                <div class="col-12 surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis content-thread"
-                  style="width:1000px">
+                <div class="col-12 surface-overlay white-space-nowrap overflow-hidden text-overflow-ellipsis content-thread title">
                   <p class="text-small" *ngIf="datas.threadContent!.length > 100">{{readMoreContent(datas.threadContent!)}} <a  (click)="onClick(datas.id)" class="font-semibold click"> continue read</a></p>
                   <p class="text-small" *ngIf="datas.threadContent!.length <= 100">{{datas.threadContent!}} </p>
                 </div>
