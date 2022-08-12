@@ -40,7 +40,8 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
     title: '',
     version: 0,
   };
-  
+
+  isLogin: boolean = this.loginService.isLogin();
   showSpinner!:boolean;
   isJoined?: boolean;
 
@@ -74,20 +75,23 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
         this.idParam = resultTmp.id;  
     });
 
-    this.memberCommSubs = this.memberCommunityService
-      .checkIsJoined(this.idParam)
-      .subscribe((res)=>{
-          this.isJoined = res;
-          console.log(this.isJoined);    
-    })    
+    if(this.isLogin){
+      this.memberCommSubs = this.memberCommunityService
+        .checkIsJoined(this.idParam)
+        .subscribe((res)=>{
+            this.isJoined = res;
+            console.log(this.isJoined);    
+          })    
+      this.getAllEvent();
+      this.getAllTraining();
+    }
 
     this.showSpinner=true;
     setTimeout(()=>{
       this.showSpinner=false;
       this.getDtlData();
     })
-    this.getAllEvent();
-    this.getAllTraining();
+
     
   }
 
