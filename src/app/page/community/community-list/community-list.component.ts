@@ -17,10 +17,16 @@ import { LoginService } from 'src/app/service/login.service';
 export class CommunityListComponent implements OnInit {
   eventSubscription?: Subscription;
   trainingSubscription?: Subscription;
+  subscription?: Subscription;
   idDetail!: string;
   title = 'Community';
   showSpinner!:boolean;
   isLogin:boolean=this.loginService.isLogin();
+
+  listComm: FindAllCommunityRes = {
+    data: [],
+    count: 0,
+  };
 
   listEvent: FindAllCommunityRes = {
     data: [],
@@ -55,6 +61,13 @@ export class CommunityListComponent implements OnInit {
         .subscribe((res) => {
           this.listTraining = res;
         });
+        
+      this.subscription = this.communityService
+        .getAllCommunityByPrincipal()
+        .subscribe((res) => {
+          this.listComm= res;
+        });
+
       },500)
   }
 

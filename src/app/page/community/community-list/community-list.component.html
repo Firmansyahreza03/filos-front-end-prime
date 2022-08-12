@@ -124,36 +124,36 @@
               <div class="card">
 
                 <!-- schedule -->
-              <div *ngFor="let training of listTraining.data" >
+              <div *ngFor="let comm of listComm.data" >
               <div class="container">
                 <div class="grid ">
                   <div class="md:col-3 col-12">
                     <div class="image-content">
                       <div class="image-box mx-auto">
-                        <img [src]="getCommPic(training.idFile!)" alt="" srcset="">
+                        <img [src]="getCommPic(comm.idFile!)" alt="" srcset="">
                       </div>
                     </div>
                   </div>
                   <div class="md:col-9 col-12">
                     <div class="grid">
                         <div class="col-12">
-                          <span class="bold black text-base title">{{training.title}}</span>
+                          <span class="bold black text-base title">{{comm.title}}</span>
                         </div>
                         <div class="col-12">
                           <span class="bold-medium black text-sm"> <i class="pi pi-users color-purple"
-                            style="font-size: 1rem"></i> {{training.provider}}</span>
+                            style="font-size: 1rem"></i> {{comm.provider}}</span>
                         </div>
                         <div class="col-12">
                           <div class="grid">
                             <div class="col-12 pb-0">
                               <i class="pi pi-calendar color-purple" style="font-size: 12px"></i>
-                              <span class="black text-sm"> {{training.startAt | date: 'medium'}} s/d {{training.endAt | date: 'medium'}}</span>
+                              <span class="black text-sm"> {{comm.startAt | date: 'medium'}} s/d {{comm.endAt | date: 'medium'}}</span>
                             </div>
                           </div>
                         </div>
                         <div class="col-12">
                           <span class="black text-sm"> <i class="pi pi-circle-fill color-purple"
-                            style="font-size: 12px"></i> {{training.location}}</span>
+                            style="font-size: 12px"></i> {{comm.location}}</span>
                         </div>
                       </div>
                   </div>

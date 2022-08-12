@@ -19,7 +19,10 @@ export class CommunityService{
         return this.http.get<FindAllCommunityRes>('http://localhost:3333/communities')
     }
 
-    
+    getAllCommunityByPrincipal():Observable<FindAllCommunityRes>{
+        return this.http.get<FindAllCommunityRes>('http://localhost:3333/communities/byLogUser')
+    }
+
     getAll(code?:string | null, query?: string | null, startPage?: number | null, maxPage?: number | null):Observable<FindAllCommunityRes> {
         let url = this.mainUrl+"?";
         if(code){
