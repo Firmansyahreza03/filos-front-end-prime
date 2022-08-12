@@ -1,3 +1,4 @@
+import { verificationUserReq } from './user/user-verification-req';
 import { LimitTimeReq } from './report/limit-time-req';
 import { ReportPaymentByCommunityRes } from './report/report-payment-by-community-res';
 import { ReportUserByCommunityRes } from "./report/report-user-by-community-res";
@@ -136,7 +137,7 @@ import { RegisUserReq } from "./user/regis-user-req";
 
 export {
   DeleteRes, ErorRes, InsertRes, UpdateRes, InsertResData, UpdateResData,
-  LoginReq, LoginRes, GeneratedCode,
+  LoginReq, LoginRes, GeneratedCode, verificationUserReq,
   DataFile, FindFileRes, FindAllFileRes, InsertFileReq, UpdateFileReq,
   DataRole, FindRoleRes, FindAllRoleRes, InsertRoleReq, UpdateRoleReq,
   DataArticle, FindArticleRes, FindAllArticleRes, InsertArticleReq, UpdateArticleReq,
