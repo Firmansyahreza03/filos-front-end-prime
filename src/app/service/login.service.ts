@@ -51,4 +51,10 @@ export class LoginService {
     const res: boolean = this.getData() ? true : false;
     return res;
   }
+
+  getRefreshToken(): string | null {
+    const data = this.getData()?.data.refreshToken;
+    if(data) return data;
+    return null;
+  }
 }
