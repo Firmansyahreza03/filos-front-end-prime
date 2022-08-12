@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from 'primeng/api';
 import { Subscription } from "rxjs";
-import { DefaultPic } from "src/app/constant/default-pic";
-import { LoginService } from "src/app/service/login.service";
-import { UserService } from "src/app/service/user.service";
+import { ConfigService, LoginService, UserService } from "../../service/import.service";
+import { AppConfig } from "../../api/appconfig";
+import { DefaultPic } from "../../constant/default-pic";
 
 @Component({
   selector: 'app-navbar',
@@ -14,62 +14,95 @@ import { UserService } from "src/app/service/user.service";
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
-  subscribtion?: Subscription;
-  proPic!: string;
   topMenuActive: boolean = false
   isLogin?: boolean = this.loginService.isLogin();
-  
+  config!: AppConfig;
+  subscription?: Subscription;
 
   constructor(
     public router: Router,
     private loginService: LoginService,
     private userService: UserService,
+    public configService: ConfigService,
   ) { }
 
+  
   findPic() {
     const logUser = this.loginService.getLoggedEmail();
     if (logUser != null) {
-      this.subscribtion = this.userService.findByEmail(logUser)
+      this.subscription = this.userService.findByEmail(logUser)
         .subscribe(result => {
           if (result.data?.fileId != null) {
-            this.proPic = 'http://localhost:3333/files/' + result.data?.fileId;
+            this.config.proImg = 'http://localhost:3333/files/' + result.data?.fileId;
           } else {
-            this.proPic = DefaultPic.proFile;
+            this.config.proImg = DefaultPic.proFile;
           }
         })
     }
   }
-  ngOnInit() {
-    this.items = [{
-      icon: 'pi pi-home',
-      label: 'Home',
-      routerLink: '/home-member'
-    },
-    {
-      label: 'Community',
-      routerLink: '/communities'
-    },
-    {
-      label: 'Article',
-      routerLink: '/articles'
-    },
-    {
-      label: 'To Admin',
-      routerLink: '/admin'
-    }];
+
+  ngOnInit(): void {
+    this.config = this.configService.config;
+    this.subscription = this.configService.onConfigUpdate.subscribe(config => this.config = config);
     this.findPic();
+    this.initMenu();
   }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
+  initMenu():void{
+    if(this.isLogin){
+      this.items = [
+        {
+          icon: 'pi pi-home',
+          label: 'Home',
+          routerLink: '/home-member'
+          
+        },
+        {
+          label: 'Community',
+          routerLink: '/communities'
+        },
+        {
+          label: 'Article',
+          routerLink: '/articles'
+        }];
+    }else{
+      this.items = [
+        {
+          icon: 'pi pi-home',
+          label: 'Home',
+          routerLink: '/home-landing'
+          
+        },
+        {
+          label: 'Community',
+          routerLink: '/communities'
+        },
+        {
+          label: 'Article',
+          routerLink: '/articles'
+        }];
+    }
+  
+  }
+
   logout(): void {
-    localStorage.clear()
-    this.router.navigateByUrl('/login')
+    this.config.proImg = DefaultPic.proFile;
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 
   login(): void{
     this.router.navigateByUrl('/login')
   }
+
   settings(): void {
     this.router.navigateByUrl('/profile')
   }
+
   showNav(): void {
     if (this.topMenuActive == false) {
       this.topMenuActive = true

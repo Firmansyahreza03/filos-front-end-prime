@@ -91,6 +91,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.loginService.getRefreshToken());
+    
     this.titleService.setTitle(this.title)
     this.threadCategorySubs = this.threadCategoryService
     .getAllThreadCategory()
