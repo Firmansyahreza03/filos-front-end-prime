@@ -1,3 +1,3 @@
 export interface AppConfig {
-    proImg: string;
+    proImg: any;
 }

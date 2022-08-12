@@ -55,7 +55,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     this.confiqSub = this.configService.onConfigUpdate.subscribe(config => this.config = config);
 
     this.getAllIndustry();
-    this.getProfileData();
+    this.getProfileData(true);
   }
 
   ngOnDestroy(): void {
@@ -73,12 +73,12 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  getProfileData() {
+  getProfileData(init:boolean) {
     this.profileSubs = this.profileService.findByUserLogged()
       .subscribe((result) => {
         this.profileData = result.data!;
         console.log(result.data);
-        this.findProPic(this.profileData?.fileId);
+        if(init) this.findProPic(this.profileData?.fileId);
       })
   }
 
@@ -104,7 +104,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       const reader = new FileReader();
       reader.readAsDataURL(file)
       reader.onload = (event) => {
-        console.log(event)
         this.proPic = event.target?.result;
       }
       this.upload(file);
@@ -128,7 +127,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
 
     this.updateProfileSubs = this.profileService.update(this.updateProfile)
       .subscribe(() => {
-        this.getProfileData();
+        this.getProfileData(false);
         this.step = 0;
         this.config.proImg = 'http://localhost:3333/files/' + this.profileData!.fileId;
       })
@@ -146,7 +145,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
         version : 0
     };
     this.proPic = this.config.proImg;
-    this.getProfileData();
+    this.getProfileData(false);
     this.step = 0;
   }
 }

@@ -16,9 +16,15 @@ import { CommunityService } from 'src/app/service/community.service';
 export class CommunityListComponent implements OnInit {
   eventSubscription?: Subscription;
   trainingSubscription?: Subscription;
+  subscription?: Subscription;
   idDetail!: string;
   title = 'Community';
   showSpinner!:boolean;
+
+  listComm: FindAllCommunityRes = {
+    data: [],
+    count: 0,
+  };
 
   listEvent: FindAllCommunityRes = {
     data: [],
@@ -52,6 +58,13 @@ export class CommunityListComponent implements OnInit {
         .subscribe((res) => {
           this.listTraining = res;
         });
+        
+      this.subscription = this.communityService
+        .getAllCommunityByPrincipal()
+        .subscribe((res) => {
+          this.listComm= res;
+        });
+
       },500)
   }
 
