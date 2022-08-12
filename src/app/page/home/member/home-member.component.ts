@@ -117,7 +117,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         })
       }
       this.getAllThread();
-    })
+    },1000)
   }
 
   getPhotoCommun(fileId: string): string {
