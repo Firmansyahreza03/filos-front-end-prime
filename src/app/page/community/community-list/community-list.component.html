@@ -1,8 +1,12 @@
 <div class="container">
-  <div class="grid mt-2 flex justify-content-end flex-wrap">
+  <div class="grid mt-2 md:mr-1 flex justify-content-end flex-wrap">
     <div class="md:col-1 col-3">
-      <button pButton pRipple type="submit" class="p-button-rounded p-button-sm  w-full text-small bold"
+      <button pButton pRipple type="submit" class="p-button-rounded p-button-sm  text-small bold"
         styleClass="p-button-sm text-center" icon="pi pi-plus" label="Add" routerLink="/communities/add"></button>
+    </div>
+    <div class="md:col-1 col-3">
+      <button pButton pRipple type="submit" class="p-button-rounded p-button-secondary p-button-sm text-small bold"
+        styleClass="p-button-sm text-center" icon="pi pi-flag" label="Report" routerLink="/communities/report"></button>
     </div>
   </div>
   <div class="grid">

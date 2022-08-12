@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CommunityAddComponent } from "./community-add/community-add.component";
 import { CommunityDetailComponent } from "./community-detail/community-detail.component";
 import { CommunityListComponent } from "./community-list/community-list.component";
+import { ReportYourCommunityComponent } from "./report/report-your-community.component";
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
     {
         path:'add',
         component: CommunityAddComponent
+    },
+    {
+        path:'report',
+        component: ReportYourCommunityComponent
     }
 ]
 

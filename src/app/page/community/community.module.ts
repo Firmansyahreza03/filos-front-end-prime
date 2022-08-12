@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { CommunityAddComponent } from "./community-add/community-add.component";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { SharedModule } from "src/app/component/shared.module";
+import { ReportYourCommunityComponent } from "./report/report-your-community.component";
 @NgModule({
     imports: [
         CommunityRouting,
@@ -41,11 +42,13 @@ import { SharedModule } from "src/app/component/shared.module";
         CommunityListComponent,
         CommunityDetailComponent,
         CommunityAddComponent,
+        ReportYourCommunityComponent
     ],
     exports: [
         CommunityListComponent,
         CommunityDetailComponent,
-        CommunityAddComponent
+        CommunityAddComponent,
+        ReportYourCommunityComponent
     ]
 })
 export class CommunityModule{
