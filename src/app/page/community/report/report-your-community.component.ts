@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { LimitTimeReq } from "src/app/pojo/pojo-import";
+import { LoginService } from "src/app/service/login.service";
 import { ReportService } from "src/app/service/report.service";
 
 @Component({
@@ -20,7 +21,8 @@ export class ReportYourCommunityComponent implements OnInit{
     constructor(
         private router: Router,
         private service: ReportService,
-    private confirmationService: ConfirmationService
+        private loginService: LoginService,
+        private confirmationService: ConfirmationService
     ){}
 
 
@@ -35,7 +37,7 @@ export class ReportYourCommunityComponent implements OnInit{
         this.router.navigateByUrl('/communities')
     }
 
-    confirimation(chose:number): void {
+    confirmation(chose:number): void {
         this.confirmationService.confirm({
           message: 'Do you sure want to download this file?',
           header: 'Download file',
@@ -52,7 +54,7 @@ export class ReportYourCommunityComponent implements OnInit{
         const endDate = formatDate(this.req.endAt, `yyyy-MM-dd`, 'en')
         this.req.startAt = startDate;
         this.req.endAt = endDate;
-        if(chose == 1 ) this.service.adminReportUserComm(this.req);
-        if(chose == 2 ) this.service.adminReportIncomeComm(this.req);
+        if(chose == 1 ) this.service.reportUserComm(this.req, this.loginService.getRefreshToken()!);
+        if(chose == 2 ) this.service.reportIncomeComm(this.req, this.loginService.getRefreshToken()!);
       }
 }
