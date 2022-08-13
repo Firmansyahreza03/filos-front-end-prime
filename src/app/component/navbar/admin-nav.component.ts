@@ -30,7 +30,7 @@ export class AdminNavComponent implements OnInit, OnDestroy {
     private logoutService: LogoutService,
     private router: Router) {}
 
-    logout(): void {
+    logOut(): void {
       this.config.proImg = DefaultPic.proFile;
       const clearToken=this.loginService.getRefreshToken()
       this.logoutService.updateUserLogged(this.logoutReq)

@@ -80,7 +80,6 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
         .checkIsJoined(this.idParam)
         .subscribe((res)=>{
             this.isJoined = res;
-            console.log(this.isJoined);    
           })    
       this.getAllEvent();
       this.getAllTraining();

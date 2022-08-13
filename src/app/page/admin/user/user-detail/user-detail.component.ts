@@ -30,7 +30,6 @@ export class UserDetailComponent {
     this.activatedRoute.params.subscribe(result => {
       const resultTemp: any = result;
       this.idParam = resultTemp.id;
-      console.log(this.idParam);
       this.subscription = this.mainService.findById(this.idParam)
         .subscribe(result => {
           this.res=result;

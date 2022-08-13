@@ -106,7 +106,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       const reader = new FileReader();
       reader.readAsDataURL(file)
       reader.onload = (event) => {
-        console.log(event)
         this.proPic = event.target?.result;
       }
       this.upload(file);
