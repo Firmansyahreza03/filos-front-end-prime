@@ -10,7 +10,7 @@ import { DefaultPic } from "../../constant/default-pic";
 @Component({
   selector: 'admin-nav',
   templateUrl: './admin-nav.component.html',
-  styleUrls: ['../../../assets/sass/sakai.scss']
+  styleUrls: ['../../../assets/sass/admin.scss']
 })
 export class AdminNavComponent implements OnInit, OnDestroy {
 

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { DeleteRes } from "../pojo/delete-res";
 import { InsertRes } from "../pojo/insert-res";
-import { FindAllProfileRes, FindProfileRes, InsertProfileReq, UpdateProfileReq } from "../pojo/pojo-import";
+import { ChangePassReq, FindAllProfileRes, FindProfileRes, InsertProfileReq, UpdateProfileReq } from "../pojo/pojo-import";
 import { UpdateRes } from "../pojo/update-res";
 
 @Injectable({
@@ -51,5 +51,8 @@ export class UserService{
 
     findByUserId(id : string): Observable<FindProfileRes> {
         return this.http.get<FindProfileRes>(`http://localhost:3333/users/user-id/${id}`)
+    }
+    updatePass(data : ChangePassReq) : Observable<UpdateRes>{
+        return this.http.put<UpdateRes>('http://localhost:3333/users/changepass', data)
     }
 }
