@@ -68,7 +68,6 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   findDataChat(): void {
-    console.log(this.idParam)
     this.dtlSubs = this.threadDtlService
       .findByHdrId(this.idParam)
       .subscribe((result) => {
@@ -88,7 +87,6 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
             else
               this.threadDtlData.data![i].proPic = DefaultPic.proFile;
           })
-          console.log(this.threadDtlData)
         }
       });
   }

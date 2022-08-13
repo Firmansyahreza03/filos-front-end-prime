@@ -23,8 +23,6 @@ export class UserService{
     getAll( startPage?: number, maxPage?: number, query?: string): Observable<FindAllProfileRes> {
         let urlAPI = `http://localhost:3333/users?`;
         if(startPage != undefined && maxPage){
-            console.log(startPage)
-            console.log(maxPage)
             urlAPI = urlAPI+`&startPage=${startPage}`+`&maxPage=${maxPage}`
         }
         if(query ){

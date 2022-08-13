@@ -66,10 +66,8 @@ export class FormChatComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    console.log(this.req)
     this.subs = this.threadDtlService.insert(this.req)
-      .subscribe((res) => {
-        console.log(res)
+      .subscribe(() => {
         this.threadDtl.findDataChat();
       })
   }

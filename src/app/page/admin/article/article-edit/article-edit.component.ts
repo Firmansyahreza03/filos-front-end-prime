@@ -63,10 +63,8 @@ export class ArticleEditComponent {
       this.activatedRoute.params.subscribe(result => {
         const resultTemp: any = result;
         this.idParam = resultTemp.id;
-        console.log(this.idParam);
         this.subscription = this.service.findById(this.idParam)
           .subscribe(result => {
-            console.log(result);
             this.req.id = result.data?.id;
             this.req.version = result.data?.version;
             this.req.isActive = result.data?.isActive;

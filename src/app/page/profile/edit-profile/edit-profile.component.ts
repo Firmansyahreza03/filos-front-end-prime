@@ -77,7 +77,6 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     this.profileSubs = this.profileService.findByUserLogged()
       .subscribe((result) => {
         this.profileData = result.data!;
-        console.log(result.data);
         if(init) this.findProPic(this.profileData?.fileId);
       })
   }
