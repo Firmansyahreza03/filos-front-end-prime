@@ -102,8 +102,8 @@ export class NavbarComponent implements OnInit {
     const clearToken=this.loginService.getRefreshToken()
     this.logoutService.updateUserLogged(this.logoutReq)
     this.logoutService.deleteRefreshToken(clearToken!)
-    // localStorage.clear();
-    // this.router.navigateByUrl('/login');
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
 
   login(): void{

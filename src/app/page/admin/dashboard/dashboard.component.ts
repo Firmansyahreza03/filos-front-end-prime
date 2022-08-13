@@ -4,7 +4,7 @@ import { ArticleService, CommunityService, ThreadHdrService, UserService } from 
 
 @Component({
     templateUrl: './dashboard.component.html',
-    styleUrls: ['../../../../assets/sass/sakai.scss']
+    styleUrls: ['../../../../assets/sass/admin.scss']
 })
 export class DashboardComponent implements OnInit {
     subscription?: Subscription;

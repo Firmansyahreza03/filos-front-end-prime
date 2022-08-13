@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
 import { DefaultPic } from 'src/app/constant/default-pic';
@@ -12,6 +13,7 @@ import { LoginService } from 'src/app/service/login.service';
   selector: 'app-community-list',
   templateUrl: './community-list.component.html',
   styleUrls: ['community-list.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 
 export class CommunityListComponent implements OnInit {

@@ -20,7 +20,7 @@ import { AppComponent } from '../../app.component';
             transition('hidden => visible', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
     ],
-    styleUrls: ['../../../assets/sass/sakai.scss']
+    styleUrls: ['../../../assets/sass/admin.scss']
 })
 export class AdminLayoutComponent {
 
