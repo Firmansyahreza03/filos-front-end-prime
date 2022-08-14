@@ -153,7 +153,7 @@
                         </div>
                         <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
                           <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
-                            styleClass="p-button-sm">{{polling.optionName}}</button>
+                            styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                         </div>
                       </div>
                       <div class="flex column-gap-5">
@@ -236,7 +236,7 @@
                       </div>
                       <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
                         <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
-                          styleClass="p-button-sm">{{polling.optionName}}</button>
+                          styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                       </div>
                     </div>
                     <div class="flex column-gap-5">
@@ -419,7 +419,7 @@
                           </div>
                           <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
                             <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
-                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                              styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                           </div>
                         </div>
                         <div class="flex column-gap-5">
@@ -504,7 +504,7 @@
                           </div>
                           <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
                             <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
-                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                              styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                           </div>
                         </div>
                         <div class="flex column-gap-5">
@@ -595,7 +595,7 @@
                           </div>
                           <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdrLike.isVoted">
                             <button *ngFor="let polling of threadHdrLike.pollingHdr.option; let i=index" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdrLike.isVoted"
-                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                              styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                           </div>
                         </div>
                         <div class="flex column-gap-5">
@@ -666,7 +666,7 @@
                           </div>
                           <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdrLike.isVoted">
                             <button *ngFor="let polling of threadHdrLike.pollingHdr.option; let i=index" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdrLike.isVoted"
-                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                              styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                           </div>
                         </div>
                         <div class="flex column-gap-5">
@@ -737,7 +737,7 @@
                           </div>
                           <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
                             <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
-                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                              styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
                           </div>
                         </div>
                         <div class="flex column-gap-5">
