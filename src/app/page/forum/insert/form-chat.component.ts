@@ -3,15 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DefaultPic } from 'src/app/constant/default-pic';
 import {
-  FindAllThreadDtlRes,
-  FindThreadDtlRes,
-  FindThreadHdrRes,
   InsertThreadDtlReq,
 } from 'src/app/pojo/pojo-import';
 import { 
   LoginService, 
   ThreadDtlService, 
-  ThreadHdrService, 
   UserService
 } from 'src/app/service/import.service';
 import { ForumDetailComponent } from '../detail/forum-detail.component';
@@ -70,6 +66,8 @@ export class FormChatComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.threadDtl.findDataChat();
       })
+
+      this.req.threadComment = ""
   }
 
   back(): void {

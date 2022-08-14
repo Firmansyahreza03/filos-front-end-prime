@@ -5,4 +5,5 @@ export interface DataPollingOption {
 	
     pollingId:string
 	optionName:string
+    countPoll: number
 }

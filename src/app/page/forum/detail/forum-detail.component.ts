@@ -50,10 +50,14 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
         this.idParam = resultTmp.id;
 
         this.hdrSubs = this.threadHdrService
-          .findThreadHdrById(this.idParam)
+          .findThreadHdrById(this.idParam, this.loginService.getLoggedEmail()!)
           .subscribe((result) => {
             if (result.data == null) {
-              this.router.navigateByUrl('/payment');
+              if(this.isLogin){
+                this.router.navigateByUrl('/payment');
+              } else{
+                this.router.navigateByUrl('/login');
+              }
             } else {
               this.threadHdrData = result;
               if (this.threadHdrData.data!.photoProfileCreator != null)

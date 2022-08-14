@@ -25,6 +25,7 @@ import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 import { PollingService } from 'src/app/service/polling.service';
 import { Title } from '@angular/platform-browser';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-home-member',
@@ -106,9 +107,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         this.createThreadHdr.isActive = true;
         this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
         this.getAllThreadByUserLogged();
+        this.getAllThreadThatAreLikedByUserLogged();
         this.getAllEvent();
         this.getAllTraining();
-        this.getAllThreadThatAreLikedByUserLogged();
         this.getProfile();
         this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
           this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
@@ -132,8 +133,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       categoryId: "",
       email: this.loginService.getLoggedEmail() !,
       expiredAt: "",
-      fileExt: "",
-      fileName: "",
       isActive: true,
       options: [],
       pollingName: "",
@@ -162,6 +161,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.listThreadHdr.data?.length!; i++) {
       if (hdrId == this.listThreadHdr.data![i].id) {
         this.listThreadHdr.data![i].isVoted = true;
+        this.getAllThreadByUserLogged();
+        this.getAllThreadThatAreLikedByUserLogged();
+        this.getAllThread();
       }
     }
 
@@ -255,6 +257,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     if (this.pollingArray.length != 0) {
       this.createThreadHdr.options = this.pollingArray;
+      const expiredAt: string = formatDate(this.createThreadHdr.expiredAt!, `yyyy-MM-dd'T'HH:mm:ss.SSS${this.getTimeZone()}`, 'en')
+      this.createThreadHdr.expiredAt = expiredAt;
     }
 
     this.threadSubscription = this.threadHdrService
@@ -381,6 +385,11 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
     const label = event.target.value;
     this.pollingArray[index] = label;
   }
+
+  getTimeZone() {
+    var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+    return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+}
 
   ngOnDestroy(): void {
     this.threadSubscription?.unsubscribe();

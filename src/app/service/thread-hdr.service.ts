@@ -37,8 +37,12 @@ export class ThreadHdrService {
     return this.http.get<FindAllThreadHdrRes>(`http://localhost:3333/threads/user-bookmark/${email}`);
   }
   
-  findThreadHdrById(id:string):Observable<FindThreadHdrRes>{
-    return this.http.get<FindThreadHdrRes>(`http://localhost:3333/threads/${id}`)
+  findThreadHdrById(id:string, email?: string):Observable<FindThreadHdrRes>{
+    if(email != null){
+      return this.http.get<FindThreadHdrRes>(`http://localhost:3333/threads/${id}?email=${email}`)
+    } else{
+      return this.http.get<FindThreadHdrRes>(`http://localhost:3333/threads/${id}?email=null`)
+    }
   }
   updateThreadHdr(data: UpdateThreadHdrReq):Observable<UpdateRes>{
     return this.http.put<UpdateRes>('http://localhost:3333/threads', data)
