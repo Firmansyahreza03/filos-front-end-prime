@@ -4,10 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommunityCategory } from 'src/app/constant/community-category';
 import { DefaultPic } from 'src/app/constant/default-pic';
-import {
-  DataCommunity,
-  FindAllCommunityRes,
-} from 'src/app/pojo/pojo-import';
+import { DataCommunity, FindAllCommunityRes } from 'src/app/pojo/pojo-import';
 import { CommunityService } from 'src/app/service/community.service';
 import { LoginService } from 'src/app/service/login.service';
 import { MemberCommunityService } from 'src/app/service/member-community.service';
@@ -42,7 +39,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
   };
 
   isLogin: boolean = this.loginService.isLogin();
-  showSpinner!:boolean;
+  showSpinner!: boolean;
   isJoined?: boolean;
 
   listEvent: FindAllCommunityRes = {};
@@ -54,52 +51,54 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
     private communityService: CommunityService,
     private activatedRouted: ActivatedRoute,
     private loginService: LoginService,
-    private titleService:Title,
-    private memberCommunityService: MemberCommunityService,
+    private titleService: Title,
+    private memberCommunityService: MemberCommunityService
   ) {}
 
-  getDtlData():void{
-      this.communityDtlSubscription = this.communityService
-        .getCommunityById(this.idParam)
-        .subscribe((result) => {
-          this.communityData = result.data!;
-          this.titleService.setTitle(this.communityData.title)
-        });
-      
+  getDtlData(): void {
+    this.communityDtlSubscription = this.communityService
+      .getCommunityById(this.idParam)
+      .subscribe((result) => {
+        this.communityData = result.data!;
+        this.titleService.setTitle(this.communityData.title);
+      });
   }
 
   ngOnInit(): void {
     this.communityDtlSubscription = this.activatedRouted.params.subscribe(
       (result) => {
         const resultTmp: any = result;
-        this.idParam = resultTmp.id;  
-    });
+        this.idParam = resultTmp.id;
+      }
+    );
 
-    if(this.isLogin){
+    this.getIsJoined(this.idParam);
+
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+      this.getDtlData();
+    });
+  }
+
+  getIsJoined(id: string): void {
+    if (this.isLogin) {
       this.memberCommSubs = this.memberCommunityService
-        .checkIsJoined(this.idParam)
-        .subscribe((res)=>{
-            this.isJoined = res;
-            console.log(this.isJoined);    
-          })    
+        .checkIsJoined(id)
+        .subscribe((res) => {
+          this.isJoined = res;
+          console.log(this.isJoined);
+        });
       this.getAllEvent();
       this.getAllTraining();
     }
-
-    this.showSpinner=true;
-    setTimeout(()=>{
-      this.showSpinner=false;
-      this.getDtlData();
-    })
-
-    
   }
 
   back(): void {
     this.router.navigateByUrl('/communities');
   }
-  toPayment():void {
-    this.router.navigateByUrl('/payment/'+this.idParam);
+  toPayment(): void {
+    this.router.navigateByUrl('/payment/' + this.idParam);
   }
   getAllEvent(): void {
     this.eventSubs = this.communityService
@@ -115,7 +114,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
   }
 
   getPhoto(fileId: string): string {
-    if(fileId != null){
+    if (fileId != null) {
       return `http://localhost:3333/files/${fileId}`;
     } else {
       return DefaultPic.commFile;
@@ -138,5 +137,15 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.communityDtlSubscription?.unsubscribe();
     this.memberCommSubs?.unsubscribe();
+  }
+
+  detailRoute(id: string): void {
+    this.communityDtlSubscription = this.communityService
+      .getCommunityById(id)
+      .subscribe((result) => {
+        this.communityData = result.data!;
+        this.titleService.setTitle(this.communityData.title);
+        this.getIsJoined(id);
+      });
   }
 }

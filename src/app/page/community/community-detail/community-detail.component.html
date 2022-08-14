@@ -119,7 +119,7 @@
         <div class="container">
           <div class="grid justify-content-center" *ngFor="let event of listEvent.data">
             <div class="col align-content-center">
-              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+              <div class="grid btnClick" [style]="{ 'margin-top':'-20px'}" (click)="detailRoute(event.id)">
                 <div class="col-4">
                   <img [src]="getPhoto(event.idFile!)" alt="" srcset="" class="event-pic">
                 </div>
@@ -151,7 +151,7 @@
         <div class="container">
           <div class="grid justify-content-center" *ngFor="let training of listTraining.data; let i=index">
             <div class="col align-content-center">
-              <div class="grid" [style]="{ 'margin-top':'-20px'}">
+              <div class="grid btnClick" [style]="{ 'margin-top':'-20px'}" (click)="detailRoute(training.id)">
                 <div class="col-4">
                   <img [src]="getPhoto(training.idFile!)" alt="" srcset="" class="event-pic">
                 </div>
