@@ -25,6 +25,7 @@ import { Title } from '@angular/platform-browser';
 export class PaymentDetailComponent implements OnInit, OnDestroy {
   subs?: Subscription;
   transactionSubs?: Subscription;
+  memberCommSubs?: Subscription;
 
   backUrl!: string;
   idParam!: string;
@@ -87,7 +88,10 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
           this.reqComm.idCommunity = this.idParam;
           this.reqComm.idPayment = res.data!.id!;
           this.reqComm.isActive = true;
-          this.memberCommunityService.insert(this.reqComm);
+          this.memberCommSubs = this.memberCommunityService.insert(this.reqComm).subscribe((res)=>{
+            console.log(res);
+            this.router.navigateByUrl('/home-member');
+          })
         }
       });
   }
