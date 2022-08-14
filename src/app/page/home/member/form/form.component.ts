@@ -72,12 +72,9 @@ export class FormComponent implements OnInit, OnDestroy {
 
   checkPollling(event:any){
     const label = event.originalEvent.srcElement.innerText;
-    console.log(label)
-
     if(label == "Polling")
       this.polling = true;
     else this.polling = false;
-    console.log(this.polling)
   }
 
   addInputControl(optionLabel: string) {
@@ -91,8 +88,6 @@ export class FormComponent implements OnInit, OnDestroy {
   changeValue(index: number, event: any) {
     const label = event.target.value;    
     this.pollingArray[index] = label;
-    console.log(this.pollingArray[index]);
-    console.log(index);
   }
 
 }

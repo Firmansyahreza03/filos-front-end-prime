@@ -68,7 +68,6 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   findDataChat(): void {
-    console.log(this.idParam)
     this.dtlSubs = this.threadDtlService
       .findByHdrId(this.idParam)
       .subscribe((result) => {
@@ -88,7 +87,6 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
             else
               this.threadDtlData.data![i].proPic = DefaultPic.proFile;
           })
-          console.log(this.threadDtlData)
         }
       });
   }
@@ -100,8 +98,13 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   back(): void {
-    this.router.navigateByUrl('/home-member');
+    if(this.isLogin){
+      this.router.navigateByUrl('/home-member');
+    }else{
+      this.router.navigateByUrl('/home-landing');
+    }
   }
+
 
   ngOnDestroy(): void {
     this.hdrSubs?.unsubscribe();

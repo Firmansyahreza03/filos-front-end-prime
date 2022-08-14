@@ -5,6 +5,8 @@ import { Subscription } from "rxjs";
 import { ConfigService, LoginService, UserService } from "../../service/import.service";
 import { AppConfig } from "../../api/appconfig";
 import { DefaultPic } from "../../constant/default-pic";
+import { LogoutReq } from "src/app/pojo/logout/logout-req";
+import { LogoutService } from "src/app/service/logout.service";
 
 @Component({
   selector: 'app-navbar',
@@ -18,12 +20,18 @@ export class NavbarComponent implements OnInit {
   isLogin?: boolean = this.loginService.isLogin();
   config!: AppConfig;
   subscription?: Subscription;
+  deleteSubscription?:Subscription;
+  updateUserLoggedSubscription?:Subscription;
+  logoutReq: LogoutReq={
+    email: this.loginService.getLoggedEmail()!
+  }
 
   constructor(
     public router: Router,
     private loginService: LoginService,
     private userService: UserService,
     public configService: ConfigService,
+    private logoutService: LogoutService
   ) { }
 
   
@@ -91,6 +99,9 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.config.proImg = DefaultPic.proFile;
+    const clearToken=this.loginService.getRefreshToken()
+    this.logoutService.updateUserLogged(this.logoutReq)
+    this.logoutService.deleteRefreshToken(clearToken!)
     localStorage.clear();
     this.router.navigateByUrl('/login');
   }

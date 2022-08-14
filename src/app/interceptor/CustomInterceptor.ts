@@ -61,7 +61,6 @@ export class CustomInterceptor implements HttpInterceptor, OnDestroy {
 
               // if(result.error.message == "Invalid token"){
               //   this.tokenSubs = this.refreshTokenService.validateRefreshToken(this.loginService.getRefreshToken()!).subscribe((res)=>{
-              //     console.log(res);
               //     this.loginService.saveData(res);
               //     reqClone = req.clone({
               //       setHeaders: {

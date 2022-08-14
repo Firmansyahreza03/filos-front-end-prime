@@ -6,15 +6,20 @@ import { AdminLayoutComponent } from '../layout/admin-layout.component';
 import { ConfigService, LoginService, UserService } from "../../service/import.service";
 import { AppConfig } from "../../api/appconfig";
 import { DefaultPic } from "../../constant/default-pic";
+import { LogoutService } from "src/app/service/logout.service";
+import { LogoutReq } from "src/app/pojo/logout/logout-req";
 
 @Component({
   selector: 'admin-nav',
   templateUrl: './admin-nav.component.html',
-  styleUrls: ['../../../assets/sass/sakai.scss']
+  styleUrls: ['../../../assets/sass/admin.scss']
 })
 export class AdminNavComponent implements OnInit, OnDestroy {
 
   subscription?: Subscription;
+  logoutReq: LogoutReq={
+    email: this.loginService.getLoggedEmail()!
+  }
   items: MenuItem[] = [];
   config!: AppConfig;
 
@@ -22,13 +27,17 @@ export class AdminNavComponent implements OnInit, OnDestroy {
     private loginService: LoginService,
     private userService: UserService,
     public configService: ConfigService,
+    private logoutService: LogoutService,
     private router: Router) {}
 
-  logOut(): void {
-    this.config.proImg = DefaultPic.proFile;
-    localStorage.clear();
-    this.router.navigateByUrl('/login');
-  }
+    logOut(): void {
+      this.config.proImg = DefaultPic.proFile;
+      const clearToken=this.loginService.getRefreshToken()
+      this.logoutService.updateUserLogged(this.logoutReq)
+      this.logoutService.deleteRefreshToken(clearToken!)
+      localStorage.clear();
+      this.router.navigateByUrl('/login');
+    }
   
   findPic() {
     const logUser = this.loginService.getLoggedEmail();

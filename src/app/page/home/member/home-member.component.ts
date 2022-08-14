@@ -91,8 +91,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.loginService.getRefreshToken());
-    
     this.titleService.setTitle(this.title)
     this.threadCategorySubs = this.threadCategoryService
     .getAllThreadCategory()
@@ -117,7 +115,7 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         })
       }
       this.getAllThread();
-    })
+    },1000)
   }
 
   getPhotoCommun(fileId: string): string {
@@ -157,9 +155,9 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   chooseOption(hdrId: string, pollingId: string): void {
     this.insertAnswerPolling.isActive = true;
     this.insertAnswerPolling.optionId = pollingId;
-    this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res) => {
-      console.log(res);
-    })
+    this.pollingAnswerSubs = this.pollingService
+      .insertAnswer(this.insertAnswerPolling)
+      .subscribe()
 
     for (let i = 0; i < this.listThreadHdr.data?.length!; i++) {
       if (hdrId == this.listThreadHdr.data![i].id) {
@@ -235,8 +233,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail() !)
       .subscribe((result) => {
         this.listThreadHdrByUserLogged = result;
-        console.log(this.listThreadHdrByUserLogged);
-
       });
   }
 
@@ -367,12 +363,10 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   checkPollling(event: any) {
     const label = event.originalEvent.srcElement.innerText;
-    console.log(label)
 
     if (label == "Polling")
       this.polling = true;
     else this.polling = false;
-    console.log(this.polling)
   }
 
   addInputControl(optionLabel: string) {
@@ -386,8 +380,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   changeValue(index: number, event: any) {
     const label = event.target.value;
     this.pollingArray[index] = label;
-    console.log(this.pollingArray[index]);
-    console.log(index);
   }
 
   ngOnDestroy(): void {

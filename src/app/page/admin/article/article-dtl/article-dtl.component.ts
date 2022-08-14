@@ -45,7 +45,6 @@ export class ArticleDtlComponent {
       this.activatedRoute.params.subscribe(result => {
         const resultTemp: any = result;
         this.idParam = resultTemp.id;
-        console.log(this.idParam);
         this.subscription = this.service.findById(this.idParam)
           .subscribe(result => {
             this.dataRes = result;
