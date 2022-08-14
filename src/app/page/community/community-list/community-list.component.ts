@@ -70,7 +70,7 @@ export class CommunityListComponent implements OnInit {
           this.listComm= res;
         });
 
-      });
+      },1000);
   }
 
   getCommPic(fileId: string): string {

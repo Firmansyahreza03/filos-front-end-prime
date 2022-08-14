@@ -616,7 +616,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdrLike.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> {{threadHdrLike.counterComment}}</span>
+                          <span> {{threadHdrLike.counterComment!}}</span>
                         </div>
                       </div>
                     </div>
@@ -687,7 +687,7 @@
                       <div class="col-2">
                         <div (click)="onClick(threadHdrLike.id)">
                           <i class="pi pi-comments click"></i>
-                          <span> {{threadHdrLike.counterLike!}}</span>
+                          <span> {{threadHdrLike.counterComment!}}</span>
                         </div>
                       </div>
                     </div>
@@ -698,7 +698,8 @@
               <!-- Bookmark -->
               <p-tabPanel header="Bookmark">
                 <div class="thread" *ngFor="let threadHdr of bookmarkdata$ | async; let i=index">
-                  <div class="card mt-0 mb-3">
+                  <!-- thread kurang dari 100 -->
+                  <div class="card mt-0 mb-3" *ngIf="threadHdr.threadContent!.length < 100">
                     <div class="container">
                       <!-- Header -->
                       <div class="flex justify-content-between column-gap-4">
@@ -727,6 +728,74 @@
                       </div>
                       <div class="col-12">
                         <p class="text-small">{{threadHdr.threadContent}}
+                      </div>
+                      <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
+                        <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>
+                        <div class="grid mt-2 mb-2 pr-4 pl-4">
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="!threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full" [disabled]="threadHdr.isVoted" (click)="chooseOption(threadHdr.id, polling.id)"
+                              styleClass="p-button-sm">{{polling.optionName}}</button>
+                          </div>
+                          <div class="col-12 flex flex-column column-gap-2 row-gap-2" *ngIf="threadHdr.isVoted">
+                            <button *ngFor="let polling of threadHdr.pollingHdr.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="threadHdr.isVoted"
+                              styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
+                          </div>
+                        </div>
+                        <div class="flex column-gap-5">
+                          <span class="text-xs flex text-color-secondary">{{threadHdr.pollingHdr.expiredAt}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p-divider></p-divider>
+
+                    <!-- Action -->
+                    <div class="grid  -mb-3 ml-1 mr-1">
+                      <div class="col-2">
+                        <div (click)="onClick(threadHdr.id)">
+                          <i class="pi pi-comments click"></i>
+                          <span> {{threadHdr.counterComment}}</span>
+                        </div>
+                      </div>
+                      <div class="col-2 col-offset-8 text-right">
+                        <div (click)="bookmarkThread(threadHdr.id, i)">
+                          <i class="pi pi-bookmark-fill click"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- thread lebih dari 100 -->
+                  <div class="card mt-0 mb-3" *ngIf="threadHdr.threadContent!.length > 100">
+                    <div class="container">
+                      <!-- Header -->
+                      <div class="flex justify-content-between column-gap-4">
+                        <div class="flex">
+                          <div class="image-content-profile">
+                            <div class="image-box-profile">
+                              <img [src]="getPhotoThread(threadHdr.photoProfileCreator!)" alt="" srcset=""
+                                class="profile-pic">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex-grow-1 flex-column pt-1">
+                          <p class="text-base font-medium">{{threadHdr.creatorName}}</p>
+                          <p class="text-xs">{{threadHdr.createdAt| timeAgo}}</p>
+                        </div>
+                        <div class="flex-none" *ngIf="threadHdr.isPremium">
+                          <p class="text-xs text-orange-500 font-medium"> Premium <i class="pi pi-star-fill"
+                              style="font-size: 10px"></i></p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="grid mt-3 mr-2 ml-2">
+                      <div class="col-12">
+                        <span class="bold black text-heading-3">{{threadHdr.threadName}}</span>
+                      </div>
+                      <div class="col-12">
+                        <p class="text-small">{{readMoreContent(threadHdr.threadContent!)}} <a
+                          (click)="onClick(threadHdr.id)" class="font-semibold click">continue reading</a></p>
                       </div>
                       <div class="col-12 polling" *ngIf="threadHdr.pollingHdr">
                         <p class="text-sm text-center">{{threadHdr.pollingHdr.pollingName}}</p>

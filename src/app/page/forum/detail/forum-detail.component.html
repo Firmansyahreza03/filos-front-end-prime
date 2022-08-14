@@ -24,6 +24,18 @@
         </div>
         <div class="flex flex-column row-gap-3">
           <p class="text-sm">{{threadHdrData.data?.threadContent}}</p>
+          <div class="col-12 polling" *ngIf="threadHdrData.data?.pollingHdr">
+            <p class="text-sm text-center">{{threadHdrData.data?.pollingHdr?.pollingName}}</p>
+            <div class="grid mt-2 mb-2 pr-4 pl-4">
+              <div class="col-12 flex flex-column column-gap-2 row-gap-2">
+                <button *ngFor="let polling of threadHdrData.data?.pollingHdr?.option" pButton pRipple type="button" class="p-button-outlined p-button-rounded w-full bg-primary" [disabled]="true"
+                  styleClass="p-button-sm">{{polling.optionName}} {{polling.countPoll}}</button>
+              </div>
+            </div>
+            <div class="flex column-gap-5">
+              <span class="text-xs flex text-color-secondary">{{threadHdrData.data?.pollingHdr?.expiredAt}}</span>
+            </div>
+          </div>
           <div class="image-box-thread mx-auto" *ngIf="threadHdrData.data?.fileId!=null">
             <div class="image-content-thread ">
               <img [src]="'http://localhost:3333/files/'+threadHdrData.data?.fileId" alt="">

@@ -67,7 +67,7 @@
             <div class="flex flex-column row-gap-2">
               <span class="bold-medium text-50 text-extrasmall">My Wallet</span>
               <p class="text-xl font-semibold text-50 mt-0" > <i class="pi pi-wallet text-50 mr-1"></i>
-                {{profileData.data?.balance | rupiahCurrency}}</p>
+                {{getCurrency(profileData.data?.balance!) | rupiahCurrency}}</p>
             </div>
           </div>
         </div>
