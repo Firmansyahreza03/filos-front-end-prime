@@ -7,7 +7,8 @@ import { AdminLayoutComponent } from "./component/layout/admin-layout.component"
 
 import { SharedModule } from "./component/shared.module";
 import { NotFoundComponent } from "./page/not-found/not-found.component";
-import { AlreadyLoginGuard, LoginGuard } from './guard/guard-import';
+import { AdminGuard, AlreadyLoginGuard, LoginGuard } from './guard/guard-import';
+import { NonAdminGuard } from "./guard/nonadmin.guard";
 
 const routes: Routes = [
     {
@@ -29,6 +30,7 @@ const routes: Routes = [
     {
         path: 'home-member',
         component: MainLayoutComponent,
+        canLoad: [NonAdminGuard],
         loadChildren: () => import('./page/home/home-member.module').then(m => m.HomeMemberModule)
     },
     {
@@ -44,16 +46,19 @@ const routes: Routes = [
     {
         path: 'communities',
         component: MainLayoutComponent,
+        canLoad: [NonAdminGuard],
         loadChildren: () => import('./page/community/community.module').then(m => m.CommunityModule)
     },
     {
         path: 'payment',
         component: MainLayoutComponent,
+        canLoad: [NonAdminGuard],
         loadChildren: () => import('./page/payment/payment.module').then(m => m.PaymentModule)
     },
     {
         path: 'profile',
         component: MainLayoutComponent,
+        canLoad: [NonAdminGuard],
         loadChildren: () => import('./page/profile/profile.module').then(m => m.ProfileModule)
     },
     {
@@ -64,6 +69,7 @@ const routes: Routes = [
     {
         path: 'admin',
         component: AdminLayoutComponent,
+        canLoad: [AdminGuard],
         loadChildren: () => import('./page/admin/admin.module').then(m => m.AdminModule)
     },
     {
