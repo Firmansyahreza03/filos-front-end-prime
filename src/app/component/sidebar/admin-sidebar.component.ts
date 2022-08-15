@@ -5,7 +5,7 @@ import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'admin-sidebar',
   templateUrl: './admin-sidebar.component.html',
-  styleUrls: ['../../../assets/sass/sakai.scss', './admin-sidebar.component.css']
+  styleUrls: ['../../../assets/sass/admin.scss', './admin-sidebar.component.css']
 })
 export class AdminSidebarComponent {
   items!: MenuItem[]

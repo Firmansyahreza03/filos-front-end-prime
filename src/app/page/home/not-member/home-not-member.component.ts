@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { Subscription } from 'rxjs';
-import { DefaultPic } from "src/app/constant/default-pic";
-import { FileService, LoginService, ThreadHdrService, UserService } from "src/app/service/import.service";
-import { FindAllThreadHdrRes } from 'src/app/pojo/pojo-import';
+import { DefaultPic } from "../../../constant/default-pic";
+import { ThreadHdrService } from "../../../service/import.service";
+import { FindAllThreadHdrRes } from '../../../pojo/pojo-import';
 import { Router } from '@angular/router';
 
 @Component({
@@ -43,7 +43,7 @@ export class HomeNotMemberComponent {
     setTimeout(() => {
       this.showSpinner = false;
       this.getAllThread();
-    })
+    },500)
   }
 
   getAllThread(): void {

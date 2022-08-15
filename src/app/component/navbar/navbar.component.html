@@ -1,10 +1,12 @@
 <p-menubar  [model]="items">
     <ng-template pTemplate="start">
         <img src="../../../assets/image/logo-filos-1.png" height="40" class="mr-2">
-    </ng-template>    
+    </ng-template>  >   
     <ng-template pTemplate="end">
-        <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()">   
-            <p-avatar [image]="proPic" size="large" shape="circle"></p-avatar></button>
+        <button pButton pRipple type="button" label="Sign in" class="p-button-rounded  p-button-sm color-bg-yellow w-full text-small color-black bold 
+        font-bold" (click)="login()" *ngIf="!isLogin"></button>
+        <button  class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showNav()" *ngIf="isLogin">    
+            <p-avatar [image]="config.proImg!" size="large" shape="circle"></p-avatar></button>
     </ng-template>
 </p-menubar>
 <div class="layout-topbar-menu" [ngClass]="{'show':topMenuActive , 'hidden':!topMenuActive}">
@@ -16,7 +18,7 @@
               </button>
         </div>
         <div class="flex">
-            <button class="p-link layout-topbar-button" (click)="logout()">
+            <button class="p-link layout-topbar-button" (click)="logout()"  *ngIf="isLogin">
                 <i class="pi pi-sign-out text-sm font-semibold text-red-700"></i>
                 <span class="text-sm font-semibold text-red-700"> Log Out</span>
               </button>

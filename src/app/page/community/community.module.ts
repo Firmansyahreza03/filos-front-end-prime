@@ -17,7 +17,9 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { CommunityAddComponent } from "./community-add/community-add.component";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import { SharedModule } from "src/app/component/shared.module";
+import { SharedModule } from "../../component/shared.module";
+import { ReportYourCommunityComponent } from "./report/report-your-community.component";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 @NgModule({
     imports: [
         CommunityRouting,
@@ -35,17 +37,20 @@ import { SharedModule } from "src/app/component/shared.module";
         FileUploadModule,
         HttpClientModule,
         ProgressSpinnerModule,
-        SharedModule
+        SharedModule,
+        ConfirmDialogModule
     ],
     declarations: [
         CommunityListComponent,
         CommunityDetailComponent,
         CommunityAddComponent,
+        ReportYourCommunityComponent
     ],
     exports: [
         CommunityListComponent,
         CommunityDetailComponent,
-        CommunityAddComponent
+        CommunityAddComponent,
+        ReportYourCommunityComponent
     ]
 })
 export class CommunityModule{

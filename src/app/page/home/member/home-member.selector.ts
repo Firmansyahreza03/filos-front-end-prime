@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { DataThreadHdr } from 'src/app/pojo/pojo-import';
+import { DataThreadHdr } from '../../../pojo/pojo-import';
 
 export const getAllBookmark = createSelector(
   createFeatureSelector('thread'),

@@ -5,16 +5,16 @@ import {
   DataPaymentTransaction,
   InsertMemberCommunityReq,
   InsertPaymentTransactionReq,
-} from 'src/app/pojo/pojo-import';
+} from '../../../pojo/pojo-import';
 import {
   CommunityService,
   FileService,
   MemberCommunityService,
   PaymentService,
-} from 'src/app/service/import.service';
-import { DefaultPic } from 'src/app/constant/default-pic';
-import { TransactionType } from 'src/app/constant/transaction-type';
-import { SubscriptionPrice } from 'src/app/constant/subscription-price';
+} from '../../../service/import.service';
+import { DefaultPic } from '../../../constant/default-pic';
+import { TransactionType } from '../../../constant/transaction-type';
+import { SubscriptionPrice } from '../../../constant/subscription-price';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -25,7 +25,7 @@ import { Title } from '@angular/platform-browser';
 export class PaymentDetailComponent implements OnInit, OnDestroy {
   subs?: Subscription;
   transactionSubs?: Subscription;
-  communitySubs?: Subscription;
+  memberCommSubs?: Subscription;
 
   backUrl!: string;
   idParam!: string;
@@ -88,8 +88,8 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
           this.reqComm.idCommunity = this.idParam;
           this.reqComm.idPayment = res.data!.id!;
           this.reqComm.isActive = true;
-          this.communitySubs = this.memberCommunityService.insert(this.reqComm).subscribe((res)=>{
-            console.log(res);
+          this.memberCommSubs = this.memberCommunityService.insert(this.reqComm).subscribe((res)=>{
+            this.router.navigateByUrl('/home-member');
           })
         }
       });
@@ -110,7 +110,6 @@ export class PaymentDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subs?.unsubscribe();
     this.transactionSubs?.unsubscribe();
-    this.communitySubs?.unsubscribe();
   }
 
   getSubsPayment(): void {

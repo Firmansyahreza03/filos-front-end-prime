@@ -1,12 +1,11 @@
-import { style } from "@angular/animations";
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
 import { Subscription } from "rxjs";
 
 import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
-import { DataIndustry } from 'src/app/pojo/industry/data-industry';
-import { DeleteRes } from "src/app/pojo/pojo-import";
-import { IndustryService } from "src/app/service/import.service";
+import { DataIndustry } from '../../../../pojo/industry/data-industry';
+import { DeleteRes } from "../../../../pojo/pojo-import";
+import { IndustryService } from "../../../../service/import.service";
 
 @Component({
   selector: 'admin-industy-list',

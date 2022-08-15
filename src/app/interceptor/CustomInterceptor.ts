@@ -1,17 +1,23 @@
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, tap } from "rxjs";
+import { Observable, Subscription, tap } from "rxjs";
 import { MessageService } from 'primeng/api';
 import { LoginService } from "../service/login.service";
 import { RoleType } from "../constant/role-type";
+import { RefreshTokenService } from "../service/refresh-token.service";
 
 
 @Injectable()
-export class CustomInterceptor implements HttpInterceptor {
+export class CustomInterceptor implements HttpInterceptor, OnDestroy {
+  tokenSubs?: Subscription;
 
   constructor(private http: HttpClient, private loginService: LoginService, private router: Router,
-    private messageService: MessageService, ) {}
+    private messageService: MessageService, private refreshTokenService: RefreshTokenService) {}
+
+  ngOnDestroy(): void {
+    this.tokenSubs?.unsubscribe();
+  }
 
   intercept(req: HttpRequest < any > , next: HttpHandler): Observable < HttpEvent < any >> {
     let reqClone = req
@@ -43,33 +49,27 @@ export class CustomInterceptor implements HttpInterceptor {
         error: (result) => {
           if (result instanceof HttpErrorResponse) {
             if (result.status == 401) {
-              if (!isLoginReq) {
-                this.messageService.add({
-                  severity: 'error',
-                  summary: 'Error',
-                  detail: "You must login first",
-                  life: 1000,
-                });
-                this.router.navigateByUrl('/login');
-              }
+              // if (!isLoginReq) {
+              //   this.messageService.add({
+              //     severity: 'error',
+              //     summary: 'Error',
+              //     detail: "You must login first",
+              //     life: 1000,
+              //   });
+              //   this.router.navigateByUrl('/login');
+              // }
 
-              if(this.loginService.getLoggedRole() == RoleType.NONADMIN){
-                this.messageService.add({
-                  severity: 'error',
-                  summary: 'Error',
-                  detail: "This feature is only for non admins",
-                  life: 1000,
-                });
-                this.router.navigateByUrl('/home-member');
-              } else if(this.loginService.getLoggedRole() == RoleType.ADMIN){
-                this.messageService.add({
-                  severity: 'error',
-                  summary: 'Error',
-                  detail: "This feature is only for admin",
-                  life: 1000,
-                });
-                this.router.navigateByUrl('/admin');
-              }
+              // if(result.error.message == "Invalid token"){
+              //   this.tokenSubs = this.refreshTokenService.validateRefreshToken(this.loginService.getRefreshToken()!).subscribe((res)=>{
+              //     this.loginService.saveData(res);
+              //     reqClone = req.clone({
+              //       setHeaders: {
+              //         Authorization: `Bearer ${this.loginService.getToken()}`,
+              //       }
+              //     })
+              //     return next.handle(reqClone);
+              //   })
+              // }
             } 
             else if (result.status == 500 || result.status == 404 || result.status == 400) {
               this.messageService.add({

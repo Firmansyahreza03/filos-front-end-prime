@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/default-pic';
+import { CommunityCategory } from '../../../constant/community-category';
+import { DefaultPic } from '../../../constant/default-pic';
 import {
   DataThreadHdr,
   FindAllCommunityRes,
@@ -11,20 +11,21 @@ import {
   FindProfileRes,
   InsertPollingAnswerReq,
   InsertThreadHdrReq,
-} from 'src/app/pojo/pojo-import';
-import { BookmarkService } from 'src/app/service/bookmark.service';
-import { CommunityService } from 'src/app/service/community.service';
-import { FileService } from 'src/app/service/file.service';
-import { LoginService } from 'src/app/service/login.service';
-import { ThreadCategoryService } from 'src/app/service/thread-category.service';
-import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
-import { ThreadLikedService } from 'src/app/service/thread-liked.service';
-import { UserService } from 'src/app/service/user.service';
+} from '../../../pojo/pojo-import';
+import { BookmarkService } from '../../../service/bookmark.service';
+import { CommunityService } from '../../../service/community.service';
+import { FileService } from '../../../service/file.service';
+import { LoginService } from '../../../service/login.service';
+import { ThreadCategoryService } from '../../../service/thread-category.service';
+import { ThreadHdrService } from '../../../service/thread-hdr.service';
+import { ThreadLikedService } from '../../../service/thread-liked.service';
+import { UserService } from '../../../service/user.service';
 import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
-import { PollingService } from 'src/app/service/polling.service';
+import { PollingService } from '../../../service/polling.service';
 import { Title } from '@angular/platform-browser';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-home-member',
@@ -106,16 +107,16 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
         this.createThreadHdr.isActive = true;
         this.createThreadHdr.email = this.loginService.getLoggedEmail()!;
         this.getAllThreadByUserLogged();
+        this.getAllThreadThatAreLikedByUserLogged();
         this.getAllEvent();
         this.getAllTraining();
-        this.getAllThreadThatAreLikedByUserLogged();
         this.getProfile();
         this.threadBookmarkSubs = this.threadHdrService.getThreadThatAreBookmarkedByUser(this.loginService.getLoggedEmail()!).subscribe((res)=>{
           this.store.dispatch(loadBookmarkAction({ payload: res.data!}));      
         })
       }
       this.getAllThread();
-    })
+    },1000)
   }
 
   getPhotoCommun(fileId: string): string {
@@ -132,8 +133,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       categoryId: "",
       email: this.loginService.getLoggedEmail() !,
       expiredAt: "",
-      fileExt: "",
-      fileName: "",
       isActive: true,
       options: [],
       pollingName: "",
@@ -155,13 +154,16 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   chooseOption(hdrId: string, pollingId: string): void {
     this.insertAnswerPolling.isActive = true;
     this.insertAnswerPolling.optionId = pollingId;
-    this.pollingAnswerSubs = this.pollingService.insertAnswer(this.insertAnswerPolling).subscribe((res) => {
-      console.log(res);
-    })
+    this.pollingAnswerSubs = this.pollingService
+      .insertAnswer(this.insertAnswerPolling)
+      .subscribe()
 
     for (let i = 0; i < this.listThreadHdr.data?.length!; i++) {
       if (hdrId == this.listThreadHdr.data![i].id) {
         this.listThreadHdr.data![i].isVoted = true;
+        this.getAllThreadByUserLogged();
+        this.getAllThreadThatAreLikedByUserLogged();
+        this.getAllThread();
       }
     }
 
@@ -233,8 +235,6 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
       .getAllThreadHdrByUserLogged(this.loginService.getLoggedEmail() !)
       .subscribe((result) => {
         this.listThreadHdrByUserLogged = result;
-        console.log(this.listThreadHdrByUserLogged);
-
       });
   }
 
@@ -257,6 +257,8 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     if (this.pollingArray.length != 0) {
       this.createThreadHdr.options = this.pollingArray;
+      const expiredAt: string = formatDate(this.createThreadHdr.expiredAt!, `yyyy-MM-dd'T'HH:mm:ss.SSS${this.getTimeZone()}`, 'en')
+      this.createThreadHdr.expiredAt = expiredAt;
     }
 
     this.threadSubscription = this.threadHdrService
@@ -365,12 +367,10 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
 
   checkPollling(event: any) {
     const label = event.originalEvent.srcElement.innerText;
-    console.log(label)
 
     if (label == "Polling")
       this.polling = true;
     else this.polling = false;
-    console.log(this.polling)
   }
 
   addInputControl(optionLabel: string) {
@@ -384,9 +384,12 @@ export class HomeMemberComponent implements OnInit, OnDestroy {
   changeValue(index: number, event: any) {
     const label = event.target.value;
     this.pollingArray[index] = label;
-    console.log(this.pollingArray[index]);
-    console.log(index);
   }
+
+  getTimeZone() {
+    var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+    return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+}
 
   ngOnDestroy(): void {
     this.threadSubscription?.unsubscribe();

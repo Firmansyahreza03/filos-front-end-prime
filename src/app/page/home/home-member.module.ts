@@ -19,7 +19,6 @@ import { HomeMemberRouting } from './home-member.routing';
 import { threadReducer } from './member/home-member.reducer';
 import { LeftPageComponent } from './member/left-page/left-home.component';
 import { RightPageComponent } from './member/right-page/right-home.component';
-import { FormComponent } from './member/form/form.component';
 import { SharedModule } from 'src/app/component/shared.module';
 import { HomeMemberComponent } from './member/home-member.component';
 import {PanelModule} from 'primeng/panel';
@@ -55,13 +54,11 @@ import {TooltipModule} from 'primeng/tooltip';
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent
   ],
   exports: [
     HomeMemberComponent, 
     LeftPageComponent,
     RightPageComponent,
-    FormComponent
   ],
 })
 export class HomeMemberModule {}

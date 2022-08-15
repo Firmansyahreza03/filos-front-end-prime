@@ -48,7 +48,11 @@ export class LeftPageComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/profile')
   }
 
-  toWallet(){
-    this.router.navigateByUrl('/wallet')
+  getCurrency(balance: string): string{
+    if(balance){
+      return balance;
+    } else{
+      return '0';
+    }
   }
 }

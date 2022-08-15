@@ -37,4 +37,8 @@ export class MemberCommunityService {
         return this.http.delete<DeleteRes>(`http://localhost:3333/community-members/${id}`)
     }
 
+    checkIsJoined(id: string): Observable<boolean>{
+        return this.http.get<boolean>(`http://localhost:3333/community-members/communities/${id}`)
+    }
+
 }

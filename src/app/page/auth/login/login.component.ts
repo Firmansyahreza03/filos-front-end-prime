@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RoleType } from 'src/app/constant/role-type';
-import { LoginReq } from 'src/app/pojo/pojo-import';
-import { LoginService } from 'src/app/service/login.service';
+import { RoleType } from '../../../constant/role-type';
+import { LoginReq } from '../../../pojo/pojo-import';
+import { LoginService } from '../../../service/login.service';
 
 @Component({
   selector: 'app-login',

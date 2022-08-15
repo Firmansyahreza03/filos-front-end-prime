@@ -1,216 +1,199 @@
 <div class="container">
-    <div class="grid mt-3">
-
-        <!-- Halaman Kiri -->
-        <div class="md:col-3 col-12">
-            <p class="text-sm font-semibold ml-3 text-teal-800"><i class="pi pi-cog"></i> Settings</p>
-            <div class="card mt-3">
-                <div class="container">
-                    <div class="grid">
-                        <div class="col-12">
-                            <span class="font-semibold text-sm click"  (click)="editProfile()">Edit Profile</span>
-                        </div>
-                        <div class="col-12">
-                            <span class="font-medium text-sm text-500 click" (click)="editPassword()">Edit Password</span>
-                        </div>
-                        <div class="col-12">
-                            <span class="font-medium text-sm text-red-700 click"  (click)="logout()">Logout</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Halaman Kanan -->
-        <div class="md:col-9 col-12">
-            <p class="text-sm font-semibold ml-3 text-teal-800"><i class="pi pi-pencil"></i> Edit Profile</p>
-
-            <!-- Detail Profile -->
-            <div class="card mt-3" *ngIf="step==0">
-                <div class="container">
-                    <div class="grid" >
-
-                        <!-- Profile -->
-                        <div class="col-12 pt-0">
-                            <p-divider align="left"  id="headerdivider">
-                                <div class="inline-flex align-items-center">
-                                    <p class="text-sm font-medium text-500"><i class="pi pi-info-circle"></i> Detail Profile</p>
-                                </div>
-                            </p-divider>
-                            <div class="image-content flex justify-content-center">
-                                <div class="image-box">
-                                    <img [src]="proPic" alt="" >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 pb-0 ">
-                            <div class="grid ml-1 mr-1 mt-5">
-                                <div class="col-12 pb-0 ">
-                                    <div class="grid">
-                                        <div class="md:col-3 col-12">
-                                            <p class="text-sm font-medium detail">Fullname</p>
-                                        </div>
-                                        <div class="md:col-9 col-12">
-                                            <p class="text-sm font-medium text-600 detail" >{{profileData?.fullName}}</p>
-                                        </div>
-                                    </div>
-                                    <p-divider></p-divider>
-                                </div>
-                                <div class="col-12 pb-0 ">
-                                    <div class="grid">
-                                        <div class="md:col-3 col-12">
-                                            <p class="text-sm font-medium detail">Email</p>
-                                        </div>
-                                        <div class="md:col-9 col-12">
-                                            <p class="text-sm font-medium text-600 detail">{{profileData?.userEmail}}</p>
-                                        </div>
-                                    </div>
-                                    <p-divider></p-divider>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Occupation -->
-                        <div class="col-12 pb-0 ">
-                            <div class="grid ml-1 mr-1 mt-5">
-                                <div class="col-12">
-                                <p-divider align="left"  id="headerdivider">
-                                    <div class="inline-flex align-items-center">
-                                        <p class="text-sm font-medium text-500"><i class="pi pi-briefcase"></i> Occupation</p>
-                                    </div>
-                                </p-divider>
-                            </div>
-                                <div class="col-12 pb-0 ">
-                                    <div class="grid">
-                                        <div class="md:col-3 col-12">
-                                            <p class="text-sm font-medium detail">Company Name</p>
-                                        </div>
-                                        <div class="md:col-9 col-12">
-                                            <p class="text-sm font-medium text-600 detail" >{{profileData?.companyName}}</p>
-                                        </div>
-                                    </div>
-                                    <p-divider></p-divider>
-                                </div>
-                                <div class="col-12 pb-0 ">
-                                    <div class="grid">
-                                        <div class="md:col-3 col-12">
-                                            <p class="text-sm font-medium detail">Industry</p>
-                                        </div>
-                                        <div class="md:col-9 col-12">
-                                            <p class="text-sm font-medium text-600 detail">{{profileData?.industryName}}</p>
-                                        </div>
-                                    </div>
-                                    <p-divider></p-divider>
-                                </div>
-                                <div class="col-12">
-                                    <div class="grid">
-                                        <div class="md:col-3 col-12">
-                                            <p class="text-sm font-medium detail">Position</p>
-                                        </div>
-                                        <div class="md:col-9 col-12">
-                                            <p class="text-sm font-medium text-600 detail">{{profileData?.positionName}}</p>
-                                        </div>
-                                    </div> 
-                                    <p-divider></p-divider> 
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action for edit -->
-                        <div class="col-12">
-                            <div class="grid justify-content-end">
-                                <div class="md:col-2 col-6">
-                                    <button pButton pRipple type="submit"
-                          class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                          styleClass="p-button-sm text-center" label="Edit" (click)="editClick()"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Edit Profile -->
-            <div class="card mt-3" *ngIf="step==1">
-                <div class="container">
-                    <div class="grid" >
-                        <form (ngSubmit)="submitUpdate()">
-                        <!-- Profile -->
-                        <div class="col-12 pt-0">
-                            <p-divider align="left"  id="headerdivider">
-                                <div class="inline-flex align-items-center">
-                                    <p class="text-sm font-medium text-500"><i class="pi pi-info-circle"></i> Detail Profile</p>
-                                </div>
-                            </p-divider>
-                            <div class="upload">
-                                <div class="image-content flex justify-content-center">
-                                    <div class="image-box">
-                                        <img [src]="proPic" alt="" >
-                                    </div>
-                                </div>
-                                <div class="round">
-                                    <input type="file" (change)="onChangeFile($event)">
-                                    <i class = "pi pi-camera text-800" style="font-weight: 600"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 pb-0 ">
-                            <div class="grid ml-1 mr-1 mt-5">
-                                <div class="col-12 pb-0 ">
-                                    <label for="inputFullname" class="block text-sm ml-3">Fullname</label>
-                                    <input id="inputFullname" type="text" pInputText  class="w-full border-radius-20px" name="fullName" [(ngModel)]="profileData.fullName"/>
-                                </div>
-                                <div class="col-12 pb-0 ">
-                                    <label for="inputEmail" class="block text-sm ml-3">Email</label>
-                                    <input id="inputEmail" type="text" pInputText class="w-full border-radius-20px" name="userEmail" disabled [(ngModel)]="profileData.userEmail"/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Occupation -->
-                        <div class="col-12 pb-0 ">
-                            <div class="grid ml-1 mr-1 mt-5">
-                                <div class="col-12">
-                                <p-divider align="left"  id="headerdivider">
-                                    <div class="inline-flex align-items-center">
-                                        <p class="text-sm font-medium text-500"><i class="pi pi-briefcase"></i> Occupation</p>
-                                    </div>
-                                </p-divider>
-                            </div>
-                                <div class="col-12 pb-0 ">
-                                    <label for="inputCompany" class="block text-sm ml-3">Company Name</label>
-                                    <input id="inputCompany" type="text" pInputText  class="w-full border-radius-20px" name="companyName" [(ngModel)]="profileData.companyName"/>
-                                </div>
-                                <div class="col-12 pb-0 ">
-                                    <label for="inputPhoneNo" class="block text-sm ml-3">Industry</label>
-                                    <p-dropdown [options]="industries!" optionValue="id" optionLabel="name" styleClass="w-full" name="industryId" [(ngModel)]="profileData.industryId"></p-dropdown>
-                                </div>
-                                <div class="col-12">
-                                    <label for="inputPostition" class="block text-sm ml-3">Position</label>
-                                    <input id="inputPostition" type="text" pInputText  class="w-full border-radius-20px" name="positionName" [(ngModel)]="profileData.positionName"/>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action for save -->
-                        <div class="col-12">
-                            <div class="grid justify-content-end">
-                                <div class="md:col-2 col-6">
-                                    <button pButton pRipple type="button"
-                          class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                          styleClass="p-button-sm text-center" label="Back" (click)="cancel()" ></button>
-                                </div>
-                                <div class="md:col-2 col-6">
-                                    <button pButton pRipple type="submit"
-                          class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                          styleClass="p-button-sm text-center" label="Save" ></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="grid mt-3">
+    <div class="md:col-3 col-12">
+      <menu-profile></menu-profile>
     </div>
+    <div class="md:col-9 col-12">
+      <p class="text-sm font-semibold ml-3 text-teal-800"><i class="pi pi-pencil"></i> Edit Profile</p>
+
+      <!-- Detail Profile -->
+      <div class="card mt-3" *ngIf="step==0">
+        <div class="container">
+          <div class="grid">
+            <!-- Profile -->
+            <div class="col-12 pt-0">
+              <p-divider align="left" id="headerdivider">
+                <div class="inline-flex align-items-center">
+                  <p class="text-sm font-medium text-500"><i class="pi pi-info-circle"></i> Detail Profile</p>
+                </div>
+              </p-divider>
+              <div class="image-content flex justify-content-center">
+                <div class="image-box">
+                  <img [src]="proPic" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 pb-0 ">
+              <div class="grid ml-1 mr-1 mt-5">
+                <div class="col-12 pb-0 ">
+                  <div class="grid">
+                    <div class="md:col-3 col-12">
+                      <p class="text-sm font-medium detail">Fullname</p>
+                    </div>
+                    <div class="md:col-9 col-12">
+                      <p class="text-sm font-medium text-600 detail">{{profileData.fullName}}</p>
+                    </div>
+                  </div>
+                  <p-divider></p-divider>
+                </div>
+                <div class="col-12 pb-0 ">
+                  <div class="grid">
+                    <div class="md:col-3 col-12">
+                      <p class="text-sm font-medium detail">Email</p>
+                    </div>
+                    <div class="md:col-9 col-12">
+                      <p class="text-sm font-medium text-600 detail">{{profileData.userEmail}}</p>
+                    </div>
+                  </div>
+                  <p-divider></p-divider>
+                </div>
+              </div>
+            </div>
+            <!-- Occupation -->
+            <div class="col-12 pb-0 ">
+              <div class="grid ml-1 mr-1 mt-5">
+                <div class="col-12">
+                  <p-divider align="left" id="headerdivider">
+                    <div class="inline-flex align-items-center">
+                      <p class="text-sm font-medium text-500"><i class="pi pi-briefcase"></i> Occupation</p>
+                    </div>
+                  </p-divider>
+                </div>
+                <div class="col-12 pb-0 ">
+                  <div class="grid">
+                    <div class="md:col-3 col-12">
+                      <p class="text-sm font-medium detail">Company Name</p>
+                    </div>
+                    <div class="md:col-9 col-12">
+                      <p class="text-sm font-medium text-600 detail">{{profileData.companyName}}</p>
+                    </div>
+                  </div>
+                  <p-divider></p-divider>
+                </div>
+                <div class="col-12 pb-0 ">
+                  <div class="grid">
+                    <div class="md:col-3 col-12">
+                      <p class="text-sm font-medium detail">Industry</p>
+                    </div>
+                    <div class="md:col-9 col-12">
+                      <p class="text-sm font-medium text-600 detail">{{profileData.industryName}}</p>
+                    </div>
+                  </div>
+                  <p-divider></p-divider>
+                </div>
+                <div class="col-12">
+                  <div class="grid">
+                    <div class="md:col-3 col-12">
+                      <p class="text-sm font-medium detail">Position</p>
+                    </div>
+                    <div class="md:col-9 col-12">
+                      <p class="text-sm font-medium text-600 detail">{{profileData.positionName}}</p>
+                    </div>
+                  </div>
+                  <p-divider></p-divider>
+                </div>
+              </div>
+            </div>
+            <!-- Action for edit -->
+            <div class="col-12">
+              <div class="grid justify-content-end">
+                <div class="md:col-2 col-6">
+                  <button pButton pRipple type="submit"
+                    class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                    styleClass="p-button-sm text-center" label="Edit" (click)="editClick()"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edit Profile -->
+      <div class="card mt-3" *ngIf="step==1">
+        <div class="container">
+          <form (ngSubmit)="submitUpdate()">
+            <div class="grid">
+              <!-- Profile -->
+              <div class="col-12 pt-0">
+                <p-divider align="left" id="headerdivider">
+                  <div class="inline-flex align-items-center">
+                    <p class="text-sm font-medium text-500"><i class="pi pi-info-circle"></i> Detail Profile</p>
+                  </div>
+                </p-divider>
+                <div class="upload">
+                  <div class="image-content flex justify-content-center">
+                    <div class="image-box">
+                      <img [src]="proPic" alt="">
+                    </div>
+                  </div>
+                  <div class="round">
+                    <input type="file" accept="image/*" (change)="onChangeFile($event)">
+                    <i class="pi pi-camera text-800" style="font-weight: 600"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 pb-0 ">
+                <div class="grid ml-1 mr-1 mt-5">
+                  <div class="col-12 pb-0 ">
+                    <label for="inputFullname" class="block text-sm ml-3">Fullname</label>
+                    <input id="inputFullname" type="text" pInputText class="w-full border-radius-20px" name="fullName"
+                      [(ngModel)]="profileData.fullName" />
+                  </div>
+                  <div class="col-12 pb-0 ">
+                    <label for="inputEmail" class="block text-sm ml-3">Email</label>
+                    <input id="inputEmail" type="text" pInputText class="w-full border-radius-20px" name="userEmail"
+                      disabled [(ngModel)]="profileData.userEmail" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Occupation -->
+              <div class="col-12 pb-0 ">
+                <div class="grid ml-1 mr-1 mt-5">
+                  <div class="col-12">
+                    <p-divider align="left" id="headerdivider">
+                      <div class="inline-flex align-items-center">
+                        <p class="text-sm font-medium text-500"><i class="pi pi-briefcase"></i> Occupation</p>
+                      </div>
+                    </p-divider>
+                  </div>
+                  <div class="col-12 pb-0 ">
+                    <label for="inputCompany" class="block text-sm ml-3">Company Name</label>
+                    <input id="inputCompany" type="text" pInputText class="w-full border-radius-20px" name="companyName"
+                      [(ngModel)]="profileData.companyName" />
+                  </div>
+                  <div class="col-12 pb-0 ">
+                    <label for="inputPhoneNo" class="block text-sm ml-3">Industry</label>
+                    <p-dropdown [options]="industries!" optionValue="id" optionLabel="name" styleClass="w-full"
+                      name="industryId" [(ngModel)]="profileData.industryId"></p-dropdown>
+                  </div>
+                  <div class="col-12">
+                    <label for="inputPostition" class="block text-sm ml-3">Position</label>
+                    <input id="inputPostition" type="text" pInputText class="w-full border-radius-20px"
+                      name="positionName" [(ngModel)]="profileData.positionName" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action for save -->
+              <div class="col-12">
+                <div class="grid justify-content-end">
+                  <div class="md:col-2 col-6">
+                    <button pButton pRipple type="button"
+                      class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                      styleClass="p-button-sm text-center" label="Back" (click)="cancel()"></button>
+                  </div>
+                  <div class="md:col-2 col-6">
+                    <button pButton pRipple type="submit"
+                      class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
+                      styleClass="p-button-sm text-center" label="Save"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -12,7 +12,7 @@
           <p-progressSpinner class="flex justify-content-center"></p-progressSpinner>
         </div>
         <div class="container" *ngIf="showSpinner==false">
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()" ngnativevalidate #form="ngForm">
             <div class="grid justify-content-center flex flex-wrap row-gap-2">
               <div class="md:col-2">
                 <span class="p-float-label">
@@ -87,13 +87,13 @@
               <div class="col-12">
                 <div class="grid flex justify-content-between flex-wrap">
                     <div class="md:col-4 col-12 text-left">
-                        <p-fileUpload mode="basic" name="file" (uploadHandler)="onChangeFile($event)" [auto]="true" chooseLabel="Upload Foto" [customUpload]="true" >                           
+                        <p-fileUpload mode="basic" name="file"  (uploadHandler)="onChangeFile($event)" [auto]="true" chooseLabel="Upload Foto" [customUpload]="true" >                           
                         </p-fileUpload>
                     </div>
                     <div class="md:col-4 col-12">
                         <button pButton pRipple type="submit"
                         class="p-button-rounded p-button-sm color-bg-yellow w-full text-small color-black bold"
-                        styleClass="p-button-sm text-center" label="Post"></button>
+                        styleClass="p-button-sm text-center" label="Post"  [disabled]="!form.valid"></button>
                     </div>
                 </div>
               </div>

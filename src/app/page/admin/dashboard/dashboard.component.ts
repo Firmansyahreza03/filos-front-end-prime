@@ -4,7 +4,7 @@ import { ArticleService, CommunityService, ThreadHdrService, UserService } from 
 
 @Component({
     templateUrl: './dashboard.component.html',
-    styleUrls: ['../../../../assets/sass/sakai.scss']
+    styleUrls: ['../../../../assets/sass/admin.scss']
 })
 export class DashboardComponent implements OnInit {
     subscription?: Subscription;
@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
     countUser():void{
         this.subscription = this.userService.getAll()
         .subscribe((result) => {
-            console.log(result)
           this.sumUser = result.data!.length;
         });
     }
@@ -33,7 +32,6 @@ export class DashboardComponent implements OnInit {
     countCommunity():void{
         this.subscription = this.communityService.getAll()
         .subscribe((result) => {
-            console.log(result)
           this.sumCommunity = result.data!.length;
         });
     }
@@ -41,7 +39,6 @@ export class DashboardComponent implements OnInit {
     countArticle():void{
         this.subscription = this.articleService.getAll()
         .subscribe((result) => {
-            console.log(result)
           this.sumArticle = result.data!.length;
         });
     }
@@ -49,7 +46,6 @@ export class DashboardComponent implements OnInit {
     countThread():void{
         this.subscription = this.threadService.getAllThreadHdr()
         .subscribe((result) => {
-            console.log(result)
           this.sumThread = result.data!.length;
         });
     }

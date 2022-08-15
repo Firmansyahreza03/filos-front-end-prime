@@ -2,18 +2,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DefaultPic } from 'src/app/constant/default-pic';
+import { DefaultPic } from '../../../constant/default-pic';
 import {
   FindAllThreadDtlRes,
-  FindThreadDtlRes,
   FindThreadHdrRes,
-} from 'src/app/pojo/pojo-import';
+} from '../../../pojo/pojo-import';
 import { 
   LoginService, 
   ThreadDtlService, 
   ThreadHdrService, 
   UserService
-} from 'src/app/service/import.service';
+} from '../../../service/import.service';
 
 @Component({
   selector: 'app-forum-detail',
@@ -50,10 +49,14 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
         this.idParam = resultTmp.id;
 
         this.hdrSubs = this.threadHdrService
-          .findThreadHdrById(this.idParam)
+          .findThreadHdrById(this.idParam, this.loginService.getLoggedEmail()!)
           .subscribe((result) => {
             if (result.data == null) {
-              this.router.navigateByUrl('/payment');
+              if(this.isLogin){
+                this.router.navigateByUrl('/payment');
+              } else{
+                this.router.navigateByUrl('/login');
+              }
             } else {
               this.threadHdrData = result;
               if (this.threadHdrData.data!.photoProfileCreator != null)
@@ -68,7 +71,6 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   findDataChat(): void {
-    console.log(this.idParam)
     this.dtlSubs = this.threadDtlService
       .findByHdrId(this.idParam)
       .subscribe((result) => {
@@ -88,7 +90,6 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
             else
               this.threadDtlData.data![i].proPic = DefaultPic.proFile;
           })
-          console.log(this.threadDtlData)
         }
       });
   }
@@ -100,8 +101,13 @@ export class ForumDetailComponent implements OnInit, OnDestroy {
   }
 
   back(): void {
-    this.router.navigateByUrl('/home-member');
+    if(this.isLogin){
+      this.router.navigateByUrl('/home-member');
+    }else{
+      this.router.navigateByUrl('/home-landing');
+    }
   }
+
 
   ngOnDestroy(): void {
     this.hdrSubs?.unsubscribe();

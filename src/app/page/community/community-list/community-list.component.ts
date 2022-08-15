@@ -1,24 +1,34 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/default-pic';
-import { FindAllCommunityRes } from 'src/app/pojo/pojo-import';
-import { CommunityService } from 'src/app/service/community.service';
+import { CommunityCategory } from '../../../constant/community-category';
+import { DefaultPic } from '../../../constant/default-pic';
+import { FindAllCommunityRes } from '../../../pojo/pojo-import';
+import { CommunityService } from '../../../service/community.service';
+import { LoginService } from '../../../service/login.service';
 
 @Component({
   selector: 'app-community-list',
   templateUrl: './community-list.component.html',
   styleUrls: ['community-list.component.css'],
+  providers: [ConfirmationService, MessageService]
 })
 
 export class CommunityListComponent implements OnInit {
   eventSubscription?: Subscription;
   trainingSubscription?: Subscription;
+  subscription?: Subscription;
   idDetail!: string;
   title = 'Community';
   showSpinner!:boolean;
+  isLogin:boolean=this.loginService.isLogin();
+
+  listComm: FindAllCommunityRes = {
+    data: [],
+    count: 0,
+  };
 
   listEvent: FindAllCommunityRes = {
     data: [],
@@ -33,7 +43,8 @@ export class CommunityListComponent implements OnInit {
   constructor(
     private router: Router,
     private communityService: CommunityService,
-    private titleService:Title
+    private titleService:Title,
+    private loginService:LoginService
   ) {}
 
   ngOnInit(): void {
@@ -42,17 +53,26 @@ export class CommunityListComponent implements OnInit {
       setTimeout(()=>{
         this.showSpinner=false;  
         this.eventSubscription = this.communityService
-        .getAll(CommunityCategory.training)
+        .getAll(CommunityCategory.event)
         .subscribe((result) => {
           this.listEvent = result;
         });
   
       this.trainingSubscription = this.communityService
-        .getAll(CommunityCategory.event)
+        .getAll(CommunityCategory.training)
         .subscribe((res) => {
           this.listTraining = res;
         });
-      },500)
+        
+        if(this.isLogin){
+          this.subscription = this.communityService
+            .getAllCommunityByPrincipal()
+            .subscribe((res) => {
+              this.listComm= res;
+            });
+        }
+
+      },1000);
   }
 
   getCommPic(fileId: string): string {
@@ -71,5 +91,6 @@ export class CommunityListComponent implements OnInit {
   ngOnDestroy(): void {
     this.eventSubscription?.unsubscribe();
     this.trainingSubscription?.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }
