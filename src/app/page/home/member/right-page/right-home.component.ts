@@ -1,10 +1,10 @@
 import { Subscription } from 'rxjs';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { CommunityCategory } from 'src/app/constant/community-category';
-import { FindAllCommunityRes } from 'src/app/pojo/pojo-import';
-import { CommunityService, LoginService } from 'src/app/service/import.service';
-import { DefaultPic } from 'src/app/constant/default-pic';
+import { CommunityCategory } from '../../../../constant/community-category';
+import { FindAllCommunityRes } from '../../../../pojo/pojo-import';
+import { CommunityService, LoginService } from '../../../../service/import.service';
+import { DefaultPic } from '../../../../constant/default-pic';
 
 @Component({
   selector: 'home-right-page',

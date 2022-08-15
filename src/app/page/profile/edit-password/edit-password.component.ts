@@ -1,4 +1,4 @@
-import { UserService } from 'src/app/service/import.service';
+import { UserService } from '../../../service/import.service';
 import { ChangePassReq } from './../../../pojo/pojo-import';
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";

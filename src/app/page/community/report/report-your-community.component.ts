@@ -2,9 +2,9 @@ import { formatDate } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { LimitTimeReq } from "src/app/pojo/pojo-import";
-import { LoginService } from "src/app/service/login.service";
-import { ReportService } from "src/app/service/report.service";
+import { LimitTimeReq } from "../../../pojo/pojo-import";
+import { LoginService } from "../../../service/login.service";
+import { ReportService } from "../../../service/report.service";
 
 @Component({
   selector: 'app-report-your-community',

@@ -12,7 +12,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { PaymentRouting } from "./payment.routing";
 import {RadioButtonModule} from 'primeng/radiobutton';
-import { SharedModule } from "src/app/component/shared.module";
+import { SharedModule } from "../../component/shared.module";
 
 @NgModule({
     imports:[

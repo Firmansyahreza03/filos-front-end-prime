@@ -3,11 +3,11 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityReq } from "src/app/pojo/pojo-import";
-import { CommunityCategoriesService } from "src/app/service/community-category.service";
-import { CommunityService } from "src/app/service/community.service";
-import { FileService } from "src/app/service/file.service";
-import { IndustryService } from "src/app/service/industry.service";
+import { FindAllCommunityCategoryRes, FindAllIndustryRes, InsertCommunityReq } from "../../../pojo/pojo-import";
+import { CommunityCategoriesService } from "../../../service/community-category.service";
+import { CommunityService } from "../../../service/community.service";
+import { FileService } from "../../../service/file.service";
+import { IndustryService } from "../../../service/industry.service";
 
 @Component({
     selector:'app-community-add',

@@ -5,7 +5,7 @@ import { DividerModule } from "primeng/divider";
 import { ArticleMemberDetailComponent } from "./article-member-detail/article-member-detail.component";
 import { ArticleMemberListComponent } from "./article-member-list/article-member-list.component";
 import { ArticleMemberRouting } from "./article-member.routing";
-import { SharedModule } from "src/app/component/shared.module";
+import { SharedModule } from "../../component/shared.module";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
     imports:[

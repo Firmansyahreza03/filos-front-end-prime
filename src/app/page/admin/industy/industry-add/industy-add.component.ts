@@ -3,8 +3,8 @@ import { Subscription } from "rxjs";
 
 import {ConfirmationService, MessageService} from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InsertIndustryReq } from "src/app/pojo/pojo-import";
-import { IndustryService } from "src/app/service/import.service";
+import { InsertIndustryReq } from "../../../../pojo/pojo-import";
+import { IndustryService } from "../../../../service/import.service";
 
 @Component({
   selector: 'admin-industy-add',

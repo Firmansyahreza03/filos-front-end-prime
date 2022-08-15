@@ -7,7 +7,7 @@ import { CardModule } from "primeng/card";
 import { DividerModule } from "primeng/divider";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { TooltipModule } from "primeng/tooltip";
-import { SharedModule } from "src/app/component/shared.module";
+import { SharedModule } from "../../component/shared.module";
 import { HomeNotMemberRouting } from "./home-not-member.routing";
 import { HomeNotMemberComponent } from "./not-member/home-not-member.component";
 

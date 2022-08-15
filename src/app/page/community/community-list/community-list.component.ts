@@ -3,11 +3,11 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/default-pic';
-import { FindAllCommunityRes } from 'src/app/pojo/pojo-import';
-import { CommunityService } from 'src/app/service/community.service';
-import { LoginService } from 'src/app/service/login.service';
+import { CommunityCategory } from '../../../constant/community-category';
+import { DefaultPic } from '../../../constant/default-pic';
+import { FindAllCommunityRes } from '../../../pojo/pojo-import';
+import { CommunityService } from '../../../service/community.service';
+import { LoginService } from '../../../service/login.service';
 
 @Component({
   selector: 'app-community-list',
@@ -64,11 +64,13 @@ export class CommunityListComponent implements OnInit {
           this.listTraining = res;
         });
         
-      this.subscription = this.communityService
-        .getAllCommunityByPrincipal()
-        .subscribe((res) => {
-          this.listComm= res;
-        });
+        if(this.isLogin){
+          this.subscription = this.communityService
+            .getAllCommunityByPrincipal()
+            .subscribe((res) => {
+              this.listComm= res;
+            });
+        }
 
       },1000);
   }

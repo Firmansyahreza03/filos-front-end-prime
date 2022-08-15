@@ -6,8 +6,8 @@ import { AdminLayoutComponent } from '../layout/admin-layout.component';
 import { ConfigService, LoginService, UserService } from "../../service/import.service";
 import { AppConfig } from "../../api/appconfig";
 import { DefaultPic } from "../../constant/default-pic";
-import { LogoutService } from "src/app/service/logout.service";
-import { LogoutReq } from "src/app/pojo/logout/logout-req";
+import { LogoutService } from "../../service/logout.service";
+import { LogoutReq } from "../../pojo/logout/logout-req";
 
 @Component({
   selector: 'admin-nav',

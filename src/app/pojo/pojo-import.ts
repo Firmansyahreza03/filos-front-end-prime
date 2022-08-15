@@ -136,6 +136,8 @@ import { InsertUserReq } from "./user/insert-user-req";
 import { UpdateUserReq } from "./user/update-user-req";
 import { RegisUserReq } from "./user/regis-user-req";
 
+import { LogoutRes } from './logout/logout-res'
+
 export {
   DeleteRes, ErorRes, InsertRes, UpdateRes, InsertResData, UpdateResData, ChangePassReq,
   LoginReq, LoginRes, GeneratedCode, verificationUserReq,
@@ -159,5 +161,5 @@ export {
   DataThreadHdr, FindThreadHdrRes, FindAllThreadHdrRes, InsertThreadHdrReq, UpdateThreadHdrReq,
   DataThreadLiked, FindThreadLikedRes, FindAllThreadLikedRes, InsertThreadLikedReq, UpdateThreadLikedReq,
   DataUser, FindUserRes, FindAllUserRes, InsertUserReq, UpdateUserReq, RegisUserReq,
-  ReportUserByCommunityRes, ReportPaymentByCommunityRes, LimitTimeReq
+  ReportUserByCommunityRes, ReportPaymentByCommunityRes, LimitTimeReq, LogoutRes
 }
