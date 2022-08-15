@@ -18,7 +18,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { ForumRouting } from './forum.routing';
 import { ForumDetailComponent } from './detail/forum-detail.component';
 import { FormChatComponent } from './insert/form-chat.component';
-import { SharedModule } from 'src/app/component/shared.module';
+import { SharedModule } from '../../component/shared.module';
 import { EditForumComponent } from './edit/edit-forum.component';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({

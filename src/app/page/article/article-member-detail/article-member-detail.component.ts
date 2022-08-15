@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { FindArticleRes } from "src/app/pojo/pojo-import";
-import { ArticleService } from "src/app/service/article.service";
+import { FindArticleRes } from "../../../pojo/pojo-import";
+import { ArticleService } from "../../../service/article.service";
 
 @Component({
     selector:'app-article-member-detail',

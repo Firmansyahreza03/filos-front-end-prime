@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem} from 'primeng/api';
 import { Subscription } from "rxjs";
-import { FindAllIndustryRes, InsertProfileReq, verificationUserReq } from "src/app/pojo/pojo-import";
-import { DefaultPic } from "src/app/constant/default-pic";
-import { FileService, RegisterService, IndustryService } from "src/app/service/import.service";
+import { FindAllIndustryRes, InsertProfileReq, verificationUserReq } from "../../../pojo/pojo-import";
+import { DefaultPic } from "../../../constant/default-pic";
+import { FileService, RegisterService, IndustryService } from "../../../service/import.service";
 
 @Component({
   selector: 'app-register',

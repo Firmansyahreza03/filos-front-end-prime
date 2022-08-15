@@ -2,18 +2,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { DefaultPic } from 'src/app/constant/default-pic';
+import { DefaultPic } from '../../../constant/default-pic';
 import {
   FindAllThreadDtlRes,
-  FindThreadDtlRes,
   FindThreadHdrRes,
-} from 'src/app/pojo/pojo-import';
+} from '../../../pojo/pojo-import';
 import { 
   LoginService, 
   ThreadDtlService, 
   ThreadHdrService, 
   UserService
-} from 'src/app/service/import.service';
+} from '../../../service/import.service';
 
 @Component({
   selector: 'app-forum-detail',

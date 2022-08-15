@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { DataThreadHdr } from 'src/app/pojo/pojo-import';
+import { DataThreadHdr } from '../../../pojo/pojo-import';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
 
 const dataBookmark: DataThreadHdr[] = [];

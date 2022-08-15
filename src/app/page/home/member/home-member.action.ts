@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { DataThreadHdr } from 'src/app/pojo/pojo-import';
+import { DataThreadHdr } from '../../../pojo/pojo-import';
 
 enum BookmarkAction {
   BOOKMARK_ACTION = '[ADD Action]',

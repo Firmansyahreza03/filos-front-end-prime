@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
-import { DataThreadCategory, UpdateThreadHdrReq } from "src/app/pojo/pojo-import";
-import { LoginService, ThreadCategoryService, ThreadHdrService } from "src/app/service/import.service";
+import { DataThreadCategory, UpdateThreadHdrReq } from "../../../pojo/pojo-import";
+import { LoginService, ThreadCategoryService, ThreadHdrService } from "../../../service/import.service";
 
 @Component({
   selector: 'app-edit-forum',

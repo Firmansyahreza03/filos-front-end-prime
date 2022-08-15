@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { MenuItem } from 'primeng/api';
 import { Subscription } from "rxjs";
 import { ConfigService, LoginService, UserService } from "../../service/import.service";
 import { AppConfig } from "../../api/appconfig";
 import { DefaultPic } from "../../constant/default-pic";
-import { LogoutReq } from "src/app/pojo/logout/logout-req";
-import { LogoutService } from "src/app/service/logout.service";
+import { LogoutReq } from "../../pojo/logout/logout-req";
+import { LogoutService } from "../../service/logout.service";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +14,7 @@ import { LogoutService } from "src/app/service/logout.service";
   styleUrls: ['navbar.component.css']
 
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   items: MenuItem[] = [];
   topMenuActive: boolean = false
   isLogin?: boolean = this.loginService.isLogin();
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   deleteSubscription?:Subscription;
   updateUserLoggedSubscription?:Subscription;
   logoutReq: LogoutReq={
-    email: this.loginService.getLoggedEmail()!
+    email: ''
   }
 
   constructor(
@@ -34,6 +34,11 @@ export class NavbarComponent implements OnInit {
     private logoutService: LogoutService
   ) { }
 
+  onDestroy(){
+    this.subscription?.unsubscribe();
+    this.deleteSubscription?.unsubscribe();
+    this.updateUserLoggedSubscription?.unsubscribe();
+  }
   
   findPic() {
     const logUser = this.loginService.getLoggedEmail();
@@ -50,6 +55,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.logoutReq.email = this.loginService.getLoggedEmail()!;
+
     this.config = this.configService.config;
     this.subscription = this.configService.onConfigUpdate.subscribe(config => this.config = config);
     this.findPic();
@@ -86,10 +93,6 @@ export class NavbarComponent implements OnInit {
           
         },
         {
-          label: 'Community',
-          routerLink: '/communities'
-        },
-        {
           label: 'Article',
           routerLink: '/articles'
         }];
@@ -99,9 +102,6 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.config.proImg = DefaultPic.proFile;
-    const clearToken=this.loginService.getRefreshToken()
-    this.logoutService.updateUserLogged(this.logoutReq)
-    this.logoutService.deleteRefreshToken(clearToken!)
     localStorage.clear();
     this.router.navigateByUrl('/login');
   }

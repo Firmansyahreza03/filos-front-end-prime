@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/default-pic';
+import { CommunityCategory } from '../../../constant/community-category';
+import { DefaultPic } from '../../../constant/default-pic';
 import {
   DataThreadHdr,
   FindAllCommunityRes,
@@ -11,19 +11,19 @@ import {
   FindProfileRes,
   InsertPollingAnswerReq,
   InsertThreadHdrReq,
-} from 'src/app/pojo/pojo-import';
-import { BookmarkService } from 'src/app/service/bookmark.service';
-import { CommunityService } from 'src/app/service/community.service';
-import { FileService } from 'src/app/service/file.service';
-import { LoginService } from 'src/app/service/login.service';
-import { ThreadCategoryService } from 'src/app/service/thread-category.service';
-import { ThreadHdrService } from 'src/app/service/thread-hdr.service';
-import { ThreadLikedService } from 'src/app/service/thread-liked.service';
-import { UserService } from 'src/app/service/user.service';
+} from '../../../pojo/pojo-import';
+import { BookmarkService } from '../../../service/bookmark.service';
+import { CommunityService } from '../../../service/community.service';
+import { FileService } from '../../../service/file.service';
+import { LoginService } from '../../../service/login.service';
+import { ThreadCategoryService } from '../../../service/thread-category.service';
+import { ThreadHdrService } from '../../../service/thread-hdr.service';
+import { ThreadLikedService } from '../../../service/thread-liked.service';
+import { UserService } from '../../../service/user.service';
 import { Store } from '@ngrx/store'
 import { getAllBookmark } from './home-member.selector';
 import { bookmarkAction, loadBookmarkAction, unbookmarkAction } from './home-member.action';
-import { PollingService } from 'src/app/service/polling.service';
+import { PollingService } from '../../../service/polling.service';
 import { Title } from '@angular/platform-browser';
 import { formatDate } from '@angular/common';
 

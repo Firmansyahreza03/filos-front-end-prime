@@ -2,12 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CommunityCategory } from 'src/app/constant/community-category';
-import { DefaultPic } from 'src/app/constant/default-pic';
-import { DataCommunity, FindAllCommunityRes } from 'src/app/pojo/pojo-import';
-import { CommunityService } from 'src/app/service/community.service';
-import { LoginService } from 'src/app/service/login.service';
-import { MemberCommunityService } from 'src/app/service/member-community.service';
+import { CommunityCategory } from '../../../constant/community-category';
+import { DefaultPic } from '../../../constant/default-pic';
+import { DataCommunity, FindAllCommunityRes } from '../../../pojo/pojo-import';
+import { CommunityService } from '../../../service/community.service';
+import { LoginService } from '../../../service/login.service';
+import { MemberCommunityService } from '../../../service/member-community.service';
 
 @Component({
   selector: 'app-community-detail',
@@ -78,7 +78,7 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.showSpinner = false;
       this.getDtlData();
-    });
+    },500);
   }
 
   getIsJoined(id: string): void {
@@ -87,7 +87,6 @@ export class CommunityDetailComponent implements OnInit, OnDestroy {
         .checkIsJoined(id)
         .subscribe((res) => {
           this.isJoined = res;
-          console.log(this.isJoined);
         });
       this.getAllEvent();
       this.getAllTraining();
